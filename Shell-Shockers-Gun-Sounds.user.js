@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.0.2
+// @version      1.0.3
 // @description  Replace your weapon sounds in Shell Shockers: pick a meme sound (AWP, Punch, Reverb Fart, Tuturu, Vine Boom) or your own MP3 for your primary, secondary and melee weapons.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -89,7 +89,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.0.2";
+  const VERSION = "1.0.3";
   const STORE = "ssGunSounds";
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3" },
@@ -270,7 +270,8 @@
     src.start();
     const v = { src, g, ctx };
     voices.add(v);
-    src.onended = () => { voices.delete(v); try { g.disconnect(); } catch { /* already gone */ } };
+    // A listener, not onended: the game sets onended on the sources it gets back to free its channel.
+    src.addEventListener("ended", () => { voices.delete(v); try { g.disconnect(); } catch { /* already gone */ } });
     if (voices.size > MAX_VOICES) fade(voices.values().next().value);
     return src;
   }
@@ -287,6 +288,47 @@
 
   /* ---- The hook ---- */
   const MARK = Symbol.for("ssGunSounds.hook");
+  // Every shot, yours included, plays through a positional channel (BAWK.children[].channels[]) whose
+  // `position` is the shooter's own position object. The game camera hangs under your player node,
+  // so a shot is yours when that object belongs to one of the camera's ancestors.
+  let scene = null;
+  function findScene() {
+    if (scene && !(scene.isDisposed || scene._isDisposed)) return scene;
+    scene = null;
+    for (const k of Object.getOwnPropertyNames(window)) {
+      let v;
+      try { v = window[k]; } catch { continue; }
+      if (!v || typeof v !== "object") continue;
+      try {
+        if (Array.isArray(v.cameras) && Array.isArray(v.rootNodes)) return (scene = v);
+        const s = v._scene;
+        if (s && Array.isArray(s.cameras) && Array.isArray(s.rootNodes)) return (scene = s);
+      } catch {}
+    }
+    return null;
+  }
+  function mine(B, to) {
+    if (!to || to === B.inputNode || to === B.gainNode) return true;
+    let pos = null;
+    for (const child of B.children || []) {
+      const ch = child && child.channels && child.channels.find(c => c && c.node === to);
+      if (ch) { pos = ch.position; break; }
+    }
+    const s = findScene();
+    if (!pos || !s) return true;   // can't tell: better your sound than none
+    const cam = s.cameras.find(c => c && c.name === "camera") || s.activeCamera;
+    if (cam && cam.parent) {
+      let n = cam;
+      for (let i = 0; n.parent && i < 8; i++) n = n.parent;
+      me = n._position || n.position;   // your player node (it outlives respawns)
+      for (let c = cam; c; c = c.parent) if (c._position === pos || c.position === pos) return true;
+    }
+    // The camera comes off your egg on pause and death screens; the remembered node still counts.
+    // Before your first spawn there's no egg, so nothing is yours.
+    return pos === me;
+  }
+  let me = null;
+
   let hooked = null;   // { B, orig, wrap }
   function hook() {
     const B = window.BAWK, cur = B && B.play;
@@ -301,10 +343,10 @@
       if (state.live && running) {
         try {
           const slot = slotOf(name), sound = slot && saved[slot];
-          // Your own shots go to the game's main output; other players' go through a positional one.
-          if (sound && sound !== DEFAULT && (!to || to === B.inputNode || saved.everyone)) {
+          const own = sound && sound !== DEFAULT && mine(B, to);
+          if (own || (sound && sound !== DEFAULT && saved.everyone)) {
             const buf = ready.get(keyOf(sound, slot));
-            const src = buf && play(buf, saved.volume, to === B.inputNode ? null : to);
+            const src = buf && play(buf, saved.volume, own ? null : to);
             if (src) return src;
             if (!buf) warm(sound, slot);   // not ready yet: the game's own sound this time
           }
