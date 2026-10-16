@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.0.1
+// @version      1.0.2
 // @description  Replace your weapon sounds in Shell Shockers: pick a meme sound (AWP, Punch, Reverb Fart, Tuturu, Vine Boom) or your own MP3 for your primary, secondary and melee weapons.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -89,7 +89,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.0.1";
+  const VERSION = "1.0.2";
   const STORE = "ssGunSounds";
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3" },
@@ -98,7 +98,7 @@
     { id: "tuturu", name: "Tuturu", file: "tuturu.mp3" },
     { id: "boom", name: "Vine Boom", file: "vine-boom.mp3" },
   ];
-  const DEFAULT = "default", CUSTOM = "custom";
+  const DEFAULT = "default", CUSTOM = "custom", PICK = "pick";
   const SLOTS = [
     { id: "primary", name: "Primary" },
     { id: "secondary", name: "Secondary" },
@@ -334,12 +334,16 @@
   const CHEVRON = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9'%3E%3Cpath d='M.9 2.5 4.5 6.5 8.1 2.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`;
   // The list takes the theme's colours (--ssg-*, read by paint()). Where the browser can style a dropdown's list
   // (Chrome and Edge), it opens as a short list in those colours with only the focused row lit.
+  // The settings popup is centred and as tall as its contents, with room for little more than the game's own: with this
+  // and Kill Sounds in it, on a 16:9 screen it would run off the top and bottom, Confirm with it. It scrolls instead.
   const CSS = `
+#settingsPopup:has(#${CELL}) { max-height: 88vh; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 #${CELL} { min-width: 0; grid-column: 1 / -1; }
 #${CELL} .ssg-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--ss-space-md); }
 #${CELL} .ssg-slots > div { min-width: 0; }
+#${CELL} .ssg-slots .ss_button { min-width: 0; padding-inline: .8em; }
 #${CELL} .ssg-bottom { margin-top: var(--ss-space-sm); }
-#${CELL} .ssg-bottom .ssg-name { margin: 0 var(--ss-space-sm) 0 var(--ss-space-sm); }
+#${CELL} .ssg-bottom .ssg-name { margin: 0 var(--ss-space-sm) 0 2px; }
 #${CELL} .ssg-bottom input[type=range] { flex: 0 1 35%; }
 #${CELL} .ssg-bottom .nowrap { margin-left: auto; }
 #${CELL} .f_row { align-items: center; }
@@ -347,9 +351,11 @@
 #${CELL} select { flex: 1 1 auto; }
 #${CELL} .ss_button, #${CELL} label { flex: none; }
 #${CELL} .ss_button:disabled { opacity: .5; cursor: default; }
-#${CELL} .ssg-name { display: block; margin: var(--ss-space-sm) 0 0 var(--ss-space-sm); font-weight: 700; font-size: .85em; }
-#${CELL} .ssg-note { margin: 0 0 0 var(--ss-space-sm); font-weight: 700; font-size: .8em; min-width: 0;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#${CELL} .ssg-name { display: block; margin: var(--ss-space-sm) 0 .15em 2px; font-weight: 700; font-size: inherit; }
+#${CELL} .ssg-head { display: flex; align-items: baseline; min-width: 0; margin: var(--ss-space-sm) 0 .15em 2px; }
+#${CELL} .ssg-head .ssg-name { flex: none; margin: 0; }
+#${CELL} .ssg-note { flex: 0 1 auto; margin: 0 var(--ss-space-sm) 0 auto; padding-left: .5em; font-weight: 700; font-size: .85em;
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #${CELL} .ssg-note.ssg-error { color: var(--ss-red, #d15354) !important; }
 @supports (appearance: base-select) {
   #${CELL} select, #${CELL} select::picker(select) { appearance: base-select; }
@@ -389,20 +395,21 @@
       const face = el("button");
       face.type = "button";
       face.append(el("selectedcontent"));
+      // "Choose MP3 file…" isn't a setting: picking it opens the file picker, and the file then becomes "My MP3".
       select.append(face, new Option("Game sound", DEFAULT), ...SOUNDS.map(x => new Option(x.name, x.id)), el("hr"),
-        new Option("Your own MP3", CUSTOM));
+        new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK));
+      select.title = `Plays for every ${s.name.toLowerCase()} weapon. Your own file: MP3, OGG or WAV, up to 4 MB.`;
       const test = el("button", "ss_button btn_blue bevel_blue btn_sm", "Test");
       test.type = "button";
-      const choose = el("button", "ss_button btn_blue bevel_blue btn_sm", "Choose MP3");
-      choose.type = "button";
-      choose.title = `Pick one sound file (MP3, OGG or WAV, up to 4 MB). It plays for every ${s.name.toLowerCase()} weapon.`;
+      // The label line also names your file, or says what went wrong with it, so picking one adds no height.
       const note = el("span", "ssg-note text_blue4");
       const input = el("input");
       Object.assign(input, { type: "file", accept: "audio/*,.mp3,.ogg,.wav,.m4a,.webm", hidden: true });
-      const fileRow = row(choose, note, input);
-      slots[s.id] = { select, test, choose, note, input, fileRow };
+      const head = el("div", "ssg-head");
+      head.append(el("span", "ssg-name text_blue4", s.name), note);
+      slots[s.id] = { select, test, note, input };
       const col = el("div");
-      col.append(el("span", "ssg-name", s.name), row(select, test), fileRow);
+      col.append(head, row(select, test), input);
       rows.push(col);
       select.addEventListener("pointerdown", paint);
       select.addEventListener("keydown", paint);
@@ -410,13 +417,16 @@
         if (e.target instanceof HTMLOptionElement && e.target !== document.activeElement) e.target.focus({ preventScroll: true });
       });
       select.addEventListener("change", () => {
+        if (select.value === PICK) {
+          select.value = pending[s.id];
+          return input.click();
+        }
         pending[s.id] = select.value;
         refresh();
         if (select.value === CUSTOM && !nameOf(s.id)) input.click();
         else if (select.value !== DEFAULT) preview(s.id);
       });
       test.addEventListener("click", () => preview(s.id));
-      choose.addEventListener("click", () => input.click());
       input.addEventListener("change", () => { const f = input.files[0]; input.value = ""; if (f) addFile(s.id, f); });
     }
     const range = el("input", "ss_slider");
@@ -429,7 +439,7 @@
     everyoneLabel.append(everyone, el("span", "checkmark"));
     const everyoneRow = el("div", "nowrap");
     everyoneRow.append(everyoneLabel);
-    const slotGrid = el("div", "ssg-slots"), bottom = row(el("span", "ssg-name", "Volume"), range, value, everyoneRow);
+    const slotGrid = el("div", "ssg-slots"), bottom = row(el("span", "ssg-name text_blue4", "Volume"), range, value, everyoneRow);
     bottom.classList.add("ssg-bottom");
     slotGrid.append(...rows);
     cell.append(el("h3", "margin-bottom-none h-short", "Gun Sounds"), slotGrid, bottom);
@@ -503,7 +513,6 @@
       const u = ui.slots[s.id];
       u.select.value = p[s.id];
       u.test.disabled = p[s.id] === DEFAULT;
-      u.fileRow.style.display = p[s.id] === CUSTOM ? "" : "none";
       setNote(s.id);
     }
     ui.everyone.checked = p.everyone;
@@ -511,12 +520,13 @@
     ui.value.textContent = String(Math.round(p.volume * 100));
     ui.range.disabled = SLOTS.every(s => p[s.id] === DEFAULT);
   }
-  // With no text, the note names your file. A problem shows in red in a few words, with more in its tooltip.
+  // With no text, the note names your file while "My MP3" is picked. A problem shows in red in a few words, with
+  // more in its tooltip.
   function setNote(slot, text, error, title = text) {
     if (!ui) return;
-    const u = ui.slots[slot];
-    u.note.textContent = text || nameOf(slot) || "No file yet";
-    u.note.title = text ? title : nameOf(slot) || "";
+    const u = ui.slots[slot], mine = (pending || saved)[slot] === CUSTOM;
+    u.note.textContent = text || (mine ? nameOf(slot) || "No file yet" : "");
+    u.note.title = text ? title : mine ? nameOf(slot) || "" : "";
     u.note.classList.toggle("ssg-error", !!error);
   }
   // The slot's pick, as it'd play in a game.

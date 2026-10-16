@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.0.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.0.2-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -34,8 +34,8 @@ Pick a sound for each weapon slot. It plays for **every weapon in that slot**, w
 | **Secondary** | Cluck 9mm |
 | **Melee** | Every melee weapon |
 
-- **Sounds:** **AWP**, **Punch**, **Reverb Fart**, **Tuturu**, **Vine Boom**, **Game sound** (leave that slot alone), or **Your own MP3**.
-- **Your own MP3:** choose **Your own MP3**, then pick a file (MP3, OGG or WAV, up to 4 MB). It's kept in your browser, one per slot.
+- **Sounds:** **AWP**, **Punch**, **Reverb Fart**, **Tuturu**, **Vine Boom**, **Game sound** (leave that slot alone), or **My MP3**.
+- **My MP3:** choose **Choose MP3 file…** in a slot's list and pick a file (MP3, OGG or WAV, up to 4 MB). Its name shows next to the slot, and it's kept in your browser, one per slot.
 - **Your shots only** by default. Tick **Everyone's weapons** to change other players' weapons too.
 - **Volume** slider, plus the game's **Sound Effects** volume.
 - Works alongside [Valorant Kill Sounds](https://github.com/Virojet/Shell-Shockers-Valorant-Kill-Sounds) and [Better HUD](https://github.com/Virojet/Shell-Shockers-Better-Hud-Mod).
@@ -45,15 +45,20 @@ The meme sounds aren't in the script. The first time you pick one it downloads f
 
 ## Settings
 
-**Settings** ▸ the **speaker tab** ▸ **Gun Sounds**, under Language. **Test** plays a slot's sound. Changes are kept when you press **Confirm**.
+**Settings** ▸ the **speaker tab** ▸ **Gun Sounds**, under Language and Kill Sounds. **Test** plays a slot's sound. Changes are kept when you press **Confirm**. If the settings are taller than your screen, scroll them.
 
 ## Changelog
 
-### 1.0.1
-The Gun Sounds settings are now one short strip (Primary, Secondary and Melee side by side), so Confirm is always on screen.
+### 1.0.2
+- The settings popup scrolls when it's taller than your screen, so Confirm and the close button are always reachable.
+- The lists show the full sound names, and the labels match the game's.
+- Your own file is picked from the list (**Choose MP3 file…**), and its name shows next to the slot, so the settings don't grow.
 
 <details>
 <summary>Older versions</summary>
+
+### 1.0.1
+The Gun Sounds settings are now one short strip (Primary, Secondary and Melee side by side).
 
 ### 1.0.0
 First release.
