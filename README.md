@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.0.0-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.0.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -49,5 +49,13 @@ The meme sounds aren't in the script. The first time you pick one it downloads f
 
 ## Changelog
 
+### 1.0.1
+The Gun Sounds settings are now one short strip (Primary, Secondary and Melee side by side), so Confirm is always on screen.
+
+<details>
+<summary>Older versions</summary>
+
 ### 1.0.0
 First release.
+
+</details>

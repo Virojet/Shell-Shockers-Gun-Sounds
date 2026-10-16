@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.0.0
+// @version      1.0.1
 // @description  Replace your weapon sounds in Shell Shockers: pick a meme sound (AWP, Punch, Reverb Fart, Tuturu, Vine Boom) or your own MP3 for your primary, secondary and melee weapons.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -89,7 +89,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.0.0";
+  const VERSION = "1.0.1";
   const STORE = "ssGunSounds";
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3" },
@@ -335,7 +335,13 @@
   // The list takes the theme's colours (--ssg-*, read by paint()). Where the browser can style a dropdown's list
   // (Chrome and Edge), it opens as a short list in those colours with only the focused row lit.
   const CSS = `
-#${CELL} { min-width: 0; }
+#${CELL} { min-width: 0; grid-column: 1 / -1; }
+#${CELL} .ssg-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--ss-space-md); }
+#${CELL} .ssg-slots > div { min-width: 0; }
+#${CELL} .ssg-bottom { margin-top: var(--ss-space-sm); }
+#${CELL} .ssg-bottom .ssg-name { margin: 0 var(--ss-space-sm) 0 var(--ss-space-sm); }
+#${CELL} .ssg-bottom input[type=range] { flex: 0 1 35%; }
+#${CELL} .ssg-bottom .nowrap { margin-left: auto; }
 #${CELL} .f_row { align-items: center; }
 #${CELL} select, #${CELL} input[type=range] { min-width: 0; }
 #${CELL} select { flex: 1 1 auto; }
@@ -395,7 +401,9 @@
       Object.assign(input, { type: "file", accept: "audio/*,.mp3,.ogg,.wav,.m4a,.webm", hidden: true });
       const fileRow = row(choose, note, input);
       slots[s.id] = { select, test, choose, note, input, fileRow };
-      rows.push(el("span", "ssg-name", s.name), row(select, test), fileRow);
+      const col = el("div");
+      col.append(el("span", "ssg-name", s.name), row(select, test), fileRow);
+      rows.push(col);
       select.addEventListener("pointerdown", paint);
       select.addEventListener("keydown", paint);
       select.addEventListener("mousemove", e => {
@@ -421,7 +429,10 @@
     everyoneLabel.append(everyone, el("span", "checkmark"));
     const everyoneRow = el("div", "nowrap");
     everyoneRow.append(everyoneLabel);
-    cell.append(el("h3", "margin-bottom-none h-short", "Gun Sounds"), ...rows, el("span", "ssg-name", "Volume"), row(range, value), everyoneRow);
+    const slotGrid = el("div", "ssg-slots"), bottom = row(el("span", "ssg-name", "Volume"), range, value, everyoneRow);
+    bottom.classList.add("ssg-bottom");
+    slotGrid.append(...rows);
+    cell.append(el("h3", "margin-bottom-none h-short", "Gun Sounds"), slotGrid, bottom);
     grid.append(cell);
 
     let style = document.getElementById(CELL + "-style");
