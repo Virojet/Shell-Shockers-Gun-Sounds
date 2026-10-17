@@ -132,8 +132,23 @@
     {"id":"reload-cluck9mm-long","name":"Cluck 9mm — Pistol Rack (Empty)","file":"reload/guns/cluck9mm-long.mp3","slot":"reload","group":"Secondary reloads"},
     {"id":"reload-usp-s-short","name":"USP-S — Suppressed Reload (Partial)","file":"reload/guns/usp-s-short.mp3","slot":"reload","group":"Secondary reloads"},
     {"id":"reload-usp-s-long","name":"USP-S — Suppressed Reload (Empty)","file":"reload/guns/usp-s-long.mp3","slot":"reload","group":"Secondary reloads"},
+    {"id":"five-seven","name":"Five-SeveN","slot":"secondary","file":"secondary/five-seven.mp3"},
+    {"id":"r8-revolver","name":"R8 Revolver","slot":"secondary","file":"secondary/r8-revolver.mp3"},
+    {"id":"blade-flick","name":"Blade Flick","slot":"melee","file":"melee/blade-flick.mp3"},
+    {"id":"machete-sweep","name":"Machete Sweep","slot":"melee","file":"melee/machete-sweep.mp3"},
+    {"id":"saber-arc","name":"Saber Arc","slot":"melee","file":"melee/saber-arc.mp3"},
+    {"id":"reload-five-seven-short","name":"Five-SeveN — Magazine Reload (Partial)","slot":"reload","file":"reload/guns/five-seven-short.mp3","group":"Secondary reloads"},
+    {"id":"reload-five-seven-long","name":"Five-SeveN — Magazine Reload (Empty)","slot":"reload","file":"reload/guns/five-seven-long.mp3","group":"Secondary reloads"},
+    {"id":"reload-r8-revolver-short","name":"R8 Revolver — Cylinder Reload (Partial)","slot":"reload","file":"reload/guns/r8-revolver-short.mp3","group":"Secondary reloads"},
+    {"id":"reload-r8-revolver-long","name":"R8 Revolver — Cylinder Reload (Empty)","slot":"reload","file":"reload/guns/r8-revolver-long.mp3","group":"Secondary reloads"},
   ];
   const STAGE_SOUNDS = [
+    {"id":"stage-fiveseven-out","name":"fiveseven-out","file":"reload/stages/fiveseven-out.mp3"},
+    {"id":"stage-fiveseven-in","name":"fiveseven-in","file":"reload/stages/fiveseven-in.mp3"},
+    {"id":"stage-fiveseven-slide","name":"fiveseven-slide","file":"reload/stages/fiveseven-slide.mp3"},
+    {"id":"stage-revolver-out","name":"revolver-out","file":"reload/stages/revolver-out.mp3"},
+    {"id":"stage-revolver-in-close","name":"revolver-in-close","file":"reload/stages/revolver-in-close.mp3"},
+    {"id":"stage-revolver-hammer","name":"revolver-hammer","file":"reload/stages/revolver-hammer.mp3"},
     { id: "stage-rocket-reload", name: "rocket-reload", file: "reload/stages/rocket-reload.mp3" },
     {"id":"stage-ak47-boltpull","name":"ak47-boltpull","file":"reload/stages/ak47-boltpull.mp3"},
     {"id":"stage-ak47-clipin","name":"ak47-clipin","file":"reload/stages/ak47-clipin.mp3"},
@@ -162,6 +177,8 @@
     {"id":"stage-usp-sliderelease","name":"usp-sliderelease","file":"reload/stages/usp-sliderelease.mp3"},
   ];
   const RELOAD_PROFILES = {
+    "five-seven": {"gun_cluck9mm_remove_mag":"stage-fiveseven-out","gun_cluck9mm_insert_mag":"stage-fiveseven-in","gun_eggk47_full_cycle":"stage-fiveseven-slide"},
+    "r8-revolver": {"gun_cluck9mm_remove_mag":"stage-revolver-out","gun_cluck9mm_insert_mag":"stage-revolver-in-close","gun_eggk47_full_cycle":"stage-revolver-hammer"},
     rpegg: { gun_rpegg_load: "stage-rocket-reload" },
     "eggk47": {"gun_eggk47_remove_mag":"stage-ak47-clipout","gun_eggk47_insert_mag":"stage-ak47-clipin","gun_eggk47_full_cycle":"stage-ak47-boltpull"},
     "dozenGauge": {"gun_dozenGauge_open":"stage-scatter-gun-double-tube-open","gun_dozenGauge_load":"stage-scatter-gun-double-shells-in","gun_dozenGauge_close":"stage-scatter-gun-double-tube-close"},
@@ -174,6 +191,8 @@
   };
   const PROFILE_PREVIEW = { eggk47: "reload-eggk47-long", dozenGauge: "reload-scrambler-long", csg1: "reload-free-ranger-long", rpegg: "reload-rpegg-long", smg: "reload-whipper-long", m24: "reload-crackshot-long", aug: "reload-tri-hard-long", cluck9mm: "reload-cluck9mm-long", "usp-s": "reload-usp-s-long" };
   const AUDIO = new Map([...SOUNDS, ...STAGE_SOUNDS].map(s => [s.id, s]));
+  Object.assign(PROFILE_PREVIEW, { "five-seven": "reload-five-seven-long", "r8-revolver": "reload-r8-revolver-long" });
+  const PISTOL_PROFILES = { "usp-s": "usp-s", "five-seven": "five-seven", "r8-revolver": "r8-revolver" };
   const DEFAULT = "default", CUSTOM = "custom", PICK = "pick", PER_GUN = "per-gun";
   const SLOTS = [
     { id: "primary", name: "Primary" },
@@ -229,7 +248,7 @@
   /* ---- Built-in sounds, from GitHub ----
      They come from the commit that added them, so the files this version uses never change under it. A sound is
      downloaded the first time it's needed, then kept in this site's Cache Storage. */
-  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/635d2ec5733e68e218cdc7deae45d8a798d3204c/sounds";
+  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/63afd414fef81f561722f07d7c0bd66ad4ba2bc1/sounds";
   // Same immutable files, via a second host if GitHub is temporarily unavailable or blocked.
   const MIRROR = FILES.replace("https://raw.githubusercontent.com/", "https://cdn.jsdelivr.net/gh/")
     .replace(/\/([a-f0-9]{40})\//, "@$1/");
@@ -453,7 +472,7 @@
   function matchedGun(key, name) {
     const primary = primaryWeapons.get(key);
     const gun = RELOAD_GUN[name] || (name === "gun_eggk47_remove_mag" && ["eggk47", "csg1", "smg"].includes(primary) ? primary : null);
-    return gun === "cluck9mm" && saved.secondary === "usp-s" ? "usp-s" : gun;
+    return gun === "cluck9mm" ? PISTOL_PROFILES[saved.secondary] || "cluck9mm" : gun;
   }
   function endReload(B, to) {
     const key = reloadKey(B, to), state = reloads.get(key);
@@ -774,7 +793,8 @@
     const p = pending || saved, sound = p[slot];
     if (sound === DEFAULT) return;
     const mine = sound === CUSTOM && pendingFiles[slot];
-    const gun = ["cluck9mm", "usp-s"].includes(previewWeapon) ? p.secondary === "usp-s" ? "usp-s" : "cluck9mm" : previewWeapon;
+    const pistol = previewWeapon === "cluck9mm" || Object.values(PISTOL_PROFILES).includes(previewWeapon);
+    const gun = pistol ? PISTOL_PROFILES[p.secondary] || "cluck9mm" : previewWeapon;
     const example = sound === PER_GUN ? PROFILE_PREVIEW[gun] || PROFILE_PREVIEW.eggk47 : sound;
     (mine ? Promise.resolve(pendingFiles[slot].buf) : clip(example, slot)).then(buf => {
       if (!buf) return setNote(slot, "Choose a file first", true, "Choose a sound file first.");

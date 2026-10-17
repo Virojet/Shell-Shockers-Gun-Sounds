@@ -39,20 +39,23 @@ Pick a sound for each weapon slot. Shot choices play for **every weapon in that 
 
 | Selection | Added sounds |
 |---|---|
-| **Primary** | **Thunder AWP**, **Rush P90**, **Rapid P90**, **Blast Rocket**, **Quake Rocket**, **Dragonfire Operator**, **Fallen Operator**, **Ion Pulse Operator**, **Orbital Operator**, **Soulshot Operator** |
-| **Secondary** | **Hand Cannon** (Desert Eagle), **Quickdraw** (Glock), **USP-S** (suppressed pistol) |
-| **Melee** | **Swift Slash**, **Heavy Slash** |
+| **Primary — 10** | **Thunder AWP**, **Rush P90**, **Rapid P90**, **Blast Rocket**, **Quake Rocket**, **Dragonfire Operator**, **Fallen Operator**, **Ion Pulse Operator**, **Orbital Operator**, **Soulshot Operator** |
+| **Secondary — 5** | **Hand Cannon** (Desert Eagle), **Quickdraw** (Glock), **USP-S** (suppressed pistol), **Five-SeveN**, **R8 Revolver** |
+| **Melee — 5** | **Swift Slash**, **Heavy Slash**, **Blade Flick**, **Machete Sweep**, **Saber Arc** |
 | **Reload** | **Matched per gun (automatic)**; gun-specific **AK Magazine**, **Break & Load**, **Marksman Swap**, **Rocket Seat**, **P90 Lock**, **Bolt Cycle**, **AUG Reset**, **Pistol Rack** and **USP-S** reloads; plus **Steel Reset**, **Tactical Swap**, **Rifle Reset**, **Pump Action** and **Sidearm Snap** |
 
 The original **AWP**, **Punch**, **Reverb Fart**, **Tuturu** and **Vine Boom** choices remain available in every list. Choose **Game sound** to keep that selection's original audio, or **My MP3** to use your own file.
 
 Each list is grouped into **Default sounds**, its weapon category (**Primary sounds**, **Secondary sounds** or **Melee sounds**), and **Custom sounds**. Reload also groups **Per-gun reloads**, **Reload sounds**, **Primary reloads** and **Secondary reloads**. Gun-specific single-clip choices are labelled by gun and, where needed, **Partial** or **Empty**.
 
+Each sound-library group has at least five choices: **10 Primary**, **5 Secondary**, **5 Melee**, **5 general Reload**, **11 Primary reloads**, and **8 Secondary reloads**. Default sounds has the five original presets plus Game sound. The automatic mode and custom-file controls are separate controls, not extra sound-library entries.
+
 - **My MP3:** choose **Choose MP3 file…** in a slot's list and pick a file (MP3, OGG or WAV, up to 4 MB). Its name shows next to the slot, and it's kept in your browser, one per slot.
 - **Your shots only** by default. Tick **Everyone's weapons** to change other players' weapons too.
 - **Reload** starts on **Game sound**, so updating keeps your existing audio until you choose a replacement. It replaces the reload's audio sequence once, rather than repeating the clip at each magazine or bolt step. Gameplay and reload timing stay the same.
 - **Matched per gun (automatic)** follows the game's individual reload events for all eight guns. Partial reloads omit the extra bolt/slide action; empty reloads include it when the game plays it. The RPEGG uses a short rocket-insertion clip, and the Scrambler uses break-action open/load/close sounds.
 - Choose **USP-S** in Secondary and **Matched per gun (automatic)** in Reload for matching USP-S shots and pistol reload stages. This changes audio only.
+- **Five-SeveN** and **R8 Revolver** also have matching partial/empty reload choices. Automatic reload mode follows the chosen pistol sound; the revolver uses a cylinder-loading/closing sound in place of magazine insertion.
 - EggK-47, Free Ranger and Whipper share some native reload event names. Automatic matching remembers each player's most recently fired primary gun separately from pistol shots. If that primary is unknown, or its audio is still downloading, the entire reload keeps its game sounds. Switching to the pistol does not erase the remembered primary. Automatic reload **Test** previews the last identified gun, with EggK-47 as the initial example.
 - Selecting one gun-specific clip instead of automatic mode plays that clip on every gun's reload, just like a custom MP3. Pick the labelled partial/empty version for the sound you want; automatic mode selects the actual stages for you.
 - **Volume** slider, plus the game's **Sound Effects** volume.
@@ -74,6 +77,7 @@ The audio URLs use a fixed Git commit, so an existing script version always gets
 ## Changelog
 
 ### 1.2.0 — Unreleased
+- Brought every weapon sound-library group to at least five choices. Added **Five-SeveN**, **R8 Revolver**, **Blade Flick**, **Machete Sweep** and **Saber Arc**, plus matching pistol reload choices and automatic stages.
 - Added **USP-S** suppressed pistol shots and partial/empty reload choices, with matching pistol stages in automatic mode.
 - Added the reviewed gun-specific reload clips for all eight guns and **Matched per gun (automatic)**, driven by actual reload stages rather than one fixed clip length.
 - Grouped the lists into default, weapon-category, gun-specific reload and custom sounds.
