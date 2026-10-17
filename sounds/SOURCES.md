@@ -34,4 +34,15 @@ Magazine out at 0 s, magazine in at 0.38 s, bolt at 0.76 s; limiter and final fa
 
 The separate `reload.mp3` supplied alongside the ZIP was silent and was not used.
 
-The MIT license in this repository covers the script code; these third-party game audio clips retain their original ownership.
+## Additional CC0 reload choices
+
+| Display name | File | Recording | Author | Source and license |
+| --- | --- | --- | --- | --- |
+| Tactical Swap | [tactical-swap.mp3](reload/tactical-swap.mp3) | `gunreload1.wav` — magazine reload | SpringySpringo | [Gun reload sounds](https://opengameart.org/content/gun-reload-sounds), CC0 1.0 |
+| Rifle Reset | [rifle-reset.mp3](reload/rifle-reset.mp3) | `assaultriflereload1_0.wav` — assault-rifle reload | SpringySpringo | [Gun reload sounds](https://opengameart.org/content/gun-reload-sounds), CC0 1.0 |
+| Pump Action | [pump-action.mp3](reload/pump-action.mp3) | `shotguncock_0.wav` — shotgun pump / cocking action | SpringySpringo | [Gun reload sounds](https://opengameart.org/content/gun-reload-sounds), CC0 1.0 |
+| Sidearm Snap | [sidearm-snap.mp3](reload/sidearm-snap.mp3) | `reload.wav` — handgun magazine drop, insertion and slide rack | zer0_sol | [Handgun Reload Sound Effect](https://opengameart.org/content/handgun-reload-sound-effect), CC0 1.0 |
+
+Converted from the original WAV recordings to 48 kHz stereo, 192 kbps MP3 with a peak limiter. Complete actions are retained; Pump Action is intentionally a short pump sound. These four recordings are dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Source URLs and SHA-256 hashes are in [reload-pack-sources.json](reload-pack-sources.json).
+
+The MIT license in this repository covers the script code. The Valve/Riot game audio retains its original ownership; the four reload recordings above are CC0.
