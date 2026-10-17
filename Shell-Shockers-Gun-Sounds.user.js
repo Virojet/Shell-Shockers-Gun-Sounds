@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.1.0
+// @version      1.1.1
 // @description  Pick weapon, meme or custom sounds for primary shots, secondary shots, melee swings and reloads in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -88,7 +88,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.1.0";
+  const VERSION = "1.1.1";
   const STORE = "ssGunSounds";
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3" },
@@ -168,6 +168,9 @@
      They come from the commit that added them, so the files this version uses never change under it. A sound is
      downloaded the first time it's needed, then kept in this site's Cache Storage. */
   const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/a1d983c28a848e709a3d76bad112b0bb44d67f4f/sounds";
+  // Same immutable files, via a second host if GitHub is temporarily unavailable or blocked.
+  const MIRROR = FILES.replace("https://raw.githubusercontent.com/", "https://cdn.jsdelivr.net/gh/")
+    .replace(/\/([a-f0-9]{40})\//, "@$1/");
   const KEEP = "ss-gun-sounds";
   let kept = null;
   function keep() {
@@ -178,14 +181,28 @@
     })().catch(() => null);   // no storage here (a private window, or it's blocked): they download on each visit
     return kept;
   }
-  async function download(file) {
+  async function download(file, name) {
     const url = `${FILES}/${file}`, store = await keep();
     const old = store && await store.match(url).catch(() => null);
-    if (old) return old;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Couldn't download ${file} (HTTP ${res.status})`);
-    if (store) store.put(url, res.clone()).catch(() => { /* storage full: it downloads again next time */ });
-    return res;
+    if (old) {
+      try { return await decode(await old.arrayBuffer(), name); }
+      catch { await store.delete(url).catch(() => {}); }   // discard a damaged cached response and download again
+    }
+    const errors = [];
+    for (const host of [FILES, MIRROR]) {
+      const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 8000);
+      try {
+        const res = await fetch(`${host}/${file}`, { signal: controller.signal });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.arrayBuffer(), buf = await decode(data, name);
+        // Only keep verified audio. Both hosts share the canonical cache key, so a fallback works offline too.
+        if (store) store.put(url, new Response(data, { headers: { "Content-Type": "audio/mpeg" } })).catch(() => {});
+        return buf;
+      } catch (err) {
+        errors.push(`${host === FILES ? "GitHub" : "backup"}: ${err.name === "AbortError" ? "request timed out" : err.message}`);
+      } finally { clearTimeout(timer); }
+    }
+    throw new Error(`Couldn't download ${file}. ${errors.join("; ")}`);
   }
 
   /* ---- Your own sound: one file a slot, in this site's IndexedDB ---- */
@@ -260,7 +277,7 @@
     if (p) return p;
     p = sound === CUSTOM ?
       readFile(slot).then(f => f ? decode(f.data, f.name) : null) :
-      download(SOUNDS.find(s => s.id === sound).file).then(r => r.arrayBuffer()).then(d => decode(d, sound));
+      download(SOUNDS.find(s => s.id === sound).file, sound);
     cache.set(key, p);
     p.then(b => { if (b) ready.set(key, b); }, () => { if (cache.get(key) === p) cache.delete(key); });
     return p;
@@ -646,11 +663,12 @@
     const mine = sound === CUSTOM && pendingFiles[slot];
     (mine ? Promise.resolve(pendingFiles[slot].buf) : clip(sound, slot)).then(buf => {
       if (!buf) return setNote(slot, "Choose a file first", true, "Choose a sound file first.");
+      setNote(slot);
       play(buf, p.volume);
     }, err => {
       warn(err);
       if (sound === CUSTOM) setNote(slot, "Can't play your file", true, "Can't play your saved file. Choose it again.");
-      else setNote(slot, "Couldn't download", true, "Couldn't download the sound from GitHub. Check your connection, then try again.");
+      else setNote(slot, "Couldn't download", true, `${err.message}. Check your connection, then press Test to retry.`);
       setTimeout(() => setNote(slot), 4000);
     });
   }

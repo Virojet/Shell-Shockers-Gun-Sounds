@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.1.0-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.1.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -63,9 +63,14 @@ Built-in audio isn't embedded in the script. The first time you pick a sound it 
 
 Tampermonkey checks this repository's raw userscript on `main`, compares its `@version`, and downloads a newer version from the same URL when automatic updates are enabled. The next page reload runs the new version. You can also use Tampermonkey's **Check for updates** command. The script itself needs no GitHub account or token.
 
-The audio URLs use a fixed Git commit, so an existing script version always gets the same files. New audio becomes available when a newer script points to a commit containing it. Selected clips are cached locally; your settings and custom MP3s stay in the browser through script updates.
+The audio URLs use a fixed Git commit, so an existing script version always gets the same files. GitHub is tried first, with jsDelivr serving the same commit as a backup. New audio becomes available when a newer script points to a commit containing it. Selected clips are cached locally; your settings and custom MP3s stay in the browser through script updates.
 
 ## Changelog
+
+### 1.1.1 — 2026-10-17
+- Added a backup audio host when GitHub downloads fail or time out, including Heavy Slash.
+- Damaged cached audio is discarded and downloaded again. Only successfully decoded clips are cached.
+- Download error tooltips include the failure details, and a successful Test clears the error.
 
 ### 1.1.0 — 2026-10-17
 - Added 14 weapon clips, organized by selection:
