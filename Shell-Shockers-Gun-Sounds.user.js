@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.1.1
+// @version      1.1.2
 // @description  Pick weapon, meme or custom sounds for primary shots, secondary shots, melee swings and reloads in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -88,7 +88,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.1.1";
+  const VERSION = "1.1.2";
   const STORE = "ssGunSounds";
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3" },
@@ -479,6 +479,8 @@
     background: var(--ssg-bg); color: var(--ssg-fg); box-shadow: .15em .15em .4em rgb(0 0 0 / .6);
     scrollbar-width: thin; scrollbar-color: var(--ssg-accent) transparent; }
   #${CELL} option { font-size: inherit; padding-block: .15em; line-height: 1.25; font-weight: 400; }
+  #${CELL} optgroup { font-weight: 700; color: var(--ssg-fg); }
+  #${CELL} optgroup + optgroup { border-block-start: 1px solid var(--ssg-accent); margin-block-start: .3em; padding-block-start: .3em; }
   #${CELL} option:hover { background: none; }
   #${CELL} option:focus { background: var(--ssg-accent); color: var(--ssg-bg); outline: none; }
   #${CELL} option::checkmark { color: var(--ssg-accent); }
@@ -507,8 +509,15 @@
       face.type = "button";
       face.append(el("selectedcontent"));
       // "Choose MP3 file…" isn't a setting: picking it opens the file picker, and the file then becomes "My MP3".
-      select.append(face, new Option("Game sound", DEFAULT), ...soundsFor(s.id).map(x => new Option(x.name, x.id)), el("hr"),
-        new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK));
+      const defaults = el("optgroup"), weapons = el("optgroup"), custom = el("optgroup");
+      defaults.label = "Default Sounds";
+      weapons.label = `${s.name} Sounds`;
+      custom.label = "Custom Sounds";
+      const available = soundsFor(s.id);
+      defaults.append(new Option("Game sound", DEFAULT), ...available.filter(x => !x.slot).map(x => new Option(x.name, x.id)));
+      weapons.append(...available.filter(x => x.slot === s.id).map(x => new Option(x.name, x.id)));
+      custom.append(new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK));
+      select.append(face, defaults, weapons, custom);
       select.title = (s.id === "reload" ? "Plays once per reload." : `Plays for every ${s.name.toLowerCase()} weapon.`) + " Your own file: MP3, OGG or WAV, up to 4 MB.";
       const test = el("button", "ss_button btn_blue bevel_blue btn_sm", "Test");
       test.type = "button";
@@ -604,7 +613,7 @@
     const game = [...ui.cell.parentNode.querySelectorAll("select.ss_select")].find(e => !ui.cell.contains(e));
     for (const { select } of Object.values(ui.slots)) {
       vars.forEach(v => select.style.removeProperty(v));
-      const o = getComputedStyle([...select.children].find(e => e.tagName === "OPTION" && !e.selected));
+      const o = getComputedStyle([...select.options].find(e => !e.selected));
       const s = getComputedStyle(select);
       const values = [[o.backgroundColor, s.backgroundColor].find(c => !clear(c)) || "#fff", o.color, s.borderTopColor];
       vars.forEach((v, i) => select.style.setProperty(v, values[i]));

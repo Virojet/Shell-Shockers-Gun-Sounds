@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.1.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.1.2-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -46,6 +46,8 @@ Pick a sound for each weapon slot. It plays for **every weapon in that slot**, w
 
 The original **AWP**, **Punch**, **Reverb Fart**, **Tuturu** and **Vine Boom** choices remain available in every list. Choose **Game sound** to keep that selection's original audio, or **My MP3** to use your own file.
 
+Each dropdown has labeled groups: **Default Sounds** for the original shared choices, **Primary Sounds** (or Secondary, Melee, Reload) for that slot's weapon clips, and **Custom Sounds** for your own file.
+
 - **My MP3:** choose **Choose MP3 file…** in a slot's list and pick a file (MP3, OGG or WAV, up to 4 MB). Its name shows next to the slot, and it's kept in your browser, one per slot.
 - **Your shots only** by default. Tick **Everyone's weapons** to change other players' weapons too.
 - **Reload** starts on **Game sound**, so updating keeps your existing audio until you choose a replacement. It replaces the reload's audio sequence once, rather than repeating the clip at each magazine or bolt step. Gameplay and reload timing stay the same.
@@ -66,6 +68,10 @@ Tampermonkey checks this repository's raw userscript on `main`, compares its `@v
 The audio URLs use a fixed Git commit, so an existing script version always gets the same files. New audio becomes available when a newer script points to a commit containing it. Selected clips are cached locally; your settings and custom MP3s stay in the browser through script updates.
 
 ## Changelog
+
+### 1.1.2 — 2026-10-18
+- Added visible **Default Sounds**, slot-specific **Sounds**, and **Custom Sounds** headings inside each dropdown.
+- Preserved saved selections and theme colors with grouped options.
 
 ### 1.1.1 — 2026-10-18
 - Added **USP-S**, a single silenced shot, to **Secondary**.
