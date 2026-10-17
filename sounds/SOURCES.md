@@ -35,3 +35,7 @@ Magazine out at 0 s, magazine in at 0.38 s, bolt at 0.76 s; limiter and final fa
 The separate `reload.mp3` supplied alongside the ZIP was silent and was not used.
 
 The MIT license in this repository covers the script code; these third-party game audio clips retain their original ownership.
+
+## USP-S
+
+**USP-S** in Secondary is one silenced Counter-Strike: Global Offensive shot (Valve), from [usp_01.wav](https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/usp/usp_01.wav). Leading/trailing near-silence trimmed, peak adjusted with a short ending fade, exported as 48 kHz stereo, 320 kbps MP3 under two seconds.
