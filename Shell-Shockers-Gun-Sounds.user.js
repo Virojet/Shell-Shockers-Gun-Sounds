@@ -277,7 +277,7 @@
   /* ---- Built-in sounds, from GitHub ----
      They come from the commit that added them, so the files this version uses never change under it. A sound is
      downloaded the first time it's needed, then kept in this site's Cache Storage. */
-  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/63afd414fef81f561722f07d7c0bd66ad4ba2bc1/sounds";
+  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/1abe662516e07b2ea74831a45f284c322a844f6f/sounds";
   // Same immutable files, via a second host if GitHub is temporarily unavailable or blocked.
   const MIRROR = FILES.replace("https://raw.githubusercontent.com/", "https://cdn.jsdelivr.net/gh/")
     .replace(/\/([a-f0-9]{40})\//, "@$1/");
