@@ -65,4 +65,16 @@ The P90's initial sound combines magazine release and removal with a 0.12 s gap.
 
 Files, pinned source revisions, download URLs, Git blob hashes and SHA-256 hashes are listed in [gun-reload-sources.json](gun-reload-sources.json). Source mirrors: [CS:GO](https://github.com/sourcesounds/csgo/tree/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons) and [TF2](https://github.com/sourcesounds/tf/tree/420bf271208d79d952e693974e391892c254ad80/sound/weapons). Audio was converted to 48 kHz stereo MP3 with a limiter; final playback gain is normalized by the script.
 
+## Additional pistol and melee choices
+
+| Choice | Recording family | Source |
+| --- | --- | --- |
+| Five-SeveN | Five-SeveN shot, magazine and slide | Valve CS:GO, `sound/weapons/fiveseven/` |
+| R8 Revolver | R8 shot, cylinder loading/closing and hammer | Valve CS:GO, `sound/weapons/revolver/` |
+| Blade Flick | `knife_swing.wav` | Valve TF2 |
+| Machete Sweep | `machete_swing.wav` | Valve TF2 |
+| Saber Arc | `batsaber_swing1.wav` | Valve TF2 |
+
+Five-SeveN and R8 include partial/empty single-clip reload choices and automatic event components. The revolver insertion component combines loading and cylinder closure with a 0.35 s gap. Audio uses the same pinned CS:GO and TF2 source revisions listed above, with limiter and 48 kHz stereo MP3 conversion. Exact download URLs, Git blob hashes and generated-file hashes are in [category-expansion-sources.json](category-expansion-sources.json).
+
 The MIT license in this repository covers the script code. The Valve/Riot game audio retains its original ownership; the four reload recordings above are CC0.

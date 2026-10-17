@@ -1,0 +1,208 @@
+{
+  "description": "Additional pistol shots/reloads and melee swings. Valve CS:GO and TF2 audio; original ownership retained.",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/fiveseven/fiveseven_01.wav",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "blob": "c8a4e643eed24c11f71bca63f6455aefc4ca3081",
+      "sha256": "faac507c225475a5b49889b3fb40503f9546fed2602cbcdaf9fe1fd5fb7538c1"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/fiveseven/fiveseven_clipout.wav",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "blob": "b108c533596fbe00115b165b10830640b0763c95",
+      "sha256": "d37f89e7ca65f30b67a4c50132e353f0a481d611e140f4fda05d4f26fd301fa8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/fiveseven/fiveseven_clipin.wav",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "blob": "71aaa690743a0ac4ddc55431caf8e3e139f70a4f",
+      "sha256": "ae789dd10ba2afab7fe193d86482c301fd90cec0a9ac5f6a399cd379746efe55"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/fiveseven/fiveseven_sliderelease.wav",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "blob": "3dca6220080648b886c810c3557ee9b03f478fca",
+      "sha256": "241493e17366e28bdf6c04af0522e164a7a8312a87e6d6650947743fcb06c37c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/revolver/revolver-1_01.wav",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "blob": "b900e769dc9bf6cfe77326d69f28996da1d152cc",
+      "sha256": "a6305095619ba8e9aae31c6cc9e64917b1bb7e40bd6dd59a5129e27524e3c31d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/revolver/revolver_clipout.wav",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "blob": "c8f995bb9bc959ae83a254a87339cbe1270b5151",
+      "sha256": "18f646a232a26e17a37b3813586ccf8d6ab7526eb9d89767a2cf74b0c90a2164"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/revolver/revolver_clipin.wav",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "blob": "06e4f3bb8cf9d9af32729dc5f4f95caf8ba2b7e1",
+      "sha256": "8b19cb3667c6136bce46b95a8424b01eacdca3e3ebdc005e72da294fb1530089"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/revolver/revolver_siderelease.wav",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "blob": "1dbbb3cedd0cfd9f3c1fc5cbd3873c2e4714fde0",
+      "sha256": "d2947440acc9cae9d36f3558a637952465b437c696b2f17ddc353dddbeb6d565"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/revolver/revolver_hammer.wav",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "blob": "f2011ee32942e5f6b5ff023e33186782caea3ce7",
+      "sha256": "9b4ba637d86b0d403cdf16edf5ff2b9f43f48434e8a2f4728ca4b5a98d5d0969"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/knife_swing.wav",
+      "source_ref": "420bf271208d79d952e693974e391892c254ad80",
+      "blob": "1e3cdc4e493f15e304c9e90d5923a56e9a6f6156",
+      "sha256": "3e8787ab3c18ac125cb13e15e423dbb7da23c1c2e690c739f93cf84fd9031678"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/machete_swing.wav",
+      "source_ref": "420bf271208d79d952e693974e391892c254ad80",
+      "blob": "0e89299ce216daeec427928d29d8edd55df399fc",
+      "sha256": "7e80752bcbf36c20a3d6eda6614ba054e3542f6bbfe5cc5be993234a3bd78be2"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/batsaber_swing1.wav",
+      "source_ref": "420bf271208d79d952e693974e391892c254ad80",
+      "blob": "8f856a5b0122f825c2684401ff6d21462d5a1807",
+      "sha256": "b67edd8190f013d44e11afb434a35a9638f13e996f038459258c5539ca97c247"
+    }
+  ],
+  "assets": [
+    {
+      "path": "sounds/secondary/five-seven.mp3",
+      "sha256": "d2c03b94d50e878bd483e36ae5bf72d579f4cf2ab5ce4ff3f6f08afa7f7dd5e7",
+      "duration_seconds": 1.604333,
+      "source_files": [
+        "fiveseven_01.wav"
+      ]
+    },
+    {
+      "path": "sounds/secondary/r8-revolver.mp3",
+      "sha256": "83ac3c7eab8fe5168942fb5a06c6c18d904d3b692d33c0831c5597eb82bfd6ff",
+      "duration_seconds": 3.5,
+      "source_files": [
+        "revolver-1_01.wav"
+      ]
+    },
+    {
+      "path": "sounds/melee/blade-flick.mp3",
+      "sha256": "43ff1fbeb87237c8bf76d7cb7f61e964db2893aff7be7b226e5efc57edf9ce12",
+      "duration_seconds": 0.363667,
+      "source_files": [
+        "knife_swing.wav"
+      ]
+    },
+    {
+      "path": "sounds/melee/machete-sweep.mp3",
+      "sha256": "cc2aa4086b89b051459a26ba8552fceb363c3a6e716da5f7bb7a068565ce2678",
+      "duration_seconds": 0.572146,
+      "source_files": [
+        "machete_swing.wav"
+      ]
+    },
+    {
+      "path": "sounds/melee/saber-arc.mp3",
+      "sha256": "1a8831cd2bb549d7645306a3d667cd3f72bbf0e8492bfa19e3df136c9872e089",
+      "duration_seconds": 0.518917,
+      "source_files": [
+        "batsaber_swing1.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/five-seven-short.mp3",
+      "sha256": "a4d68228750a52a12faa03ff1516ad68cd5b6cc9206852872326dc1e5f87d19d",
+      "duration_seconds": 1.845604,
+      "source_files": [
+        "fiveseven_clipout.wav",
+        "fiveseven_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/five-seven-long.mp3",
+      "sha256": "ff313b7329cbd7de37f04b580f25706d564e5cc1861a7fa8bbce58316cb21e90",
+      "duration_seconds": 2.536833,
+      "source_files": [
+        "fiveseven_clipout.wav",
+        "fiveseven_clipin.wav",
+        "fiveseven_sliderelease.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/r8-revolver-short.mp3",
+      "sha256": "5d17d72e104fe0f83a7aa0cafb6e244b4e6d0ab2c904bb3cf742ff46ec591e1a",
+      "duration_seconds": 2.202625,
+      "source_files": [
+        "revolver_clipout.wav",
+        "revolver_clipin.wav",
+        "revolver_siderelease.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/r8-revolver-long.mp3",
+      "sha256": "46a7f9f061cf87c9266d7c9d75ae97ee07aa26b374739772d9c015d474d8c283",
+      "duration_seconds": 2.860396,
+      "source_files": [
+        "revolver_clipout.wav",
+        "revolver_clipin.wav",
+        "revolver_siderelease.wav",
+        "revolver_hammer.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/fiveseven-out.mp3",
+      "sha256": "fd967e5aa183e77ba7a2629c4fa2c04139c3933d782536f762f15a6d58b70908",
+      "duration_seconds": 0.162875,
+      "source_files": [
+        "fiveseven_clipout.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/fiveseven-in.mp3",
+      "sha256": "7bba1ab35f1360a9684c956109f79d4c7ff9d6df63d28dd8e7e492e5a8c25752",
+      "duration_seconds": 0.262604,
+      "source_files": [
+        "fiveseven_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/fiveseven-slide.mp3",
+      "sha256": "4cb4e515f942f7069cd12f772cd3e3d58f7946bcc65f9422a061ec273f13e0af",
+      "duration_seconds": 0.203833,
+      "source_files": [
+        "fiveseven_sliderelease.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/revolver-out.mp3",
+      "sha256": "4c271f05ef0be891c1caeb4a52ec3d4636e7db0441ae51bc2ab9863c06674787",
+      "duration_seconds": 0.506354,
+      "source_files": [
+        "revolver_clipout.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/revolver-in-close.mp3",
+      "sha256": "ddbb2f4df87800a5689abf798f6e550c2f05bb267330615b364a940010011259",
+      "duration_seconds": 0.619625,
+      "source_files": [
+        "revolver_clipin.wav",
+        "revolver_siderelease.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/revolver-hammer.mp3",
+      "sha256": "eb34ab75726379123a0be2c99372b06332a13a3c4ac73910e7ba622743856ba4",
+      "duration_seconds": 0.527396,
+      "source_files": [
+        "revolver_hammer.wav"
+      ]
+    }
+  ]
+}
