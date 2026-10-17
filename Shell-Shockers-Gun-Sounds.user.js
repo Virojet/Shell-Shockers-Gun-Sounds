@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.1.0
+// @version      1.1.1
 // @description  Pick weapon, meme or custom sounds for primary shots, secondary shots, melee swings and reloads in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -88,7 +88,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.1.0";
+  const VERSION = "1.1.1";
   const STORE = "ssGunSounds";
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3" },
@@ -108,6 +108,7 @@
     { id: "soulshot-operator", name: "Soulshot Operator", file: "primary/soulshot-operator.mp3", slot: "primary" },
     { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", slot: "secondary" },
     { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", slot: "secondary" },
+    { id: "usp-s", name: "USP-S", file: "secondary/usp-s.mp3", slot: "secondary" },
     { id: "swift-slash", name: "Swift Slash", file: "melee/swift-slash.mp3", slot: "melee" },
     { id: "heavy-slash", name: "Heavy Slash", file: "melee/heavy-slash.mp3", slot: "melee" },
     { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", slot: "reload" },
@@ -167,7 +168,7 @@
   /* ---- Built-in sounds, from GitHub ----
      They come from the commit that added them, so the files this version uses never change under it. A sound is
      downloaded the first time it's needed, then kept in this site's Cache Storage. */
-  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/a1d983c28a848e709a3d76bad112b0bb44d67f4f/sounds";
+  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/74cff01ab61fd816b8c48b5397dfc402b01818af/sounds";
   const KEEP = "ss-gun-sounds";
   let kept = null;
   function keep() {

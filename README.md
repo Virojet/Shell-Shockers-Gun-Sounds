@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.1.0-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.1.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -40,7 +40,7 @@ Pick a sound for each weapon slot. It plays for **every weapon in that slot**, w
 | Selection | Added sounds |
 |---|---|
 | **Primary** | **Thunder AWP**, **Rush P90**, **Rapid P90**, **Blast Rocket**, **Quake Rocket**, **Dragonfire Operator**, **Fallen Operator**, **Ion Pulse Operator**, **Orbital Operator**, **Soulshot Operator** |
-| **Secondary** | **Hand Cannon** (Desert Eagle), **Quickdraw** (Glock) |
+| **Secondary** | **Hand Cannon** (Desert Eagle), **Quickdraw** (Glock), **USP-S** (silenced) |
 | **Melee** | **Swift Slash**, **Heavy Slash** |
 | **Reload** | **Steel Reset** |
 
@@ -66,6 +66,9 @@ Tampermonkey checks this repository's raw userscript on `main`, compares its `@v
 The audio URLs use a fixed Git commit, so an existing script version always gets the same files. New audio becomes available when a newer script points to a commit containing it. Selected clips are cached locally; your settings and custom MP3s stay in the browser through script updates.
 
 ## Changelog
+
+### 1.1.1 — 2026-10-18
+- Added **USP-S**, a single silenced shot, to **Secondary**.
 
 ### 1.1.0 — 2026-10-17
 - Added 14 weapon clips, organized by selection:
