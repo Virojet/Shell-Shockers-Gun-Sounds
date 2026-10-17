@@ -1,0 +1,37 @@
+Shell Shockers sound pack — 14 single-shot/swing MP3 files
+Export: 48 kHz, stereo, 320 kbps MP3; every file under 2 seconds.
+Long reverberation tails are faded to meet the limit. No pitch or speed changes.
+
+Sources:
+P90 01: https://github.com/sourcesounds/cstrike/blob/master/sound/weapons/p90/p90-1.wav
+P90 02: https://github.com/sourcesounds/csgo/blob/master/sound/weapons/p90/p90_01.wav
+Desert Eagle: https://github.com/sourcesounds/csgo/blob/master/sound/weapons/deagle/deagle_01.wav
+Glock: https://github.com/sourcesounds/csgo/blob/master/sound/weapons/glock18/glock_01.wav
+Knife 01: https://github.com/sourcesounds/csgo/blob/master/sound/weapons/knife/knife_slash1.wav
+Knife 02: https://github.com/sourcesounds/csgo/blob/master/sound/weapons/knife/knife_slash2.wav
+AWP: https://github.com/sourcesounds/cstrike/blob/master/sound/weapons/awp/awp1.wav
+Rocket 01: https://github.com/sourcesounds/tf/blob/master/sound/weapons/rocket_shoot.wav
+Rocket 02: https://github.com/sourcesounds/tf/blob/master/sound/weapons/quake_rpg_fire_remastered.wav
+
+Valorant: Riot-hosted Level 2 skin previews, indexed at https://valorant-api.com/v1/weapons
+Origin Operator: https://valorant.dyn.riotcdn.net/x/videos/release-13.08/507579ab-4d46-8960-63fc-4d82e67c3d33_default_universal.mp4
+Elderflame Operator: https://valorant.dyn.riotcdn.net/x/videos/release-13.08/3b406376-1546-4295-a6d9-77a9a286d724_default_universal.mp4
+Forsaken Operator: https://valorant.dyn.riotcdn.net/x/videos/release-13.08/756f93f4-4c2f-8ea8-923b-b4924481c96d_default_universal.mp4
+Ion Operator: https://valorant.dyn.riotcdn.net/x/videos/release-13.08/5c1f0a2d-42ff-b28f-806d-2d80cf1ad908_default_universal.mp4
+Reaver Operator: https://valorant.dyn.riotcdn.net/x/videos/release-13.08/3c3c69e2-4bb1-7188-1002-f988ab0db603_default_universal.mp4
+
+Clip durations (including MP3 padding):
+SS_P90_01_Source.mp3 — 0.978 s
+SS_P90_02_CSGO.mp3 — 1.149 s
+SS_Rocket_01_TF2.mp3 — 1.9 s
+SS_Rocket_02_Original.mp3 — 1.9 s
+SS_Pistol_01_Desert_Eagle.mp3 — 1.9 s
+SS_Pistol_02_Glock.mp3 — 1.35 s
+SS_Knife_Swing_01.mp3 — 0.166 s
+SS_Knife_Swing_02.mp3 — 0.157 s
+SS_AWP_01_Source.mp3 — 1.9 s
+SS_Valorant_Operator_Ion.mp3 — 1.17 s
+SS_Valorant_Operator_Reaver.mp3 — 1.18 s
+SS_Valorant_Operator_Elderflame.mp3 — 1.3 s
+SS_Valorant_Operator_Origin.mp3 — 1.285 s
+SS_Valorant_Operator_Forsaken.mp3 — 1.155 s
