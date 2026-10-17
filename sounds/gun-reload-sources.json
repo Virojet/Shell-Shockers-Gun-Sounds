@@ -1,0 +1,648 @@
+{
+  "description": "Gun-specific reload composites, stage audio, and USP-S sounds. Valve CS:GO / TF2 audio; original ownership retained.",
+  "assets": [
+    {
+      "path": "sounds/reload/guns/eggk47-short.mp3",
+      "sha256": "17be878f865721776833835ecfa26d2dbf48711646ef9b6c8d4ec84b5d582d89",
+      "kind": "reload choice",
+      "gun": "EggK-47",
+      "name": "EggK-47 \u2014 AK Magazine (Partial)",
+      "source_files": [
+        "ak47_clipout.wav",
+        "ak47_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/eggk47-long.mp3",
+      "sha256": "1248b245cfc0eae5fccf21b13db0445db5f0b230888789bc1369eed118c4b945",
+      "kind": "reload choice",
+      "gun": "EggK-47",
+      "name": "EggK-47 \u2014 AK Magazine (Empty)",
+      "source_files": [
+        "ak47_clipout.wav",
+        "ak47_clipin.wav",
+        "ak47_boltpull.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/scrambler-long.mp3",
+      "sha256": "f03fcf479d20c55d8c6fc3e3ac8161c0ea756d24db17f56e8b0bbbf3b6e0e643",
+      "kind": "reload choice",
+      "gun": "Scrambler",
+      "name": "Scrambler \u2014 Break & Load",
+      "source_files": [
+        "scatter_gun_double_tube_open.wav",
+        "scatter_gun_double_shells_in.wav",
+        "scatter_gun_double_tube_close.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/free-ranger-short.mp3",
+      "sha256": "8df9aa48fe2e2058195d1a1959538a0eab9feea1910abdb7b35222ff37570cc0",
+      "kind": "reload choice",
+      "gun": "Free Ranger",
+      "name": "Free Ranger \u2014 Marksman Swap (Partial)",
+      "source_files": [
+        "g3sg1_clipout.wav",
+        "g3sg1_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/free-ranger-long.mp3",
+      "sha256": "e11f9cdae982621beba75b1ab3b45c27132d793faa055d0898407c8f944ec00b",
+      "kind": "reload choice",
+      "gun": "Free Ranger",
+      "name": "Free Ranger \u2014 Marksman Swap (Empty)",
+      "source_files": [
+        "g3sg1_slideback.wav",
+        "g3sg1_clipout.wav",
+        "g3sg1_clipin.wav",
+        "g3sg1_slideforward.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/rpegg-long.mp3",
+      "sha256": "64d2fefbe759dd6fb17ccec836779ea8194bbcf8a1b61b95beeba939ac8b0393",
+      "kind": "reload choice",
+      "gun": "RPEGG",
+      "name": "RPEGG \u2014 Rocket Seat",
+      "source_files": [
+        "rocket_reload.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/whipper-short.mp3",
+      "sha256": "1b871af15029f492adfd184dc114bc8894a6707cc3eabe71506f2a8605fc4f24",
+      "kind": "reload choice",
+      "gun": "Whipper",
+      "name": "Whipper \u2014 P90 Lock (Partial)",
+      "source_files": [
+        "p90_cliprelease.wav",
+        "p90_clipout.wav",
+        "p90_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/whipper-long.mp3",
+      "sha256": "b1f99a3c558230ed9424e145f83a2638c4d68f102a9bde7e39f97874b3e30d67",
+      "kind": "reload choice",
+      "gun": "Whipper",
+      "name": "Whipper \u2014 P90 Lock (Empty)",
+      "source_files": [
+        "p90_cliprelease.wav",
+        "p90_clipout.wav",
+        "p90_clipin.wav",
+        "p90_boltforward.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/crackshot-long.mp3",
+      "sha256": "be7a9e95f000ee2a538dfa353de809c8b961d5701b67ae240819d3b517b5c79a",
+      "kind": "reload choice",
+      "gun": "Crackshot",
+      "name": "Crackshot \u2014 Bolt Cycle",
+      "source_files": [
+        "awp_boltback.wav",
+        "awp_clipin.wav",
+        "awp_boltforward.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/tri-hard-short.mp3",
+      "sha256": "266eeb646fe887ee2a9f3b3fb89b13d5ab54136d1afc04dd1a85da664134febe",
+      "kind": "reload choice",
+      "gun": "Tri-Hard",
+      "name": "Tri-Hard \u2014 AUG Reset (Partial)",
+      "source_files": [
+        "aug_clipout.wav",
+        "aug_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/tri-hard-long.mp3",
+      "sha256": "76d5aa0e376c343b92b8e48fe16e83ecae0c48d2d984422f56e7f1a61f82a0a5",
+      "kind": "reload choice",
+      "gun": "Tri-Hard",
+      "name": "Tri-Hard \u2014 AUG Reset (Empty)",
+      "source_files": [
+        "aug_clipout.wav",
+        "aug_clipin.wav",
+        "aug_boltrelease.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/cluck9mm-short.mp3",
+      "sha256": "bb6d8e1e7f58248bf65dc061cb0069797831afc5848d9c29929d49f19ba72865",
+      "kind": "reload choice",
+      "gun": "Cluck 9mm",
+      "name": "Cluck 9mm \u2014 Pistol Rack (Partial)",
+      "source_files": [
+        "glock_clipout.wav",
+        "glock_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/cluck9mm-long.mp3",
+      "sha256": "e4314558e4b71ff92bfb9d5a3eb88df9f434adda3803e28f096bf0a4cecfef0c",
+      "kind": "reload choice",
+      "gun": "Cluck 9mm",
+      "name": "Cluck 9mm \u2014 Pistol Rack (Empty)",
+      "source_files": [
+        "glock_clipout.wav",
+        "glock_clipin.wav",
+        "glock_sliderelease.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/usp-s-short.mp3",
+      "sha256": "490f084c505e404a6a470f1188547b15b72290b7c4e775250fa267850b216f2f",
+      "kind": "reload choice",
+      "gun": "USP-S",
+      "name": "USP-S \u2014 Suppressed Reload (Partial)",
+      "source_files": [
+        "usp_clipout.wav",
+        "usp_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/guns/usp-s-long.mp3",
+      "sha256": "0777d1ef71c07c185bd4526de51988c319bdd79781a8537462604931b0897689",
+      "kind": "reload choice",
+      "gun": "USP-S",
+      "name": "USP-S \u2014 Suppressed Reload (Empty)",
+      "source_files": [
+        "usp_clipout.wav",
+        "usp_clipin.wav",
+        "usp_sliderelease.wav"
+      ]
+    },
+    {
+      "path": "sounds/secondary/usp-s.mp3",
+      "sha256": "9c04521e23d1511cfc15a827e60351ee9fb6056251256ab163f157e727c43019",
+      "kind": "shot",
+      "gun": "USP-S",
+      "source_files": [
+        "usp_01.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/ak47-boltpull.mp3",
+      "sha256": "0d86c09f44d7a878e36270993c00a748811b62cc2b20fc18bf622c5953b45471",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "ak47_boltpull.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/ak47-clipin.mp3",
+      "sha256": "f9ed7a0ea1963370a76293e49dc1c919d5ffdf5fa44e2241e4cdf3c8186898d6",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "ak47_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/ak47-clipout.mp3",
+      "sha256": "9182b00a4332b28f47172aabea5298efb5db25dd609829d2e542461ebfca60f0",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "ak47_clipout.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/aug-boltrelease.mp3",
+      "sha256": "9d7d3d3d21685f3e05057a4c101252f6bfc97df53ac0e10c5c9973b116885291",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "aug_boltrelease.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/aug-clipin.mp3",
+      "sha256": "15bfb5c603313e3320ff7e5c2ad1fedeb737147a239018207585ef37d69ce8ab",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "aug_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/aug-clipout.mp3",
+      "sha256": "2f060b4bd8545757e0424e490c010419d4b8df268c518389906d287f11819be0",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "aug_clipout.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/awp-boltback.mp3",
+      "sha256": "97ddf3e97c46b5f6a8259edf6c2681b65e269ad87c2232810104fe22f1386498",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "awp_boltback.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/awp-boltforward.mp3",
+      "sha256": "b15be6406277463893295514076c02a5c0f420daf67f5fb8dea0b93db3a94f0b",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "awp_boltforward.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/awp-clipin.mp3",
+      "sha256": "efc2d12a36030600484b6fcfa67c86a13d3f48435cd23596e3502d4c64a0c56e",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "awp_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/g3sg1-clipin.mp3",
+      "sha256": "4c9f3cca66d15d5220485ea24ef3959895e0732b9d8b97be21ab438701cc6d10",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "g3sg1_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/g3sg1-clipout.mp3",
+      "sha256": "438a977b402c83d9e1707d39186fb94f04c0d53efcaab2b3566014f9e884b66e",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "g3sg1_clipout.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/g3sg1-slideback.mp3",
+      "sha256": "304695c1c4568114c4bd13fa315b7eb94beb95145496a87a09b0e0e31d295426",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "g3sg1_slideback.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/g3sg1-slideforward.mp3",
+      "sha256": "bbd53e3cb1b99693d110f4800ea10faecfc1de7db4d8cd5ce334059f227f74db",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "g3sg1_slideforward.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/glock-clipin.mp3",
+      "sha256": "fbf36bcb22929598047d2f6d6eeae9ff6652727d6cb3f2a70d792162dca2f72e",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "glock_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/glock-clipout.mp3",
+      "sha256": "55599cea9c337600017134f6444dcd9e397c391f4d9cd599bbc30886f1272507",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "glock_clipout.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/glock-sliderelease.mp3",
+      "sha256": "40a5a3aa62ab43ed0287e9e385e7faa7fee794b7719cbb231c1595901cbfa830",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "glock_sliderelease.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/p90-release-out.mp3",
+      "sha256": "0d50ecdcaee7987f72afb7374b455936624f3936c9b04b0cfb0778cddd092243",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "p90_cliprelease.wav",
+        "p90_clipout.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/p90-boltforward.mp3",
+      "sha256": "6ee9e5c92ba333b18e8df2689e92454ccbe4d98f768cd4d9d38c1075240e4bd0",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "p90_boltforward.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/p90-clipin.mp3",
+      "sha256": "475b4a3e77905e3ce4f48e98420c593da1a6a38765d42da1b7148c678ab94c36",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "p90_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/rocket-reload.mp3",
+      "sha256": "e87ceb5af128209fd8a35e0539b0fa36773d6bff7f8c116417eb2729a8d0af4a",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "rocket_reload.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/scatter-gun-double-shells-in.mp3",
+      "sha256": "0a3713cd72ac4777b923ed2ef516650f84f9283f02a0e293f5f345887ac0fd5f",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "scatter_gun_double_shells_in.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/scatter-gun-double-tube-close.mp3",
+      "sha256": "838d1517b4eca3f13d91b2c6841e67b6631955200b9c7c70ea92e43c5a8d5dfb",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "scatter_gun_double_tube_close.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/scatter-gun-double-tube-open.mp3",
+      "sha256": "957160109936aa082079d2c048860550cdd9ab41ece9b4f361384c1304da9253",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "scatter_gun_double_tube_open.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/usp-clipin.mp3",
+      "sha256": "e9e50ab74b206edc6284b6355bace927ec6095ae460caf7c2235d7eb9bc4d852",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "usp_clipin.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/usp-clipout.mp3",
+      "sha256": "0d9e7eb06e2d189a92bcf35f64f808cbd760c1cf3358c7c487a088e20f1927f6",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "usp_clipout.wav"
+      ]
+    },
+    {
+      "path": "sounds/reload/stages/usp-sliderelease.mp3",
+      "sha256": "d59fd508276e92ab5284665abed66c2d163cdb4b94f47c00d095c580bf67ee07",
+      "kind": "automatic reload stage",
+      "source_files": [
+        "usp_sliderelease.wav"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/awp/awp_boltback.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/awp/awp_boltback.wav",
+      "blob": "37571d5053cce91bdc9d53742515d17d5ccc83f5",
+      "duration": 0.332925,
+      "sha256": "2ee1d6f1cc4e2b4e3933ef09e285c0b1a09f1f8130d9f4b8afe94281e989f2b8"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/awp/awp_clipin.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/awp/awp_clipin.wav",
+      "blob": "511d163d72c7c94b57b38baacb88543b19fa39f1",
+      "duration": 0.300612,
+      "sha256": "eca44d8ca1da8c1c3b3a8e109d2932d07dd6277aeaa6f9f0d96d615c3c88a5af"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/awp/awp_boltforward.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/awp/awp_boltforward.wav",
+      "blob": "44393c8a44697274ad13d45eb667441757b2a5af",
+      "duration": 0.214671,
+      "sha256": "8a9ec313fdd18eb719c3b87fe6d2cdd0387acc2fea03d8358cb19cee718fd11b"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/p90/p90_cliprelease.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/p90/p90_cliprelease.wav",
+      "blob": "47dc7a57c3e02f0bbbd063a2316bc8c6f762ca41",
+      "duration": 0.227937,
+      "sha256": "83ea231715211d47269ad5ccecfa9f23cfa4e43cf610b8dd787675780b2aa4b4"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/p90/p90_clipout.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/p90/p90_clipout.wav",
+      "blob": "0ba06019394cb607c557755f97d000133701925d",
+      "duration": 0.234376,
+      "sha256": "b322d19bf02ebbe577637cffefa0e3d28a6303109e29bea343bbb9533fbd1517"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/p90/p90_clipin.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/p90/p90_clipin.wav",
+      "blob": "cae056e559862432d4aae3c7c0e609f7518cf5b2",
+      "duration": 0.437506,
+      "sha256": "9b23a4df93cc76300034e67e0e8cdfda7aad60b4da2dacbcf4059b118aa15c2f"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/aug/aug_clipout.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/aug/aug_clipout.wav",
+      "blob": "1f1825031330c41cc1d4b35a5141a7b0044f0fb1",
+      "duration": 0.312494,
+      "sha256": "ba837f50093001310452231f9737a0062da4b825866cea51f1bc9224153d526b"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/aug/aug_clipin.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/aug/aug_clipin.wav",
+      "blob": "0c7547898dcf099f86c55010f3406eaa0e0f8ed9",
+      "duration": 0.312494,
+      "sha256": "51625c10593df25b79b7c14db82f4f2ff75ff33e2f2ff26b83cf653732799b3d"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/aug/aug_boltrelease.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/aug/aug_boltrelease.wav",
+      "blob": "b86c639f673223cb586ca77ca097717d8cc8ac5b",
+      "duration": 0.396735,
+      "sha256": "eb21a2a5a4b0a1ac572507fc85bd29787f762ddba54a7893a946af4d81c187c9"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/ak47/ak47_clipout.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ak47/ak47_clipout.wav",
+      "blob": "ef577373fe2795b5f6e61259a3ff4feca5cff916",
+      "duration": 0.188912,
+      "sha256": "17953c6c9e57d9c050169830c18cd46edc7e55467c7b690298f43c4a7e0d72ec"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/ak47/ak47_clipin.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ak47/ak47_clipin.wav",
+      "blob": "5942da71bb6ec270ea2fc80c55561612419f3011",
+      "duration": 0.160227,
+      "sha256": "bbf5d5429d709d422d2488189e7375e99437b88c7ef7d579e65edd2e4cdf825c"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/ak47/ak47_boltpull.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ak47/ak47_boltpull.wav",
+      "blob": "feb686c95a97d87c61cfe5ab5e0e2a5bb9f2d13f",
+      "duration": 0.310045,
+      "sha256": "d6253073be8c071eb6112cdbf8212ac58f377dd7c5ee623c48b4b673dec5f36c"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/g3sg1/g3sg1_clipout.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/g3sg1/g3sg1_clipout.wav",
+      "blob": "0c52d160f685e689e01093708a1df5734bd973b9",
+      "duration": 0.437506,
+      "sha256": "b8bb10c8db6283a153a26877e054619db8d4ad96ad7d808e567a63e017dd980e"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/g3sg1/g3sg1_clipin.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/g3sg1/g3sg1_clipin.wav",
+      "blob": "0ba4105bfd574b8f9dd02669ad1ede55ea4d2a9e",
+      "duration": 0.375011,
+      "sha256": "316246da039a7371a28fd3e4d0714ec67d4956f09e024e3cbfee9d5cc25b671b"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/g3sg1/g3sg1_slideback.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/g3sg1/g3sg1_slideback.wav",
+      "blob": "839722181c9019aed66deb2fb390bce20eb53d74",
+      "duration": 0.187506,
+      "sha256": "1d2a1053b72294cc4165b8c9b55bb9aa5de95da618cfba29bf51bdda1a5942d1"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/g3sg1/g3sg1_slideforward.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/g3sg1/g3sg1_slideforward.wav",
+      "blob": "592e58a747965e2916bd863951741579feada5f1",
+      "duration": 0.578345,
+      "sha256": "557dfc57af298a86d22fc5324358da6cd1364ddca5fbe3355ab453c7e588481c"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/glock18/glock_clipout.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/glock18/glock_clipout.wav",
+      "blob": "71e90ef2941d5d6d275e931e3b907d57dab5ac8b",
+      "duration": 0.30127,
+      "sha256": "092f655ba5f88d52da4195458ad6778952184c8a1d328582c1ff02043300e72e"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/glock18/glock_clipin.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/glock18/glock_clipin.wav",
+      "blob": "3f045e4dc2779a20cf89e6c19cf818b10bee0e33",
+      "duration": 0.30127,
+      "sha256": "c92fb13e153ea91594fc63733c5d2950da45021d7eff609da6ac3e32ef9bca51"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/glock18/glock_sliderelease.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/glock18/glock_sliderelease.wav",
+      "blob": "5753946f0a3c43e1b823a34ff6b4122a0c79cf48",
+      "duration": 0.335646,
+      "sha256": "415174b884ef70dc565e5ac114795fb37bfd47ea97e978c687a8c99b437facb4"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/p90/p90_boltforward.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/p90/p90_boltforward.wav",
+      "blob": "0f79c86bb481c787bf1fa923fd9bc6ac89e4046b",
+      "duration": 0.174943,
+      "sha256": "7493f5dcbdade7a83577cdae3ad20d0e5df42265dd8cb9cb85cffb797b6d1f98"
+    },
+    {
+      "repo": "tf",
+      "source_ref": "420bf271208d79d952e693974e391892c254ad80",
+      "path": "sound/weapons/rocket_reload.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/rocket_reload.wav",
+      "blob": "5b2b40b8d00a881765451ffbbe26a44212b43987",
+      "duration": 0.403447,
+      "sha256": "9641de551253f326437ab42ae4285ff28726bf8f3e2faf7acfab12b94832b52e"
+    },
+    {
+      "repo": "tf",
+      "source_ref": "420bf271208d79d952e693974e391892c254ad80",
+      "path": "sound/weapons/scatter_gun_double_tube_open.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/scatter_gun_double_tube_open.wav",
+      "blob": "2dbd1a9edebbee5ae3b62f784406142db18ed709",
+      "duration": 0.195556,
+      "sha256": "4a348c1baf73cbe14f918ed60bae2ee92c3b2c318a33064acb5c1d43d4703468"
+    },
+    {
+      "repo": "tf",
+      "source_ref": "420bf271208d79d952e693974e391892c254ad80",
+      "path": "sound/weapons/scatter_gun_double_shells_in.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/scatter_gun_double_shells_in.wav",
+      "blob": "b76c34bcadf616a73e5e7be2af4ffba2b3250391",
+      "duration": 0.181406,
+      "sha256": "7d77c67474d10853e30735962d08fd7b431f9f1e0be1e802dbc17d2fa66d307a"
+    },
+    {
+      "repo": "tf",
+      "source_ref": "420bf271208d79d952e693974e391892c254ad80",
+      "path": "sound/weapons/scatter_gun_double_tube_close.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/scatter_gun_double_tube_close.wav",
+      "blob": "7557a3c7d16eab694fb39e7b6387a78035be0eec",
+      "duration": 0.262313,
+      "sha256": "3bb78f4af78bcae260bb54b18157635b7298884435000c267e595509167699d0"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/usp/usp_01.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/usp/usp_01.wav",
+      "blob": "17b49d39fde9b1a840bb45495fd8e1fcbdffb41b",
+      "sha256": "39779e6c80fbd1ecbbcc2a9bf2cf379a72917538c4c41beb9cc4de64cba89f6e"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/usp/usp_clipout.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/usp/usp_clipout.wav",
+      "blob": "f422a3e5a24dd0e37451c1e8a56b5f8b96ebe44f",
+      "sha256": "97eb793868d3142b1f85c818822720551296a92566d721b64fbe4eaa6f32dee9"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/usp/usp_clipin.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/usp/usp_clipin.wav",
+      "blob": "0b37e68cf1129ba64486a7bce56f8084668d76a5",
+      "sha256": "5a3589d3a66bbd4eddd9297c4e8df0c7bb7822847015a3654796eb88d2a297f1"
+    },
+    {
+      "repo": "csgo",
+      "source_ref": "08f1bd6835d4f510d2ccaedeab6bb9f637b388ab",
+      "path": "sound/weapons/usp/usp_sliderelease.wav",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/usp/usp_sliderelease.wav",
+      "blob": "6d697217c562c045ef21f640231568a459d9fb4f",
+      "sha256": "000cdc37c9a3b1116d9e0979f6d55bb29968ee8b0b215624377aa74be994b2f3"
+    }
+  ]
+}

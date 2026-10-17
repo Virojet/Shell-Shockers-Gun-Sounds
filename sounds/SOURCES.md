@@ -45,4 +45,24 @@ The separate `reload.mp3` supplied alongside the ZIP was silent and was not used
 
 Converted from the original WAV recordings to 48 kHz stereo, 192 kbps MP3 with a peak limiter. Complete actions are retained; Pump Action is intentionally a short pump sound. These four recordings are dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Source URLs and SHA-256 hashes are in [reload-pack-sources.json](reload-pack-sources.json).
 
+## Reviewed gun reloads and USP-S
+
+Gun-specific single-clip previews and the component sounds for **Matched per gun (automatic)** use Valve CS:GO and TF2 audio from the sourcesounds mirrors. **USP-S** uses the suppressed `usp_01.wav` shot, plus `usp_clipout.wav`, `usp_clipin.wav` and `usp_sliderelease.wav`. These are audio presets; no pistol model or texture is supplied.
+
+| Shell Shockers gun | Reload choice | Source sound family |
+| --- | --- | --- |
+| EggK-47 | AK Magazine | CS:GO AK-47 magazine and bolt |
+| Scrambler | Break & Load | TF2 double-barrel open, shell insertion and close |
+| Free Ranger | Marksman Swap | CS:GO G3SG1 magazine and action |
+| RPEGG | Rocket Seat | TF2 rocket insertion |
+| Whipper | P90 Lock | CS:GO P90 magazine and action |
+| Crackshot | Bolt Cycle | CS:GO AWP bolt and loading |
+| Tri-Hard | AUG Reset | CS:GO AUG magazine and action |
+| Cluck 9mm | Pistol Rack | CS:GO Glock magazine and slide |
+| Cluck 9mm with USP-S audio | USP-S | CS:GO USP magazine and slide |
+
+The P90's initial sound combines magazine release and removal with a 0.12 s gap. Single-clip choices are the reviewed partial/empty composites; automatic mode plays each component at its native game event. The reviewed timing notes were based on the [Shell Shockers Wiki weapon profiles](https://shellshockers.fandom.com/wiki/Weapon#Weapon_Profiles) and captured reload-event names. Automatic mode follows the events directly and does not change gameplay timing.
+
+Files, pinned source revisions, download URLs, Git blob hashes and SHA-256 hashes are listed in [gun-reload-sources.json](gun-reload-sources.json). Source mirrors: [CS:GO](https://github.com/sourcesounds/csgo/tree/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons) and [TF2](https://github.com/sourcesounds/tf/tree/420bf271208d79d952e693974e391892c254ad80/sound/weapons). Audio was converted to 48 kHz stereo MP3 with a limiter; final playback gain is normalized by the script.
+
 The MIT license in this repository covers the script code. The Valve/Riot game audio retains its original ownership; the four reload recordings above are CC0.
