@@ -67,12 +67,16 @@ The audio URLs use a fixed Git commit, so an existing script version always gets
 
 ## Changelog
 
-### 1.1.0
-- Added 14 weapon clips: 10 Primary, 2 Secondary and 2 Melee choices, with names matching the table above.
+### 1.1.0 — 2026-10-17
+- Added 14 weapon clips, organized by selection:
+  - **Primary:** Thunder AWP, Rush P90, Rapid P90, Blast Rocket, Quake Rocket, Dragonfire Operator, Fallen Operator, Ion Pulse Operator, Orbital Operator and Soulshot Operator.
+  - **Secondary:** Hand Cannon and Quickdraw.
+  - **Melee:** Swift Slash and Heavy Slash.
 - Added a separate **Reload** selection with **Steel Reset**, the original meme choices, and custom MP3 support.
 - A replacement reload plays once per sequence. The game's later magazine, loading and bolt steps do not replay the clip.
 - New weapon clips appear only in their matching category. Existing saved choices remain valid, and Reload defaults to **Game sound**.
 - The four selections use a compact two-by-two layout.
+- Selected audio is downloaded from a fixed GitHub commit and cached in the browser. Existing settings and custom audio remain saved when updating.
 
 <details>
 <summary>Older versions</summary>
