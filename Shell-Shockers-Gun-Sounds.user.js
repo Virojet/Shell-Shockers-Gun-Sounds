@@ -69,7 +69,8 @@
 // ==/UserScript==
 
 /* Gun Sounds: swap your weapon and reload sounds for a built-in sound or your own MP3.
-   Primary, secondary, melee and reload each get their own pick. Each choice covers every weapon and skin in that slot.
+   Primary, secondary, melee and reload each get their own pick. Shot choices cover every weapon and skin in that slot.
+   Reload can use one clip for all guns or match its sounds to each gun's actual reload stages.
 
    How it works: the game plays every sound through BAWK.play(name, output). The script wraps that call. When the name
    is a weapon action, and it's your own (identified by the shooter's player-node position), the script plays your pick
@@ -115,8 +116,65 @@
     { id: "rifle-reset", name: "Rifle Reset", file: "reload/rifle-reset.mp3", slot: "reload" },
     { id: "pump-action", name: "Pump Action", file: "reload/pump-action.mp3", slot: "reload" },
     { id: "sidearm-snap", name: "Sidearm Snap", file: "reload/sidearm-snap.mp3", slot: "reload" },
+    {"id":"usp-s","name":"USP-S","file":"secondary/usp-s.mp3","slot":"secondary"},
+    {"id":"reload-eggk47-short","name":"EggK-47 — AK Magazine (Partial)","file":"reload/guns/eggk47-short.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-eggk47-long","name":"EggK-47 — AK Magazine (Empty)","file":"reload/guns/eggk47-long.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-scrambler-long","name":"Scrambler — Break & Load","file":"reload/guns/scrambler-long.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-free-ranger-short","name":"Free Ranger — Marksman Swap (Partial)","file":"reload/guns/free-ranger-short.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-free-ranger-long","name":"Free Ranger — Marksman Swap (Empty)","file":"reload/guns/free-ranger-long.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-rpegg-long","name":"RPEGG — Rocket Seat","file":"reload/guns/rpegg-long.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-whipper-short","name":"Whipper — P90 Lock (Partial)","file":"reload/guns/whipper-short.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-whipper-long","name":"Whipper — P90 Lock (Empty)","file":"reload/guns/whipper-long.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-crackshot-long","name":"Crackshot — Bolt Cycle","file":"reload/guns/crackshot-long.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-tri-hard-short","name":"Tri-Hard — AUG Reset (Partial)","file":"reload/guns/tri-hard-short.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-tri-hard-long","name":"Tri-Hard — AUG Reset (Empty)","file":"reload/guns/tri-hard-long.mp3","slot":"reload","group":"Primary reloads"},
+    {"id":"reload-cluck9mm-short","name":"Cluck 9mm — Pistol Rack (Partial)","file":"reload/guns/cluck9mm-short.mp3","slot":"reload","group":"Secondary reloads"},
+    {"id":"reload-cluck9mm-long","name":"Cluck 9mm — Pistol Rack (Empty)","file":"reload/guns/cluck9mm-long.mp3","slot":"reload","group":"Secondary reloads"},
+    {"id":"reload-usp-s-short","name":"USP-S — Suppressed Reload (Partial)","file":"reload/guns/usp-s-short.mp3","slot":"reload","group":"Secondary reloads"},
+    {"id":"reload-usp-s-long","name":"USP-S — Suppressed Reload (Empty)","file":"reload/guns/usp-s-long.mp3","slot":"reload","group":"Secondary reloads"},
   ];
-  const DEFAULT = "default", CUSTOM = "custom", PICK = "pick";
+  const STAGE_SOUNDS = [
+    { id: "stage-rocket-reload", name: "rocket-reload", file: "reload/stages/rocket-reload.mp3" },
+    {"id":"stage-ak47-boltpull","name":"ak47-boltpull","file":"reload/stages/ak47-boltpull.mp3"},
+    {"id":"stage-ak47-clipin","name":"ak47-clipin","file":"reload/stages/ak47-clipin.mp3"},
+    {"id":"stage-ak47-clipout","name":"ak47-clipout","file":"reload/stages/ak47-clipout.mp3"},
+    {"id":"stage-aug-boltrelease","name":"aug-boltrelease","file":"reload/stages/aug-boltrelease.mp3"},
+    {"id":"stage-aug-clipin","name":"aug-clipin","file":"reload/stages/aug-clipin.mp3"},
+    {"id":"stage-aug-clipout","name":"aug-clipout","file":"reload/stages/aug-clipout.mp3"},
+    {"id":"stage-awp-boltback","name":"awp-boltback","file":"reload/stages/awp-boltback.mp3"},
+    {"id":"stage-awp-boltforward","name":"awp-boltforward","file":"reload/stages/awp-boltforward.mp3"},
+    {"id":"stage-awp-clipin","name":"awp-clipin","file":"reload/stages/awp-clipin.mp3"},
+    {"id":"stage-g3sg1-clipin","name":"g3sg1-clipin","file":"reload/stages/g3sg1-clipin.mp3"},
+    {"id":"stage-g3sg1-clipout","name":"g3sg1-clipout","file":"reload/stages/g3sg1-clipout.mp3"},
+    {"id":"stage-g3sg1-slideback","name":"g3sg1-slideback","file":"reload/stages/g3sg1-slideback.mp3"},
+    {"id":"stage-g3sg1-slideforward","name":"g3sg1-slideforward","file":"reload/stages/g3sg1-slideforward.mp3"},
+    {"id":"stage-glock-clipin","name":"glock-clipin","file":"reload/stages/glock-clipin.mp3"},
+    {"id":"stage-glock-clipout","name":"glock-clipout","file":"reload/stages/glock-clipout.mp3"},
+    {"id":"stage-glock-sliderelease","name":"glock-sliderelease","file":"reload/stages/glock-sliderelease.mp3"},
+    {"id":"stage-p90-release-out","name":"p90-release-out","file":"reload/stages/p90-release-out.mp3"},
+    {"id":"stage-p90-boltforward","name":"p90-boltforward","file":"reload/stages/p90-boltforward.mp3"},
+    {"id":"stage-p90-clipin","name":"p90-clipin","file":"reload/stages/p90-clipin.mp3"},
+    {"id":"stage-scatter-gun-double-shells-in","name":"scatter-gun-double-shells-in","file":"reload/stages/scatter-gun-double-shells-in.mp3"},
+    {"id":"stage-scatter-gun-double-tube-close","name":"scatter-gun-double-tube-close","file":"reload/stages/scatter-gun-double-tube-close.mp3"},
+    {"id":"stage-scatter-gun-double-tube-open","name":"scatter-gun-double-tube-open","file":"reload/stages/scatter-gun-double-tube-open.mp3"},
+    {"id":"stage-usp-clipin","name":"usp-clipin","file":"reload/stages/usp-clipin.mp3"},
+    {"id":"stage-usp-clipout","name":"usp-clipout","file":"reload/stages/usp-clipout.mp3"},
+    {"id":"stage-usp-sliderelease","name":"usp-sliderelease","file":"reload/stages/usp-sliderelease.mp3"},
+  ];
+  const RELOAD_PROFILES = {
+    rpegg: { gun_rpegg_load: "stage-rocket-reload" },
+    "eggk47": {"gun_eggk47_remove_mag":"stage-ak47-clipout","gun_eggk47_insert_mag":"stage-ak47-clipin","gun_eggk47_full_cycle":"stage-ak47-boltpull"},
+    "dozenGauge": {"gun_dozenGauge_open":"stage-scatter-gun-double-tube-open","gun_dozenGauge_load":"stage-scatter-gun-double-shells-in","gun_dozenGauge_close":"stage-scatter-gun-double-tube-close"},
+    "csg1": {"gun_csg1_pull_action":"stage-g3sg1-slideback","gun_eggk47_remove_mag":"stage-g3sg1-clipout","gun_eggk47_insert_mag":"stage-g3sg1-clipin","gun_csg1_release_action":"stage-g3sg1-slideforward"},
+    "smg": {"gun_eggk47_remove_mag":"stage-p90-release-out","gun_eggk47_insert_mag":"stage-p90-clipin","gun_smg_cycle":"stage-p90-boltforward"},
+    "m24": {"gun_m24_bolt_open":"stage-awp-boltback","gun_eggk47_insert_mag":"stage-awp-clipin","gun_m24_bolt_close":"stage-awp-boltforward"},
+    "aug": {"gun_aug_remove_mag":"stage-aug-clipout","gun_aug_insert_mag":"stage-aug-clipin","gun_aug_cycle":"stage-aug-boltrelease"},
+    "cluck9mm": {"gun_cluck9mm_remove_mag":"stage-glock-clipout","gun_cluck9mm_insert_mag":"stage-glock-clipin","gun_eggk47_full_cycle":"stage-glock-sliderelease"},
+    "usp-s": {"gun_cluck9mm_remove_mag":"stage-usp-clipout","gun_cluck9mm_insert_mag":"stage-usp-clipin","gun_eggk47_full_cycle":"stage-usp-sliderelease"},
+  };
+  const PROFILE_PREVIEW = { eggk47: "reload-eggk47-long", dozenGauge: "reload-scrambler-long", csg1: "reload-free-ranger-long", rpegg: "reload-rpegg-long", smg: "reload-whipper-long", m24: "reload-crackshot-long", aug: "reload-tri-hard-long", cluck9mm: "reload-cluck9mm-long", "usp-s": "reload-usp-s-long" };
+  const AUDIO = new Map([...SOUNDS, ...STAGE_SOUNDS].map(s => [s.id, s]));
+  const DEFAULT = "default", CUSTOM = "custom", PICK = "pick", PER_GUN = "per-gun";
   const SLOTS = [
     { id: "primary", name: "Primary" },
     { id: "secondary", name: "Secondary" },
@@ -151,7 +209,7 @@
 
   /* ---- Saved settings ---- */
   const soundsFor = slot => SOUNDS.filter(x => !x.slot || x.slot === slot);
-  const isSound = (s, slot) => s === DEFAULT || s === CUSTOM || SOUNDS.some(x => x.id === s && (!x.slot || x.slot === slot));
+  const isSound = (s, slot) => s === DEFAULT || s === CUSTOM || (slot === "reload" && s === PER_GUN) || SOUNDS.some(x => x.id === s && (!x.slot || x.slot === slot));
   function clean(s) {
     const ok = !!s && typeof s === "object", pick = k => ok && isSound(s[k], k) ? s[k] : DEFAULTS[k];
     return {
@@ -171,7 +229,7 @@
   /* ---- Built-in sounds, from GitHub ----
      They come from the commit that added them, so the files this version uses never change under it. A sound is
      downloaded the first time it's needed, then kept in this site's Cache Storage. */
-  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/f4144aa0f0bfb289df54488e1c308ba8ca05cc49/sounds";
+  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/635d2ec5733e68e218cdc7deae45d8a798d3204c/sounds";
   // Same immutable files, via a second host if GitHub is temporarily unavailable or blocked.
   const MIRROR = FILES.replace("https://raw.githubusercontent.com/", "https://cdn.jsdelivr.net/gh/")
     .replace(/\/([a-f0-9]{40})\//, "@$1/");
@@ -281,12 +339,15 @@
     if (p) return p;
     p = sound === CUSTOM ?
       readFile(slot).then(f => f ? decode(f.data, f.name) : null) :
-      download(SOUNDS.find(s => s.id === sound).file, sound);
+      download(AUDIO.get(sound).file, sound);
     cache.set(key, p);
     p.then(b => { if (b) ready.set(key, b); }, () => { if (cache.get(key) === p) cache.delete(key); });
     return p;
   }
-  function warm(sound, slot) { if (sound !== DEFAULT) clip(sound, slot).catch(warn); }
+  function warm(sound, slot) {
+    if (sound === PER_GUN) { for (const s of STAGE_SOUNDS) warm(s.id, "reload"); }
+    else if (sound !== DEFAULT) clip(sound, slot).catch(warn);
+  }
   function getReady() { for (const s of SLOTS) warm(saved[s.id], s.id); }
 
   /* ---- Playing ----
@@ -383,11 +444,22 @@
   // All stages from one player's reload use the same position object, even when BAWK allocates different channels.
   // Replace its first audio event once, then return silent sources for the other stages. BAWK still receives a real
   // source and its ended event to release each channel. A not-yet-loaded pick leaves that whole reload native.
-  let reloads = new WeakMap(), silent = null;
+  let reloads = new WeakMap(), primaryWeapons = new WeakMap(), previewWeapon = "eggk47", silent = null;
   const reloadKey = (B, to) => soundPosition(B, to) || to || B;
+  const RELOAD_GUN = {
+    gun_cluck9mm_remove_mag: "cluck9mm", gun_aug_remove_mag: "aug", gun_csg1_pull_action: "csg1",
+    gun_dozenGauge_open: "dozenGauge", gun_m24_bolt_open: "m24", gun_rpegg_load: "rpegg",
+  };
+  function matchedGun(key, name) {
+    const primary = primaryWeapons.get(key);
+    const gun = RELOAD_GUN[name] || (name === "gun_eggk47_remove_mag" && ["eggk47", "csg1", "smg"].includes(primary) ? primary : null);
+    return gun === "cluck9mm" && saved.secondary === "usp-s" ? "usp-s" : gun;
+  }
   function endReload(B, to) {
     const key = reloadKey(B, to), state = reloads.get(key);
-    if (state && state.source) { try { state.source.stop(); } catch { /* already ended */ } }
+    for (const source of state ? state.sources || [state.source] : []) {
+      if (source) { try { source.stop(); } catch { /* already ended */ } }
+    }
     reloads.delete(key);
   }
   function playReload(B, name, to, own, sound) {
@@ -398,6 +470,18 @@
     const nestedMag = state && !state.complete && state.first === "gun_csg1_pull_action" && name === "gun_eggk47_remove_mag";
     if (RELOAD_START.has(name) && !nestedMag) {
       endReload(B, to);
+      if (sound === PER_GUN) {
+        const gun = matchedGun(key, name), profile = RELOAD_PROFILES[gun];
+        // Shared magazine sounds need a known primary. Before its first shot, keep the complete native reload.
+        const loaded = profile && Object.values(profile).every(id => ready.has(id));
+        const source = loaded && play(ready.get(profile[name]), saved.volume, own ? null : to);
+        state = { at: now, first: name, source, sources: source ? [source] : [], profile,
+          matched: true, replaced: !!source, complete: name === "gun_rpegg_load" };
+        reloads.set(key, state);
+        if (gun && own) previewWeapon = gun;
+        if (!loaded) warm(PER_GUN, "reload");
+        return source || null;
+      }
       const buf = ready.get(keyOf(sound, "reload"));
       const source = buf && play(buf, saved.volume, own ? null : to);
       state = { at: now, first: name, source, replaced: !!source, complete: name === "gun_rpegg_load" };
@@ -408,6 +492,11 @@
     if (!state || !state.replaced) return null;
     if (name === "gun_csg1_release_action" || name === "gun_dozenGauge_close" || name === "gun_m24_bolt_close" ||
         (state.first !== "gun_csg1_pull_action" && name.endsWith("_insert_mag"))) state.complete = true;
+    if (state.matched) {
+      const id = state.profile[name], source = id && play(ready.get(id), saved.volume, own ? null : to);
+      if (source) state.sources.push(source);
+      return source || null;
+    }
     silent = silent || new AudioBuffer({ length: 1, numberOfChannels: 1, sampleRate: SR });
     return play(silent, 1, own ? null : to);
   }
@@ -427,8 +516,15 @@
         try {
           const slot = slotOf(name), sound = slot && saved[slot];
           if (slot && slot !== "reload" && saved.reload !== DEFAULT) endReload(B, to);
-          const own = sound && sound !== DEFAULT && mine(B, to);
-          if (own || (sound && sound !== DEFAULT && saved.everyone)) {
+          const own = slot && ((sound && sound !== DEFAULT) || saved.reload === PER_GUN) && mine(B, to);
+          if (slot === "primary" && saved.reload === PER_GUN) {
+            const gun = /^gun_([^_]+)_/.exec(name)?.[1];
+            if (RELOAD_PROFILES[gun]) {
+              primaryWeapons.set(reloadKey(B, to), gun);
+              if (own) previewWeapon = gun;
+            }
+          }
+          if (sound && sound !== DEFAULT && (own || saved.everyone)) {
             if (slot === "reload") {
               const src = playReload(B, name, to, own, sound);
               if (src) return src;
@@ -480,6 +576,7 @@
 #${CELL} .f_row { align-items: center; }
 #${CELL} select, #${CELL} input[type=range] { min-width: 0; }
 #${CELL} select { flex: 1 1 auto; }
+#${CELL} optgroup { font: inherit; font-weight: 700; }
 #${CELL} .ss_button, #${CELL} label { flex: none; }
 #${CELL} .ss_button:disabled { opacity: .5; cursor: default; }
 #${CELL} .ssg-name { display: block; margin: var(--ss-space-sm) 0 .15em 2px; font-weight: 700; font-size: inherit; }
@@ -527,9 +624,21 @@
       face.type = "button";
       face.append(el("selectedcontent"));
       // "Choose MP3 file…" isn't a setting: picking it opens the file picker, and the file then becomes "My MP3".
-      select.append(face, new Option("Game sound", DEFAULT), ...soundsFor(s.id).map(x => new Option(x.name, x.id)), el("hr"),
-        new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK));
-      select.title = (s.id === "reload" ? "Plays once per reload." : `Plays for every ${s.name.toLowerCase()} weapon.`) + " Your own file: MP3, OGG or WAV, up to 4 MB.";
+      const group = (label, options) => {
+        const g = el("optgroup"); g.label = label; g.append(...options); select.append(g);
+      };
+      select.append(face);
+      group("Default sounds", [new Option("Game sound", DEFAULT), ...SOUNDS.filter(x => !x.slot).map(x => new Option(x.name, x.id))]);
+      if (s.id === "reload") group("Per-gun reloads", [new Option("Matched per gun (automatic)", PER_GUN)]);
+      const groups = new Map();
+      for (const sound of soundsFor(s.id).filter(x => x.slot)) {
+        const label = sound.group || `${s.name} sounds`;
+        if (!groups.has(label)) groups.set(label, []);
+        groups.get(label).push(new Option(sound.name, sound.id));
+      }
+      for (const [label, options] of groups) group(label, options);
+      group("Custom sounds", [new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK)]);
+      select.title = (s.id === "reload" ? "Matched per gun follows each gun's reload stages. A single clip plays once per reload." : `Plays for every ${s.name.toLowerCase()} weapon.`) + " Your own file: MP3, OGG or WAV, up to 4 MB.";
       const test = el("button", "ss_button btn_blue bevel_blue btn_sm", "Test");
       test.type = "button";
       // The label line also names your file, or says what went wrong with it, so picking one adds no height.
@@ -624,7 +733,7 @@
     const game = [...ui.cell.parentNode.querySelectorAll("select.ss_select")].find(e => !ui.cell.contains(e));
     for (const { select } of Object.values(ui.slots)) {
       vars.forEach(v => select.style.removeProperty(v));
-      const o = getComputedStyle([...select.children].find(e => e.tagName === "OPTION" && !e.selected));
+      const o = getComputedStyle([...select.options].find(e => !e.selected) || select);
       const s = getComputedStyle(select);
       const values = [[o.backgroundColor, s.backgroundColor].find(c => !clear(c)) || "#fff", o.color, s.borderTopColor];
       vars.forEach((v, i) => select.style.setProperty(v, values[i]));
@@ -665,7 +774,9 @@
     const p = pending || saved, sound = p[slot];
     if (sound === DEFAULT) return;
     const mine = sound === CUSTOM && pendingFiles[slot];
-    (mine ? Promise.resolve(pendingFiles[slot].buf) : clip(sound, slot)).then(buf => {
+    const gun = ["cluck9mm", "usp-s"].includes(previewWeapon) ? p.secondary === "usp-s" ? "usp-s" : "cluck9mm" : previewWeapon;
+    const example = sound === PER_GUN ? PROFILE_PREVIEW[gun] || PROFILE_PREVIEW.eggk47 : sound;
+    (mine ? Promise.resolve(pendingFiles[slot].buf) : clip(example, slot)).then(buf => {
       if (!buf) return setNote(slot, "Choose a file first", true, "Choose a sound file first.");
       setNote(slot);
       play(buf, p.volume);
@@ -753,6 +864,8 @@
     removeUI();
     quiet();
     reloads = new WeakMap();
+    primaryWeapons = new WeakMap();
+    previewWeapon = "eggk47";
   }
 
   window.ssGunSounds = {
