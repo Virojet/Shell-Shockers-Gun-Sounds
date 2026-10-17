@@ -95,55 +95,55 @@
   const STORE = "ssGunSounds";
   // `kind` limits a sound to one kind of list; the meme sounds (no kind) are in every list.
   const SOUNDS = [
-    { id: "awp", name: "AWP", file: "awp.mp3" },
-    { id: "punch", name: "Punch", file: "punch.mp3" },
-    { id: "fart", name: "Reverb Fart", file: "reverb-fart.mp3" },
-    { id: "tuturu", name: "Tuturu", file: "tuturu.mp3" },
-    { id: "boom", name: "Vine Boom", file: "vine-boom.mp3" },
-    { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", kind: "primary" },
-    { id: "rush-p90", name: "Rush P90", file: "primary/rush-p90.mp3", kind: "primary" },
-    { id: "rapid-p90", name: "Rapid P90", file: "primary/rapid-p90.mp3", kind: "primary" },
-    { id: "blast-rocket", name: "Blast Rocket", file: "primary/blast-rocket.mp3", kind: "primary" },
-    { id: "quake-rocket", name: "Quake Rocket", file: "primary/quake-rocket.mp3", kind: "primary" },
-    { id: "dragonfire-operator", name: "Dragonfire Operator", file: "primary/dragonfire-operator.mp3", kind: "primary" },
-    { id: "fallen-operator", name: "Fallen Operator", file: "primary/fallen-operator.mp3", kind: "primary" },
-    { id: "ion-pulse-operator", name: "Ion Pulse Operator", file: "primary/ion-pulse-operator.mp3", kind: "primary" },
-    { id: "orbital-operator", name: "Orbital Operator", file: "primary/orbital-operator.mp3", kind: "primary" },
-    { id: "soulshot-operator", name: "Soulshot Operator", file: "primary/soulshot-operator.mp3", kind: "primary" },
-    { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", kind: "secondary" },
-    { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", kind: "secondary" },
-    { id: "usp-s", name: "USP-S", file: "secondary/usp-s.mp3", kind: "secondary" },
-    { id: "five-seven", name: "Five-SeveN", file: "secondary/five-seven.mp3", kind: "secondary" },
-    { id: "r8-revolver", name: "R8 Revolver", file: "secondary/r8-revolver.mp3", kind: "secondary" },
-    { id: "p250", name: "P250", file: "secondary/p250.mp3", kind: "secondary" },
-    { id: "tec-9", name: "Tec-9", file: "secondary/tec-9.mp3", kind: "secondary" },
-    { id: "cz75-auto", name: "CZ75-Auto", file: "secondary/cz75-auto.mp3", kind: "secondary" },
-    { id: "dual-berettas", name: "Dual Berettas", file: "secondary/dual-berettas.mp3", kind: "secondary" },
-    { id: "p2000", name: "P2000", file: "secondary/p2000.mp3", kind: "secondary" },
-    { id: "swift-slash", name: "Swift Slash", file: "melee/swift-slash.mp3", kind: "melee" },
-    { id: "heavy-slash", name: "Heavy Slash", file: "melee/heavy-slash.mp3", kind: "melee" },
-    { id: "blade-flick", name: "Blade Flick", file: "melee/blade-flick.mp3", kind: "melee" },
-    { id: "machete-sweep", name: "Machete Sweep", file: "melee/machete-sweep.mp3", kind: "melee" },
-    { id: "saber-arc", name: "Saber Arc", file: "melee/saber-arc.mp3", kind: "melee" },
-    { id: "claymore-swing", name: "Claymore Swing", file: "melee/claymore-swing.mp3", kind: "melee" },
-    { id: "pickaxe-swing", name: "Pickaxe Swing", file: "melee/pickaxe-swing.mp3", kind: "melee" },
-    { id: "shovel-swing", name: "Shovel Swing", file: "melee/shovel-swing.mp3", kind: "melee" },
-    { id: "wrench-swing", name: "Wrench Swing", file: "melee/wrench-swing.mp3", kind: "melee" },
-    { id: "boxing-glove", name: "Boxing Glove", file: "melee/boxing-glove.mp3", kind: "melee" },
-    { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", kind: "reload" },
-    { id: "tactical-swap", name: "Tactical Swap", file: "reload/tactical-swap.mp3", kind: "reload" },
-    { id: "rifle-reset", name: "Rifle Reset", file: "reload/rifle-reset.mp3", kind: "reload" },
-    { id: "pump-action", name: "Pump Action", file: "reload/pump-action.mp3", kind: "reload" },
-    { id: "sidearm-snap", name: "Sidearm Snap", file: "reload/sidearm-snap.mp3", kind: "reload" },
-    { id: "pistol-click", name: "Pistol Click", file: "empty/pistol-click.mp3", kind: "empty" },
-    { id: "rifle-click", name: "Rifle Click", file: "empty/rifle-click.mp3", kind: "empty" },
-    { id: "shotgun-click", name: "Shotgun Click", file: "empty/shotgun-click.mp3", kind: "empty" },
-    { id: "trigger-tap", name: "Trigger Tap", file: "empty/trigger-tap.mp3", kind: "empty" },
-    { id: "low-ammo-tick", name: "Low Ammo Tick", file: "empty/low-ammo-tick.mp3", kind: "empty" },
-    { id: "railgun-dry", name: "Railgun Dry Fire", file: "empty/railgun-dry.mp3", kind: "empty" },
-    { id: "marksman-dry", name: "Marksman Dry Fire", file: "empty/marksman-dry.mp3", kind: "empty" },
-    { id: "minigun-spin", name: "Minigun Whir", file: "empty/minigun-spin.mp3", kind: "empty" },
-    { id: "gatling-click", name: "Gatling Click", file: "empty/gatling-click.mp3", kind: "empty" },
+    { id: "awp", name: "AWP", file: "awp.mp3", duration: 1.00 },
+    { id: "punch", name: "Punch", file: "punch.mp3", duration: 1.53 },
+    { id: "fart", name: "Reverb Fart", file: "reverb-fart.mp3", duration: 1.00 },
+    { id: "tuturu", name: "Tuturu", file: "tuturu.mp3", duration: 0.95 },
+    { id: "boom", name: "Vine Boom", file: "vine-boom.mp3", duration: 1.02 },
+    { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", kind: "primary", duration: 1.90 },
+    { id: "rush-p90", name: "Rush P90", file: "primary/rush-p90.mp3", kind: "primary", duration: 0.98 },
+    { id: "rapid-p90", name: "Rapid P90", file: "primary/rapid-p90.mp3", kind: "primary", duration: 1.15 },
+    { id: "blast-rocket", name: "Blast Rocket", file: "primary/blast-rocket.mp3", kind: "primary", duration: 1.90 },
+    { id: "quake-rocket", name: "Quake Rocket", file: "primary/quake-rocket.mp3", kind: "primary", duration: 1.90 },
+    { id: "dragonfire-operator", name: "Dragonfire Operator", file: "primary/dragonfire-operator.mp3", kind: "primary", duration: 1.30 },
+    { id: "fallen-operator", name: "Fallen Operator", file: "primary/fallen-operator.mp3", kind: "primary", duration: 1.16 },
+    { id: "ion-pulse-operator", name: "Ion Pulse Operator", file: "primary/ion-pulse-operator.mp3", kind: "primary", duration: 1.17 },
+    { id: "orbital-operator", name: "Orbital Operator", file: "primary/orbital-operator.mp3", kind: "primary", duration: 1.29 },
+    { id: "soulshot-operator", name: "Soulshot Operator", file: "primary/soulshot-operator.mp3", kind: "primary", duration: 1.18 },
+    { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", kind: "secondary", duration: 1.90 },
+    { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", kind: "secondary", duration: 1.35 },
+    { id: "usp-s", name: "USP-S", file: "secondary/usp-s.mp3", kind: "secondary", duration: 1.53 },
+    { id: "five-seven", name: "Five-SeveN", file: "secondary/five-seven.mp3", kind: "secondary", duration: 1.60 },
+    { id: "r8-revolver", name: "R8 Revolver", file: "secondary/r8-revolver.mp3", kind: "secondary", duration: 3.50 },
+    { id: "p250", name: "P250", file: "secondary/p250.mp3", kind: "secondary", duration: 1.84 },
+    { id: "tec-9", name: "Tec-9", file: "secondary/tec-9.mp3", kind: "secondary", duration: 2.53 },
+    { id: "cz75-auto", name: "CZ75-Auto", file: "secondary/cz75-auto.mp3", kind: "secondary", duration: 1.70 },
+    { id: "dual-berettas", name: "Dual Berettas", file: "secondary/dual-berettas.mp3", kind: "secondary", duration: 3.38 },
+    { id: "p2000", name: "P2000", file: "secondary/p2000.mp3", kind: "secondary", duration: 2.19 },
+    { id: "swift-slash", name: "Swift Slash", file: "melee/swift-slash.mp3", kind: "melee", duration: 0.17 },
+    { id: "heavy-slash", name: "Heavy Slash", file: "melee/heavy-slash.mp3", kind: "melee", duration: 0.16 },
+    { id: "blade-flick", name: "Blade Flick", file: "melee/blade-flick.mp3", kind: "melee", duration: 0.36 },
+    { id: "machete-sweep", name: "Machete Sweep", file: "melee/machete-sweep.mp3", kind: "melee", duration: 0.57 },
+    { id: "saber-arc", name: "Saber Arc", file: "melee/saber-arc.mp3", kind: "melee", duration: 0.52 },
+    { id: "claymore-swing", name: "Claymore Swing", file: "melee/claymore-swing.mp3", kind: "melee", duration: 0.39 },
+    { id: "pickaxe-swing", name: "Pickaxe Swing", file: "melee/pickaxe-swing.mp3", kind: "melee", duration: 0.50 },
+    { id: "shovel-swing", name: "Shovel Swing", file: "melee/shovel-swing.mp3", kind: "melee", duration: 0.62 },
+    { id: "wrench-swing", name: "Wrench Swing", file: "melee/wrench-swing.mp3", kind: "melee", duration: 0.62 },
+    { id: "boxing-glove", name: "Boxing Glove", file: "melee/boxing-glove.mp3", kind: "melee", duration: 0.52 },
+    { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", kind: "reload", duration: 1.45 },
+    { id: "tactical-swap", name: "Tactical Swap", file: "reload/tactical-swap.mp3", kind: "reload", duration: 1.58 },
+    { id: "rifle-reset", name: "Rifle Reset", file: "reload/rifle-reset.mp3", kind: "reload", duration: 1.56 },
+    { id: "pump-action", name: "Pump Action", file: "reload/pump-action.mp3", kind: "reload", duration: 0.47 },
+    { id: "sidearm-snap", name: "Sidearm Snap", file: "reload/sidearm-snap.mp3", kind: "reload", duration: 1.59 },
+    { id: "pistol-click", name: "Pistol Click", file: "empty/pistol-click.mp3", kind: "empty", duration: 0.26 },
+    { id: "rifle-click", name: "Rifle Click", file: "empty/rifle-click.mp3", kind: "empty", duration: 0.26 },
+    { id: "shotgun-click", name: "Shotgun Click", file: "empty/shotgun-click.mp3", kind: "empty", duration: 0.12 },
+    { id: "trigger-tap", name: "Trigger Tap", file: "empty/trigger-tap.mp3", kind: "empty", duration: 0.14 },
+    { id: "low-ammo-tick", name: "Low Ammo Tick", file: "empty/low-ammo-tick.mp3", kind: "empty", duration: 0.52 },
+    { id: "railgun-dry", name: "Railgun Dry Fire", file: "empty/railgun-dry.mp3", kind: "empty", duration: 0.13 },
+    { id: "marksman-dry", name: "Marksman Dry Fire", file: "empty/marksman-dry.mp3", kind: "empty", duration: 0.16 },
+    { id: "minigun-spin", name: "Minigun Whir", file: "empty/minigun-spin.mp3", kind: "empty", duration: 0.60 },
+    { id: "gatling-click", name: "Gatling Click", file: "empty/gatling-click.mp3", kind: "empty", duration: 0.60 },
     { id: "hammer-click", name: "Hammer Click", game: "hammer_click", kind: "empty" },   // the game's own, no download
   ];
 
@@ -680,6 +680,9 @@
     background: var(--ssg-bg); color: var(--ssg-fg); box-shadow: .15em .15em .4em rgb(0 0 0 / .6);
     scrollbar-width: thin; scrollbar-color: var(--ssg-accent) transparent; }
   #${CELL} option { font-size: inherit; padding-block: .15em; line-height: 1.25; font-weight: 400; }
+  #${CELL} optgroup { color: var(--ssg-fg); }
+  #${CELL} optgroup + optgroup { border-block-start: 1px solid var(--ssg-accent); margin-block-start: .3em; padding-block-start: .3em; }
+  #${CELL} selectedcontent .ssg-dur { display: none; }
   #${CELL} option:hover { background: none; }
   #${CELL} option:focus { background: var(--ssg-accent); color: var(--ssg-bg); outline: none; }
   #${CELL} option::checkmark { color: var(--ssg-accent); }
@@ -687,8 +690,14 @@
   #${CELL} hr { inline-size: auto; margin: .3em .5em; border: 0; border-block-start: 1px solid var(--ssg-accent); opacity: .45; }
 }`;
 
-  const GROUP = { primary: "Primary sounds", secondary: "Secondary sounds", melee: "Melee sounds",
-    reload: "One-clip reloads", empty: "No ammo sounds" };
+  const GROUP = { primary: "Primary Sounds", secondary: "Secondary Sounds", melee: "Melee Sounds",
+    reload: "One-Clip Reloads", empty: "No Ammo Sounds" };
+  // A built-in clip's length shows beside its name in the open list, and not in the closed box.
+  function soundOption(x) {
+    const o = new Option(x.name, x.id);
+    if (x.duration) o.append(el("span", "ssg-dur", ` (${x.duration.toFixed(2)}s)`));
+    return o;
+  }
   const TIPS = {
     primary: "Plays for every primary weapon.",
     secondary: "Plays for the pistol.",
@@ -722,10 +731,10 @@
         const g = el("optgroup"); g.label = label; g.append(...options); select.append(g);
       };
       select.append(face);
-      group("Default sounds", [new Option("Game sound", DEFAULT), ...SOUNDS.filter(x => !x.kind).map(x => new Option(x.name, x.id))]);
-      if (s.kind === "reload") group("Reload kits", [new Option("Matched to your gun", PER_GUN), ...KITS.map(k => new Option(k.name, k.id))]);
-      group(GROUP[s.kind], SOUNDS.filter(x => x.kind === s.kind).map(x => new Option(x.name, x.id)));
-      group("Custom sounds", [new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK)]);
+      group("Default Sounds", [new Option("Game sound", DEFAULT), ...SOUNDS.filter(x => !x.kind).map(soundOption)]);
+      if (s.kind === "reload") group("Reload Kits", [new Option("Matched to your gun", PER_GUN), ...KITS.map(k => new Option(k.name, k.id))]);
+      group(GROUP[s.kind], SOUNDS.filter(x => x.kind === s.kind).map(soundOption));
+      group("Custom Sounds", [new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK)]);
       select.title = TIPS[s.id] + " Your own file: MP3, OGG or WAV, up to 4 MB.";
       const test = el("button", "ss_button btn_blue bevel_blue btn_sm", "Test");
       test.type = "button";

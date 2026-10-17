@@ -48,7 +48,7 @@ Pick a sound for each of six lists. Shot choices play for **every weapon in that
 | **One-clip reloads — 5** | Steel Reset, Tactical Swap, Rifle Reset, Pump Action, Sidearm Snap |
 | **No ammo — 10** | Pistol Click, Rifle Click, Shotgun Click, Trigger Tap, Low Ammo Tick, Railgun Dry Fire, Marksman Dry Fire, Minigun Whir, Gatling Click, Hammer Click |
 
-Both reload lists have the kits and the one-clip reloads. The original **AWP**, **Punch**, **Reverb Fart**, **Tuturu** and **Vine Boom** are in every list. **Game sound** keeps the game's own audio, and **My MP3** plays your own file.
+Both reload lists have the kits and the one-clip reloads. Each built-in clip shows its length in the open list, for example **USP-S (1.53s)**. The original **AWP**, **Punch**, **Reverb Fart**, **Tuturu** and **Vine Boom** are in every list. **Game sound** keeps the game's own audio, and **My MP3** plays your own file.
 
 #### How reloads keep time
 A gun's reload plays a few sounds in the game: the magazine coming out, the second touch when the new one goes in, and on an empty reload the bolt or slide. A **reload kit** has one sound for each of those, and plays it the moment the game plays its own, so it lines up with every gun's reload speed:
@@ -94,6 +94,16 @@ The audio URLs use a fixed Git commit, so an existing script version always gets
 - The settings are smaller: six lists in two rows of three.
 - Four CC0 one-clip reloads: **Tactical Swap**, **Rifle Reset**, **Pump Action** and **Sidearm Snap**. Credits are in [sounds/SOURCES.md](./sounds/SOURCES.md).
 - A backup audio host when GitHub downloads fail or time out. Damaged cached audio is downloaded again, and download errors say what failed.
+
+### 1.1.3 — 2026-10-18
+- Show the measured MP3 duration beside every built-in sound in the dropdowns.
+
+### 1.1.2 — 2026-10-18
+- Added visible **Default Sounds**, slot-specific **Sounds**, and **Custom Sounds** headings inside each dropdown.
+- Preserved saved selections and theme colors with grouped options.
+
+### 1.1.1 — 2026-10-18
+- Added **USP-S**, a single silenced shot, to **Secondary**.
 
 ### 1.1.0 — 2026-10-17
 - Added 14 weapon clips, organized by selection:

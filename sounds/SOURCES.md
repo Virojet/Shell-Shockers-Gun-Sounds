@@ -77,6 +77,10 @@ Files, pinned source revisions, download URLs, Git blob hashes and SHA-256 hashe
 
 Five-SeveN and R8 include partial/empty single-clip reload choices and automatic event components. The revolver insertion component combines loading and cylinder closure with a 0.35 s gap. Audio uses the same pinned CS:GO and TF2 source revisions listed above, with limiter and 48 kHz stereo MP3 conversion. Exact download URLs, Git blob hashes and generated-file hashes are in [category-expansion-sources.json](category-expansion-sources.json).
 
+## USP-S
+
+**USP-S** in Secondary is one silenced Counter-Strike: Global Offensive shot (Valve), from [usp_01.wav](https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/usp/usp_01.wav). Leading/trailing near-silence trimmed, peak adjusted with a short ending fade, exported as 48 kHz stereo, 320 kbps MP3 under two seconds.
+
 ## Ten choices per list
 
 | List | Added choices | Source recordings |

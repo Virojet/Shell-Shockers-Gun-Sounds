@@ -178,7 +178,7 @@
     },
     {
       "path": "sounds/secondary/usp-s.mp3",
-      "sha256": "9c04521e23d1511cfc15a827e60351ee9fb6056251256ab163f157e727c43019",
+      "sha256": "1c549e1ed42e611704f73656ec4cdd6c34d27e13103b49c2f76cd203aff372fe",
       "kind": "shot",
       "gun": "USP-S",
       "source_files": [
