@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.0.3
-// @description  Replace your weapon sounds in Shell Shockers: pick a meme sound (AWP, Punch, Reverb Fart, Tuturu, Vine Boom) or your own MP3 for your primary, secondary and melee weapons.
+// @version      1.1.0
+// @description  Pick weapon, meme or custom sounds for primary shots, secondary shots, melee swings and reloads in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
 // @license      MIT
@@ -68,28 +68,27 @@
 // @run-at       document-start
 // ==/UserScript==
 
-/* Gun Sounds: swap the sound of your own weapons for a meme sound or your own MP3.
-   Primary, secondary and melee each get their own pick. The sound replaces every weapon in that slot (every gun and
-   every skin of it, every melee weapon), so one choice covers the lot.
+/* Gun Sounds: swap your weapon and reload sounds for a built-in sound or your own MP3.
+   Primary, secondary, melee and reload each get their own pick. Each choice covers every weapon and skin in that slot.
 
    How it works: the game plays every sound through BAWK.play(name, output). The script wraps that call. When the name
-   is a gun's fire sound or a melee swing, and it's your own (the game plays your own sounds to its main output, other
-   players' through a positional one), the script plays your pick instead and the game's sound is skipped. Every other
+   is a weapon action, and it's your own (identified by the shooter's player-node position), the script plays your pick
+   instead and the game's sound is skipped. Every other
    sound passes through untouched, and so does the game's code.
 
-   The sounds: five meme sounds, downloaded from this project on GitHub the first time one is picked and kept in this
+   Built-in sounds are downloaded from this project on GitHub the first time one is picked and kept in this
    site's storage, or one MP3 of your own per slot, kept there too. They go through the game's own sound output, so its
    Sound Effects volume turns them up and down with everything else.
 
-   Settings ▸ the speaker tab ▸ Gun Sounds has the three lists, a Test button for each, and a volume. As with the
+   Settings ▸ the speaker tab ▸ Gun Sounds has four lists, a Test button for each, and a volume. As with the
    game's settings around it, a change is kept when you press Confirm.
 
-   window.ssGunSounds: version, settings(), set({ primary, secondary, melee, volume, everyone }), slotOf(soundName). */
+   window.ssGunSounds: version, settings(), set({ primary, secondary, melee, reload, volume, everyone }), slotOf(soundName). */
 (() => {
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.0.3";
+  const VERSION = "1.1.0";
   const STORE = "ssGunSounds";
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3" },
@@ -97,22 +96,49 @@
     { id: "fart", name: "Reverb Fart", file: "reverb-fart.mp3" },
     { id: "tuturu", name: "Tuturu", file: "tuturu.mp3" },
     { id: "boom", name: "Vine Boom", file: "vine-boom.mp3" },
+    { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", slot: "primary" },
+    { id: "rush-p90", name: "Rush P90", file: "primary/rush-p90.mp3", slot: "primary" },
+    { id: "rapid-p90", name: "Rapid P90", file: "primary/rapid-p90.mp3", slot: "primary" },
+    { id: "blast-rocket", name: "Blast Rocket", file: "primary/blast-rocket.mp3", slot: "primary" },
+    { id: "quake-rocket", name: "Quake Rocket", file: "primary/quake-rocket.mp3", slot: "primary" },
+    { id: "dragonfire-operator", name: "Dragonfire Operator", file: "primary/dragonfire-operator.mp3", slot: "primary" },
+    { id: "fallen-operator", name: "Fallen Operator", file: "primary/fallen-operator.mp3", slot: "primary" },
+    { id: "ion-pulse-operator", name: "Ion Pulse Operator", file: "primary/ion-pulse-operator.mp3", slot: "primary" },
+    { id: "orbital-operator", name: "Orbital Operator", file: "primary/orbital-operator.mp3", slot: "primary" },
+    { id: "soulshot-operator", name: "Soulshot Operator", file: "primary/soulshot-operator.mp3", slot: "primary" },
+    { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", slot: "secondary" },
+    { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", slot: "secondary" },
+    { id: "swift-slash", name: "Swift Slash", file: "melee/swift-slash.mp3", slot: "melee" },
+    { id: "heavy-slash", name: "Heavy Slash", file: "melee/heavy-slash.mp3", slot: "melee" },
+    { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", slot: "reload" },
   ];
   const DEFAULT = "default", CUSTOM = "custom", PICK = "pick";
   const SLOTS = [
     { id: "primary", name: "Primary" },
     { id: "secondary", name: "Secondary" },
     { id: "melee", name: "Melee" },
+    { id: "reload", name: "Reload" },
   ];
-  const DEFAULTS = Object.freeze({ primary: DEFAULT, secondary: DEFAULT, melee: DEFAULT, volume: 0.8, everyone: false });
+  const DEFAULTS = Object.freeze({ primary: DEFAULT, secondary: DEFAULT, melee: DEFAULT, reload: DEFAULT, volume: 0.8, everyone: false });
   const warn = (...a) => console.warn("[Gun Sounds]", ...a);
 
   /* ---- Which sounds are which weapon ----
      The game names them gun_<weapon>_fire (and gun_<weapon>_<skin>_fire), and melee_<weapon>. Secondary weapons are
      listed; any gun not listed counts as a primary, so a weapon added later is still covered. */
   const SECONDARY = new Set(["cluck9mm"]);
+  // These are the game's reload animation events, not rocket flight/impact or the ks_reload UI cue.
+  const RELOAD_START = new Set([
+    "gun_eggk47_remove_mag", "gun_cluck9mm_remove_mag", "gun_aug_remove_mag",
+    "gun_csg1_pull_action", "gun_dozenGauge_open", "gun_m24_bolt_open", "gun_rpegg_load",
+  ]);
+  const RELOAD_PARTS = new Set([
+    ...RELOAD_START, "gun_eggk47_insert_mag", "gun_eggk47_full_cycle", "gun_cluck9mm_insert_mag",
+    "gun_aug_insert_mag", "gun_aug_cycle", "gun_csg1_release_action", "gun_dozenGauge_load",
+    "gun_dozenGauge_close", "gun_m24_bolt_close", "gun_smg_cycle",
+  ]);
   function slotOf(name) {
     if (typeof name !== "string") return null;
+    if (RELOAD_PARTS.has(name)) return "reload";
     if (name.startsWith("melee_")) return "melee";
     const m = /^gun_([^_]+)_(?:.*_)?fire/.exec(name);
     if (!m || name.includes("dry_fire")) return null;
@@ -120,11 +146,12 @@
   }
 
   /* ---- Saved settings ---- */
-  const isSound = s => s === DEFAULT || s === CUSTOM || SOUNDS.some(x => x.id === s);
+  const soundsFor = slot => SOUNDS.filter(x => !x.slot || x.slot === slot);
+  const isSound = (s, slot) => s === DEFAULT || s === CUSTOM || SOUNDS.some(x => x.id === s && (!x.slot || x.slot === slot));
   function clean(s) {
-    const ok = !!s && typeof s === "object", pick = k => ok && isSound(s[k]) ? s[k] : DEFAULTS[k];
+    const ok = !!s && typeof s === "object", pick = k => ok && isSound(s[k], k) ? s[k] : DEFAULTS[k];
     return {
-      primary: pick("primary"), secondary: pick("secondary"), melee: pick("melee"),
+      primary: pick("primary"), secondary: pick("secondary"), melee: pick("melee"), reload: pick("reload"),
       volume: ok && Number.isFinite(s.volume) ? Math.min(1, Math.max(0, s.volume)) : DEFAULTS.volume,
       everyone: ok && s.everyone === true,
     };
@@ -137,10 +164,10 @@
     if (running) getReady();
   }
 
-  /* ---- The meme sounds, from GitHub ----
+  /* ---- Built-in sounds, from GitHub ----
      They come from the commit that added them, so the files this version uses never change under it. A sound is
      downloaded the first time it's needed, then kept in this site's Cache Storage. */
-  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/09c20364ed7d828783adea90a4bc80071f2d7765/sounds";
+  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/a1d983c28a848e709a3d76bad112b0bb44d67f4f/sounds";
   const KEEP = "ss-gun-sounds";
   let kept = null;
   function keep() {
@@ -307,13 +334,16 @@
     }
     return null;
   }
-  function mine(B, to) {
-    if (!to || to === B.inputNode || to === B.gainNode) return true;
-    let pos = null;
+  function soundPosition(B, to) {
     for (const child of B.children || []) {
       const ch = child && child.channels && child.channels.find(c => c && c.node === to);
-      if (ch) { pos = ch.position; break; }
+      if (ch) return ch.position;
     }
+    return null;
+  }
+  function mine(B, to) {
+    if (!to || to === B.inputNode || to === B.gainNode) return true;
+    const pos = soundPosition(B, to);
     const s = findScene();
     if (!pos || !s) return true;   // can't tell: better your sound than none
     const cam = s.cameras.find(c => c && c.name === "camera") || s.activeCamera;
@@ -329,6 +359,38 @@
   }
   let me = null;
 
+  // All stages from one player's reload use the same position object, even when BAWK allocates different channels.
+  // Replace its first audio event once, then return silent sources for the other stages. BAWK still receives a real
+  // source and its ended event to release each channel. A not-yet-loaded pick leaves that whole reload native.
+  let reloads = new WeakMap(), silent = null;
+  const reloadKey = (B, to) => soundPosition(B, to) || to || B;
+  function endReload(B, to) {
+    const key = reloadKey(B, to), state = reloads.get(key);
+    if (state && state.source) { try { state.source.stop(); } catch { /* already ended */ } }
+    reloads.delete(key);
+  }
+  function playReload(B, name, to, own, sound) {
+    const key = reloadKey(B, to), now = performance.now();
+    let state = reloads.get(key);
+    if (state && now - state.at > 8000) { reloads.delete(key); state = null; }
+    // Free Ranger's long reload pulls its action before playing the shared EggK-47 magazine-removal sound.
+    const nestedMag = state && !state.complete && state.first === "gun_csg1_pull_action" && name === "gun_eggk47_remove_mag";
+    if (RELOAD_START.has(name) && !nestedMag) {
+      endReload(B, to);
+      const buf = ready.get(keyOf(sound, "reload"));
+      const source = buf && play(buf, saved.volume, own ? null : to);
+      state = { at: now, first: name, source, replaced: !!source, complete: name === "gun_rpegg_load" };
+      reloads.set(key, state);
+      if (!buf) warm(sound, "reload");
+      return source || null;
+    }
+    if (!state || !state.replaced) return null;
+    if (name === "gun_csg1_release_action" || name === "gun_dozenGauge_close" || name === "gun_m24_bolt_close" ||
+        (state.first !== "gun_csg1_pull_action" && name.endsWith("_insert_mag"))) state.complete = true;
+    silent = silent || new AudioBuffer({ length: 1, numberOfChannels: 1, sampleRate: SR });
+    return play(silent, 1, own ? null : to);
+  }
+
   let hooked = null;   // { B, orig, wrap }
   function hook() {
     const B = window.BAWK, cur = B && B.play;
@@ -343,8 +405,14 @@
       if (state.live && running) {
         try {
           const slot = slotOf(name), sound = slot && saved[slot];
+          if (slot && slot !== "reload" && saved.reload !== DEFAULT) endReload(B, to);
           const own = sound && sound !== DEFAULT && mine(B, to);
           if (own || (sound && sound !== DEFAULT && saved.everyone)) {
+            if (slot === "reload") {
+              const src = playReload(B, name, to, own, sound);
+              if (src) return src;
+              return cur.apply(this, arguments);
+            }
             const buf = ready.get(keyOf(sound, slot));
             const src = buf && play(buf, saved.volume, own ? null : to);
             if (src) return src;
@@ -381,7 +449,7 @@
   const CSS = `
 #settingsPopup:has(#${CELL}) { max-height: 88vh; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 #${CELL} { min-width: 0; grid-column: 1 / -1; }
-#${CELL} .ssg-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--ss-space-md); }
+#${CELL} .ssg-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--ss-space-md); }
 #${CELL} .ssg-slots > div { min-width: 0; }
 #${CELL} .ssg-slots .ss_button { min-width: 0; padding-inline: .8em; }
 #${CELL} .ssg-bottom { margin-top: var(--ss-space-sm); }
@@ -438,9 +506,9 @@
       face.type = "button";
       face.append(el("selectedcontent"));
       // "Choose MP3 file…" isn't a setting: picking it opens the file picker, and the file then becomes "My MP3".
-      select.append(face, new Option("Game sound", DEFAULT), ...SOUNDS.map(x => new Option(x.name, x.id)), el("hr"),
+      select.append(face, new Option("Game sound", DEFAULT), ...soundsFor(s.id).map(x => new Option(x.name, x.id)), el("hr"),
         new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK));
-      select.title = `Plays for every ${s.name.toLowerCase()} weapon. Your own file: MP3, OGG or WAV, up to 4 MB.`;
+      select.title = (s.id === "reload" ? "Plays once per reload." : `Plays for every ${s.name.toLowerCase()} weapon.`) + " Your own file: MP3, OGG or WAV, up to 4 MB.";
       const test = el("button", "ss_button btn_blue bevel_blue btn_sm", "Test");
       test.type = "button";
       // The label line also names your file, or says what went wrong with it, so picking one adds no height.
@@ -662,6 +730,7 @@
     unhook();
     removeUI();
     quiet();
+    reloads = new WeakMap();
   }
 
   window.ssGunSounds = {
@@ -677,7 +746,7 @@
   // The Mod Menu (if it's installed) lists it with an on/off switch and a shortcut to these settings.
   (window.ssModMenuQueue = window.ssModMenuQueue || []).push({
     id: "gun-sounds", name: "Gun Sounds", version: VERSION, group: "mod",
-    description: "Replace your primary, secondary and melee weapon sounds with meme sounds or your own MP3.",
+    description: "Pick sounds for primary shots, secondary shots, melee swings and reloads.",
     enable: start, disable: stop, openSettings,
   });
 })();
