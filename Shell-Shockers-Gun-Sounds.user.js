@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.1.2
+// @version      1.1.3
 // @description  Pick weapon, meme or custom sounds for primary shots, secondary shots, melee swings and reloads in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -88,30 +88,30 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.1.2";
+  const VERSION = "1.1.3";
   const STORE = "ssGunSounds";
   const SOUNDS = [
-    { id: "awp", name: "AWP", file: "awp.mp3" },
-    { id: "punch", name: "Punch", file: "punch.mp3" },
-    { id: "fart", name: "Reverb Fart", file: "reverb-fart.mp3" },
-    { id: "tuturu", name: "Tuturu", file: "tuturu.mp3" },
-    { id: "boom", name: "Vine Boom", file: "vine-boom.mp3" },
-    { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", slot: "primary" },
-    { id: "rush-p90", name: "Rush P90", file: "primary/rush-p90.mp3", slot: "primary" },
-    { id: "rapid-p90", name: "Rapid P90", file: "primary/rapid-p90.mp3", slot: "primary" },
-    { id: "blast-rocket", name: "Blast Rocket", file: "primary/blast-rocket.mp3", slot: "primary" },
-    { id: "quake-rocket", name: "Quake Rocket", file: "primary/quake-rocket.mp3", slot: "primary" },
-    { id: "dragonfire-operator", name: "Dragonfire Operator", file: "primary/dragonfire-operator.mp3", slot: "primary" },
-    { id: "fallen-operator", name: "Fallen Operator", file: "primary/fallen-operator.mp3", slot: "primary" },
-    { id: "ion-pulse-operator", name: "Ion Pulse Operator", file: "primary/ion-pulse-operator.mp3", slot: "primary" },
-    { id: "orbital-operator", name: "Orbital Operator", file: "primary/orbital-operator.mp3", slot: "primary" },
-    { id: "soulshot-operator", name: "Soulshot Operator", file: "primary/soulshot-operator.mp3", slot: "primary" },
-    { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", slot: "secondary" },
-    { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", slot: "secondary" },
-    { id: "usp-s", name: "USP-S", file: "secondary/usp-s.mp3", slot: "secondary" },
-    { id: "swift-slash", name: "Swift Slash", file: "melee/swift-slash.mp3", slot: "melee" },
-    { id: "heavy-slash", name: "Heavy Slash", file: "melee/heavy-slash.mp3", slot: "melee" },
-    { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", slot: "reload" },
+    { id: "awp", name: "AWP", file: "awp.mp3", duration: 1.00 },
+    { id: "punch", name: "Punch", file: "punch.mp3", duration: 1.53 },
+    { id: "fart", name: "Reverb Fart", file: "reverb-fart.mp3", duration: 1.00 },
+    { id: "tuturu", name: "Tuturu", file: "tuturu.mp3", duration: 0.95 },
+    { id: "boom", name: "Vine Boom", file: "vine-boom.mp3", duration: 1.02 },
+    { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", slot: "primary", duration: 1.90 },
+    { id: "rush-p90", name: "Rush P90", file: "primary/rush-p90.mp3", slot: "primary", duration: 0.98 },
+    { id: "rapid-p90", name: "Rapid P90", file: "primary/rapid-p90.mp3", slot: "primary", duration: 1.15 },
+    { id: "blast-rocket", name: "Blast Rocket", file: "primary/blast-rocket.mp3", slot: "primary", duration: 1.90 },
+    { id: "quake-rocket", name: "Quake Rocket", file: "primary/quake-rocket.mp3", slot: "primary", duration: 1.90 },
+    { id: "dragonfire-operator", name: "Dragonfire Operator", file: "primary/dragonfire-operator.mp3", slot: "primary", duration: 1.30 },
+    { id: "fallen-operator", name: "Fallen Operator", file: "primary/fallen-operator.mp3", slot: "primary", duration: 1.16 },
+    { id: "ion-pulse-operator", name: "Ion Pulse Operator", file: "primary/ion-pulse-operator.mp3", slot: "primary", duration: 1.17 },
+    { id: "orbital-operator", name: "Orbital Operator", file: "primary/orbital-operator.mp3", slot: "primary", duration: 1.29 },
+    { id: "soulshot-operator", name: "Soulshot Operator", file: "primary/soulshot-operator.mp3", slot: "primary", duration: 1.18 },
+    { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", slot: "secondary", duration: 1.90 },
+    { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", slot: "secondary", duration: 1.35 },
+    { id: "usp-s", name: "USP-S", file: "secondary/usp-s.mp3", slot: "secondary", duration: 1.53 },
+    { id: "swift-slash", name: "Swift Slash", file: "melee/swift-slash.mp3", slot: "melee", duration: 0.17 },
+    { id: "heavy-slash", name: "Heavy Slash", file: "melee/heavy-slash.mp3", slot: "melee", duration: 0.16 },
+    { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", slot: "reload", duration: 1.45 },
   ];
   const DEFAULT = "default", CUSTOM = "custom", PICK = "pick";
   const SLOTS = [
@@ -514,8 +514,8 @@
       weapons.label = `${s.name} Sounds`;
       custom.label = "Custom Sounds";
       const available = soundsFor(s.id);
-      defaults.append(new Option("Game sound", DEFAULT), ...available.filter(x => !x.slot).map(x => new Option(x.name, x.id)));
-      weapons.append(...available.filter(x => x.slot === s.id).map(x => new Option(x.name, x.id)));
+      defaults.append(new Option("Game sound", DEFAULT), ...available.filter(x => !x.slot).map(x => new Option(`${x.name} (${x.duration.toFixed(2)}s)`, x.id)));
+      weapons.append(...available.filter(x => x.slot === s.id).map(x => new Option(`${x.name} (${x.duration.toFixed(2)}s)`, x.id)));
       custom.append(new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK));
       select.append(face, defaults, weapons, custom);
       select.title = (s.id === "reload" ? "Plays once per reload." : `Plays for every ${s.name.toLowerCase()} weapon.`) + " Your own file: MP3, OGG or WAV, up to 4 MB.";
