@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.1.1
+// @version      1.2.0
 // @description  Pick weapon, meme or custom sounds for primary shots, secondary shots, melee swings and reloads in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -88,7 +88,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.1.1";
+  const VERSION = "1.2.0";
   const STORE = "ssGunSounds";
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3" },
@@ -111,6 +111,10 @@
     { id: "swift-slash", name: "Swift Slash", file: "melee/swift-slash.mp3", slot: "melee" },
     { id: "heavy-slash", name: "Heavy Slash", file: "melee/heavy-slash.mp3", slot: "melee" },
     { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", slot: "reload" },
+    { id: "tactical-swap", name: "Tactical Swap", file: "reload/tactical-swap.mp3", slot: "reload" },
+    { id: "rifle-reset", name: "Rifle Reset", file: "reload/rifle-reset.mp3", slot: "reload" },
+    { id: "pump-action", name: "Pump Action", file: "reload/pump-action.mp3", slot: "reload" },
+    { id: "sidearm-snap", name: "Sidearm Snap", file: "reload/sidearm-snap.mp3", slot: "reload" },
   ];
   const DEFAULT = "default", CUSTOM = "custom", PICK = "pick";
   const SLOTS = [
@@ -167,7 +171,7 @@
   /* ---- Built-in sounds, from GitHub ----
      They come from the commit that added them, so the files this version uses never change under it. A sound is
      downloaded the first time it's needed, then kept in this site's Cache Storage. */
-  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/a1d983c28a848e709a3d76bad112b0bb44d67f4f/sounds";
+  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/f4144aa0f0bfb289df54488e1c308ba8ca05cc49/sounds";
   // Same immutable files, via a second host if GitHub is temporarily unavailable or blocked.
   const MIRROR = FILES.replace("https://raw.githubusercontent.com/", "https://cdn.jsdelivr.net/gh/")
     .replace(/\/([a-f0-9]{40})\//, "@$1/");

@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.1.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.2.0-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -42,7 +42,7 @@ Pick a sound for each weapon slot. It plays for **every weapon in that slot**, w
 | **Primary** | **Thunder AWP**, **Rush P90**, **Rapid P90**, **Blast Rocket**, **Quake Rocket**, **Dragonfire Operator**, **Fallen Operator**, **Ion Pulse Operator**, **Orbital Operator**, **Soulshot Operator** |
 | **Secondary** | **Hand Cannon** (Desert Eagle), **Quickdraw** (Glock) |
 | **Melee** | **Swift Slash**, **Heavy Slash** |
-| **Reload** | **Steel Reset** |
+| **Reload** | **Steel Reset**, **Tactical Swap**, **Rifle Reset**, **Pump Action**, **Sidearm Snap** |
 
 The original **AWP**, **Punch**, **Reverb Fart**, **Tuturu** and **Vine Boom** choices remain available in every list. Choose **Game sound** to keep that selection's original audio, or **My MP3** to use your own file.
 
@@ -67,7 +67,8 @@ The audio URLs use a fixed Git commit, so an existing script version always gets
 
 ## Changelog
 
-### 1.1.1 — 2026-10-17
+### 1.2.0 — Unreleased
+- Added four CC0 reload choices: **Tactical Swap** (magazine reload), **Rifle Reset** (assault rifle), **Pump Action** (short shotgun pump) and **Sidearm Snap** (handgun magazine and slide). Source credits are in [sounds/SOURCES.md](./sounds/SOURCES.md).
 - Added a backup audio host when GitHub downloads fail or time out, including Heavy Slash.
 - Damaged cached audio is discarded and downloaded again. Only successfully decoded clips are cached.
 - Download error tooltips include the failure details, and a successful Test clears the error.
