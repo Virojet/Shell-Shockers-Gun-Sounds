@@ -1,0 +1,222 @@
+{
+  "description": "Secondary, melee, reload-kit and no-ammo additions bringing every category to at least ten choices. Valve CS:GO and TF2 audio from pinned sourcesounds mirrors; original ownership retained. Converted to 48 kHz stereo 192 kbps MP3 with a limiter.",
+  "assets": [
+    {
+      "path": "sounds/secondary/p250.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/p250/p250_01.wav",
+      "source_sha256": "db7cd36d9a095a7b79bbf58aee6c8efd13889e9128174343c165442b4949afe6",
+      "sha256": "3cb7b6a4bc834f15d8f219ad2a87742e1808905b07f9253d3f0ebc9ddc1ef170",
+      "duration_seconds": 1.842563
+    },
+    {
+      "path": "sounds/secondary/tec-9.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/tec9/tec9_02.wav",
+      "source_sha256": "ff36f292cd3de414ed4457a35d47ba235a842efa0ae415b6f910a5a58f1f6b98",
+      "sha256": "f43f1d8fbc963e69179db48c959f8ea49be3d5da0624b747315c70bdbe5212fa",
+      "duration_seconds": 2.532729
+    },
+    {
+      "path": "sounds/secondary/cz75-auto.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/cz75a/cz75_01.wav",
+      "source_sha256": "b7d56f620291bd16b78a8f3a5a15e7d92890ec77c6cf8d8af74a20bd3acd0b93",
+      "sha256": "ea5a4cbf59f7be2787b7b45c8bd00a12e1182f2435e271fb50a8cf3806b63550",
+      "duration_seconds": 1.704979
+    },
+    {
+      "path": "sounds/secondary/dual-berettas.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/elite/elites_01.wav",
+      "source_sha256": "9ed90541f2292c8b5c7b731bff12049c6970abfab4d126aa366ab1449216cd03",
+      "sha256": "6522520dc118a10abc0910e3c96829e28506cea3ec9a17bd57f9ada09adb4928",
+      "duration_seconds": 3.375021
+    },
+    {
+      "path": "sounds/secondary/p2000.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/hkp2000/hkp2000_01.wav",
+      "source_sha256": "2a254077486ed05b22af618146e690787a24f1dce554ae2964bb83771183ff00",
+      "sha256": "f870e3bf3428ed9c4ccf0623044c41be2866308de694d151a8ac2f816c0f5040",
+      "duration_seconds": 2.187521
+    },
+    {
+      "path": "sounds/reload/stages/p250-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/p250/p250_clipout.wav",
+      "source_sha256": "48c726473846c4daefff3cd7dbe90979dcfeacb5d72b73c278d39ac6ad03a5fc",
+      "sha256": "1eb72ba7613b72974e9faa74ff2549abff0474b7ab97c1a3e9b0bf0f36b890f1",
+      "duration_seconds": 0.435375
+    },
+    {
+      "path": "sounds/reload/stages/p250-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/p250/p250_clipin.wav",
+      "source_sha256": "3e93980d70b2502736b11fcc9e2b287441fe4524032b2c29e7eacd18b66496d0",
+      "sha256": "dc3ca0dcb392472b944117de675e12cba345a6d3420c9b29c4ea8145ae595f3b",
+      "duration_seconds": 0.301729
+    },
+    {
+      "path": "sounds/reload/stages/p250-sliderelease.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/p250/p250_sliderelease.wav",
+      "source_sha256": "74b5521ee3193ea5ec2f948e2ae260f922563240f0bd4641dd45e2deb65f4c4c",
+      "sha256": "f069f350287d1cec6e39c61035a468d433128a96f9ff9b756a2a7c8d920978f3",
+      "duration_seconds": 0.150375
+    },
+    {
+      "path": "sounds/reload/stages/tec9-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/tec9/tec9_clipout.wav",
+      "source_sha256": "6b0bd6f2aaba314ea08773fbe0b0bb62f4d780554e718a07688525c4ac4497e2",
+      "sha256": "1fb459c15e843af5eae9534a5562912dc9f8a02b3977e1e8ef751412bfb6f245",
+      "duration_seconds": 0.34375
+    },
+    {
+      "path": "sounds/reload/stages/tec9-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/tec9/tec9_clipin.wav",
+      "source_sha256": "ab69dc1be62e47923ff90ef93d10a43e4a22eda547bb67663455c2827598c1c4",
+      "sha256": "53edca98fa4ceef9b8634583f7dc2012379eb4b0ae6e2e6b1f284912ea16ad26",
+      "duration_seconds": 0.375021
+    },
+    {
+      "path": "sounds/reload/stages/tec9-boltrelease.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/tec9/tec9_boltrelease.wav",
+      "source_sha256": "7f76697f750fe8a848358513f70759eb8db4f5bff99d4401ce7697ab743f622d",
+      "sha256": "58e1f371202150b2b4e57b802191b5273e446daa8c14218fe18150c6f462c1be",
+      "duration_seconds": 0.5
+    },
+    {
+      "path": "sounds/reload/stages/p2000-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/hkp2000/hkp2000_clipout.wav",
+      "source_sha256": "634bcd4629f6f2d0969e1859472043c5ec5812fd7a3ca87a600f6b2733a5d65f",
+      "sha256": "e2b11705b1af43a77071680c6d3798e4ba4b6b6b7ab236be4dd6d03ff47052ff",
+      "duration_seconds": 0.25725
+    },
+    {
+      "path": "sounds/reload/stages/p2000-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/hkp2000/hkp2000_clipin.wav",
+      "source_sha256": "3f2db1c867d9a3dcbb7ab7d5984002e01a3c6a20ed52676a13513e9858e97d04",
+      "sha256": "c534fc4ef22494f6a0d68c8e671e70c86a138da7dd20a8956e3616b71d1f04c4",
+      "duration_seconds": 0.259771
+    },
+    {
+      "path": "sounds/reload/stages/p2000-sliderelease.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/hkp2000/hkp2000_sliderelease.wav",
+      "source_sha256": "78fcd53de9cb37818777570261926a7045cf9f7b22b0b61dfa2656b15db42956",
+      "sha256": "14bd7df5326117980be33e64ab29fe2e1fd4fce168f7101234887395263e81f5",
+      "duration_seconds": 0.155104
+    },
+    {
+      "path": "sounds/reload/stages/elite-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/elite/elite_clipout.wav",
+      "source_sha256": "0eedfb99b333875c8a8034d76d0b18d28139412f7b088870a3ccecef351ff3af",
+      "sha256": "27894b2eb20eb1d16a9f9f4682e610a8d92b42ea313fa3de5ed5169510cd0b34",
+      "duration_seconds": 0.546708
+    },
+    {
+      "path": "sounds/reload/stages/elite-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/elite/elite_leftclipin.wav",
+      "source_sha256": "e242d5130bac59e69a80a39af19bc906ed9e6e69d1c6594cfe935ded2d0c9ef6",
+      "sha256": "08f2d5f406188c7b1813e567ec002d53d7698b105bc767c995ede0d4c35f03d4",
+      "duration_seconds": 0.259125
+    },
+    {
+      "path": "sounds/reload/stages/elite-sliderelease.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/elite/elite_sliderelease.wav",
+      "source_sha256": "16191ae43f7337f3b9f4bbaef413eff86a0ccd595ba27ba240045eb8a8867178",
+      "sha256": "ce152b9db53d5788b487eb3234310ab9c6726d4e906771b498d4a466d8a76e3e",
+      "duration_seconds": 0.496333
+    },
+    {
+      "path": "sounds/melee/claymore-swing.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/demo_sword_swing1.wav",
+      "source_sha256": "cdadfcf0996cff55bf4b7ec75ff4d4da5acb3241f03e05d63be4d77e0a60c415",
+      "sha256": "24834ec4861a1f7922b60316cad7fd6cfa27ae18965b0cc006cf68fed37febae",
+      "duration_seconds": 0.389854
+    },
+    {
+      "path": "sounds/melee/pickaxe-swing.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/pickaxe_swing1.wav",
+      "source_sha256": "c857a2a865cc16c887fe0586f5672e14592856d51a4b8f4393bc1ddaacf2ea9f",
+      "sha256": "0c8764317d406971ff450371d2600cf4294c067c9604a4f99f7a40a486cc5be9",
+      "duration_seconds": 0.499188
+    },
+    {
+      "path": "sounds/melee/shovel-swing.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/shovel_swing.wav",
+      "source_sha256": "bdaf7a939dbe1d52c741d13eb29979d4e3e889c952e9b4b40d363f73e4c17a95",
+      "sha256": "13f1338af0893baaf6bbb77db24639b383724b085b2617f57b367dcc90448c4f",
+      "duration_seconds": 0.616063
+    },
+    {
+      "path": "sounds/melee/wrench-swing.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/wrench_swing.wav",
+      "source_sha256": "6293d296b2ccc9f38eaac785e33d36bfa91a5d12983c66fd166ff43bdf5397f4",
+      "sha256": "8c151c048fed81d26aff9295c0a8b3e0e2c6de6ee248d4e97e3407f305090819",
+      "duration_seconds": 0.616063
+    },
+    {
+      "path": "sounds/melee/boxing-glove.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/boxing_gloves_swing1.wav",
+      "source_sha256": "238f4306a90e714ff8652bf09d24cd55c7d235617b7552be8f792921320a9787",
+      "sha256": "9809e0684dc75ff04d907968fdb8470ee47be0f7b915e8bf41f3d3483fb1d52c",
+      "duration_seconds": 0.515271
+    },
+    {
+      "path": "sounds/empty/pistol-click.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/clipempty_pistol.wav",
+      "source_sha256": "4dc232228ec1a28956fb0e53203d16470e457bbda3266dce89cee02ebcae3768",
+      "sha256": "afc67b3f18818ea36d3f579c20152ce23f558b28b05173495fa9446b506aee68",
+      "duration_seconds": 0.256875
+    },
+    {
+      "path": "sounds/empty/rifle-click.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/clipempty_rifle.wav",
+      "source_sha256": "c265a1b30ac073153bf196a8546e7de5dcf7c8d8f2c055ec4f9f6963200a4d81",
+      "sha256": "c7e1e82f8b071470dc3a150d56fe233cb6bf1ac33d8727a7c68e112e4159d39f",
+      "duration_seconds": 0.256875
+    },
+    {
+      "path": "sounds/empty/shotgun-click.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/shotgun_empty.wav",
+      "source_sha256": "17b229056edeef1035d82bf2e6a80ee04f6f8e6bfb3d2e5066f5b182bde81c08",
+      "sha256": "fb9eaa6f9ec448e41e579fce5962b540a300b30e95e6b8a7e66939dccf25cf97",
+      "duration_seconds": 0.11575
+    },
+    {
+      "path": "sounds/empty/minigun-spin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/minigun_empty.wav",
+      "source_sha256": "3d1acb6883d2634cd972db489b7a683736d34e6087956ea98a086fa291e6705b",
+      "sha256": "37bf18e02911773b4e61fdaadc50af977493620b8dccfc4874ee7fe7c09ef844",
+      "duration_seconds": 0.602271
+    },
+    {
+      "path": "sounds/empty/gatling-click.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/gatling_empty.wav",
+      "source_sha256": "69f759e15f5a4a819ac262531e2ccc8feda375925a8d4844366ef8f360bbb3fa",
+      "sha256": "667ca15c9c0de90c037a416923293a7ec84ff6e28233bc589ce212e0434be0d4",
+      "duration_seconds": 0.602271
+    },
+    {
+      "path": "sounds/empty/low-ammo-tick.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/lowammo_01.wav",
+      "source_sha256": "be7421385f4c64e2570d2bafdb0a98ffaf6a803b655a27792b31909660eb7636",
+      "sha256": "8e8bdf9f241e64ad9efb2f2cec76758a8d790142764cf304b14b738ac8ca2ac7",
+      "duration_seconds": 0.516667
+    },
+    {
+      "path": "sounds/empty/trigger-tap.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/c4/c4_click.wav",
+      "source_sha256": "167a106f113ef10bf21454e258475d433035a208d5d10520c0158886513e0c79",
+      "sha256": "272192bf1855740214d3cb371b9c7fe4e0a3deda6fe4982f17d8fcb637e82dde",
+      "duration_seconds": 0.141646
+    },
+    {
+      "path": "sounds/empty/railgun-dry.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_railgun_dry_fire.wav",
+      "source_sha256": "1178e82c7f6ae69caef73dcb5c75410c32a898b98790f0a8cb96366cb297db98",
+      "sha256": "365ae888e6e29a8849d81c0c5af719dbf48a4430d555b647d99c8dbd62c3bec8",
+      "duration_seconds": 0.132667
+    },
+    {
+      "path": "sounds/empty/marksman-dry.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/widow_maker_dry_fire.wav",
+      "source_sha256": "d68b63a41600799824c61772a8bff3bf992478c41d0dfbd58bacba0e0225d19d",
+      "sha256": "faf6bb5974aea77aa1a39e5be9c5fc3e5b36d7b5fd0044f1f3bfab4701bd0a6a",
+      "duration_seconds": 0.157021
+    }
+  ]
+}

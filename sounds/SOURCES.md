@@ -61,7 +61,7 @@ Gun-specific single-clip previews and the component sounds for **Matched per gun
 | Cluck 9mm | Pistol Rack | CS:GO Glock magazine and slide |
 | Cluck 9mm with USP-S audio | USP-S | CS:GO USP magazine and slide |
 
-The P90's initial sound combines magazine release and removal with a 0.12 s gap. Single-clip choices are the reviewed partial/empty composites; automatic mode plays each component at its native game event. The reviewed timing notes were based on the [Shell Shockers Wiki weapon profiles](https://shellshockers.fandom.com/wiki/Weapon#Weapon_Profiles) and captured reload-event names. Automatic mode follows the events directly and does not change gameplay timing.
+The P90's initial sound combines magazine release and removal with a 0.12 s gap. Since 1.2.0 the script uses the component sounds in [reload/stages](reload/stages) as **reload kits**, each piece played on the game's own reload cue. The partial/empty composites in [reload/guns](reload/guns) are no longer offered in the lists. The reviewed timing notes were based on the [Shell Shockers Wiki weapon profiles](https://shellshockers.fandom.com/wiki/Weapon#Weapon_Profiles) and captured reload-event names. Automatic mode follows the events directly and does not change gameplay timing.
 
 Files, pinned source revisions, download URLs, Git blob hashes and SHA-256 hashes are listed in [gun-reload-sources.json](gun-reload-sources.json). Source mirrors: [CS:GO](https://github.com/sourcesounds/csgo/tree/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons) and [TF2](https://github.com/sourcesounds/tf/tree/420bf271208d79d952e693974e391892c254ad80/sound/weapons). Audio was converted to 48 kHz stereo MP3 with a limiter; final playback gain is normalized by the script.
 
@@ -76,5 +76,16 @@ Files, pinned source revisions, download URLs, Git blob hashes and SHA-256 hashe
 | Saber Arc | `batsaber_swing1.wav` | Valve TF2 |
 
 Five-SeveN and R8 include partial/empty single-clip reload choices and automatic event components. The revolver insertion component combines loading and cylinder closure with a 0.35 s gap. Audio uses the same pinned CS:GO and TF2 source revisions listed above, with limiter and 48 kHz stereo MP3 conversion. Exact download URLs, Git blob hashes and generated-file hashes are in [category-expansion-sources.json](category-expansion-sources.json).
+
+## Ten choices per list
+
+| List | Added choices | Source recordings |
+| --- | --- | --- |
+| Secondary | P250, Tec-9, CZ75-Auto, Dual Berettas, P2000 | CS:GO `p250_01`, `tec9_02`, `cz75_01`, `elites_01`, `hkp2000_01` |
+| Reload kits | P250, Tec-9, P2000, Dual Berettas | CS:GO magazine out, magazine in and slide/bolt release for each pistol (`elite_leftclipin` for the Dual Berettas' magazine in) |
+| Melee | Claymore Swing, Pickaxe Swing, Shovel Swing, Wrench Swing, Boxing Glove | TF2 `demo_sword_swing1`, `pickaxe_swing1`, `shovel_swing`, `wrench_swing`, `boxing_gloves_swing1` |
+| No ammo | Pistol Click, Rifle Click, Shotgun Click, Minigun Whir, Gatling Click, Low Ammo Tick, Trigger Tap, Railgun Dry Fire, Marksman Dry Fire | CS:GO `clipempty_pistol`, `clipempty_rifle`, `lowammo_01`, `c4/c4_click`; TF2 `shotgun_empty`, `minigun_empty`, `gatling_empty`, `sniper_railgun_dry_fire`, `widow_maker_dry_fire` |
+
+**Hammer Click**, the tenth no-ammo choice, is the game's own `hammer_click` sound and has no file here. Same pinned CS:GO and TF2 revisions as above, limiter, 48 kHz stereo 192 kbps MP3. Exact download URLs and SHA-256 hashes of the source and generated files are in [category-ten-sources.json](category-ten-sources.json).
 
 The MIT license in this repository covers the script code. The Valve/Riot game audio retains its original ownership; the four reload recordings above are CC0.

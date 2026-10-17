@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
 // @version      1.2.0
-// @description  Pick weapon, meme or custom sounds for primary shots, secondary shots, melee swings and reloads in Shell Shockers.
+// @description  Pick weapon, meme or custom sounds for shots, melee swings, reloads and the empty click in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
 // @license      MIT
@@ -69,8 +69,9 @@
 // ==/UserScript==
 
 /* Gun Sounds: swap your weapon and reload sounds for a built-in sound or your own MP3.
-   Primary, secondary, melee and reload each get their own pick. Shot choices cover every weapon and skin in that slot.
-   Reload can use one clip for all guns or match its sounds to each gun's actual reload stages.
+   Primary, secondary, melee, primary reload, secondary reload and no ammo each get their own pick. Shot choices cover
+   every weapon and skin in that slot. Reload kits play their pieces on the game's own reload cues, so they keep time
+   with every gun.
 
    How it works: the game plays every sound through BAWK.play(name, output). The script wraps that call. When the name
    is a weapon action, and it's your own (identified by the shooter's player-node position), the script plays your pick
@@ -81,161 +82,189 @@
    site's storage, or one MP3 of your own per slot, kept there too. They go through the game's own sound output, so its
    Sound Effects volume turns them up and down with everything else.
 
-   Settings ▸ the speaker tab ▸ Gun Sounds has four lists, a Test button for each, and a volume. As with the
+   Settings ▸ the speaker tab ▸ Gun Sounds has six lists, a Test button for each, and a volume. As with the
    game's settings around it, a change is kept when you press Confirm.
 
-   window.ssGunSounds: version, settings(), set({ primary, secondary, melee, reload, volume, everyone }), slotOf(soundName). */
+   window.ssGunSounds: version, settings(), set({ primary, secondary, melee, reload, sreload, empty, volume, everyone }),
+   slotOf(soundName). */
 (() => {
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
   const VERSION = "1.2.0";
   const STORE = "ssGunSounds";
+  // `kind` limits a sound to one kind of list; the meme sounds (no kind) are in every list.
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3" },
     { id: "punch", name: "Punch", file: "punch.mp3" },
     { id: "fart", name: "Reverb Fart", file: "reverb-fart.mp3" },
     { id: "tuturu", name: "Tuturu", file: "tuturu.mp3" },
     { id: "boom", name: "Vine Boom", file: "vine-boom.mp3" },
-    { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", slot: "primary" },
-    { id: "rush-p90", name: "Rush P90", file: "primary/rush-p90.mp3", slot: "primary" },
-    { id: "rapid-p90", name: "Rapid P90", file: "primary/rapid-p90.mp3", slot: "primary" },
-    { id: "blast-rocket", name: "Blast Rocket", file: "primary/blast-rocket.mp3", slot: "primary" },
-    { id: "quake-rocket", name: "Quake Rocket", file: "primary/quake-rocket.mp3", slot: "primary" },
-    { id: "dragonfire-operator", name: "Dragonfire Operator", file: "primary/dragonfire-operator.mp3", slot: "primary" },
-    { id: "fallen-operator", name: "Fallen Operator", file: "primary/fallen-operator.mp3", slot: "primary" },
-    { id: "ion-pulse-operator", name: "Ion Pulse Operator", file: "primary/ion-pulse-operator.mp3", slot: "primary" },
-    { id: "orbital-operator", name: "Orbital Operator", file: "primary/orbital-operator.mp3", slot: "primary" },
-    { id: "soulshot-operator", name: "Soulshot Operator", file: "primary/soulshot-operator.mp3", slot: "primary" },
-    { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", slot: "secondary" },
-    { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", slot: "secondary" },
-    { id: "swift-slash", name: "Swift Slash", file: "melee/swift-slash.mp3", slot: "melee" },
-    { id: "heavy-slash", name: "Heavy Slash", file: "melee/heavy-slash.mp3", slot: "melee" },
-    { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", slot: "reload" },
-    { id: "tactical-swap", name: "Tactical Swap", file: "reload/tactical-swap.mp3", slot: "reload" },
-    { id: "rifle-reset", name: "Rifle Reset", file: "reload/rifle-reset.mp3", slot: "reload" },
-    { id: "pump-action", name: "Pump Action", file: "reload/pump-action.mp3", slot: "reload" },
-    { id: "sidearm-snap", name: "Sidearm Snap", file: "reload/sidearm-snap.mp3", slot: "reload" },
-    {"id":"usp-s","name":"USP-S","file":"secondary/usp-s.mp3","slot":"secondary"},
-    {"id":"reload-eggk47-short","name":"EggK-47 — AK Magazine (Partial)","file":"reload/guns/eggk47-short.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-eggk47-long","name":"EggK-47 — AK Magazine (Empty)","file":"reload/guns/eggk47-long.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-scrambler-long","name":"Scrambler — Break & Load","file":"reload/guns/scrambler-long.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-free-ranger-short","name":"Free Ranger — Marksman Swap (Partial)","file":"reload/guns/free-ranger-short.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-free-ranger-long","name":"Free Ranger — Marksman Swap (Empty)","file":"reload/guns/free-ranger-long.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-rpegg-long","name":"RPEGG — Rocket Seat","file":"reload/guns/rpegg-long.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-whipper-short","name":"Whipper — P90 Lock (Partial)","file":"reload/guns/whipper-short.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-whipper-long","name":"Whipper — P90 Lock (Empty)","file":"reload/guns/whipper-long.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-crackshot-long","name":"Crackshot — Bolt Cycle","file":"reload/guns/crackshot-long.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-tri-hard-short","name":"Tri-Hard — AUG Reset (Partial)","file":"reload/guns/tri-hard-short.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-tri-hard-long","name":"Tri-Hard — AUG Reset (Empty)","file":"reload/guns/tri-hard-long.mp3","slot":"reload","group":"Primary reloads"},
-    {"id":"reload-cluck9mm-short","name":"Cluck 9mm — Pistol Rack (Partial)","file":"reload/guns/cluck9mm-short.mp3","slot":"reload","group":"Secondary reloads"},
-    {"id":"reload-cluck9mm-long","name":"Cluck 9mm — Pistol Rack (Empty)","file":"reload/guns/cluck9mm-long.mp3","slot":"reload","group":"Secondary reloads"},
-    {"id":"reload-usp-s-short","name":"USP-S — Suppressed Reload (Partial)","file":"reload/guns/usp-s-short.mp3","slot":"reload","group":"Secondary reloads"},
-    {"id":"reload-usp-s-long","name":"USP-S — Suppressed Reload (Empty)","file":"reload/guns/usp-s-long.mp3","slot":"reload","group":"Secondary reloads"},
-    {"id":"five-seven","name":"Five-SeveN","slot":"secondary","file":"secondary/five-seven.mp3"},
-    {"id":"r8-revolver","name":"R8 Revolver","slot":"secondary","file":"secondary/r8-revolver.mp3"},
-    {"id":"blade-flick","name":"Blade Flick","slot":"melee","file":"melee/blade-flick.mp3"},
-    {"id":"machete-sweep","name":"Machete Sweep","slot":"melee","file":"melee/machete-sweep.mp3"},
-    {"id":"saber-arc","name":"Saber Arc","slot":"melee","file":"melee/saber-arc.mp3"},
-    {"id":"reload-five-seven-short","name":"Five-SeveN — Magazine Reload (Partial)","slot":"reload","file":"reload/guns/five-seven-short.mp3","group":"Secondary reloads"},
-    {"id":"reload-five-seven-long","name":"Five-SeveN — Magazine Reload (Empty)","slot":"reload","file":"reload/guns/five-seven-long.mp3","group":"Secondary reloads"},
-    {"id":"reload-r8-revolver-short","name":"R8 Revolver — Cylinder Reload (Partial)","slot":"reload","file":"reload/guns/r8-revolver-short.mp3","group":"Secondary reloads"},
-    {"id":"reload-r8-revolver-long","name":"R8 Revolver — Cylinder Reload (Empty)","slot":"reload","file":"reload/guns/r8-revolver-long.mp3","group":"Secondary reloads"},
+    { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", kind: "primary" },
+    { id: "rush-p90", name: "Rush P90", file: "primary/rush-p90.mp3", kind: "primary" },
+    { id: "rapid-p90", name: "Rapid P90", file: "primary/rapid-p90.mp3", kind: "primary" },
+    { id: "blast-rocket", name: "Blast Rocket", file: "primary/blast-rocket.mp3", kind: "primary" },
+    { id: "quake-rocket", name: "Quake Rocket", file: "primary/quake-rocket.mp3", kind: "primary" },
+    { id: "dragonfire-operator", name: "Dragonfire Operator", file: "primary/dragonfire-operator.mp3", kind: "primary" },
+    { id: "fallen-operator", name: "Fallen Operator", file: "primary/fallen-operator.mp3", kind: "primary" },
+    { id: "ion-pulse-operator", name: "Ion Pulse Operator", file: "primary/ion-pulse-operator.mp3", kind: "primary" },
+    { id: "orbital-operator", name: "Orbital Operator", file: "primary/orbital-operator.mp3", kind: "primary" },
+    { id: "soulshot-operator", name: "Soulshot Operator", file: "primary/soulshot-operator.mp3", kind: "primary" },
+    { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", kind: "secondary" },
+    { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", kind: "secondary" },
+    { id: "usp-s", name: "USP-S", file: "secondary/usp-s.mp3", kind: "secondary" },
+    { id: "five-seven", name: "Five-SeveN", file: "secondary/five-seven.mp3", kind: "secondary" },
+    { id: "r8-revolver", name: "R8 Revolver", file: "secondary/r8-revolver.mp3", kind: "secondary" },
+    { id: "p250", name: "P250", file: "secondary/p250.mp3", kind: "secondary" },
+    { id: "tec-9", name: "Tec-9", file: "secondary/tec-9.mp3", kind: "secondary" },
+    { id: "cz75-auto", name: "CZ75-Auto", file: "secondary/cz75-auto.mp3", kind: "secondary" },
+    { id: "dual-berettas", name: "Dual Berettas", file: "secondary/dual-berettas.mp3", kind: "secondary" },
+    { id: "p2000", name: "P2000", file: "secondary/p2000.mp3", kind: "secondary" },
+    { id: "swift-slash", name: "Swift Slash", file: "melee/swift-slash.mp3", kind: "melee" },
+    { id: "heavy-slash", name: "Heavy Slash", file: "melee/heavy-slash.mp3", kind: "melee" },
+    { id: "blade-flick", name: "Blade Flick", file: "melee/blade-flick.mp3", kind: "melee" },
+    { id: "machete-sweep", name: "Machete Sweep", file: "melee/machete-sweep.mp3", kind: "melee" },
+    { id: "saber-arc", name: "Saber Arc", file: "melee/saber-arc.mp3", kind: "melee" },
+    { id: "claymore-swing", name: "Claymore Swing", file: "melee/claymore-swing.mp3", kind: "melee" },
+    { id: "pickaxe-swing", name: "Pickaxe Swing", file: "melee/pickaxe-swing.mp3", kind: "melee" },
+    { id: "shovel-swing", name: "Shovel Swing", file: "melee/shovel-swing.mp3", kind: "melee" },
+    { id: "wrench-swing", name: "Wrench Swing", file: "melee/wrench-swing.mp3", kind: "melee" },
+    { id: "boxing-glove", name: "Boxing Glove", file: "melee/boxing-glove.mp3", kind: "melee" },
+    { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", kind: "reload" },
+    { id: "tactical-swap", name: "Tactical Swap", file: "reload/tactical-swap.mp3", kind: "reload" },
+    { id: "rifle-reset", name: "Rifle Reset", file: "reload/rifle-reset.mp3", kind: "reload" },
+    { id: "pump-action", name: "Pump Action", file: "reload/pump-action.mp3", kind: "reload" },
+    { id: "sidearm-snap", name: "Sidearm Snap", file: "reload/sidearm-snap.mp3", kind: "reload" },
+    { id: "pistol-click", name: "Pistol Click", file: "empty/pistol-click.mp3", kind: "empty" },
+    { id: "rifle-click", name: "Rifle Click", file: "empty/rifle-click.mp3", kind: "empty" },
+    { id: "shotgun-click", name: "Shotgun Click", file: "empty/shotgun-click.mp3", kind: "empty" },
+    { id: "trigger-tap", name: "Trigger Tap", file: "empty/trigger-tap.mp3", kind: "empty" },
+    { id: "low-ammo-tick", name: "Low Ammo Tick", file: "empty/low-ammo-tick.mp3", kind: "empty" },
+    { id: "railgun-dry", name: "Railgun Dry Fire", file: "empty/railgun-dry.mp3", kind: "empty" },
+    { id: "marksman-dry", name: "Marksman Dry Fire", file: "empty/marksman-dry.mp3", kind: "empty" },
+    { id: "minigun-spin", name: "Minigun Whir", file: "empty/minigun-spin.mp3", kind: "empty" },
+    { id: "gatling-click", name: "Gatling Click", file: "empty/gatling-click.mp3", kind: "empty" },
+    { id: "hammer-click", name: "Hammer Click", game: "hammer_click", kind: "empty" },   // the game's own, no download
   ];
-  const STAGE_SOUNDS = [
-    {"id":"stage-fiveseven-out","name":"fiveseven-out","file":"reload/stages/fiveseven-out.mp3"},
-    {"id":"stage-fiveseven-in","name":"fiveseven-in","file":"reload/stages/fiveseven-in.mp3"},
-    {"id":"stage-fiveseven-slide","name":"fiveseven-slide","file":"reload/stages/fiveseven-slide.mp3"},
-    {"id":"stage-revolver-out","name":"revolver-out","file":"reload/stages/revolver-out.mp3"},
-    {"id":"stage-revolver-in-close","name":"revolver-in-close","file":"reload/stages/revolver-in-close.mp3"},
-    {"id":"stage-revolver-hammer","name":"revolver-hammer","file":"reload/stages/revolver-hammer.mp3"},
-    { id: "stage-rocket-reload", name: "rocket-reload", file: "reload/stages/rocket-reload.mp3" },
-    {"id":"stage-ak47-boltpull","name":"ak47-boltpull","file":"reload/stages/ak47-boltpull.mp3"},
-    {"id":"stage-ak47-clipin","name":"ak47-clipin","file":"reload/stages/ak47-clipin.mp3"},
-    {"id":"stage-ak47-clipout","name":"ak47-clipout","file":"reload/stages/ak47-clipout.mp3"},
-    {"id":"stage-aug-boltrelease","name":"aug-boltrelease","file":"reload/stages/aug-boltrelease.mp3"},
-    {"id":"stage-aug-clipin","name":"aug-clipin","file":"reload/stages/aug-clipin.mp3"},
-    {"id":"stage-aug-clipout","name":"aug-clipout","file":"reload/stages/aug-clipout.mp3"},
-    {"id":"stage-awp-boltback","name":"awp-boltback","file":"reload/stages/awp-boltback.mp3"},
-    {"id":"stage-awp-boltforward","name":"awp-boltforward","file":"reload/stages/awp-boltforward.mp3"},
-    {"id":"stage-awp-clipin","name":"awp-clipin","file":"reload/stages/awp-clipin.mp3"},
-    {"id":"stage-g3sg1-clipin","name":"g3sg1-clipin","file":"reload/stages/g3sg1-clipin.mp3"},
-    {"id":"stage-g3sg1-clipout","name":"g3sg1-clipout","file":"reload/stages/g3sg1-clipout.mp3"},
-    {"id":"stage-g3sg1-slideback","name":"g3sg1-slideback","file":"reload/stages/g3sg1-slideback.mp3"},
-    {"id":"stage-g3sg1-slideforward","name":"g3sg1-slideforward","file":"reload/stages/g3sg1-slideforward.mp3"},
-    {"id":"stage-glock-clipin","name":"glock-clipin","file":"reload/stages/glock-clipin.mp3"},
-    {"id":"stage-glock-clipout","name":"glock-clipout","file":"reload/stages/glock-clipout.mp3"},
-    {"id":"stage-glock-sliderelease","name":"glock-sliderelease","file":"reload/stages/glock-sliderelease.mp3"},
-    {"id":"stage-p90-release-out","name":"p90-release-out","file":"reload/stages/p90-release-out.mp3"},
-    {"id":"stage-p90-boltforward","name":"p90-boltforward","file":"reload/stages/p90-boltforward.mp3"},
-    {"id":"stage-p90-clipin","name":"p90-clipin","file":"reload/stages/p90-clipin.mp3"},
-    {"id":"stage-scatter-gun-double-shells-in","name":"scatter-gun-double-shells-in","file":"reload/stages/scatter-gun-double-shells-in.mp3"},
-    {"id":"stage-scatter-gun-double-tube-close","name":"scatter-gun-double-tube-close","file":"reload/stages/scatter-gun-double-tube-close.mp3"},
-    {"id":"stage-scatter-gun-double-tube-open","name":"scatter-gun-double-tube-open","file":"reload/stages/scatter-gun-double-tube-open.mp3"},
-    {"id":"stage-usp-clipin","name":"usp-clipin","file":"reload/stages/usp-clipin.mp3"},
-    {"id":"stage-usp-clipout","name":"usp-clipout","file":"reload/stages/usp-clipout.mp3"},
-    {"id":"stage-usp-sliderelease","name":"usp-sliderelease","file":"reload/stages/usp-sliderelease.mp3"},
+
+  /* ---- Reload kits ----
+     A kit is one sound per reload cue, played when the game plays that cue, so it keeps time with every gun:
+       start  — the old magazine comes out, or the action opens (the reload's first cue)
+       finish — the second touch: the new magazine seats, the shells or the rocket go in
+       action — the bolt, slide or close that ends an empty reload
+       pull   — an action pulled before the magazine (the Free Ranger's empty reload); the action sound if none */
+  const KITS = [
+    { id: "kit-ak", name: "AK-47", start: "ak47-clipout", finish: "ak47-clipin", action: "ak47-boltpull" },
+    { id: "kit-aug", name: "AUG", start: "aug-clipout", finish: "aug-clipin", action: "aug-boltrelease" },
+    { id: "kit-awp", name: "AWP bolt", start: "awp-boltback", finish: "awp-clipin", action: "awp-boltforward" },
+    { id: "kit-g3", name: "G3SG1", start: "g3sg1-clipout", finish: "g3sg1-clipin", action: "g3sg1-slideforward", pull: "g3sg1-slideback" },
+    { id: "kit-p90", name: "P90", start: "p90-release-out", finish: "p90-clipin", action: "p90-boltforward" },
+    { id: "kit-double", name: "Double barrel", start: "scatter-gun-double-tube-open", finish: "scatter-gun-double-shells-in", action: "scatter-gun-double-tube-close" },
+    { id: "kit-rocket", name: "Rocket", finish: "rocket-reload" },
+    { id: "kit-glock", name: "Glock", start: "glock-clipout", finish: "glock-clipin", action: "glock-sliderelease" },
+    { id: "kit-usp", name: "USP-S", start: "usp-clipout", finish: "usp-clipin", action: "usp-sliderelease" },
+    { id: "kit-fiveseven", name: "Five-SeveN", start: "fiveseven-out", finish: "fiveseven-in", action: "fiveseven-slide" },
+    { id: "kit-revolver", name: "R8 cylinder", start: "revolver-out", finish: "revolver-in-close", action: "revolver-hammer" },
+    { id: "kit-p250", name: "P250", start: "p250-clipout", finish: "p250-clipin", action: "p250-sliderelease" },
+    { id: "kit-tec9", name: "Tec-9", start: "tec9-clipout", finish: "tec9-clipin", action: "tec9-boltrelease" },
+    { id: "kit-p2000", name: "P2000", start: "p2000-clipout", finish: "p2000-clipin", action: "p2000-sliderelease" },
+    { id: "kit-elite", name: "Dual Berettas", start: "elite-clipout", finish: "elite-clipin", action: "elite-sliderelease" },
   ];
-  const RELOAD_PROFILES = {
-    "five-seven": {"gun_cluck9mm_remove_mag":"stage-fiveseven-out","gun_cluck9mm_insert_mag":"stage-fiveseven-in","gun_eggk47_full_cycle":"stage-fiveseven-slide"},
-    "r8-revolver": {"gun_cluck9mm_remove_mag":"stage-revolver-out","gun_cluck9mm_insert_mag":"stage-revolver-in-close","gun_eggk47_full_cycle":"stage-revolver-hammer"},
-    rpegg: { gun_rpegg_load: "stage-rocket-reload" },
-    "eggk47": {"gun_eggk47_remove_mag":"stage-ak47-clipout","gun_eggk47_insert_mag":"stage-ak47-clipin","gun_eggk47_full_cycle":"stage-ak47-boltpull"},
-    "dozenGauge": {"gun_dozenGauge_open":"stage-scatter-gun-double-tube-open","gun_dozenGauge_load":"stage-scatter-gun-double-shells-in","gun_dozenGauge_close":"stage-scatter-gun-double-tube-close"},
-    "csg1": {"gun_csg1_pull_action":"stage-g3sg1-slideback","gun_eggk47_remove_mag":"stage-g3sg1-clipout","gun_eggk47_insert_mag":"stage-g3sg1-clipin","gun_csg1_release_action":"stage-g3sg1-slideforward"},
-    "smg": {"gun_eggk47_remove_mag":"stage-p90-release-out","gun_eggk47_insert_mag":"stage-p90-clipin","gun_smg_cycle":"stage-p90-boltforward"},
-    "m24": {"gun_m24_bolt_open":"stage-awp-boltback","gun_eggk47_insert_mag":"stage-awp-clipin","gun_m24_bolt_close":"stage-awp-boltforward"},
-    "aug": {"gun_aug_remove_mag":"stage-aug-clipout","gun_aug_insert_mag":"stage-aug-clipin","gun_aug_cycle":"stage-aug-boltrelease"},
-    "cluck9mm": {"gun_cluck9mm_remove_mag":"stage-glock-clipout","gun_cluck9mm_insert_mag":"stage-glock-clipin","gun_eggk47_full_cycle":"stage-glock-sliderelease"},
-    "usp-s": {"gun_cluck9mm_remove_mag":"stage-usp-clipout","gun_cluck9mm_insert_mag":"stage-usp-clipin","gun_eggk47_full_cycle":"stage-usp-sliderelease"},
+  const ROLES = ["pull", "start", "finish", "action"];
+  const stageId = piece => "stage:" + piece;
+  const kitById = id => KITS.find(k => k.id === id);
+  const kitPieces = kit => ROLES.map(r => kit[r]).filter(Boolean);
+  const AUDIO = new Map(SOUNDS.map(s => [s.id, s]));
+  for (const piece of new Set(KITS.flatMap(kitPieces)))
+    AUDIO.set(stageId(piece), { id: stageId(piece), name: piece, file: `reload/stages/${piece}.mp3` });
+  // "Matched to your gun": the kit for the gun reloading. The pistol takes the kit of your Secondary pick.
+  const KIT_FOR_GUN = { eggk47: "kit-ak", dozenGauge: "kit-double", csg1: "kit-g3", rpegg: "kit-rocket", smg: "kit-p90",
+    m24: "kit-awp", aug: "kit-aug", cluck9mm: "kit-glock" };
+  const PISTOL_KIT = { "usp-s": "kit-usp", "five-seven": "kit-fiveseven", "r8-revolver": "kit-revolver", p250: "kit-p250",
+    "tec-9": "kit-tec9", p2000: "kit-p2000", "dual-berettas": "kit-elite", quickdraw: "kit-glock" };
+  // 1.2 test builds had one-clip reloads for each gun; a saved one becomes that gun's kit.
+  const OLD_RELOADS = { eggk47: "kit-ak", scrambler: "kit-double", "free-ranger": "kit-g3", rpegg: "kit-rocket",
+    whipper: "kit-p90", crackshot: "kit-awp", "tri-hard": "kit-aug", cluck9mm: "kit-glock", "usp-s": "kit-usp",
+    "five-seven": "kit-fiveseven", "r8-revolver": "kit-revolver" };
+
+  /* ---- The game's reload cues ----
+     Each gun's reload plays a few named sounds. The role is what the cue means, so a kit can answer it. */
+  const CUE = {
+    gun_eggk47_remove_mag: "start", gun_cluck9mm_remove_mag: "start", gun_aug_remove_mag: "start",
+    gun_dozenGauge_open: "start", gun_m24_bolt_open: "start", gun_csg1_pull_action: "pull",
+    gun_eggk47_insert_mag: "finish", gun_cluck9mm_insert_mag: "finish", gun_aug_insert_mag: "finish",
+    gun_dozenGauge_load: "finish", gun_rpegg_load: "finish",
+    gun_eggk47_full_cycle: "action", gun_smg_cycle: "action", gun_aug_cycle: "action",
+    gun_csg1_release_action: "action", gun_dozenGauge_close: "action", gun_m24_bolt_close: "action",
   };
-  const PROFILE_PREVIEW = { eggk47: "reload-eggk47-long", dozenGauge: "reload-scrambler-long", csg1: "reload-free-ranger-long", rpegg: "reload-rpegg-long", smg: "reload-whipper-long", m24: "reload-crackshot-long", aug: "reload-tri-hard-long", cluck9mm: "reload-cluck9mm-long", "usp-s": "reload-usp-s-long" };
-  const AUDIO = new Map([...SOUNDS, ...STAGE_SOUNDS].map(s => [s.id, s]));
-  Object.assign(PROFILE_PREVIEW, { "five-seven": "reload-five-seven-long", "r8-revolver": "reload-r8-revolver-long" });
-  const PISTOL_PROFILES = { "usp-s": "usp-s", "five-seven": "five-seven", "r8-revolver": "r8-revolver" };
+  // The gun a reload's first cue names by itself. The EggK-47, Free Ranger and Whipper share the EggK-47 magazine
+  // cues, so for those it's the gun that player last fired.
+  const CUE_GUN = { gun_cluck9mm_remove_mag: "cluck9mm", gun_aug_remove_mag: "aug", gun_csg1_pull_action: "csg1",
+    gun_dozenGauge_open: "dozenGauge", gun_m24_bolt_open: "m24", gun_rpegg_load: "rpegg" };
+  // Measured in a live match, empty magazine: ms from each gun's first reload cue to the later ones. A partial reload
+  // is the same without the action (and, on the Free Ranger, without the pull: mag out 0, mag in 1666). The RPEGG's
+  // only cue comes 3.3 s after the shot. Test uses these to play a reload as it sounds in a game.
+  const TIMING = {
+    eggk47: { start: 0, finish: 1550, action: 2081 },
+    dozenGauge: { start: 0, finish: 1335, action: 1919 },
+    csg1: { pull: 0, start: 750, finish: 2169, action: 2669 },
+    rpegg: { finish: 0 },
+    smg: { start: 0, finish: 2000, action: 2585 },
+    m24: { start: 0, finish: 1353, action: 1750 },
+    aug: { start: 0, finish: 1500, action: 2082 },
+    cluck9mm: { start: 0, finish: 1583, action: 2334 },
+  };
+
   const DEFAULT = "default", CUSTOM = "custom", PICK = "pick", PER_GUN = "per-gun";
   const SLOTS = [
-    { id: "primary", name: "Primary" },
-    { id: "secondary", name: "Secondary" },
-    { id: "melee", name: "Melee" },
-    { id: "reload", name: "Reload" },
+    { id: "primary", name: "Primary", kind: "primary" },
+    { id: "secondary", name: "Secondary", kind: "secondary" },
+    { id: "melee", name: "Melee", kind: "melee" },
+    { id: "reload", name: "Primary reload", kind: "reload" },
+    { id: "sreload", name: "Secondary reload", kind: "reload" },
+    { id: "empty", name: "No ammo", kind: "empty" },
   ];
-  const DEFAULTS = Object.freeze({ primary: DEFAULT, secondary: DEFAULT, melee: DEFAULT, reload: DEFAULT, volume: 0.8, everyone: false });
+  const KIND = Object.fromEntries(SLOTS.map(s => [s.id, s.kind]));
+  const DEFAULTS = Object.freeze({ primary: DEFAULT, secondary: DEFAULT, melee: DEFAULT, reload: DEFAULT, sreload: DEFAULT,
+    empty: DEFAULT, volume: 0.8, everyone: false });
   const warn = (...a) => console.warn("[Gun Sounds]", ...a);
 
   /* ---- Which sounds are which weapon ----
      The game names them gun_<weapon>_fire (and gun_<weapon>_<skin>_fire), and melee_<weapon>. Secondary weapons are
-     listed; any gun not listed counts as a primary, so a weapon added later is still covered. */
+     listed; any gun not listed counts as a primary, so a weapon added later is still covered. Every gun's empty click
+     is gun_eggk47_dry_fire. */
   const SECONDARY = new Set(["cluck9mm"]);
-  // These are the game's reload animation events, not rocket flight/impact or the ks_reload UI cue.
-  const RELOAD_START = new Set([
-    "gun_eggk47_remove_mag", "gun_cluck9mm_remove_mag", "gun_aug_remove_mag",
-    "gun_csg1_pull_action", "gun_dozenGauge_open", "gun_m24_bolt_open", "gun_rpegg_load",
-  ]);
-  const RELOAD_PARTS = new Set([
-    ...RELOAD_START, "gun_eggk47_insert_mag", "gun_eggk47_full_cycle", "gun_cluck9mm_insert_mag",
-    "gun_aug_insert_mag", "gun_aug_cycle", "gun_csg1_release_action", "gun_dozenGauge_load",
-    "gun_dozenGauge_close", "gun_m24_bolt_close", "gun_smg_cycle",
-  ]);
   function slotOf(name) {
     if (typeof name !== "string") return null;
-    if (RELOAD_PARTS.has(name)) return "reload";
+    if (name.includes("dry_fire")) return "empty";
+    // The pistol's empty reload ends on the EggK-47 bolt; the reload in progress settles which list it belongs to.
+    if (CUE[name]) return name.startsWith("gun_cluck9mm_") ? "sreload" : "reload";
     if (name.startsWith("melee_")) return "melee";
     const m = /^gun_([^_]+)_(?:.*_)?fire/.exec(name);
-    if (!m || name.includes("dry_fire")) return null;
+    if (!m) return null;
     return SECONDARY.has(m[1]) ? "secondary" : "primary";
   }
 
   /* ---- Saved settings ---- */
-  const soundsFor = slot => SOUNDS.filter(x => !x.slot || x.slot === slot);
-  const isSound = (s, slot) => s === DEFAULT || s === CUSTOM || (slot === "reload" && s === PER_GUN) || SOUNDS.some(x => x.id === s && (!x.slot || x.slot === slot));
+  const soundsFor = slot => SOUNDS.filter(x => !x.kind || x.kind === KIND[slot]);
+  const isSound = (s, slot) => s === DEFAULT || s === CUSTOM ||
+    (KIND[slot] === "reload" && (s === PER_GUN || !!kitById(s))) || soundsFor(slot).some(x => x.id === s);
+  function migrate(id) {
+    const m = typeof id === "string" && /^reload-(.+)-(?:short|long)$/.exec(id);
+    return m && OLD_RELOADS[m[1]] || id;
+  }
   function clean(s) {
-    const ok = !!s && typeof s === "object", pick = k => ok && isSound(s[k], k) ? s[k] : DEFAULTS[k];
-    return {
-      primary: pick("primary"), secondary: pick("secondary"), melee: pick("melee"), reload: pick("reload"),
-      volume: ok && Number.isFinite(s.volume) ? Math.min(1, Math.max(0, s.volume)) : DEFAULTS.volume,
-      everyone: ok && s.everyone === true,
-    };
+    const ok = !!s && typeof s === "object";
+    // 1.1 had one Reload list; its pick carries over to both reload lists.
+    const src = ok ? { ...s, sreload: s.sreload === undefined ? s.reload : s.sreload } : {};
+    const out = {};
+    for (const { id } of SLOTS) {
+      const v = KIND[id] === "reload" ? migrate(src[id]) : src[id];
+      out[id] = ok && isSound(v, id) ? v : DEFAULTS[id];
+    }
+    out.volume = ok && Number.isFinite(s.volume) ? Math.min(1, Math.max(0, s.volume)) : DEFAULTS.volume;
+    out.everyone = ok && s.everyone === true;
+    return out;
   }
   let saved;
   try { saved = clean(JSON.parse(localStorage.getItem(STORE))); } catch { saved = clean(null); }
@@ -305,6 +334,8 @@
     });
   }
   const readFile = slot => idb("readonly", st => st.get(slot)).then(v => v && v.data ? v : null);
+  // Secondary reload started as a copy of the one Reload list, so until it has a file of its own it uses that one.
+  const fileFor = slot => readFile(slot).then(f => f || (slot === "sreload" ? readFile("reload") : null));
   const writeFile = (slot, f) => idb("readwrite", st => st.put(f, slot));
 
   /* ---- Making a clip ready ----
@@ -357,15 +388,24 @@
     let p = cache.get(key);
     if (p) return p;
     p = sound === CUSTOM ?
-      readFile(slot).then(f => f ? decode(f.data, f.name) : null) :
+      fileFor(slot).then(f => f ? decode(f.data, f.name) : null) :
       download(AUDIO.get(sound).file, sound);
     cache.set(key, p);
     p.then(b => { if (b) ready.set(key, b); }, () => { if (cache.get(key) === p) cache.delete(key); });
     return p;
   }
+  const kitClips = kit => Promise.all(kitPieces(kit).map(piece => clip(stageId(piece))));
+  const kitReady = kit => kitPieces(kit).every(piece => ready.has(stageId(piece)));
+  // The kit "Matched to your gun" plays for a gun. The pistol's follows your Secondary pick.
+  const kitFor = (gun, secondary = saved.secondary) =>
+    kitById(gun === "cluck9mm" ? PISTOL_KIT[secondary] || KIT_FOR_GUN.cluck9mm : KIT_FOR_GUN[gun] || KIT_FOR_GUN.eggk47);
+  const matchedKits = slot => slot === "sreload" ? [kitFor("cluck9mm")] :
+    [...new Set(Object.keys(KIT_FOR_GUN).filter(g => g !== "cluck9mm").map(g => kitFor(g)))];
   function warm(sound, slot) {
-    if (sound === PER_GUN) { for (const s of STAGE_SOUNDS) warm(s.id, "reload"); }
-    else if (sound !== DEFAULT) clip(sound, slot).catch(warn);
+    if (sound === DEFAULT || AUDIO.get(sound)?.game) return;   // the game's own sounds need no download
+    const kits = sound === PER_GUN ? matchedKits(slot) : kitById(sound) ? [kitById(sound)] : null;
+    if (kits) kits.forEach(k => kitClips(k).catch(warn));
+    else clip(sound, slot).catch(warn);
   }
   function getReady() { for (const s of SLOTS) warm(saved[s.id], s.id); }
 
@@ -387,7 +427,7 @@
     }
     return own;
   }
-  function play(buf, volume, to) {
+  function play(buf, volume, to, delay = 0) {
     if (!buf || volume <= 0) return null;
     const { ctx, node } = output();
     if (ctx.state === "suspended") ctx.resume().catch(() => {});
@@ -395,7 +435,7 @@
     src.buffer = buf;
     g.gain.value = volume;
     src.connect(g); g.connect(to || node);
-    src.start();
+    src.start(delay > 0 ? ctx.currentTime + delay : 0);
     const v = { src, g, ctx };
     voices.add(v);
     // A listener, not onended: the game sets onended on the sources it gets back to free its channel.
@@ -413,6 +453,17 @@
     } catch { /* already stopped */ }
   }
   const quiet = () => [...voices].forEach(fade);
+  // Fade a playing clip out `after` seconds from now. Called again, the later time wins.
+  function fadeAt(src, after) {
+    const v = [...voices].find(x => x.src === src);
+    if (!v) return;
+    try {
+      const t = v.ctx.currentTime + Math.max(0, after);
+      v.g.gain.cancelScheduledValues(v.ctx.currentTime);
+      v.g.gain.setTargetAtTime(0, t, 0.05);
+      v.src.stop(t + 0.3);
+    } catch { /* already stopped */ }
+  }
 
   /* ---- The hook ---- */
   const MARK = Symbol.for("ssGunSounds.hook");
@@ -460,64 +511,71 @@
   }
   let me = null;
 
-  // All stages from one player's reload use the same position object, even when BAWK allocates different channels.
-  // Replace its first audio event once, then return silent sources for the other stages. BAWK still receives a real
-  // source and its ended event to release each channel. A not-yet-loaded pick leaves that whole reload native.
+  /* ---- Reloads ----
+     All cues from one player's reload carry that player's position object, so it keys the reload in progress.
+     A kit answers each cue with its own piece. A single clip plays on the first cue and fades as the reload ends.
+     Cues with nothing to play get a silent source, so the game's sound stays off and BAWK still frees its channel.
+     If the pick isn't loaded when a reload starts, that whole reload keeps the game's sounds. */
   let reloads = new WeakMap(), primaryWeapons = new WeakMap(), previewWeapon = "eggk47", silent = null;
   const reloadKey = (B, to) => soundPosition(B, to) || to || B;
-  const RELOAD_GUN = {
-    gun_cluck9mm_remove_mag: "cluck9mm", gun_aug_remove_mag: "aug", gun_csg1_pull_action: "csg1",
-    gun_dozenGauge_open: "dozenGauge", gun_m24_bolt_open: "m24", gun_rpegg_load: "rpegg",
+  const quietSource = to => {
+    silent = silent || new AudioBuffer({ length: 1, numberOfChannels: 1, sampleRate: SR });
+    return play(silent, 1, to);
   };
-  function matchedGun(key, name) {
-    const primary = primaryWeapons.get(key);
-    const gun = RELOAD_GUN[name] || (name === "gun_eggk47_remove_mag" && ["eggk47", "csg1", "smg"].includes(primary) ? primary : null);
-    return gun === "cluck9mm" ? PISTOL_PROFILES[saved.secondary] || "cluck9mm" : gun;
-  }
   function endReload(B, to) {
     const key = reloadKey(B, to), state = reloads.get(key);
-    for (const source of state ? state.sources || [state.source] : []) {
-      if (source) { try { source.stop(); } catch { /* already ended */ } }
-    }
+    if (state) state.sources.forEach(s => fadeAt(s, 0));
     reloads.delete(key);
   }
-  function playReload(B, name, to, own, sound) {
-    const key = reloadKey(B, to), now = performance.now();
+  function startReload(B, name, to, key, now) {
+    endReload(B, to);
+    const slot = name.startsWith("gun_cluck9mm_") ? "sreload" : "reload", sound = saved[slot];
+    const state = { at: now, last: null, slot, sources: [], kit: null, clip: null, on: false, to: null };
+    reloads.set(key, state);
+    if (sound === DEFAULT) return state;
+    const own = mine(B, to);
+    if (!own && !saved.everyone) return state;
+    // The EggK-47, Free Ranger and Whipper share magazine cues: those go by the gun that player last fired.
+    const gun = CUE_GUN[name] || primaryWeapons.get(key) || "eggk47";
+    if (own && slot === "reload") previewWeapon = gun;
+    state.to = own ? null : to;
+    const kit = sound === PER_GUN ? kitFor(gun) : kitById(sound);
+    if (kit) {
+      if (kitReady(kit)) Object.assign(state, { kit, on: true });
+      else kitClips(kit).catch(warn);
+    } else {
+      const buf = ready.get(keyOf(sound, slot));
+      if (buf) Object.assign(state, { clip: buf, on: true });
+      else warm(sound, slot);
+    }
+    return state;
+  }
+  function playReload(B, name, to) {
+    const role = CUE[name], key = reloadKey(B, to), now = performance.now();
     let state = reloads.get(key);
     if (state && now - state.at > 8000) { reloads.delete(key); state = null; }
-    // Free Ranger's long reload pulls its action before playing the shared EggK-47 magazine-removal sound.
-    const nestedMag = state && !state.complete && state.first === "gun_csg1_pull_action" && name === "gun_eggk47_remove_mag";
-    if (RELOAD_START.has(name) && !nestedMag) {
-      endReload(B, to);
-      if (sound === PER_GUN) {
-        const gun = matchedGun(key, name), profile = RELOAD_PROFILES[gun];
-        // Shared magazine sounds need a known primary. Before its first shot, keep the complete native reload.
-        const loaded = profile && Object.values(profile).every(id => ready.has(id));
-        const source = loaded && play(ready.get(profile[name]), saved.volume, own ? null : to);
-        state = { at: now, first: name, source, sources: source ? [source] : [], profile,
-          matched: true, replaced: !!source, complete: name === "gun_rpegg_load" };
-        reloads.set(key, state);
-        if (gun && own) previewWeapon = gun;
-        if (!loaded) warm(PER_GUN, "reload");
-        return source || null;
-      }
-      const buf = ready.get(keyOf(sound, "reload"));
-      const source = buf && play(buf, saved.volume, own ? null : to);
-      state = { at: now, first: name, source, replaced: !!source, complete: name === "gun_rpegg_load" };
-      reloads.set(key, state);
-      if (!buf) warm(sound, "reload");
-      return source || null;
+    // A reload starts on its first cue: mag out, action open, or (the Free Ranger's empty reload) the action pulled,
+    // whose mag-out cue then belongs to it. The RPEGG's one cue is a reload of its own.
+    const fresh = !state || role === "pull" || name === "gun_rpegg_load" || (role === "start" && state.last !== "pull");
+    if (fresh) {
+      if (role === "action") return null;   // the end of a reload we never saw start
+      state = startReload(B, name, to, key, now);
     }
-    if (!state || !state.replaced) return null;
-    if (name === "gun_csg1_release_action" || name === "gun_dozenGauge_close" || name === "gun_m24_bolt_close" ||
-        (state.first !== "gun_csg1_pull_action" && name.endsWith("_insert_mag"))) state.complete = true;
-    if (state.matched) {
-      const id = state.profile[name], source = id && play(ready.get(id), saved.volume, own ? null : to);
-      if (source) state.sources.push(source);
-      return source || null;
+    state.at = now;
+    state.last = role;
+    if (!state.on) return null;
+    let src = null;
+    if (state.kit) {
+      const piece = state.kit[role] || (role === "pull" ? state.kit.action : null);
+      src = piece && play(ready.get(stageId(piece)), saved.volume, state.to);
+    } else if (fresh) {
+      src = play(state.clip, saved.volume, state.to);
+    } else if (state.sources[0]) {
+      // Let the clip run through the last touch, then fade: the bolt or slide comes about half a second after the mag.
+      fadeAt(state.sources[0], role === "action" ? 0.45 : 0.9);
     }
-    silent = silent || new AudioBuffer({ length: 1, numberOfChannels: 1, sampleRate: SR });
-    return play(silent, 1, own ? null : to);
+    if (src) state.sources.push(src);
+    return src || quietSource(state.to);
   }
 
   let hooked = null;   // { B, orig, wrap }
@@ -533,21 +591,26 @@
     const wrap = function (name, to) {
       if (state.live && running) {
         try {
-          const slot = slotOf(name), sound = slot && saved[slot];
-          if (slot && slot !== "reload" && saved.reload !== DEFAULT) endReload(B, to);
-          const own = slot && ((sound && sound !== DEFAULT) || saved.reload === PER_GUN) && mine(B, to);
-          if (slot === "primary" && saved.reload === PER_GUN) {
-            const gun = /^gun_([^_]+)_/.exec(name)?.[1];
-            if (RELOAD_PROFILES[gun]) {
-              primaryWeapons.set(reloadKey(B, to), gun);
-              if (own) previewWeapon = gun;
-            }
-          }
-          if (sound && sound !== DEFAULT && (own || saved.everyone)) {
-            if (slot === "reload") {
-              const src = playReload(B, name, to, own, sound);
+          const slot = slotOf(name), kind = slot && KIND[slot];
+          if (kind === "reload") {
+            if (saved.reload !== DEFAULT || saved.sreload !== DEFAULT) {
+              const src = playReload(B, name, to);
               if (src) return src;
-              return cur.apply(this, arguments);
+            }
+            return cur.apply(this, arguments);
+          }
+          if (slot === "primary" || slot === "secondary" || slot === "melee") {
+            if (reloads.has(reloadKey(B, to))) endReload(B, to);   // a shot or a swing cuts a reload short
+            const gun = slot === "primary" && /^gun_([^_]+)_/.exec(name)?.[1];
+            if (gun && KIT_FOR_GUN[gun]) primaryWeapons.set(reloadKey(B, to), gun);
+          }
+          const sound = slot && saved[slot];
+          if (sound && sound !== DEFAULT && (saved.everyone || mine(B, to))) {
+            const own = !saved.everyone || mine(B, to), game = AUDIO.get(sound)?.game;
+            if (game) {   // one of the game's own sounds, played in its place
+              const args = [...arguments];
+              args[0] = game;
+              return cur.apply(this, args);
             }
             const buf = ready.get(keyOf(sound, slot));
             const src = buf && play(buf, saved.volume, own ? null : to);
@@ -585,10 +648,12 @@
   const CSS = `
 #settingsPopup:has(#${CELL}) { max-height: 88vh; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 #${CELL} { min-width: 0; grid-column: 1 / -1; }
-#${CELL} .ssg-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--ss-space-md); }
+#${CELL} .ssg-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--ss-space-sm); }
 #${CELL} .ssg-slots > div { min-width: 0; }
-#${CELL} .ssg-slots .ss_button { min-width: 0; padding-inline: .8em; }
-#${CELL} .ssg-bottom { margin-top: var(--ss-space-sm); }
+#${CELL} .ssg-slots .ss_button { min-width: 0; padding-inline: .5em; margin: 0; }
+#${CELL} .ssg-slots select.ss_select { margin-right: .3em; font-size: .9em; }
+#${CELL} .ssg-slots selectedcontent { font-size: inherit; }
+#${CELL} .ssg-bottom { margin-top: .35em; }
 #${CELL} .ssg-bottom .ssg-name { margin: 0 var(--ss-space-sm) 0 2px; }
 #${CELL} .ssg-bottom input[type=range] { flex: 0 1 35%; }
 #${CELL} .ssg-bottom .nowrap { margin-left: auto; }
@@ -599,16 +664,16 @@
 #${CELL} .ss_button, #${CELL} label { flex: none; }
 #${CELL} .ss_button:disabled { opacity: .5; cursor: default; }
 #${CELL} .ssg-name { display: block; margin: var(--ss-space-sm) 0 .15em 2px; font-weight: 700; font-size: inherit; }
-#${CELL} .ssg-head { display: flex; align-items: baseline; min-width: 0; margin: var(--ss-space-sm) 0 .15em 2px; }
+#${CELL} .ssg-head { display: flex; align-items: baseline; min-width: 0; margin: .3em 0 .1em 2px; }
 #${CELL} .ssg-head .ssg-name { flex: none; margin: 0; }
 #${CELL} .ssg-note { flex: 0 1 auto; margin: 0 var(--ss-space-sm) 0 auto; padding-left: .5em; font-weight: 700; font-size: .85em;
   min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #${CELL} .ssg-note.ssg-error { color: var(--ss-red, #d15354) !important; }
 @supports (appearance: base-select) {
   #${CELL} select, #${CELL} select::picker(select) { appearance: base-select; }
-  #${CELL} select { align-items: center; padding-inline: calc(var(--ss-space-sm) + 4px) 0; }
+  #${CELL} select { align-items: center; padding-inline: .45em 0; }
   #${CELL} selectedcontent { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  #${CELL} select::picker-icon { content: ""; flex: none; width: 9px; height: 9px; margin-inline: .3em 3px;
+  #${CELL} select::picker-icon { content: ""; flex: none; width: 9px; height: 9px; margin-inline: .2em 2px;
     background: currentColor; mask: ${CHEVRON} center / contain no-repeat; }
   #${CELL} select::picker(select) { margin-block: .2em; padding-block: .3em; max-block-size: min(18em, 45vh); font-size: .85em;
     border: var(--ss-common-border-width) solid var(--ssg-accent); border-radius: var(--ss-space-sm);
@@ -622,6 +687,16 @@
   #${CELL} hr { inline-size: auto; margin: .3em .5em; border: 0; border-block-start: 1px solid var(--ssg-accent); opacity: .45; }
 }`;
 
+  const GROUP = { primary: "Primary sounds", secondary: "Secondary sounds", melee: "Melee sounds",
+    reload: "One-clip reloads", empty: "No ammo sounds" };
+  const TIPS = {
+    primary: "Plays for every primary weapon.",
+    secondary: "Plays for the pistol.",
+    melee: "Plays for every melee weapon.",
+    reload: "Primary guns' reloads. A kit plays a sound on each of the reload's cues; a single clip plays once and ends with the reload.",
+    sreload: "The pistol's reload. A kit plays a sound on each of the reload's cues; a single clip plays once and ends with the reload.",
+    empty: "The click when you fire with an empty magazine.",
+  };
   function el(tag, cls, text) {
     const e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -647,17 +722,11 @@
         const g = el("optgroup"); g.label = label; g.append(...options); select.append(g);
       };
       select.append(face);
-      group("Default sounds", [new Option("Game sound", DEFAULT), ...SOUNDS.filter(x => !x.slot).map(x => new Option(x.name, x.id))]);
-      if (s.id === "reload") group("Per-gun reloads", [new Option("Matched per gun (automatic)", PER_GUN)]);
-      const groups = new Map();
-      for (const sound of soundsFor(s.id).filter(x => x.slot)) {
-        const label = sound.group || `${s.name} sounds`;
-        if (!groups.has(label)) groups.set(label, []);
-        groups.get(label).push(new Option(sound.name, sound.id));
-      }
-      for (const [label, options] of groups) group(label, options);
+      group("Default sounds", [new Option("Game sound", DEFAULT), ...SOUNDS.filter(x => !x.kind).map(x => new Option(x.name, x.id))]);
+      if (s.kind === "reload") group("Reload kits", [new Option("Matched to your gun", PER_GUN), ...KITS.map(k => new Option(k.name, k.id))]);
+      group(GROUP[s.kind], SOUNDS.filter(x => x.kind === s.kind).map(x => new Option(x.name, x.id)));
       group("Custom sounds", [new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK)]);
-      select.title = (s.id === "reload" ? "Matched per gun follows each gun's reload stages. A single clip plays once per reload." : `Plays for every ${s.name.toLowerCase()} weapon.`) + " Your own file: MP3, OGG or WAV, up to 4 MB.";
+      select.title = TIPS[s.id] + " Your own file: MP3, OGG or WAV, up to 4 MB.";
       const test = el("button", "ss_button btn_blue bevel_blue btn_sm", "Test");
       test.type = "button";
       // The label line also names your file, or says what went wrong with it, so picking one adds no height.
@@ -788,24 +857,42 @@
     u.note.title = text ? title : mine ? nameOf(slot) || "" : "";
     u.note.classList.toggle("ssg-error", !!error);
   }
-  // The slot's pick, as it'd play in a game.
+  // The slot's pick, as it'd play in a game. A reload plays on the cue times of a real reload (an empty one, so the
+  // bolt or slide is in it): your last primary's for Primary reload, the pistol's for Secondary reload.
   function preview(slot) {
     const p = pending || saved, sound = p[slot];
     if (sound === DEFAULT) return;
-    const mine = sound === CUSTOM && pendingFiles[slot];
-    const pistol = previewWeapon === "cluck9mm" || Object.values(PISTOL_PROFILES).includes(previewWeapon);
-    const gun = pistol ? PISTOL_PROFILES[p.secondary] || "cluck9mm" : previewWeapon;
-    const example = sound === PER_GUN ? PROFILE_PREVIEW[gun] || PROFILE_PREVIEW.eggk47 : sound;
-    (mine ? Promise.resolve(pendingFiles[slot].buf) : clip(example, slot)).then(buf => {
-      if (!buf) return setNote(slot, "Choose a file first", true, "Choose a sound file first.");
-      setNote(slot);
-      play(buf, p.volume);
-    }, err => {
+    const failed = err => {
       warn(err);
       if (sound === CUSTOM) setNote(slot, "Can't play your file", true, "Can't play your saved file. Choose it again.");
       else setNote(slot, "Couldn't download", true, `${err.message}. Check your connection, then press Test to retry.`);
       setTimeout(() => setNote(slot), 4000);
-    });
+    };
+    const game = AUDIO.get(sound)?.game;
+    if (game) {
+      setNote(slot);
+      try { window.BAWK.play(game); } catch (err) { warn(err); }
+      return;
+    }
+    const reload = KIND[slot] === "reload", gun = slot === "sreload" ? "cluck9mm" : previewWeapon;
+    const times = TIMING[gun] || TIMING.eggk47;
+    const kit = reload && (sound === PER_GUN ? kitFor(gun, p.secondary) : kitById(sound));
+    if (kit) {
+      return kitClips(kit).then(() => {
+        setNote(slot);
+        const cues = ROLES.filter(r => r in times).map(r => [times[r], kit[r] || (r === "pull" ? kit.action : null)])
+          .filter(([, piece]) => piece);
+        const first = Math.min(...cues.map(([at]) => at));
+        for (const [at, piece] of cues) play(ready.get(stageId(piece)), p.volume, null, (at - first) / 1000);
+      }, failed);
+    }
+    const mine = sound === CUSTOM && pendingFiles[slot];
+    (mine ? Promise.resolve(pendingFiles[slot].buf) : clip(sound, slot)).then(buf => {
+      if (!buf) return setNote(slot, "Choose a file first", true, "Choose a sound file first.");
+      setNote(slot);
+      const src = play(buf, p.volume);
+      if (src && reload) fadeAt(src, (times.action != null ? times.action + 450 : times.finish + 900) / 1000);
+    }, failed);
   }
   // A picked file waits for Confirm like the rest of the settings: until then it's only previewed.
   async function addFile(slot, file) {
@@ -873,7 +960,7 @@
     tick();
     timer = setInterval(tick, 1000);
     getReady();
-    for (const s of SLOTS) readFile(s.id).then(f => { if (f) { customNames[s.id] = f.name; setNote(s.id); } }, () => { /* no storage: no files */ });
+    for (const s of SLOTS) fileFor(s.id).then(f => { if (f) { customNames[s.id] = f.name; setNote(s.id); } }, () => { /* no storage: no files */ });
   }
   function stop() {
     if (!running) return;
@@ -890,7 +977,7 @@
 
   window.ssGunSounds = {
     version: VERSION,
-    sounds: SOUNDS.map(s => s.id),
+    sounds: [...SOUNDS.map(s => s.id), ...KITS.map(k => k.id)],
     settings: () => ({ ...saved }),
     set(s) { save({ ...saved, ...s }); revert({ ...saved }); return { ...saved }; },
     slotOf,
@@ -901,7 +988,7 @@
   // The Mod Menu (if it's installed) lists it with an on/off switch and a shortcut to these settings.
   (window.ssModMenuQueue = window.ssModMenuQueue || []).push({
     id: "gun-sounds", name: "Gun Sounds", version: VERSION, group: "mod",
-    description: "Pick sounds for primary shots, secondary shots, melee swings and reloads.",
+    description: "Pick sounds for primary and secondary shots, melee swings, reloads and the empty click.",
     enable: start, disable: stop, openSettings,
   });
 })();
