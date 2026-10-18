@@ -1,0 +1,449 @@
+{
+  "description": "Per-gun primary shots and reload-kit pieces. Valve CS:GO, CS:Source and TF2 audio from pinned sourcesounds mirrors; original ownership retained. Converted to 48 kHz stereo 192 kbps MP3 with a limiter.",
+  "assets": [
+    {
+      "path": "sounds/primary/eggk47/ak-47.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ak47/ak47_01.wav",
+      "source_sha256": "6fc24ceac0d1aa625467ef2405433031d1e8fb2eff08c93fd5d962b19a55fd55",
+      "sha256": "69a379a21de05bfce1578b1c47099d5f981213c0ecafb46754e606f005ec29fa",
+      "duration_seconds": 2.848958
+    },
+    {
+      "path": "sounds/primary/eggk47/m4a4.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/m4a1/m4a1_01.wav",
+      "source_sha256": "adc4579be17be59372a15bb63b01b3afe712418333050bd95616c6a2bd43fafc",
+      "sha256": "b63e44ad0b499e35abdcc67b8c79007420090966f52fe0a224ecfe7768fadf5c",
+      "duration_seconds": 3.192
+    },
+    {
+      "path": "sounds/primary/eggk47/m4a1-s.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/m4a1/m4a1_silencer_01.wav",
+      "source_sha256": "523f72916552cd101ceb7c9b1136c493c5ae562bf00626dc665ebde2c6629432",
+      "sha256": "59405a06ec747bf32035175b4849cda7fd07d9dbf14579f33f7ed32ea4e86a21",
+      "duration_seconds": 1.410354
+    },
+    {
+      "path": "sounds/primary/eggk47/galil-ar.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/galilar/galil_01.wav",
+      "source_sha256": "bd248002d4b546dac5e26e78ded664ca3d5ed5a34b86c5593de0dd78f5518362",
+      "sha256": "477e6ed2c5d1aacef80b40e59d60c1e559fcf6e65072414b6526ef2294e4f942",
+      "duration_seconds": 3.156271
+    },
+    {
+      "path": "sounds/primary/scrambler/nova.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/nova/nova-1.wav",
+      "source_sha256": "d30659b4cb5aa1a6f72d292f9a4a568b59671ee9b96bac3afa63d4a600c7b6b6",
+      "sha256": "8b269ee0126e2707d40240780f71afeb292d220c5bdd8664be111191ea8d717f",
+      "duration_seconds": 2.852708
+    },
+    {
+      "path": "sounds/primary/scrambler/xm1014.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/xm1014/xm1014-1.wav",
+      "source_sha256": "c7ae55f1a8e916a5aa7e31ed30d3454198173726b66a0c6cd8e0c70dfffc9481",
+      "sha256": "c26e00e6ab557560681a92ffdc1473589e7a682787be1b74bb742e7c1d2b061f",
+      "duration_seconds": 3.194333
+    },
+    {
+      "path": "sounds/primary/scrambler/sawed-off.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sawedoff/sawedoff-1.wav",
+      "source_sha256": "cad0dee904fae92ffa6d9bf1b719abcb1b78723c542c197292de38e11b7fbc24",
+      "sha256": "f27d7016213aacdc7bbfa2fc829a1099f26e4b29d01c700579cd69e44790cbd4",
+      "duration_seconds": 2.796875
+    },
+    {
+      "path": "sounds/primary/scrambler/force-a-nature.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/scatter_gun_double_shoot.wav",
+      "source_sha256": "15e890fa485afe9aec8b0b486f607756d541ec5d2e0abb69933b2a63918d0e75",
+      "sha256": "e4b0fe9027cc0c74e97e0cdb7243af8a28c6c89c3f022f8d654d9829d09880b3",
+      "duration_seconds": 2.000375
+    },
+    {
+      "path": "sounds/primary/free-ranger/g3sg1.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/g3sg1/g3sg1_01.wav",
+      "source_sha256": "7ade6358a6ac5a6337e335853286574a9fb54efae20d52c55889dc32cdb146b0",
+      "sha256": "3e37860efae8e28a53e7356b78e2db442be76fde578f61582d31b3368f117776",
+      "duration_seconds": 2.669292
+    },
+    {
+      "path": "sounds/primary/free-ranger/scar-20.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/scar20/scar20_01.wav",
+      "source_sha256": "55d4a9fa10fd88c0d24aaa5dfdf0fbe214c827240727946c51901530811118d8",
+      "sha256": "db31b8520f3e459c7ed04d0bca4618f44cc7cd20f07c4389e262b41b245fc79f",
+      "duration_seconds": 3.25
+    },
+    {
+      "path": "sounds/primary/free-ranger/classic.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_rifle_classic_shoot.wav",
+      "source_sha256": "09b4542be95ff573632666def53f586655b4c93cffbbffd1f8554ecff8f1abee",
+      "sha256": "ca2772fcd262b8b4d811ec2de6495a6f0d03669ad909347c774285359ab3b6c4",
+      "duration_seconds": 1.795938
+    },
+    {
+      "path": "sounds/primary/rpegg/direct-hit.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/rocket_directhit_shoot.wav",
+      "source_sha256": "46cae552037f39fd8103c65d367ab59b9ceb80046aa30252990b674062135ec0",
+      "sha256": "30011d524a211f1c679bde2e96904113269d05f8982ae18c112dfe00ddbbb981",
+      "duration_seconds": 4.082083
+    },
+    {
+      "path": "sounds/primary/rpegg/black-box.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/rocket_blackbox_shoot.wav",
+      "source_sha256": "ace7a7cb94112884bb9313ea0e2bf950a0b31471489f1a1f56499b15f88fdf44",
+      "sha256": "8f27a55d2fc5bf283fd2bfb60cbd9664502f0abd29cca36a2c628916c3390ac9",
+      "duration_seconds": 2.920125
+    },
+    {
+      "path": "sounds/primary/whipper/mp7.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp7/mp7_01.wav",
+      "source_sha256": "21ee32917b4cd938946480d05e9019420482f98392ac84ecbd3835001927aa4b",
+      "sha256": "5ea174427587be79c6c685c1648b571578e7f011769dbc2319163ddcd89f3dca",
+      "duration_seconds": 2.640979
+    },
+    {
+      "path": "sounds/primary/whipper/mp9.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp9/mp9_01.wav",
+      "source_sha256": "00f5b77585ae0978191ed8359edd68e9efc234dd50f876324e989a1a61117aa8",
+      "sha256": "45e8a7797f27620a6e1dcc6d641d560d69eacc7a34657af8d4bf3752acfed583",
+      "duration_seconds": 1.695229
+    },
+    {
+      "path": "sounds/primary/whipper/ump-45.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ump45/ump45_02.wav",
+      "source_sha256": "172d72dd5dd9c63dfb30eda298b2197b25fd4f686b92442d189c1fa5bc38c139",
+      "sha256": "6eff3d1d8aa629c6c5a3876e7ddf779626363206a94dc533185e33e77209688b",
+      "duration_seconds": 2.089771
+    },
+    {
+      "path": "sounds/primary/crackshot/awp.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/awp/awp_01.wav",
+      "source_sha256": "4bccb603bea8bcd39e287a7959b5bb7e8ed7c0aabe74755715b169482d6fa8b0",
+      "sha256": "62037137d65d4ea614fc456712edd01920f6843f89d504ade6d1c1410c6fe572",
+      "duration_seconds": 4.129063
+    },
+    {
+      "path": "sounds/primary/crackshot/ssg-08.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ssg08/ssg08_01.wav",
+      "source_sha256": "e1ec3ff60a415ba54b7dbd6a7959b9acc8cced1552117adff5d916d2ff60850d",
+      "sha256": "294fa67c53253dae03d5d6c11a75aee1f7cae58a5988a7edc140e4f6702ab40b",
+      "duration_seconds": 2.25
+    },
+    {
+      "path": "sounds/primary/crackshot/scout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/scout/scout_fire-1.wav",
+      "source_sha256": "fc75b54774355f98e4eb687116a6e493906b53de55072d78359122d56ed6b83a",
+      "sha256": "59ea54dcf69c18220b2b53b4607fb5f4c12c6ba1b1925cf01616bacc6c99c498",
+      "duration_seconds": 3.22
+    },
+    {
+      "path": "sounds/primary/tri-hard/aug.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/aug/aug_01.wav",
+      "source_sha256": "87d6c10109bcae67a801025751d0b7f2d862d6e90c1eec344439976272d50123",
+      "sha256": "572485b325ea0f0338c70a3ff7d96c2c2b647e2742a463ad83eaeb5b51986644",
+      "duration_seconds": 2.763896,
+      "processing": "Three copies of the one shot at 0, 100 and 200 ms (the Tri-Hard's burst; the game plays one sound per burst), mixed, then limited."
+    },
+    {
+      "path": "sounds/primary/tri-hard/famas.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/famas/famas_01.wav",
+      "source_sha256": "17fff540b6c212b7c25ce2616a3c1dc0a49791996f3f41ba7dd8a718f4650381",
+      "sha256": "a236ea2b57a9c8da6b1956fa1e81b8ee576d6c77a4d7b5bbe64f662684441b62",
+      "duration_seconds": 2.745229,
+      "processing": "Three copies of the one shot at 0, 100 and 200 ms (the Tri-Hard's burst; the game plays one sound per burst), mixed, then limited."
+    },
+    {
+      "path": "sounds/primary/tri-hard/sg-553.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sg556/sg556_01.wav",
+      "source_sha256": "e4cdc8ffa536a77c3b803241b38823ca76ce0358a6cc5de25865c4da0277a258",
+      "sha256": "cfaf96e548ed439bd139d8e436e4bc15ecc254bfd1a1911f69a519c3a2c02377",
+      "duration_seconds": 2.465125,
+      "processing": "Three copies of the one shot at 0, 100 and 200 ms (the Tri-Hard's burst; the game plays one sound per burst), mixed, then limited."
+    },
+    {
+      "path": "sounds/reload/stages/m4a1-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/m4a1/m4a1_clipout.wav",
+      "source_sha256": "b3cdbb7d21f6e3285d7d76838dfe7378ce46a7112f2755ba003c4c2d32e05625",
+      "sha256": "86bb2e15d375b64105144bdb98336d03db0f78e870e8f9e74bf47d2605d553a0",
+      "duration_seconds": 0.375021
+    },
+    {
+      "path": "sounds/reload/stages/m4a1-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/m4a1/m4a1_clipin.wav",
+      "source_sha256": "654f310c41f97021006110af429922556fee149c51881c3d4a967c6793a17acc",
+      "sha256": "9da2588097c6f4419aacbb5bbec9ed3dcead8faab9b3a6f6fab3674314594314",
+      "duration_seconds": 0.416188
+    },
+    {
+      "path": "sounds/reload/stages/m4a1-boltforward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/m4a1/m4a1_boltforward.wav",
+      "source_sha256": "cdfecd48ca661ae5d2014499d570235089c916eea07a1f1b753fc9b5f5c34be6",
+      "sha256": "4300caefb068dcb8ccff3f045a6679c44f79e18a920752a798069896ae1d17c2",
+      "duration_seconds": 0.375021
+    },
+    {
+      "path": "sounds/reload/stages/galil-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/galilar/galil_clipout.wav",
+      "source_sha256": "2cfeb3d460ceb5a9a798b0a7c3e9ac8b830ab68069843d44dd10173326ee057a",
+      "sha256": "b9070783e969395577e62a677b04f8f11e9fd4981ecf81f5fd1d0d1f89975bb6",
+      "duration_seconds": 0.230833
+    },
+    {
+      "path": "sounds/reload/stages/galil-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/galilar/galil_clipin.wav",
+      "source_sha256": "b277933de7ebabcb89ec6d365729d66b758e0f4a4350a7d797a197c940e87103",
+      "sha256": "1a2fdda4abe59de8b4ff5a09463b8206f3b89f40e7bb3ded04deca70bb9f5550",
+      "duration_seconds": 0.329229
+    },
+    {
+      "path": "sounds/reload/stages/galil-boltforward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/galilar/galil_boltforward.wav",
+      "source_sha256": "6a3b4d6dfe0b8db017c2e137c71915a5226e465669eb8824ba71ee803b3614ec",
+      "sha256": "59dbdf590d37ed227804f1f80577e1ca9e8c376c36bb70d470cace27fc327c6f",
+      "duration_seconds": 0.245292
+    },
+    {
+      "path": "sounds/reload/stages/mag7-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mag7/mag7_clipout.wav",
+      "source_sha256": "ea73e292d6924059daa83d5aaf3eabf36f1fbc92b1a10e3f6beabc7394d90cbd",
+      "sha256": "9d3ac7649c4b72dae85dcfc42f1a9c30c003ede4072b27288bfaa6865b915b99",
+      "duration_seconds": 0.28125
+    },
+    {
+      "path": "sounds/reload/stages/mag7-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mag7/mag7_clipin.wav",
+      "source_sha256": "516463844c9ca17d0e7e846667fe925c04add7313d7dbc9a041262ba93ccd9f3",
+      "sha256": "079319b181627e468491d4d56d43ebd10e3edec70afb74fa6177d2952cb24a72",
+      "duration_seconds": 0.625021
+    },
+    {
+      "path": "sounds/reload/stages/mag7-pump-forward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mag7/mag7_pump_forward.wav",
+      "source_sha256": "0cebb88bea3723a9282f9e0c54428b94c57c69622857a7e8728c4ad8483d2cb0",
+      "sha256": "d91228a7577cf6275e10b9ce05947f73888a65cd98905851b771b076eb0cb2b7",
+      "duration_seconds": 0.112104
+    },
+    {
+      "path": "sounds/reload/stages/shotgun-cock-back.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/shotgun_cock_back.wav",
+      "source_sha256": "a91cc53c4f97312a95938270f41d2548a877e284f8364a841d7e7a343014c19d",
+      "sha256": "7697917534bcfd83bc5d49378cc8636be108227896bde5ef4547a14b65b6f61a",
+      "duration_seconds": 0.203542
+    },
+    {
+      "path": "sounds/reload/stages/shotgun-shell-in.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/shotgun_reload.wav",
+      "source_sha256": "dc35a5f73e3d774f303f3c981aefa451894618864ed35a49592106d78404c988",
+      "sha256": "dc561f46dba1b97c97d8a1c15c1ddbef55bdc3680d40d59053f3d20a302100c9",
+      "duration_seconds": 0.579938
+    },
+    {
+      "path": "sounds/reload/stages/shotgun-cock-forward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/shotgun_cock_forward.wav",
+      "source_sha256": "58818c5153098a5766955de0d13f98a98fede80d21cbf123de16e67e9c224c53",
+      "sha256": "274bb47e2f8502d6a6da6f5ee5ceec2bc5c8ebf5a0d984f30ca46a371dc74214",
+      "duration_seconds": 0.234396
+    },
+    {
+      "path": "sounds/reload/stages/scar20-boltback.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/scar20/scar20_boltback.wav",
+      "source_sha256": "954fe1f1259fe197c8d421621544522163dda5f6136917c51eec2bdc05bc791d",
+      "sha256": "4d6f00fe1b466af38a6e76810d2063cd65bc3b98451cfedf83ad93a101041987",
+      "duration_seconds": 0.222667
+    },
+    {
+      "path": "sounds/reload/stages/scar20-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/scar20/scar20_clipout.wav",
+      "source_sha256": "beb74719fec5eae85b862ed3624608d88871ae6280bc6725672467343e40416e",
+      "sha256": "7a09773b57a507cd7c9d0cac0a2e2a94bc3fa8e552e74a038fbbeb76e60b9100",
+      "duration_seconds": 0.830583
+    },
+    {
+      "path": "sounds/reload/stages/scar20-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/scar20/scar20_clipin.wav",
+      "source_sha256": "9fc69d7fb9a9f36d68255ec6a1d1db63a581f7905821667c1c93ac6cccd2ca8b",
+      "sha256": "eba5152ac63956c099f0d6e41e9469202b07def242045d6ef6788e4de56e4733",
+      "duration_seconds": 0.407875
+    },
+    {
+      "path": "sounds/reload/stages/scar20-boltforward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/scar20/scar20_boltforward.wav",
+      "source_sha256": "60fa3d3c2e1edfdb8586f9d9ade24ccd914e349cb7ea858c237fa9bb14146d89",
+      "sha256": "813de3dc16ff8200b1aaba7f2efd506a0a1f0a12e010ec009a60b2fcbc4087c6",
+      "duration_seconds": 0.286646
+    },
+    {
+      "path": "sounds/reload/stages/sg556-boltback.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sg556/sg556_boltback.wav",
+      "source_sha256": "3950414b8de5fe3f11f68180fa46291d40578f707b867d2c63c354dced3ce653",
+      "sha256": "d82b09f36ed6e3106a24ce7b7040d70993e0b3d768f9adde52f52ef47c27bbda",
+      "duration_seconds": 0.291104
+    },
+    {
+      "path": "sounds/reload/stages/sg556-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sg556/sg556_clipout.wav",
+      "source_sha256": "61c9eda327f56715c47bf136396fd51bf2fe36c453869d5cfb647ec8b85d79e1",
+      "sha256": "7b66f21c499bedfdcca5dfe5436487b267a5edf26e0697cfca6c597573b472ae",
+      "duration_seconds": 0.388042
+    },
+    {
+      "path": "sounds/reload/stages/sg556-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sg556/sg556_clipin.wav",
+      "source_sha256": "575c8f857fec5a14f490d60800f5f9ee949f8499986e352b8264f847d161e31d",
+      "sha256": "48b615486fc837fa3d900740e9b6b85a46940be5c7a3ef9f577646f331a23f74",
+      "duration_seconds": 0.406271
+    },
+    {
+      "path": "sounds/reload/stages/sg556-boltforward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sg556/sg556_boltforward.wav",
+      "source_sha256": "b2552c2b97a763a0174a8199d977359b129baed24896f1267d12281ba9e80cdf",
+      "sha256": "2d49a66aead955c154d0837a85dbcd3158ca67dd3c9d4b11dea2218f2d27b7a6",
+      "duration_seconds": 0.346896
+    },
+    {
+      "path": "sounds/reload/stages/quake-rpg-reload.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/quake_rpg_reload_remastered.wav",
+      "source_sha256": "3b9883e95ff225888df4926bb3a88dcd7ec9848121fc6df481b4b2437311d71c",
+      "sha256": "a6379ae6b12756fd3eff53115ab0b0955e93f2e9cf193234315694947920ed4f",
+      "duration_seconds": 0.292708
+    },
+    {
+      "path": "sounds/reload/stages/cow-mangler-reload.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/cow_mangler_reload.wav",
+      "source_sha256": "83232e2b6bf3abaebba82ab454a7c3a00526b4de46c97f70c06eec99887ac835",
+      "sha256": "ac408fd50e070490fca3378ab5f7ca679a732c912a13ab2b903be9995abea0d7",
+      "duration_seconds": 0.618521
+    },
+    {
+      "path": "sounds/reload/stages/dumpster-rocket-reload.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/dumpster_rocket_reload.wav",
+      "source_sha256": "5acbbadff11d122774b2fdd10fdede988af97632ffb75e8092092d264afe7202",
+      "sha256": "884e6a38fae32823d29384f28075de5ba56e1af1a66415fc8e5bf9ef6cf05d67",
+      "duration_seconds": 0.235979
+    },
+    {
+      "path": "sounds/reload/stages/mp7-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp7/mp7_clipout.wav",
+      "source_sha256": "3af5b3c395034f42394b95d58201b26fb3a747676e9f8843372ae1fdfd80437a",
+      "sha256": "b07ea9a9364893074bbbd27ca41526a86145c4cfc16ab317ef093623ea6dd49d",
+      "duration_seconds": 0.5625
+    },
+    {
+      "path": "sounds/reload/stages/mp7-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp7/mp7_clipin.wav",
+      "source_sha256": "eab2fac37b6deb8a108f2ea77eeb572492f7454566d034e28c16f41059f565b1",
+      "sha256": "b155d440cf5302456d2890d93d046bdeb4bb53348f6fef38efc2192024c59012",
+      "duration_seconds": 0.5
+    },
+    {
+      "path": "sounds/reload/stages/mp7-slideforward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp7/mp7_slideforward.wav",
+      "source_sha256": "18470f62fad3b1f43a0168143cc4e3cc936acf9f4ded4cf0ce25ddb09adb90da",
+      "sha256": "b83c232cd5106f7a971e7335e6aa2307133e08e853c3ba7f78ad74da1db0a4ec",
+      "duration_seconds": 0.16725
+    },
+    {
+      "path": "sounds/reload/stages/mp9-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp9/mp9_clipout.wav",
+      "source_sha256": "70e68a9e7c5e564072690d70e11f4b2591ea56bf873d8a8750f133fba8d8486d",
+      "sha256": "b8b1a30ce30433352d892b50622c4d03aa350b3a1762413e371c1c5e8994f071",
+      "duration_seconds": 0.312979
+    },
+    {
+      "path": "sounds/reload/stages/mp9-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp9/mp9_clipin.wav",
+      "source_sha256": "b1b462c833408c3e80bbdb0cfcc2db9126aadb6a54235411fd2de8c90d0ec75d",
+      "sha256": "b5e9ff32af67a9dba858659dfa1f7ed1669c22ee73c80c6320f961a17f92f1e9",
+      "duration_seconds": 0.199563
+    },
+    {
+      "path": "sounds/reload/stages/mp9-boltforward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp9/mp9_boltforward.wav",
+      "source_sha256": "42ee0aabfacab281caded354aac9ebec295a8f4dee04866b4daa6f938572e1bc",
+      "sha256": "449aa0c080661dd27ee6c23b8c6e3912ea7ad73b40d9f37e14563e24d8f2a0c0",
+      "duration_seconds": 0.116375
+    },
+    {
+      "path": "sounds/reload/stages/ump45-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ump45/ump45_clipout.wav",
+      "source_sha256": "29e46b4596819d21eafd5a8a16304f93cc42fb2ee196f9a969dbd47b5cbc0a4b",
+      "sha256": "51cfbbfb899578f589d3fe56ad60e9e5c88b76d05135fc71ee28ce067e280b7d",
+      "duration_seconds": 0.301979
+    },
+    {
+      "path": "sounds/reload/stages/ump45-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ump45/ump45_clipin.wav",
+      "source_sha256": "512405aea6ed3df5eb231269e5db26fe6cb738a119dba4b1ea568bd796d1cdf2",
+      "sha256": "57266837a5d388ca650e98a0ba80432c346f2b6036f0e9e9710448cb1fd66512",
+      "duration_seconds": 0.3485
+    },
+    {
+      "path": "sounds/reload/stages/ump45-boltforward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ump45/ump45_boltforward.wav",
+      "source_sha256": "99d25d9d2ecd0f325716037ed8b876cc2432958ab15c67d7a9cd99fd532b240f",
+      "sha256": "c2b349d90ae6aed75acf2f72288fd45d6744839e0b60fa00692d7ba5738faf23",
+      "duration_seconds": 0.139792
+    },
+    {
+      "path": "sounds/reload/stages/ssg08-boltback.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ssg08/ssg08_boltback.wav",
+      "source_sha256": "dc25f98e9cbe2796ac00169b6b2d66a77bd0515ef6860494fcbd80021364542d",
+      "sha256": "db08acb72c86d3c05fd30acd6f31db5316ceee188a821953bc72cdd584606e67",
+      "duration_seconds": 0.332917
+    },
+    {
+      "path": "sounds/reload/stages/ssg08-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ssg08/ssg08_clipin.wav",
+      "source_sha256": "e8ea8cd4ae495792d099435686f73444a36d65d6ed469242d73731b7e61c47fb",
+      "sha256": "ae39ca6b30a890a6f196a583c4a8e2b669e0497ddc401d09085bb1bf2816cd81",
+      "duration_seconds": 0.718771
+    },
+    {
+      "path": "sounds/reload/stages/ssg08-boltforward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/ssg08/ssg08_boltforward.wav",
+      "source_sha256": "6dba05235b25573db76f388d4a1dcabb185d37855327c9d2a3574dcfbff5a886",
+      "sha256": "e605c81e8e3b23705093627d28243c0b0256369c65a34df269da4f519a9a2a5a",
+      "duration_seconds": 0.332917
+    },
+    {
+      "path": "sounds/reload/stages/sniper-bolt-back.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_bolt_back.wav",
+      "source_sha256": "6559af4ab77881dc981dc91687343d9440965cb0c281cbeeb7a96047953e9c5d",
+      "sha256": "80bbeeb6284cc2a2e3440d9365c59b7c27855fd43ccf0a0e1c338d1b53d237fb",
+      "duration_seconds": 0.274833
+    },
+    {
+      "path": "sounds/reload/stages/scout-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/scout/scout_clipin.wav",
+      "source_sha256": "dce8396e71af12bab969137eec6945aa6d2bfdfd9e4330e20cc43d0f112366b6",
+      "sha256": "f212859636a71252b35fae6c108e237d4126a99c9762b62c4340e026d0f452a4",
+      "duration_seconds": 0.354479
+    },
+    {
+      "path": "sounds/reload/stages/sniper-bolt-forward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_bolt_forward.wav",
+      "source_sha256": "a30338c87bd56749513a5f7ef1a5c7d6f1793087d2bdc471f1f4534c75da14bc",
+      "sha256": "6aa14b19b8223723f2aac9e7f3837c78c863d0ed038faf474b8667b5321521f8",
+      "duration_seconds": 0.311313
+    },
+    {
+      "path": "sounds/reload/stages/famas-clipout.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/famas/famas_clipout.wav",
+      "source_sha256": "6cb4bd486afb117561e5b62657f44e120f007755e2501305d60ed2db6138f3eb",
+      "sha256": "88b87a66fcd02ce6349c09bf9efb8535dbe2f0e5317d5ed99b039c0fe57c9491",
+      "duration_seconds": 0.471146
+    },
+    {
+      "path": "sounds/reload/stages/famas-clipin.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/famas/famas_clipin.wav",
+      "source_sha256": "08291c316569ff798a639f119cf426d2f9cf304a6cc7ba4345808555f0b31c70",
+      "sha256": "4ac3fa0954c518d71186cf6129ad4cc8b0b190d98aa375145d33b7e5f4f5cb52",
+      "duration_seconds": 0.365458
+    },
+    {
+      "path": "sounds/reload/stages/famas-boltforward.mp3",
+      "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/famas/famas_boltforward.wav",
+      "source_sha256": "8618798a02f39445d647ce1209763841e0b64dd24ca7c8b6aeaf7b89e23592cd",
+      "sha256": "b925c52cae690a4ca3a667da38a9ad07f56cd1284b4d5aec81ab73099c842f30",
+      "duration_seconds": 0.330625
+    }
+  ]
+}

@@ -92,4 +92,22 @@ Five-SeveN and R8 include partial/empty single-clip reload choices and automatic
 
 **Hammer Click**, the tenth no-ammo choice, is the game's own `hammer_click` sound and has no file here. Same pinned CS:GO and TF2 revisions as above, limiter, 48 kHz stereo 192 kbps MP3. Exact download URLs and SHA-256 hashes of the source and generated files are in [category-ten-sources.json](category-ten-sources.json).
 
+## Per-gun shots and reload kits (1.3.0)
+
+Each primary gun has its own shots and kits. Recordings from Valve's Counter-Strike: Global Offensive, Counter-Strike: Source and Team Fortress 2, from pinned sourcesounds mirrors ([CS:GO](https://github.com/sourcesounds/csgo/tree/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons), [CS:Source](https://github.com/sourcesounds/cstrike/tree/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons), [TF2](https://github.com/sourcesounds/tf/tree/420bf271208d79d952e693974e391892c254ad80/sound/weapons)).
+
+| Gun | Shots ([primary/](primary)) | Kit pieces ([reload/stages/](reload/stages)) |
+| --- | --- | --- |
+| EggK-47 | CS:GO `ak47_01`, `m4a1_01`, `m4a1_silencer_01`, `galil_01` | CS:GO M4A1 and Galil AR clip out, clip in, bolt forward |
+| Scrambler | CS:GO `nova-1`, `xm1014-1`, `sawedoff-1`; TF2 `scatter_gun_double_shoot` | CS:GO MAG-7 clip out, clip in, pump forward; TF2 shotgun cock back, `shotgun_reload`, cock forward |
+| Free Ranger | CS:GO `g3sg1_01`, `scar20_01`; TF2 `sniper_rifle_classic_shoot` | CS:GO SCAR-20 and SG 553 bolt back, clip out, clip in, bolt forward |
+| RPEGG | TF2 `rocket_directhit_shoot`, `rocket_blackbox_shoot` | TF2 `quake_rpg_reload_remastered`, `cow_mangler_reload`, `dumpster_rocket_reload` |
+| Whipper | CS:GO `mp7_01`, `mp9_01`, `ump45_02` | CS:GO MP7, MP9 and UMP-45 clip out, clip in, bolt or slide forward |
+| Crackshot | CS:GO `awp_01`, `ssg08_01`; CS:Source `scout_fire-1` | CS:GO SSG 08 bolt back, clip in, bolt forward; TF2 sniper bolt back and forward with CS:Source `scout_clipin` |
+| Tri-Hard | CS:GO `aug_01`, `famas_01`, `sg556_01` | CS:GO FAMAS clip out, clip in, bolt forward |
+
+The Tri-Hard shots are three copies of one shot at 0, 100 and 200 ms, mixed, since the game plays one sound per three-round burst. All were converted to 48 kHz stereo 192 kbps MP3 with a limiter. Download URLs and SHA-256 hashes of the source and generated files are in [per-gun-sources.json](per-gun-sources.json).
+
+Since 1.3.0 the five Operator shots and the one-clip reloads (Steel Reset and the four CC0 reloads above) are no longer offered in the lists; their files stay here for older script versions.
+
 The MIT license in this repository covers the script code. The Valve/Riot game audio retains its original ownership; the four reload recordings above are CC0.
