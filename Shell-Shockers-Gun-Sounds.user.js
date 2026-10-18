@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.2.0
+// @version      1.3.0
 // @description  Pick weapon, meme or custom sounds for shots, melee swings, reloads and the empty click in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -69,9 +69,9 @@
 // ==/UserScript==
 
 /* Gun Sounds: swap your weapon and reload sounds for a built-in sound or your own MP3.
-   Primary, secondary, melee, primary reload, secondary reload and no ammo each get their own pick. Shot choices cover
-   every weapon and skin in that slot. Reload kits play their pieces on the game's own reload cues, so they keep time
-   with every gun.
+   Primary, secondary, melee, primary reload, secondary reload and no ammo each get their own pick, and every primary
+   gun can have its own shot and reload too. Shot choices cover every skin of a weapon. Reload kits play their pieces
+   on the game's own reload cues, so they keep time with each gun.
 
    How it works: the game plays every sound through BAWK.play(name, output). The script wraps that call. When the name
    is a weapon action, and it's your own (identified by the shooter's player-node position), the script plays your pick
@@ -82,34 +82,53 @@
    site's storage, or one MP3 of your own per slot, kept there too. They go through the game's own sound output, so its
    Sound Effects volume turns them up and down with everything else.
 
-   Settings ▸ the speaker tab ▸ Gun Sounds has six lists, a Test button for each, and a volume. As with the
+   Settings ▸ the speaker tab ▸ Gun Sounds has six lists, a Test button for each, a volume, and a Primary gun list
+   that switches Primary and Primary reload to one gun's own picks. As with the
    game's settings around it, a change is kept when you press Confirm.
 
-   window.ssGunSounds: version, settings(), set({ primary, secondary, melee, reload, sreload, empty, volume, everyone }),
-   slotOf(soundName). */
+   window.ssGunSounds: version, settings(), set({ primary, secondary, melee, reload, sreload, empty, volume, everyone,
+   "primary:<gun>", "reload:<gun>" }), slotOf(soundName). */
 (() => {
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.2.0";
+  const VERSION = "1.3.0";
   const STORE = "ssGunSounds";
-  // `kind` limits a sound to one kind of list; the meme sounds (no kind) are in every list.
+  // `kind` limits a sound to one kind of list, and `gun` a primary shot to that gun's category. The meme sounds (no
+  // kind) are in every shot list.
   const SOUNDS = [
     { id: "awp", name: "AWP", file: "awp.mp3", duration: 1.00 },
     { id: "punch", name: "Punch", file: "punch.mp3", duration: 1.53 },
     { id: "fart", name: "Reverb Fart", file: "reverb-fart.mp3", duration: 1.00 },
     { id: "tuturu", name: "Tuturu", file: "tuturu.mp3", duration: 0.95 },
     { id: "boom", name: "Vine Boom", file: "vine-boom.mp3", duration: 1.02 },
-    { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", kind: "primary", duration: 1.90 },
-    { id: "rush-p90", name: "Rush P90", file: "primary/rush-p90.mp3", kind: "primary", duration: 0.98 },
-    { id: "rapid-p90", name: "Rapid P90", file: "primary/rapid-p90.mp3", kind: "primary", duration: 1.15 },
+    { id: "ak-47", name: "AK-47", file: "primary/eggk47/ak-47.mp3", kind: "primary", duration: 2.85 },
+    { id: "m4a4", name: "M4A4", file: "primary/eggk47/m4a4.mp3", kind: "primary", duration: 3.19 },
+    { id: "m4a1-s", name: "M4A1-S", file: "primary/eggk47/m4a1-s.mp3", kind: "primary", duration: 1.41 },
+    { id: "galil-ar", name: "Galil AR", file: "primary/eggk47/galil-ar.mp3", kind: "primary", duration: 3.16 },
+    { id: "nova", name: "Nova", file: "primary/scrambler/nova.mp3", kind: "primary", duration: 2.85 },
+    { id: "xm1014", name: "XM1014", file: "primary/scrambler/xm1014.mp3", kind: "primary", duration: 3.19 },
+    { id: "sawed-off", name: "Sawed-Off", file: "primary/scrambler/sawed-off.mp3", kind: "primary", duration: 2.80 },
+    { id: "force-a-nature", name: "Force-A-Nature", file: "primary/scrambler/force-a-nature.mp3", kind: "primary", duration: 2.00 },
+    { id: "g3sg1", name: "G3SG1", file: "primary/free-ranger/g3sg1.mp3", kind: "primary", duration: 2.67 },
+    { id: "scar-20", name: "SCAR-20", file: "primary/free-ranger/scar-20.mp3", kind: "primary", duration: 3.25 },
+    { id: "classic-rifle", name: "Classic", file: "primary/free-ranger/classic.mp3", kind: "primary", duration: 1.80 },
     { id: "blast-rocket", name: "Blast Rocket", file: "primary/blast-rocket.mp3", kind: "primary", duration: 1.90 },
     { id: "quake-rocket", name: "Quake Rocket", file: "primary/quake-rocket.mp3", kind: "primary", duration: 1.90 },
-    { id: "dragonfire-operator", name: "Dragonfire Operator", file: "primary/dragonfire-operator.mp3", kind: "primary", duration: 1.30 },
-    { id: "fallen-operator", name: "Fallen Operator", file: "primary/fallen-operator.mp3", kind: "primary", duration: 1.16 },
-    { id: "ion-pulse-operator", name: "Ion Pulse Operator", file: "primary/ion-pulse-operator.mp3", kind: "primary", duration: 1.17 },
-    { id: "orbital-operator", name: "Orbital Operator", file: "primary/orbital-operator.mp3", kind: "primary", duration: 1.29 },
-    { id: "soulshot-operator", name: "Soulshot Operator", file: "primary/soulshot-operator.mp3", kind: "primary", duration: 1.18 },
+    { id: "direct-hit", name: "Direct Hit", file: "primary/rpegg/direct-hit.mp3", kind: "primary", duration: 4.08 },
+    { id: "black-box", name: "Black Box", file: "primary/rpegg/black-box.mp3", kind: "primary", duration: 2.92 },
+    { id: "rush-p90", name: "Rush P90", file: "primary/rush-p90.mp3", kind: "primary", duration: 0.98 },
+    { id: "rapid-p90", name: "Rapid P90", file: "primary/rapid-p90.mp3", kind: "primary", duration: 1.15 },
+    { id: "mp7", name: "MP7", file: "primary/whipper/mp7.mp3", kind: "primary", duration: 2.64 },
+    { id: "mp9", name: "MP9", file: "primary/whipper/mp9.mp3", kind: "primary", duration: 1.70 },
+    { id: "ump-45", name: "UMP-45", file: "primary/whipper/ump-45.mp3", kind: "primary", duration: 2.09 },
+    { id: "sniper-awp", name: "AWP", file: "primary/crackshot/awp.mp3", kind: "primary", duration: 4.13 },
+    { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", kind: "primary", duration: 1.90 },
+    { id: "ssg-08", name: "SSG 08", file: "primary/crackshot/ssg-08.mp3", kind: "primary", duration: 2.25 },
+    { id: "scout", name: "Scout", file: "primary/crackshot/scout.mp3", kind: "primary", duration: 3.22 },
+    { id: "aug-burst", name: "AUG", file: "primary/tri-hard/aug.mp3", kind: "primary", duration: 2.76 },
+    { id: "famas-burst", name: "FAMAS", file: "primary/tri-hard/famas.mp3", kind: "primary", duration: 2.75 },
+    { id: "sg-553-burst", name: "SG 553", file: "primary/tri-hard/sg-553.mp3", kind: "primary", duration: 2.47 },
     { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", kind: "secondary", duration: 1.90 },
     { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", kind: "secondary", duration: 1.35 },
     { id: "usp-s", name: "USP-S", file: "secondary/usp-s.mp3", kind: "secondary", duration: 1.53 },
@@ -130,11 +149,6 @@
     { id: "shovel-swing", name: "Shovel Swing", file: "melee/shovel-swing.mp3", kind: "melee", duration: 0.62 },
     { id: "wrench-swing", name: "Wrench Swing", file: "melee/wrench-swing.mp3", kind: "melee", duration: 0.62 },
     { id: "boxing-glove", name: "Boxing Glove", file: "melee/boxing-glove.mp3", kind: "melee", duration: 0.52 },
-    { id: "steel-reset", name: "Steel Reset", file: "reload/steel-reset.mp3", kind: "reload", duration: 1.45 },
-    { id: "tactical-swap", name: "Tactical Swap", file: "reload/tactical-swap.mp3", kind: "reload", duration: 1.58 },
-    { id: "rifle-reset", name: "Rifle Reset", file: "reload/rifle-reset.mp3", kind: "reload", duration: 1.56 },
-    { id: "pump-action", name: "Pump Action", file: "reload/pump-action.mp3", kind: "reload", duration: 0.47 },
-    { id: "sidearm-snap", name: "Sidearm Snap", file: "reload/sidearm-snap.mp3", kind: "reload", duration: 1.59 },
     { id: "pistol-click", name: "Pistol Click", file: "empty/pistol-click.mp3", kind: "empty", duration: 0.26 },
     { id: "rifle-click", name: "Rifle Click", file: "empty/rifle-click.mp3", kind: "empty", duration: 0.26 },
     { id: "shotgun-click", name: "Shotgun Click", file: "empty/shotgun-click.mp3", kind: "empty", duration: 0.12 },
@@ -148,19 +162,35 @@
   ];
 
   /* ---- Reload kits ----
-     A kit is one sound per reload cue, played when the game plays that cue, so it keeps time with every gun:
+     A kit is one sound per reload cue, played when the game plays that cue, so it keeps time with the gun:
        start  — the old magazine comes out, or the action opens (the reload's first cue)
        finish — the second touch: the new magazine seats, the shells or the rocket go in
-       action — the bolt, slide or close that ends an empty reload
-       pull   — an action pulled before the magazine (the Free Ranger's empty reload); the action sound if none */
+       action — the bolt, slide, pump or close that ends an empty reload
+       pull   — the action pulled before the magazine (the Free Ranger's empty reload) */
   const KITS = [
     { id: "kit-ak", name: "AK-47", start: "ak47-clipout", finish: "ak47-clipin", action: "ak47-boltpull" },
-    { id: "kit-aug", name: "AUG", start: "aug-clipout", finish: "aug-clipin", action: "aug-boltrelease" },
-    { id: "kit-awp", name: "AWP bolt", start: "awp-boltback", finish: "awp-clipin", action: "awp-boltforward" },
-    { id: "kit-g3", name: "G3SG1", start: "g3sg1-clipout", finish: "g3sg1-clipin", action: "g3sg1-slideforward", pull: "g3sg1-slideback" },
-    { id: "kit-p90", name: "P90", start: "p90-release-out", finish: "p90-clipin", action: "p90-boltforward" },
+    { id: "kit-m4a4", name: "M4A4", start: "m4a1-clipout", finish: "m4a1-clipin", action: "m4a1-boltforward" },
+    { id: "kit-galil", name: "Galil AR", start: "galil-clipout", finish: "galil-clipin", action: "galil-boltforward" },
     { id: "kit-double", name: "Double barrel", start: "scatter-gun-double-tube-open", finish: "scatter-gun-double-shells-in", action: "scatter-gun-double-tube-close" },
+    { id: "kit-mag7", name: "MAG-7", start: "mag7-clipout", finish: "mag7-clipin", action: "mag7-pump-forward" },
+    { id: "kit-pump", name: "Pump shotgun", start: "shotgun-cock-back", finish: "shotgun-shell-in", action: "shotgun-cock-forward" },
+    { id: "kit-g3", name: "G3SG1", pull: "g3sg1-slideback", start: "g3sg1-clipout", finish: "g3sg1-clipin", action: "g3sg1-slideforward" },
+    { id: "kit-scar20", name: "SCAR-20", pull: "scar20-boltback", start: "scar20-clipout", finish: "scar20-clipin", action: "scar20-boltforward" },
+    { id: "kit-sg553", name: "SG 553", pull: "sg556-boltback", start: "sg556-clipout", finish: "sg556-clipin", action: "sg556-boltforward" },
     { id: "kit-rocket", name: "Rocket", finish: "rocket-reload" },
+    { id: "kit-quake", name: "Quake RPG", finish: "quake-rpg-reload" },
+    { id: "kit-mangler", name: "Cow Mangler", finish: "cow-mangler-reload" },
+    { id: "kit-bazooka", name: "Beggar's Bazooka", finish: "dumpster-rocket-reload" },
+    { id: "kit-p90", name: "P90", start: "p90-release-out", finish: "p90-clipin", action: "p90-boltforward" },
+    { id: "kit-mp7", name: "MP7", start: "mp7-clipout", finish: "mp7-clipin", action: "mp7-slideforward" },
+    { id: "kit-mp9", name: "MP9", start: "mp9-clipout", finish: "mp9-clipin", action: "mp9-boltforward" },
+    { id: "kit-ump45", name: "UMP-45", start: "ump45-clipout", finish: "ump45-clipin", action: "ump45-boltforward" },
+    { id: "kit-awp", name: "AWP bolt", start: "awp-boltback", finish: "awp-clipin", action: "awp-boltforward" },
+    { id: "kit-ssg08", name: "SSG 08 bolt", start: "ssg08-boltback", finish: "ssg08-clipin", action: "ssg08-boltforward" },
+    { id: "kit-scout", name: "Scout bolt", start: "sniper-bolt-back", finish: "scout-clipin", action: "sniper-bolt-forward" },
+    { id: "kit-aug", name: "AUG", start: "aug-clipout", finish: "aug-clipin", action: "aug-boltrelease" },
+    { id: "kit-famas", name: "FAMAS", start: "famas-clipout", finish: "famas-clipin", action: "famas-boltforward" },
+    { id: "kit-sg553-tri", name: "SG 553", start: "sg556-clipout", finish: "sg556-clipin", action: "sg556-boltforward" },
     { id: "kit-glock", name: "Glock", start: "glock-clipout", finish: "glock-clipin", action: "glock-sliderelease" },
     { id: "kit-usp", name: "USP-S", start: "usp-clipout", finish: "usp-clipin", action: "usp-sliderelease" },
     { id: "kit-fiveseven", name: "Five-SeveN", start: "fiveseven-out", finish: "fiveseven-in", action: "fiveseven-slide" },
@@ -177,15 +207,26 @@
   const AUDIO = new Map(SOUNDS.map(s => [s.id, s]));
   for (const piece of new Set(KITS.flatMap(kitPieces)))
     AUDIO.set(stageId(piece), { id: stageId(piece), name: piece, file: `reload/stages/${piece}.mp3` });
-  // "Matched to your gun": the kit for the gun reloading. The pistol takes the kit of your Secondary pick.
-  const KIT_FOR_GUN = { eggk47: "kit-ak", dozenGauge: "kit-double", csg1: "kit-g3", rpegg: "kit-rocket", smg: "kit-p90",
-    m24: "kit-awp", aug: "kit-aug", cluck9mm: "kit-glock" };
+
+  /* ---- The primary guns ----
+     Each has its own shot and reload picks, and its own sounds: shots that suit its firing (the Tri-Hard plays one
+     sound for its three-round burst, so its shots are bursts, 100 ms apart like the game's), and kits with a piece for
+     each of its reload cues. `rof` is the time between shots (the game runs on 33 ms ticks), used by Test. The first
+     shot and kit are what "Matched to your gun" plays. */
+  const GUNS = [
+    { id: "eggk47", name: "EggK-47", rof: 100, shots: ["ak-47", "m4a4", "m4a1-s", "galil-ar"], kits: ["kit-ak", "kit-m4a4", "kit-galil"] },
+    { id: "dozenGauge", name: "Scrambler", rof: 267, shots: ["nova", "xm1014", "sawed-off", "force-a-nature"], kits: ["kit-double", "kit-mag7", "kit-pump"] },
+    { id: "csg1", name: "Free Ranger", rof: 433, shots: ["g3sg1", "scar-20", "classic-rifle"], kits: ["kit-g3", "kit-scar20", "kit-sg553"] },
+    { id: "rpegg", name: "RPEGG", rof: 1333, shots: ["blast-rocket", "quake-rocket", "direct-hit", "black-box"], kits: ["kit-rocket", "kit-quake", "kit-mangler", "kit-bazooka"] },
+    { id: "smg", name: "Whipper", rof: 67, shots: ["rush-p90", "rapid-p90", "mp7", "mp9", "ump-45"], kits: ["kit-p90", "kit-mp7", "kit-mp9", "kit-ump45"] },
+    { id: "m24", name: "Crackshot", rof: 500, shots: ["sniper-awp", "thunder-awp", "ssg-08", "scout"], kits: ["kit-awp", "kit-ssg08", "kit-scout"] },
+    { id: "aug", name: "Tri-Hard", rof: 500, shots: ["aug-burst", "famas-burst", "sg-553-burst"], kits: ["kit-aug", "kit-famas", "kit-sg553-tri"] },
+  ];
+  const GUN = Object.fromEntries(GUNS.map(g => [g.id, g]));
+  const PISTOL_KITS = ["kit-glock", "kit-usp", "kit-fiveseven", "kit-revolver", "kit-p250", "kit-tec9", "kit-p2000", "kit-elite"];
+  // The pistol's "Matched to your gun" kit follows your Secondary pick.
   const PISTOL_KIT = { "usp-s": "kit-usp", "five-seven": "kit-fiveseven", "r8-revolver": "kit-revolver", p250: "kit-p250",
     "tec-9": "kit-tec9", p2000: "kit-p2000", "dual-berettas": "kit-elite", quickdraw: "kit-glock" };
-  // 1.2 test builds had one-clip reloads for each gun; a saved one becomes that gun's kit.
-  const OLD_RELOADS = { eggk47: "kit-ak", scrambler: "kit-double", "free-ranger": "kit-g3", rpegg: "kit-rocket",
-    whipper: "kit-p90", crackshot: "kit-awp", "tri-hard": "kit-aug", cluck9mm: "kit-glock", "usp-s": "kit-usp",
-    "five-seven": "kit-fiveseven", "r8-revolver": "kit-revolver" };
 
   /* ---- The game's reload cues ----
      Each gun's reload plays a few named sounds. The role is what the cue means, so a kit can answer it. */
@@ -215,18 +256,23 @@
     cluck9mm: { start: 0, finish: 1583, action: 2334 },
   };
 
-  const DEFAULT = "default", CUSTOM = "custom", PICK = "pick", PER_GUN = "per-gun";
+  const DEFAULT = "default", CUSTOM = "custom", PICK = "pick", PER_GUN = "per-gun", SAME = "same";
   const SLOTS = [
     { id: "primary", name: "Primary", kind: "primary" },
     { id: "secondary", name: "Secondary", kind: "secondary" },
     { id: "melee", name: "Melee", kind: "melee" },
     { id: "reload", name: "Primary reload", kind: "reload" },
-    { id: "sreload", name: "Secondary reload", kind: "reload" },
+    { id: "sreload", name: "Secondary reload", kind: "sreload" },
     { id: "empty", name: "No ammo", kind: "empty" },
   ];
   const KIND = Object.fromEntries(SLOTS.map(s => [s.id, s.kind]));
-  const DEFAULTS = Object.freeze({ primary: DEFAULT, secondary: DEFAULT, melee: DEFAULT, reload: DEFAULT, sreload: DEFAULT,
-    empty: DEFAULT, volume: 0.8, everyone: false });
+  // Primary and Primary reload also have a pick for each gun, saved as "primary:<gun>" and "reload:<gun>". It starts on
+  // "Same as all guns", the slot's own pick.
+  const PER_GUN_SLOTS = ["primary", "reload"];
+  const gunKey = (slot, gun) => slot + ":" + gun;
+  const KEYS = [...SLOTS.map(s => s.id), ...PER_GUN_SLOTS.flatMap(s => GUNS.map(g => gunKey(s, g.id)))];
+  const DEFAULTS = Object.freeze({ ...Object.fromEntries(KEYS.map(k => [k, k.includes(":") ? SAME : DEFAULT])),
+    volume: 0.8, everyone: false });
   const warn = (...a) => console.warn("[Gun Sounds]", ...a);
 
   /* ---- Which sounds are which weapon ----
@@ -244,23 +290,37 @@
     if (!m) return null;
     return SECONDARY.has(m[1]) ? "secondary" : "primary";
   }
+  const gunOf = name => /^gun_([^_]+)_/.exec(name)?.[1];
 
   /* ---- Saved settings ---- */
-  const soundsFor = slot => SOUNDS.filter(x => !x.kind || x.kind === KIND[slot]);
-  const isSound = (s, slot) => s === DEFAULT || s === CUSTOM ||
-    (KIND[slot] === "reload" && (s === PER_GUN || !!kitById(s))) || soundsFor(slot).some(x => x.id === s);
-  function migrate(id) {
-    const m = typeof id === "string" && /^reload-(.+)-(?:short|long)$/.exec(id);
-    return m && OLD_RELOADS[m[1]] || id;
+  const MEMES = SOUNDS.filter(x => !x.kind);
+  const isReload = slot => slot === "reload" || slot === "sreload";
+  // What a list offers besides the game's sound and your own: a slot, or a slot for one gun ("primary:eggk47").
+  function choices(key) {
+    const [slot, gun] = key.split(":");
+    if (slot === "primary") return (gun ? [GUN[gun]] : GUNS).flatMap(g => g.shots);
+    if (slot === "reload") return (gun ? [GUN[gun]] : GUNS).flatMap(g => g.kits);
+    if (slot === "sreload") return PISTOL_KITS;
+    return SOUNDS.filter(x => x.kind === KIND[slot]).map(x => x.id);
   }
+  function isSound(s, key) {
+    if (s === DEFAULT || s === CUSTOM) return true;
+    const [slot, gun] = key.split(":");
+    if (s === SAME) return !!gun;
+    if (s === PER_GUN) return !gun && (slot === "primary" || isReload(slot));
+    return choices(key).includes(s) || (!isReload(slot) && MEMES.some(x => x.id === s));
+  }
+  // A reload pick from an older version that's gone (a one-clip reload, a test build's, or a gun kit on the pistol)
+  // becomes the kit matched to your gun.
+  const oldReload = v => typeof v === "string" && /^(kit-|reload-)|^(steel-reset|tactical-swap|rifle-reset|pump-action|sidearm-snap)$/.test(v);
   function clean(s) {
     const ok = !!s && typeof s === "object";
     // 1.1 had one Reload list; its pick carries over to both reload lists.
     const src = ok ? { ...s, sreload: s.sreload === undefined ? s.reload : s.sreload } : {};
     const out = {};
-    for (const { id } of SLOTS) {
-      const v = KIND[id] === "reload" ? migrate(src[id]) : src[id];
-      out[id] = ok && isSound(v, id) ? v : DEFAULTS[id];
+    for (const k of KEYS) {
+      const v = src[k];
+      out[k] = !ok ? DEFAULTS[k] : isSound(v, k) ? v : isReload(k) && oldReload(v) ? PER_GUN : DEFAULTS[k];
     }
     out.volume = ok && Number.isFinite(s.volume) ? Math.min(1, Math.max(0, s.volume)) : DEFAULTS.volume;
     out.everyone = ok && s.everyone === true;
@@ -273,11 +333,26 @@
     try { localStorage.setItem(STORE, JSON.stringify(saved)); } catch { /* storage blocked: kept for this visit */ }
     if (running) getReady();
   }
+  // What a list's pick plays for a gun, and the key your own MP3 for it is kept under. "Same as all guns" takes the
+  // slot's pick, and "Matched to your gun" the gun's first sound (the pistol's kit follows your Secondary pick). A gun
+  // added to the game later has none of its own, so it keeps the game's sound.
+  function resolve(key, gun, p = saved) {
+    const slot = key.split(":")[0];
+    let sound = p[key] ?? DEFAULT;
+    if (sound === SAME) { key = slot; sound = p[slot]; }
+    if (sound === PER_GUN) sound = slot === "sreload" ? PISTOL_KIT[p.secondary] || "kit-glock" :
+      (slot === "primary" ? GUN[gun]?.shots[0] : GUN[gun]?.kits[0]) ?? DEFAULT;
+    return { sound, key };
+  }
+  const pickFor = (slot, gun, p = saved) =>
+    resolve(GUN[gun] && PER_GUN_SLOTS.includes(slot) ? gunKey(slot, gun) : slot, gun, p);
+  const kitFor = (gun, p = saved) => kitById(pickFor(gun === "cluck9mm" ? "sreload" : "reload", gun, p).sound);
+  const reloadsOn = () => KEYS.some(k => isReload(k.split(":")[0]) && saved[k] !== DEFAULT && saved[k] !== SAME);
 
   /* ---- Built-in sounds, from GitHub ----
      They come from the commit that added them, so the files this version uses never change under it. A sound is
      downloaded the first time it's needed, then kept in this site's Cache Storage. */
-  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/b87b7c39a6ce097858ac8a86846ee6acd4fd27ac/sounds";
+  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/dd015b6664115881b8a4d2579186f36beb8163b1/sounds";
   // Same immutable files, via a second host if GitHub is temporarily unavailable or blocked.
   const MIRROR = FILES.replace("https://raw.githubusercontent.com/", "https://cdn.jsdelivr.net/gh/")
     .replace(/\/([a-f0-9]{40})\//, "@$1/");
@@ -315,7 +390,7 @@
     throw new Error(`Couldn't download ${file}. ${errors.join("; ")}`);
   }
 
-  /* ---- Your own sound: one file a slot, in this site's IndexedDB ---- */
+  /* ---- Your own sound: one file a list (a slot, or one gun's), in this site's IndexedDB ---- */
   const MAX_BYTES = 4 * 1024 * 1024;
   function idb(mode, fn) {
     return new Promise((resolve, reject) => {
@@ -380,15 +455,15 @@
     return buf;
   }
 
-  const cache = new Map();   // sound id, or "custom:<slot>" → Promise of its AudioBuffer
+  const cache = new Map();   // sound id, or "custom:<list key>" → Promise of its AudioBuffer
   const ready = new Map();   // the same clips, once loaded, for the shot that can't wait
-  const keyOf = (sound, slot) => sound === CUSTOM ? CUSTOM + ":" + slot : sound;
-  function clip(sound, slot) {
-    const key = keyOf(sound, slot);
+  const keyOf = (sound, list) => sound === CUSTOM ? CUSTOM + ":" + list : sound;
+  function clip(sound, list) {
+    const key = keyOf(sound, list);
     let p = cache.get(key);
     if (p) return p;
     p = sound === CUSTOM ?
-      fileFor(slot).then(f => f ? decode(f.data, f.name) : null) :
+      fileFor(list).then(f => f ? decode(f.data, f.name) : null) :
       download(AUDIO.get(sound).file, sound);
     cache.set(key, p);
     p.then(b => { if (b) ready.set(key, b); }, () => { if (cache.get(key) === p) cache.delete(key); });
@@ -396,18 +471,21 @@
   }
   const kitClips = kit => Promise.all(kitPieces(kit).map(piece => clip(stageId(piece))));
   const kitReady = kit => kitPieces(kit).every(piece => ready.has(stageId(piece)));
-  // The kit "Matched to your gun" plays for a gun. The pistol's follows your Secondary pick.
-  const kitFor = (gun, secondary = saved.secondary) =>
-    kitById(gun === "cluck9mm" ? PISTOL_KIT[secondary] || KIT_FOR_GUN.cluck9mm : KIT_FOR_GUN[gun] || KIT_FOR_GUN.eggk47);
-  const matchedKits = slot => slot === "sreload" ? [kitFor("cluck9mm")] :
-    [...new Set(Object.keys(KIT_FOR_GUN).filter(g => g !== "cluck9mm").map(g => kitFor(g)))];
-  function warm(sound, slot) {
+  // `sound` as resolve() gives it: never "Same as all guns" or "Matched to your gun".
+  function warm(sound, key) {
     if (sound === DEFAULT || AUDIO.get(sound)?.game) return;   // the game's own sounds need no download
-    const kits = sound === PER_GUN ? matchedKits(slot) : kitById(sound) ? [kitById(sound)] : null;
-    if (kits) kits.forEach(k => kitClips(k).catch(warn));
-    else clip(sound, slot).catch(warn);
+    const kit = kitById(sound);
+    if (kit) kitClips(kit).catch(warn);
+    else clip(sound, key).catch(warn);
   }
-  function getReady() { for (const s of SLOTS) warm(saved[s.id], s.id); }
+  // Everything that can play: each gun's picks, the slot's own (for a gun added later), and the other lists.
+  function getReady() {
+    for (const slot of PER_GUN_SLOTS) {
+      for (const g of GUNS) { const r = pickFor(slot, g.id); warm(r.sound, r.key); }
+      if (saved[slot] !== PER_GUN) warm(saved[slot], slot);
+    }
+    for (const slot of ["secondary", "melee", "empty", "sreload"]) { const r = resolve(slot); warm(r.sound, r.key); }
+  }
 
   /* ---- Playing ----
      Into the game's own sound output (BAWK's input, ahead of its volume), so its Sound Effects volume applies to
@@ -454,15 +532,23 @@
   }
   const quiet = () => [...voices].forEach(fade);
   // Fade a playing clip out `after` seconds from now. Called again, the later time wins.
-  function fadeAt(src, after) {
+  function fadeAt(src, after, speed = 0.05) {
     const v = [...voices].find(x => x.src === src);
     if (!v) return;
     try {
       const t = v.ctx.currentTime + Math.max(0, after);
       v.g.gain.cancelScheduledValues(v.ctx.currentTime);
-      v.g.gain.setTargetAtTime(0, t, 0.05);
-      v.src.stop(t + 0.3);
+      v.g.gain.setTargetAtTime(0, t, speed);
+      v.src.stop(t + speed * 6);
     } catch { /* already stopped */ }
+  }
+  // A shot's tail fades quickly when the same gun fires again, so each shot of a fast gun is heard on its own beat
+  // instead of smearing into the last one.
+  let lastShots = new WeakMap();
+  function shot(by, src, after = 0) {
+    const prev = lastShots.get(by);
+    if (prev) fadeAt(prev, after, 0.03);
+    lastShots.set(by, src);
   }
 
   /* ---- The hook ---- */
@@ -513,7 +599,7 @@
 
   /* ---- Reloads ----
      All cues from one player's reload carry that player's position object, so it keys the reload in progress.
-     A kit answers each cue with its own piece. A single clip plays on the first cue and fades as the reload ends.
+     A kit answers each cue with its own piece. Your own MP3 plays once on the first cue and fades as the reload ends.
      Cues with nothing to play get a silent source, so the game's sound stays off and BAWK still frees its channel.
      If the pick isn't loaded when a reload starts, that whole reload keeps the game's sounds. */
   let reloads = new WeakMap(), primaryWeapons = new WeakMap(), previewWeapon = "eggk47", silent = null;
@@ -529,24 +615,25 @@
   }
   function startReload(B, name, to, key, now) {
     endReload(B, to);
-    const slot = name.startsWith("gun_cluck9mm_") ? "sreload" : "reload", sound = saved[slot];
+    const slot = name.startsWith("gun_cluck9mm_") ? "sreload" : "reload";
+    // The EggK-47, Free Ranger and Whipper share magazine cues: those go by the gun that player last fired.
+    const gun = slot === "sreload" ? "cluck9mm" : CUE_GUN[name] || primaryWeapons.get(key) || "eggk47";
+    const { sound, key: list } = pickFor(slot, gun);
     const state = { at: now, last: null, slot, sources: [], kit: null, clip: null, on: false, to: null };
     reloads.set(key, state);
     if (sound === DEFAULT) return state;
     const own = mine(B, to);
     if (!own && !saved.everyone) return state;
-    // The EggK-47, Free Ranger and Whipper share magazine cues: those go by the gun that player last fired.
-    const gun = CUE_GUN[name] || primaryWeapons.get(key) || "eggk47";
     if (own && slot === "reload") previewWeapon = gun;
     state.to = own ? null : to;
-    const kit = sound === PER_GUN ? kitFor(gun) : kitById(sound);
+    const kit = kitById(sound);
     if (kit) {
       if (kitReady(kit)) Object.assign(state, { kit, on: true });
       else kitClips(kit).catch(warn);
     } else {
-      const buf = ready.get(keyOf(sound, slot));
+      const buf = ready.get(keyOf(sound, list));
       if (buf) Object.assign(state, { clip: buf, on: true });
-      else warm(sound, slot);
+      else warm(sound, list);
     }
     return state;
   }
@@ -591,31 +678,35 @@
     const wrap = function (name, to) {
       if (state.live && running) {
         try {
-          const slot = slotOf(name), kind = slot && KIND[slot];
-          if (kind === "reload") {
-            if (saved.reload !== DEFAULT || saved.sreload !== DEFAULT) {
+          const slot = slotOf(name);
+          if (isReload(slot)) {
+            if (reloadsOn()) {
               const src = playReload(B, name, to);
               if (src) return src;
             }
             return cur.apply(this, arguments);
           }
+          const by = slot && reloadKey(B, to), gun = slot === "primary" && gunOf(name);
           if (slot === "primary" || slot === "secondary" || slot === "melee") {
-            if (reloads.has(reloadKey(B, to))) endReload(B, to);   // a shot or a swing cuts a reload short
-            const gun = slot === "primary" && /^gun_([^_]+)_/.exec(name)?.[1];
-            if (gun && KIT_FOR_GUN[gun]) primaryWeapons.set(reloadKey(B, to), gun);
+            if (reloads.has(by)) endReload(B, to);   // a shot or a swing cuts a reload short
+            if (GUN[gun]) primaryWeapons.set(by, gun);
           }
-          const sound = slot && saved[slot];
+          const { sound, key: list } = slot === "primary" ? pickFor(slot, gun) : slot ? resolve(slot) : {};
           if (sound && sound !== DEFAULT && (saved.everyone || mine(B, to))) {
-            const own = !saved.everyone || mine(B, to), game = AUDIO.get(sound)?.game;
+            const own = mine(B, to), game = AUDIO.get(sound)?.game;
             if (game) {   // one of the game's own sounds, played in its place
               const args = [...arguments];
               args[0] = game;
               return cur.apply(this, args);
             }
-            const buf = ready.get(keyOf(sound, slot));
+            const buf = ready.get(keyOf(sound, list));
             const src = buf && play(buf, saved.volume, own ? null : to);
-            if (src) return src;
-            if (!buf) warm(sound, slot);   // not ready yet: the game's own sound this time
+            if (src) {
+              if (slot !== "empty") shot(by, src);
+              if (own && GUN[gun]) previewWeapon = gun;
+              return src;
+            }
+            if (!buf) warm(sound, list);   // not ready yet: the game's own sound this time
           }
         } catch (err) { warn(err); }
       }
@@ -638,8 +729,8 @@
   /* ---- Settings ▸ the speaker tab ▸ Gun Sounds, next to Language ---- */
   const CELL = "ss-gun-sounds";
   let ui = null, pending = null, customNames = {};
-  let pendingFiles = {}, fileGen = 0;   // files picked since the popup opened: slot → { file, name, buf }
-  const nameOf = slot => pendingFiles[slot] ? pendingFiles[slot].name : customNames[slot];
+  let pendingFiles = {}, fileGen = 0;   // files picked since the popup opened: list key → { file, name, buf }
+  const nameOf = key => pendingFiles[key] ? pendingFiles[key].name : customNames[key];
   const CHEVRON = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9'%3E%3Cpath d='M.9 2.5 4.5 6.5 8.1 2.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`;
   // The list takes the theme's colours (--ssg-*, read by paint()). Where the browser can style a dropdown's list
   // (Chrome and Edge), it opens as a short list in those colours with only the focused row lit.
@@ -653,6 +744,10 @@
 #${CELL} .ssg-slots .ss_button { min-width: 0; padding-inline: .5em; margin: 0; }
 #${CELL} .ssg-slots select.ss_select { margin-right: .3em; font-size: .9em; }
 #${CELL} .ssg-slots selectedcontent { font-size: inherit; }
+#${CELL} .ssg-top { display: flex; align-items: center; min-width: 0; }
+#${CELL} .ssg-top h3 { flex: 1 1 auto; }
+#${CELL} .ssg-top .ssg-name { margin: 0 var(--ss-space-sm) 0 0; }
+#${CELL} .ssg-top select.ss_select { flex: 0 1 11em; margin: 0; font-size: .9em; }
 #${CELL} .ssg-bottom { margin-top: .35em; }
 #${CELL} .ssg-bottom .ssg-name { margin: 0 var(--ss-space-sm) 0 2px; }
 #${CELL} .ssg-bottom input[type=range] { flex: 0 1 35%; }
@@ -690,8 +785,7 @@
   #${CELL} hr { inline-size: auto; margin: .3em .5em; border: 0; border-block-start: 1px solid var(--ssg-accent); opacity: .45; }
 }`;
 
-  const GROUP = { primary: "Primary Sounds", secondary: "Secondary Sounds", melee: "Melee Sounds",
-    reload: "One-Clip Reloads", empty: "No Ammo Sounds" };
+  const GROUP = { secondary: "Secondary Sounds", melee: "Melee Sounds", empty: "No Ammo Sounds" };
   // A built-in clip's length shows beside its name in the open list, and not in the closed box.
   function soundOption(x) {
     const o = new Option(x.name, x.id);
@@ -699,13 +793,32 @@
     return o;
   }
   const TIPS = {
-    primary: "Plays for every primary weapon.",
+    primary: "Your primary gun's shots. Pick a gun at the top right to give it a sound of its own.",
     secondary: "Plays for the pistol.",
     melee: "Plays for every melee weapon.",
-    reload: "Primary guns' reloads. A kit plays a sound on each of the reload's cues; a single clip plays once and ends with the reload.",
-    sreload: "The pistol's reload. A kit plays a sound on each of the reload's cues; a single clip plays once and ends with the reload.",
+    reload: "Your primary gun's reload: a kit plays a sound on each of that gun's reload cues. Pick a gun at the top right to give it a kit of its own.",
+    sreload: "The pistol's reload: a kit plays a sound on each of its reload cues.",
     empty: "The click when you fire with an empty magazine.",
   };
+  // A list's choices by its key ("primary", or "primary:eggk47" for one gun), as [group label, options].
+  function groups(key) {
+    const [slot, gun] = key.split(":"), out = [];
+    const first = gun ? [new Option("Same as all guns", SAME)] : [];
+    first.push(new Option("Game sound", DEFAULT));
+    if (!gun && (slot === "primary" || isReload(slot))) first.push(new Option("Matched to your gun", PER_GUN));
+    if (!isReload(slot)) first.push(...MEMES.map(soundOption));
+    out.push(["Default Sounds", first]);
+    const kitOption = id => new Option(kitById(id).name, id);
+    if (slot === "primary") for (const g of gun ? [GUN[gun]] : GUNS) out.push([g.name + " Sounds", g.shots.map(id => soundOption(AUDIO.get(id)))]);
+    else if (slot === "reload") for (const g of gun ? [GUN[gun]] : GUNS) out.push([g.name + " Reloads", g.kits.map(kitOption)]);
+    else if (slot === "sreload") out.push(["Pistol Reloads", PISTOL_KITS.map(kitOption)]);
+    else out.push([GROUP[slot], SOUNDS.filter(x => x.kind === slot).map(soundOption)]);
+    out.push(["Custom Sounds", [new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK)]]);
+    return out;
+  }
+  // The list shows the gun picked at the top, for Primary and Primary reload.
+  const keyFor = id => ui && ui.gun && PER_GUN_SLOTS.includes(id) ? gunKey(id, ui.gun) : id;
+  const isOff = (p, key) => p[key] === DEFAULT || (p[key] === SAME && p[key.split(":")[0]] === DEFAULT);
   function el(tag, cls, text) {
     const e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -726,15 +839,7 @@
       const face = el("button");
       face.type = "button";
       face.append(el("selectedcontent"));
-      // "Choose MP3 file…" isn't a setting: picking it opens the file picker, and the file then becomes "My MP3".
-      const group = (label, options) => {
-        const g = el("optgroup"); g.label = label; g.append(...options); select.append(g);
-      };
       select.append(face);
-      group("Default Sounds", [new Option("Game sound", DEFAULT), ...SOUNDS.filter(x => !x.kind).map(soundOption)]);
-      if (s.kind === "reload") group("Reload Kits", [new Option("Matched to your gun", PER_GUN), ...KITS.map(k => new Option(k.name, k.id))]);
-      group(GROUP[s.kind], SOUNDS.filter(x => x.kind === s.kind).map(soundOption));
-      group("Custom Sounds", [new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK)]);
       select.title = TIPS[s.id] + " Your own file: MP3, OGG or WAV, up to 4 MB.";
       const test = el("button", "ss_button btn_blue bevel_blue btn_sm", "Test");
       test.type = "button";
@@ -742,9 +847,9 @@
       const note = el("span", "ssg-note text_blue4");
       const input = el("input");
       Object.assign(input, { type: "file", accept: "audio/*,.mp3,.ogg,.wav,.m4a,.webm", hidden: true });
-      const head = el("div", "ssg-head");
-      head.append(el("span", "ssg-name text_blue4", s.name), note);
-      slots[s.id] = { select, test, note, input };
+      const head = el("div", "ssg-head"), name = el("span", "ssg-name text_blue4", s.name);
+      head.append(name, note);
+      slots[s.id] = { select, face, test, note, input, name, key: null };
       const col = el("div");
       col.append(head, row(select, test), input);
       rows.push(col);
@@ -754,14 +859,15 @@
         if (e.target instanceof HTMLOptionElement && e.target !== document.activeElement) e.target.focus({ preventScroll: true });
       });
       select.addEventListener("change", () => {
+        const key = slots[s.id].key;
         if (select.value === PICK) {
-          select.value = pending[s.id];
+          select.value = pending[key];
           return input.click();
         }
-        pending[s.id] = select.value;
+        pending[key] = select.value;
         refresh();
-        if (select.value === CUSTOM && !nameOf(s.id)) input.click();
-        else if (select.value !== DEFAULT) preview(s.id);
+        if (select.value === CUSTOM && !nameOf(key)) input.click();
+        else if (!isOff(pending, key)) preview(s.id);
       });
       test.addEventListener("click", () => preview(s.id));
       input.addEventListener("change", () => { const f = input.files[0]; input.value = ""; if (f) addFile(s.id, f); });
@@ -779,7 +885,18 @@
     const slotGrid = el("div", "ssg-slots"), bottom = row(el("span", "ssg-name text_blue4", "Volume"), range, value, everyoneRow);
     bottom.classList.add("ssg-bottom");
     slotGrid.append(...rows);
-    cell.append(el("h3", "margin-bottom-none h-short", "Gun Sounds"), slotGrid, bottom);
+    // Which gun Primary and Primary reload show: all guns, or one gun's own picks.
+    const gunSelect = el("select", "ss_select");
+    const gunFace = el("button");
+    gunFace.type = "button";
+    gunFace.append(el("selectedcontent"));
+    gunSelect.append(gunFace, new Option("All guns", ""), ...GUNS.map(g => new Option(g.name, g.id)));
+    gunSelect.title = "Give one primary gun its own shot and reload. It starts on \"Same as all guns\".";
+    gunSelect.addEventListener("pointerdown", paint);
+    gunSelect.addEventListener("change", () => { me.gun = gunSelect.value; refresh(); });
+    const top = el("div", "ssg-top");
+    top.append(el("h3", "margin-bottom-none h-short", "Gun Sounds"), el("span", "ssg-name text_blue4", "Primary gun"), gunSelect);
+    cell.append(top, slotGrid, bottom);
     grid.append(cell);
 
     let style = document.getElementById(CELL + "-style");
@@ -794,13 +911,13 @@
       value.textContent = String(Math.round(pending.volume * 100));
     });
     range.addEventListener("change", () => {
-      const s = SLOTS.find(x => pending[x.id] !== DEFAULT);
+      const s = SLOTS.find(x => !isOff(pending, slots[x.id].key));
       if (s) preview(s.id);
     });
 
     // The popup opening or closing puts the saved settings back in the controls, so a change only stays if Confirm
     // saved it (Cancel, the X and Esc all leave things as they were).
-    const me = { cell, slots, range, value, everyone, io: null, shown: null };
+    const me = { cell, slots, range, value, everyone, gunSelect, gun: "", io: null, shown: null };
     me.io = new IntersectionObserver(entries => {
       const shown = entries[entries.length - 1].isIntersecting;
       if (ui !== me || shown === me.shown) return;
@@ -828,7 +945,7 @@
     const vars = ["--ssg-bg", "--ssg-fg", "--ssg-accent"];
     const clear = c => /^transparent$|^rgba\(.*,\s*0(\.0+)?\)$|\/\s*0(\.0+)?\)$/.test(c);
     const game = [...ui.cell.parentNode.querySelectorAll("select.ss_select")].find(e => !ui.cell.contains(e));
-    for (const { select } of Object.values(ui.slots)) {
+    for (const select of [ui.gunSelect, ...Object.values(ui.slots).map(u => u.select)]) {
       vars.forEach(v => select.style.removeProperty(v));
       const o = getComputedStyle([...select.options].find(e => !e.selected) || select);
       const s = getComputedStyle(select);
@@ -846,30 +963,46 @@
   function refresh() {
     if (!ui) return;
     const p = pending || saved;
+    ui.gunSelect.value = ui.gun;
     for (const s of SLOTS) {
-      const u = ui.slots[s.id];
-      u.select.value = p[s.id];
-      u.test.disabled = p[s.id] === DEFAULT;
+      const u = ui.slots[s.id], key = keyFor(s.id);
+      if (u.key !== key) {   // the gun changed: that gun's own choices
+        u.key = key;
+        while (u.select.lastChild !== u.face) u.select.lastChild.remove();
+        for (const [label, options] of groups(key)) {
+          const g = el("optgroup");
+          g.label = label;
+          g.append(...options);
+          u.select.append(g);
+        }
+        const gun = key.split(":")[1];
+        u.name.textContent = gun ? `${s.name} (${GUN[gun].name})` : s.name;
+      }
+      u.select.value = p[key];
+      u.test.disabled = isOff(p, key);
       setNote(s.id);
     }
     ui.everyone.checked = p.everyone;
     ui.range.value = String(p.volume);
     ui.value.textContent = String(Math.round(p.volume * 100));
-    ui.range.disabled = SLOTS.every(s => p[s.id] === DEFAULT);
+    ui.range.disabled = KEYS.every(k => isOff(p, k));
   }
   // With no text, the note names your file while "My MP3" is picked. A problem shows in red in a few words, with
   // more in its tooltip.
   function setNote(slot, text, error, title = text) {
     if (!ui) return;
-    const u = ui.slots[slot], mine = (pending || saved)[slot] === CUSTOM;
-    u.note.textContent = text || (mine ? nameOf(slot) || "No file yet" : "");
-    u.note.title = text ? title : mine ? nameOf(slot) || "" : "";
+    const u = ui.slots[slot], key = u.key, mine = (pending || saved)[key] === CUSTOM;
+    u.note.textContent = text || (mine ? nameOf(key) || "No file yet" : "");
+    u.note.title = text ? title : mine ? nameOf(key) || "" : "";
     u.note.classList.toggle("ssg-error", !!error);
   }
   // The slot's pick, as it'd play in a game. A reload plays on the cue times of a real reload (an empty one, so the
   // bolt or slide is in it): your last primary's for Primary reload, the pistol's for Secondary reload.
   function preview(slot) {
-    const p = pending || saved, sound = p[slot];
+    const p = pending || saved, shown = ui ? ui.slots[slot].key : slot;
+    // Played for the gun shown, or else the one you last used.
+    const gun = slot === "sreload" ? "cluck9mm" : shown.split(":")[1] || previewWeapon;
+    const { sound, key: list } = resolve(shown, gun, p);
     if (sound === DEFAULT) return;
     const failed = err => {
       warn(err);
@@ -883,9 +1016,8 @@
       try { window.BAWK.play(game); } catch (err) { warn(err); }
       return;
     }
-    const reload = KIND[slot] === "reload", gun = slot === "sreload" ? "cluck9mm" : previewWeapon;
-    const times = TIMING[gun] || TIMING.eggk47;
-    const kit = reload && (sound === PER_GUN ? kitFor(gun, p.secondary) : kitById(sound));
+    const reload = isReload(slot), times = TIMING[gun] || TIMING.eggk47;
+    const kit = reload && kitById(sound);
     if (kit) {
       return kitClips(kit).then(() => {
         setNote(slot);
@@ -895,25 +1027,35 @@
         for (const [at, piece] of cues) play(ready.get(stageId(piece)), p.volume, null, (at - first) / 1000);
       }, failed);
     }
-    const mine = sound === CUSTOM && pendingFiles[slot];
-    (mine ? Promise.resolve(pendingFiles[slot].buf) : clip(sound, slot)).then(buf => {
+    const mine = sound === CUSTOM && pendingFiles[list];
+    (mine ? Promise.resolve(pendingFiles[list].buf) : clip(sound, list)).then(buf => {
       if (!buf) return setNote(slot, "Choose a file first", true, "Choose a sound file first.");
       setNote(slot);
-      const src = play(buf, p.volume);
-      if (src && reload) fadeAt(src, (times.action != null ? times.action + 450 : times.finish + 900) / 1000);
+      if (reload) {
+        const src = play(buf, p.volume);
+        if (src) fadeAt(src, (times.action != null ? times.action + 450 : times.finish + 900) / 1000);
+      } else if (slot === "primary" && GUN[gun]) {
+        // A few shots at the gun's own rate, each cutting the last one's tail as in a game.
+        const { rof } = GUN[gun], by = {};
+        for (let i = 0, n = Math.min(5, Math.max(1, Math.round(1000 / rof))); i < n; i++) {
+          const at = i * rof / 1000, src = play(buf, p.volume, null, at);
+          if (src) shot(by, src, at);
+        }
+      } else play(buf, p.volume);
     }, failed);
   }
-  // A picked file waits for Confirm like the rest of the settings: until then it's only previewed.
+  // A picked file waits for Confirm like the rest of the settings: until then it's only previewed. It's kept for the
+  // list shown when it was picked (one gun's, or all guns').
   async function addFile(slot, file) {
     if (file.size <= 0) return;
-    const gen = ++fileGen;
+    const gen = ++fileGen, key = ui ? ui.slots[slot].key : slot;
     if (file.size > MAX_BYTES) return setNote(slot, "Too big: " + file.name, true, `${file.name} is too big. Files can be up to 4 MB.`);
     setNote(slot, "Loading…");
     try {
       const data = await file.arrayBuffer(), buf = await decode(data, file.name);
       if (gen !== fileGen || !pending) return;   // closed, or another file picked, in the meantime
-      pendingFiles[slot] = { file: { name: file.name, data }, name: file.name, buf };
-      pending[slot] = CUSTOM;
+      pendingFiles[key] = { file: { name: file.name, data }, name: file.name, buf };
+      pending[key] = CUSTOM;
       refresh();
       preview(slot);
     } catch (err) {
@@ -924,11 +1066,11 @@
     }
   }
   function keepFiles() {
-    for (const [slot, f] of Object.entries(pendingFiles)) {
-      customNames[slot] = f.name;
-      cache.set(CUSTOM + ":" + slot, Promise.resolve(f.buf));
-      ready.set(CUSTOM + ":" + slot, f.buf);
-      writeFile(slot, f.file).catch(err => warn("Couldn't keep your file for next time:", err));
+    for (const [key, f] of Object.entries(pendingFiles)) {
+      customNames[key] = f.name;
+      cache.set(CUSTOM + ":" + key, Promise.resolve(f.buf));
+      ready.set(CUSTOM + ":" + key, f.buf);
+      writeFile(key, f.file).catch(err => warn("Couldn't keep your file for next time:", err));
     }
     pendingFiles = {};
   }
@@ -969,7 +1111,7 @@
     tick();
     timer = setInterval(tick, 1000);
     getReady();
-    for (const s of SLOTS) fileFor(s.id).then(f => { if (f) { customNames[s.id] = f.name; setNote(s.id); } }, () => { /* no storage: no files */ });
+    for (const k of KEYS) fileFor(k).then(f => { if (f) { customNames[k] = f.name; refresh(); } }, () => { /* no storage: no files */ });
   }
   function stop() {
     if (!running) return;
@@ -981,6 +1123,7 @@
     quiet();
     reloads = new WeakMap();
     primaryWeapons = new WeakMap();
+    lastShots = new WeakMap();
     previewWeapon = "eggk47";
   }
 
