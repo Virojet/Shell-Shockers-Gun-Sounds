@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.3.0-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.3.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -90,7 +90,7 @@ Built-in audio isn't embedded in the script. The first time you pick a sound it 
 
 ## Settings
 
-**Settings** ▸ the **speaker tab** ▸ **Gun Sounds**, under Language and Kill Sounds: six lists in two rows of three, and **Primary gun** at the top. **Test** plays a list's sound: a shot a few times at the gun's fire rate, a reload at a real reload's timing (the gun shown, else your last primary, or the pistol). Changes are kept when you press **Confirm**. If the settings are taller than your screen, scroll them.
+**Settings** ▸ the **speaker tab** ▸ **Gun Sounds**, under Language and Kill Sounds: six lists in two rows of three, and **Primary gun** at the top. **Test** plays a list's sound: one shot, or a reload at a real reload's timing (the gun shown, else your last primary, or the pistol). Changes are kept when you press **Confirm**. If the settings are taller than your screen, scroll them.
 
 ## How updates work
 
@@ -100,13 +100,15 @@ The audio URLs use a fixed Git commit, so an existing script version always gets
 
 ## Changelog
 
-### 1.3.0 — Unreleased
+### 1.3.1 — 2026-10-18
+- **Test** plays a primary sound once, instead of a few shots at the gun's fire rate.
+
+### 1.3.0 — 2026-10-18
 - **A pick for each primary gun.** The **Primary gun** list switches Primary and Primary reload to one gun, which starts on **Same as all guns**.
 - Primary sounds and reload kits are grouped by gun, at least three each, made to fit that gun: 27 shots and 24 kits. The Tri-Hard's shots are three-round bursts, as the game plays one sound per burst.
 - A gun's last shot fades quickly when it fires again, so fast guns stay crisp.
 - **Matched to your gun** in Primary plays the gun's first shot.
 - Removed the five Operator shots and the one-clip reloads (Steel Reset, Tactical Swap, Rifle Reset, Pump Action, Sidearm Snap), which didn't line up with any gun's reload. The meme sounds are no longer in the reload lists, and Secondary reload lists the pistol kits.
-- **Test** fires a shot a few times at the gun's own rate.
 
 ### 1.2.0 — 2026-10-18
 - **Secondary reload** and **No ammo** lists. The pistol's reload and the empty click now have their own picks, next to Primary reload.

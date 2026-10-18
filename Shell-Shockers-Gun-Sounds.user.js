@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.3.0
+// @version      1.3.1
 // @description  Pick weapon, meme or custom sounds for shots, melee swings, reloads and the empty click in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -92,7 +92,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.3.0";
+  const VERSION = "1.3.1";
   const STORE = "ssGunSounds";
   // `kind` limits a sound to one kind of list, and `gun` a primary shot to that gun's category. The meme sounds (no
   // kind) are in every shot list.
@@ -211,7 +211,7 @@
   /* ---- The primary guns ----
      Each has its own shot and reload picks, and its own sounds: shots that suit its firing (the Tri-Hard plays one
      sound for its three-round burst, so its shots are bursts, 100 ms apart like the game's), and kits with a piece for
-     each of its reload cues. `rof` is the time between shots (the game runs on 33 ms ticks), used by Test. The first
+     each of its reload cues. `rof` is the time between shots (the game runs on 33 ms ticks), measured in a live match. The first
      shot and kit are what "Matched to your gun" plays. */
   const GUNS = [
     { id: "eggk47", name: "EggK-47", rof: 100, shots: ["ak-47", "m4a4", "m4a1-s", "galil-ar"], kits: ["kit-ak", "kit-m4a4", "kit-galil"] },
@@ -1034,14 +1034,7 @@
       if (reload) {
         const src = play(buf, p.volume);
         if (src) fadeAt(src, (times.action != null ? times.action + 450 : times.finish + 900) / 1000);
-      } else if (slot === "primary" && GUN[gun]) {
-        // A few shots at the gun's own rate, each cutting the last one's tail as in a game.
-        const { rof } = GUN[gun], by = {};
-        for (let i = 0, n = Math.min(5, Math.max(1, Math.round(1000 / rof))); i < n; i++) {
-          const at = i * rof / 1000, src = play(buf, p.volume, null, at);
-          if (src) shot(by, src, at);
-        }
-      } else play(buf, p.volume);
+      } else play(buf, p.volume);   // one shot
     }, failed);
   }
   // A picked file waits for Confirm like the rest of the settings: until then it's only previewed. It's kept for the
