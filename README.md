@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.3.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.4.0-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -77,10 +77,10 @@ A gun's reload plays a few sounds in the game: the magazine coming out, the seco
 | Tri-Hard | 0 s | 1.50 s | 2.08 s |
 | Cluck 9mm | 0 s | 1.58 s | 2.33 s |
 
-For the pistol, **Matched to your gun** follows your **Secondary** pick, so P250 shots get the P250 reload; otherwise it's the Glock. Your own MP3 starts on the first cue and fades out just after the last one. Firing or a melee swing cuts a reload sound short, as it does the reload.
+For the pistol, **Matched to your gun** follows your **Secondary** pick, so P250 shots get the P250 reload; otherwise it's the Glock. Your own MP3 starts on the first cue and fades out just after the last one. Firing, a melee swing or dying cuts a reload sound short, as it does the reload.
 
 - **My MP3:** choose **Choose MP3 file…** in a list and pick a file (MP3, OGG or WAV, up to 4 MB). Its name shows next to the list, and it's kept in your browser, one per list (and one per gun).
-- **Your weapons only** by default. Tick **Everyone's weapons** to change other players' too.
+- **Your weapons only** by default. Tick **Everyone's weapons** to change other players' too. In a busy fight, other players' sounds give way first, so yours are never cut.
 - Every list starts on **Game sound**. A reload pick that's gone in 1.3 (a one-clip reload, or a rifle kit on the pistol) becomes **Matched to your gun**.
 - **Volume** slider, plus the game's **Sound Effects** volume.
 - Works alongside [Valorant Kill Sounds](https://github.com/Virojet/Shell-Shockers-Valorant-Kill-Sounds) and [Better HUD](https://github.com/Virojet/Shell-Shockers-Better-Hud-Mod).
@@ -90,7 +90,11 @@ Built-in audio isn't embedded in the script. The first time you pick a sound it 
 
 ## Settings
 
-**Settings** ▸ the **speaker tab** ▸ **Gun Sounds**, under Language and Kill Sounds: six lists in two rows of three, and **Primary gun** at the top. **Test** plays a list's sound: one shot, or a reload at a real reload's timing (the gun shown, else your last primary, or the pistol). Changes are kept when you press **Confirm**. If the settings are taller than your screen, scroll them.
+**Settings** ▸ the **speaker tab** ▸ **Gun Sounds**, under Language and Kill Sounds: six lists in two rows of three, and **Primary gun** at the top. **Test** plays a list's sound: one shot, or a reload at a real reload's timing (the gun shown, else your last primary, or the pistol). Changes are kept when you press **Confirm**.
+
+**Export** saves every pick, the volume and Everyone's weapons to `gun-sounds-settings.json`. **Import** loads one of those files into the lists, and **Confirm** keeps it. Your own MP3 files stay in the browser and aren't in the export; on a new browser a list set to **My MP3** shows **No file yet** until you choose the file again.
+
+If the settings are taller than your screen, scroll them.
 
 ## How updates work
 
@@ -99,6 +103,12 @@ Tampermonkey checks this repository's raw userscript on `main`, compares its `@v
 The audio URLs use a fixed Git commit, so an existing script version always gets the same files. GitHub is tried first, with jsDelivr serving the same commit as a backup. New audio becomes available when a newer script points to a commit containing it. Selected clips are cached locally; your settings and custom MP3s stay in the browser through script updates.
 
 ## Changelog
+
+### 1.4.0 — 2026-10-18
+- **Export** and **Import** buttons save your Gun Sounds settings to a file and load them back, for another browser or a backup.
+- A reload sound stops when you die, instead of playing out.
+- With **Everyone's weapons** on, other players' sounds give way first when lots play at once, so your own shots are never cut.
+- Removed the audio files no list uses any more: the Operator shots, the one-clip reloads and the old whole-gun reloads. Older versions still get them from their own fixed commit.
 
 ### 1.3.1 — 2026-10-18
 - **Test** plays a primary sound once, instead of a few shots at the gun's fire rate.

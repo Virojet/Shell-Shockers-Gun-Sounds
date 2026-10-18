@@ -116,46 +116,6 @@
       ]
     },
     {
-      "path": "sounds/reload/guns/five-seven-short.mp3",
-      "sha256": "a4d68228750a52a12faa03ff1516ad68cd5b6cc9206852872326dc1e5f87d19d",
-      "duration_seconds": 1.845604,
-      "source_files": [
-        "fiveseven_clipout.wav",
-        "fiveseven_clipin.wav"
-      ]
-    },
-    {
-      "path": "sounds/reload/guns/five-seven-long.mp3",
-      "sha256": "ff313b7329cbd7de37f04b580f25706d564e5cc1861a7fa8bbce58316cb21e90",
-      "duration_seconds": 2.536833,
-      "source_files": [
-        "fiveseven_clipout.wav",
-        "fiveseven_clipin.wav",
-        "fiveseven_sliderelease.wav"
-      ]
-    },
-    {
-      "path": "sounds/reload/guns/r8-revolver-short.mp3",
-      "sha256": "5d17d72e104fe0f83a7aa0cafb6e244b4e6d0ab2c904bb3cf742ff46ec591e1a",
-      "duration_seconds": 2.202625,
-      "source_files": [
-        "revolver_clipout.wav",
-        "revolver_clipin.wav",
-        "revolver_siderelease.wav"
-      ]
-    },
-    {
-      "path": "sounds/reload/guns/r8-revolver-long.mp3",
-      "sha256": "46a7f9f061cf87c9266d7c9d75ae97ee07aa26b374739772d9c015d474d8c283",
-      "duration_seconds": 2.860396,
-      "source_files": [
-        "revolver_clipout.wav",
-        "revolver_clipin.wav",
-        "revolver_siderelease.wav",
-        "revolver_hammer.wav"
-      ]
-    },
-    {
       "path": "sounds/reload/stages/fiveseven-out.mp3",
       "sha256": "fd967e5aa183e77ba7a2629c4fa2c04139c3933d782536f762f15a6d58b70908",
       "duration_seconds": 0.162875,

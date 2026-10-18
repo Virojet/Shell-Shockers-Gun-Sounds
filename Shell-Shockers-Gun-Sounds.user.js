@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.3.1
+// @version      1.4.0
 // @description  Pick weapon, meme or custom sounds for shots, melee swings, reloads and the empty click in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -87,12 +87,12 @@
    game's settings around it, a change is kept when you press Confirm.
 
    window.ssGunSounds: version, settings(), set({ primary, secondary, melee, reload, sreload, empty, volume, everyone,
-   "primary:<gun>", "reload:<gun>" }), slotOf(soundName). */
+   "primary:<gun>", "reload:<gun>" }), export() (the settings as JSON text), import(text), slotOf(soundName). */
 (() => {
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.3.1";
+  const VERSION = "1.4.0";
   const STORE = "ssGunSounds";
   // `kind` limits a sound to one kind of list, and `gun` a primary shot to that gun's category. The meme sounds (no
   // kind) are in every shot list.
@@ -347,6 +347,13 @@
   const pickFor = (slot, gun, p = saved) =>
     resolve(GUN[gun] && PER_GUN_SLOTS.includes(slot) ? gunKey(slot, gun) : slot, gun, p);
   const kitFor = (gun, p = saved) => kitById(pickFor(gun === "cluck9mm" ? "sreload" : "reload", gun, p).sound);
+  // Settings as a file: { ssGunSounds: version, settings }. Anything unknown in one is dropped, as when loading.
+  const exportText = p => JSON.stringify({ ssGunSounds: VERSION, settings: clean(p) }, null, 2);
+  function parseSettings(text) {
+    const j = JSON.parse(text), s = j && typeof j === "object" && "ssGunSounds" in j ? j.settings : j;
+    if (!s || typeof s !== "object" || !KEYS.some(k => k in s)) throw new Error("Not Gun Sounds settings");
+    return clean({ ...DEFAULTS, ...s });
+  }
   const reloadsOn = () => KEYS.some(k => isReload(k.split(":")[0]) && saved[k] !== DEFAULT && saved[k] !== SAME);
 
   /* ---- Built-in sounds, from GitHub ----
@@ -490,7 +497,7 @@
   /* ---- Playing ----
      Into the game's own sound output (BAWK's input, ahead of its volume), so its Sound Effects volume applies to
      these too. Once more than a few play at once, the oldest is cut by a short fade, so full-auto fire with a long
-     sound can't pile up. */
+     sound can't pile up. Other players' sounds go first, so a busy fight never cuts your own. */
   const MAX_VOICES = 6;
   const voices = new Set();
   let own = null;
@@ -514,11 +521,11 @@
     g.gain.value = volume;
     src.connect(g); g.connect(to || node);
     src.start(delay > 0 ? ctx.currentTime + delay : 0);
-    const v = { src, g, ctx };
+    const v = { src, g, ctx, mine: !to };
     voices.add(v);
     // A listener, not onended: the game sets onended on the sources it gets back to free its channel.
     src.addEventListener("ended", () => { voices.delete(v); try { g.disconnect(); } catch { /* already gone */ } });
-    if (voices.size > MAX_VOICES) fade(voices.values().next().value);
+    if (voices.size > MAX_VOICES) fade([...voices].find(x => !x.mine) || voices.values().next().value);
     return src;
   }
   function fade(v) {
@@ -602,16 +609,24 @@
      A kit answers each cue with its own piece. Your own MP3 plays once on the first cue and fades as the reload ends.
      Cues with nothing to play get a silent source, so the game's sound stays off and BAWK still frees its channel.
      If the pick isn't loaded when a reload starts, that whole reload keeps the game's sounds. */
-  let reloads = new WeakMap(), primaryWeapons = new WeakMap(), previewWeapon = "eggk47", silent = null;
+  let reloads = new WeakMap(), playing = new Set(), primaryWeapons = new WeakMap(), previewWeapon = "eggk47", silent = null;
   const reloadKey = (B, to) => soundPosition(B, to) || to || B;
   const quietSource = to => {
     silent = silent || new AudioBuffer({ length: 1, numberOfChannels: 1, sampleRate: SR });
     return play(silent, 1, to);
   };
-  function endReload(B, to) {
-    const key = reloadKey(B, to), state = reloads.get(key);
+  function endReload(B, to, key = reloadKey(B, to)) {
+    const state = reloads.get(key);
     if (state) state.sources.forEach(s => fadeAt(s, 0));
     reloads.delete(key);
+    playing.delete(key);
+  }
+  // A player who dies mid-reload: the game plays the shell burst at a copy of their position, a little higher.
+  function endReloadAt(B, pos) {
+    if (!pos || !Number.isFinite(pos.x)) return;
+    for (const key of playing) {
+      if (Number.isFinite(key.x) && Math.hypot(key.x - pos.x, key.y + 0.32 - pos.y, key.z - pos.z) < 0.5) endReload(B, null, key);
+    }
   }
   function startReload(B, name, to, key, now) {
     endReload(B, to);
@@ -621,6 +636,7 @@
     const { sound, key: list } = pickFor(slot, gun);
     const state = { at: now, last: null, slot, sources: [], kit: null, clip: null, on: false, to: null };
     reloads.set(key, state);
+    playing.add(key);
     if (sound === DEFAULT) return state;
     const own = mine(B, to);
     if (!own && !saved.everyone) return state;
@@ -640,7 +656,7 @@
   function playReload(B, name, to) {
     const role = CUE[name], key = reloadKey(B, to), now = performance.now();
     let state = reloads.get(key);
-    if (state && now - state.at > 8000) { reloads.delete(key); state = null; }
+    if (state && now - state.at > 8000) { reloads.delete(key); playing.delete(key); state = null; }
     // A reload starts on its first cue: mag out, action open, or (the Free Ranger's empty reload) the action pulled,
     // whose mag-out cue then belongs to it. The RPEGG's one cue is a reload of its own.
     const fresh = !state || role === "pull" || name === "gun_rpegg_load" || (role === "start" && state.last !== "pull");
@@ -679,6 +695,9 @@
       if (state.live && running) {
         try {
           const slot = slotOf(name);
+          // A swap or a death ends a reload, and its sound with it.
+          if (name === "weapon_swap" && reloads.has(reloadKey(B, to))) endReload(B, to);
+          else if (name === "shell_burst" && playing.size) endReloadAt(B, soundPosition(B, to));
           if (isReload(slot)) {
             if (reloadsOn()) {
               const src = playReload(B, name, to);
@@ -752,6 +771,8 @@
 #${CELL} .ssg-bottom .ssg-name { margin: 0 var(--ss-space-sm) 0 2px; }
 #${CELL} .ssg-bottom input[type=range] { flex: 0 1 35%; }
 #${CELL} .ssg-bottom .nowrap { margin-left: auto; }
+#${CELL} .ssg-bottom .ss_button { min-width: 0; margin: 0 0 0 .3em; padding-inline: .5em; }
+#${CELL} .ssg-bottom label { white-space: nowrap; }
 #${CELL} .f_row { align-items: center; }
 #${CELL} select, #${CELL} input[type=range] { min-width: 0; }
 #${CELL} select { flex: 1 1 auto; }
@@ -882,7 +903,34 @@
     everyoneLabel.append(everyone, el("span", "checkmark"));
     const everyoneRow = el("div", "nowrap");
     everyoneRow.append(everyoneLabel);
-    const slotGrid = el("div", "ssg-slots"), bottom = row(el("span", "ssg-name text_blue4", "Volume"), range, value, everyoneRow);
+    // Your picks as a file, to keep or to move to another browser. Your own MP3s stay in this browser.
+    const exportBtn = el("button", "ss_button btn_blue bevel_blue btn_sm", "Export");
+    const importBtn = el("button", "ss_button btn_blue bevel_blue btn_sm", "Import");
+    exportBtn.type = importBtn.type = "button";
+    exportBtn.title = "Save these settings to a file. Your own MP3s aren't in it.";
+    importBtn.title = "Load settings from a file. They're kept when you press Confirm.";
+    const importInput = el("input");
+    Object.assign(importInput, { type: "file", accept: ".json,application/json", hidden: true });
+    exportBtn.addEventListener("click", () => {
+      const url = URL.createObjectURL(new Blob([exportText(pending || saved)], { type: "application/json" }));
+      const a = el("a");
+      Object.assign(a, { href: url, download: "gun-sounds-settings.json" });
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+    importBtn.addEventListener("click", () => importInput.click());
+    importInput.addEventListener("change", async () => {
+      const f = importInput.files[0];
+      importInput.value = "";
+      if (!f) return;
+      let s = null;
+      try { s = parseSettings(await f.text()); } catch { /* not ours */ }
+      if (s && pending) { pending = s; refresh(); }
+      importBtn.textContent = s ? "Imported" : "Not a settings file";
+      setTimeout(() => { importBtn.textContent = "Import"; }, 2500);
+    });
+    const slotGrid = el("div", "ssg-slots"), bottom = row(el("span", "ssg-name text_blue4", "Volume"), range, value, everyoneRow,
+      exportBtn, importBtn, importInput);
     bottom.classList.add("ssg-bottom");
     slotGrid.append(...rows);
     // Which gun Primary and Primary reload show: all guns, or one gun's own picks.
@@ -1115,6 +1163,7 @@
     removeUI();
     quiet();
     reloads = new WeakMap();
+    playing.clear();
     primaryWeapons = new WeakMap();
     lastShots = new WeakMap();
     previewWeapon = "eggk47";
@@ -1125,6 +1174,8 @@
     sounds: [...SOUNDS.map(s => s.id), ...KITS.map(k => k.id)],
     settings: () => ({ ...saved }),
     set(s) { save({ ...saved, ...s }); revert({ ...saved }); return { ...saved }; },
+    export: () => exportText(saved),
+    import(text) { save(parseSettings(text)); revert({ ...saved }); return { ...saved }; },
     slotOf,
     status: () => ({ running, hooked: !!hooked, settingsShown: !!ui && ui.cell.isConnected, loaded: [...ready.keys()] }),
   };
