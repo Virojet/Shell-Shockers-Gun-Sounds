@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.4.0
+// @version      1.5.0
 // @description  Pick weapon, meme or custom sounds for shots, melee swings, reloads and the empty click in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -82,9 +82,11 @@
    site's storage, or one MP3 of your own per slot, kept there too. They go through the game's own sound output, so its
    Sound Effects volume turns them up and down with everything else.
 
-   Settings ▸ the speaker tab ▸ Gun Sounds has six lists, a Test button for each, a volume, and a Primary gun list
-   that switches Primary and Primary reload to one gun's own picks. As with the
-   game's settings around it, a change is kept when you press Confirm.
+   Settings ▸ the speaker tab ▸ Gun Sounds opens plain: three Quick start buttons (Game sounds, Real guns, Memes) that set
+   every list at once, four lists (gun shots, gun reload, pistol shots, melee) with a Test button each, and a volume.
+   Advanced adds the pistol reload and empty click lists, a "Set one gun" list that gives Gun shots and Gun reload one
+   gun's own picks, Everyone's weapons, Export and Import. As with the game's settings around it, a change is kept when
+   you press Confirm.
 
    window.ssGunSounds: version, settings(), set({ primary, secondary, melee, reload, sreload, empty, volume, everyone,
    "primary:<gun>", "reload:<gun>" }), export() (the settings as JSON text), import(text), slotOf(soundName). */
@@ -92,8 +94,9 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.4.0";
+  const VERSION = "1.5.0";
   const STORE = "ssGunSounds";
+  const UI_STORE = STORE + ".ui";   // how the settings look (Advanced open or not), apart from the sounds
   // `kind` limits a sound to one kind of list, and `gun` a primary shot to that gun's category. The meme sounds (no
   // kind) are in every shot list.
   const SOUNDS = [
@@ -257,13 +260,15 @@
   };
 
   const DEFAULT = "default", CUSTOM = "custom", PICK = "pick", PER_GUN = "per-gun", SAME = "same";
+  // `more` lists show only under Advanced. In the grid's two columns the four plain ones fall as shots and reload
+  // for the gun, then the pistol's shots and melee; with Advanced the rest pair up the pistol and the empty click.
   const SLOTS = [
-    { id: "primary", name: "Primary", kind: "primary" },
-    { id: "secondary", name: "Secondary", kind: "secondary" },
+    { id: "primary", name: "Gun shots", kind: "primary" },
+    { id: "reload", name: "Gun reload", kind: "reload" },
+    { id: "secondary", name: "Pistol shots", kind: "secondary" },
+    { id: "sreload", name: "Pistol reload", kind: "sreload", more: true },
     { id: "melee", name: "Melee", kind: "melee" },
-    { id: "reload", name: "Primary reload", kind: "reload" },
-    { id: "sreload", name: "Secondary reload", kind: "sreload" },
-    { id: "empty", name: "No ammo", kind: "empty" },
+    { id: "empty", name: "Empty click", kind: "empty", more: true },
   ];
   const KIND = Object.fromEntries(SLOTS.map(s => [s.id, s.kind]));
   // Primary and Primary reload also have a pick for each gun, saved as "primary:<gun>" and "reload:<gun>". It starts on
@@ -355,6 +360,32 @@
     return clean({ ...DEFAULTS, ...s });
   }
   const reloadsOn = () => KEYS.some(k => isReload(k.split(":")[0]) && saved[k] !== DEFAULT && saved[k] !== SAME);
+
+  /* ---- Quick start ----
+     One click sets every list (and clears the gun-by-gun picks), so a beginner never has to open a dropdown. Volume
+     and Everyone's weapons are left alone. A preset is lit while the lists still match it. */
+  const PRESETS = [
+    { id: "game", name: "Game sounds", tip: "Keep the game's own sounds.", picks: {} },
+    { id: "real", name: "Real guns", tip: "Each gun gets a matching real gun sound and reload.",
+      picks: { primary: PER_GUN, reload: PER_GUN, secondary: "usp-s", sreload: PER_GUN, melee: "swift-slash", empty: "pistol-click" } },
+    { id: "memes", name: "Memes", tip: "Vine Boom, Tuturu, Punch and a fart.",
+      picks: { primary: "boom", secondary: "tuturu", melee: "punch", empty: "fart" } },
+  ];
+  const presetPicks = pr => ({ ...Object.fromEntries(KEYS.map(k => [k, DEFAULTS[k]])), ...pr.picks });
+  const presetOf = p => PRESETS.find(pr => { const want = presetPicks(pr); return KEYS.every(k => p[k] === want[k]); });
+  // What only Advanced shows: the pistol reload, the empty click, a gun's own picks and Everyone's weapons.
+  const hiddenInUse = p => p.everyone || KEYS.some(k => (k.includes(":") || SLOTS.some(s => s.id === k && s.more)) && p[k] !== DEFAULTS[k]);
+  // How the panel looks stays as the player left it: `open` (the Gun Sounds heading, like a Notion toggle: shut until
+  // they open it) and `more` (Advanced; until they choose, it's open only if they already use something in it).
+  function readUi() {
+    try { const v = JSON.parse(localStorage.getItem(UI_STORE)); if (v && typeof v === "object") return v; } catch { /* no storage */ }
+    return {};
+  }
+  function writeUi(patch) {
+    try { localStorage.setItem(UI_STORE, JSON.stringify({ ...readUi(), ...patch })); } catch { /* kept for this visit */ }
+  }
+  const readOpen = () => readUi().open === true;
+  const readMore = () => typeof readUi().more === "boolean" ? readUi().more : hiddenInUse(saved);
 
   /* ---- Built-in sounds, from GitHub ----
      They come from the commit that added them, so the files this version uses never change under it. A sound is
@@ -758,21 +789,36 @@
   const CSS = `
 #settingsPopup:has(#${CELL}) { max-height: 88vh; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 #${CELL} { min-width: 0; grid-column: 1 / -1; }
-#${CELL} .ssg-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--ss-space-sm); }
+#${CELL} [hidden] { display: none !important; }
+#${CELL} .ssg-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--ss-space-sm); }
 #${CELL} .ssg-slots > div { min-width: 0; }
 #${CELL} .ssg-slots .ss_button { min-width: 0; padding-inline: .5em; margin: 0; }
 #${CELL} .ssg-slots select.ss_select { margin-right: .3em; font-size: .9em; }
 #${CELL} .ssg-slots selectedcontent { font-size: inherit; }
 #${CELL} .ssg-top { display: flex; align-items: center; min-width: 0; }
 #${CELL} .ssg-top h3 { flex: 1 1 auto; }
-#${CELL} .ssg-top .ssg-name { margin: 0 var(--ss-space-sm) 0 0; }
-#${CELL} .ssg-top select.ss_select { flex: 0 1 11em; margin: 0; font-size: .9em; }
+#${CELL} .ssg-head-toggle { display: inline-flex; align-items: center; gap: .45em; margin: 0; padding: 0; border: 0; background: none;
+  box-shadow: none; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; text-shadow: inherit;
+  text-align: left; cursor: pointer; }
+#${CELL} .ssg-head-toggle:hover .ssg-tri { opacity: .7; }
+#${CELL} .ssg-head-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 3px; }
+#${CELL} .ssg-tri { flex: none; width: 0; height: 0; border-block: .42em solid transparent; border-inline-start: .7em solid currentColor;
+  transition: transform .15s ease; }
+#${CELL} .ssg-head-toggle[aria-expanded=true] .ssg-tri { transform: rotate(90deg); }
+@media (prefers-reduced-motion: reduce) { #${CELL} .ssg-tri { transition: none; } }
+#${CELL} .ssg-top .ss_button, #${CELL} .ssg-presets .ss_button, #${CELL} .ssg-extra .ss_button { min-width: 0; margin: 0; padding-inline: .6em; }
+#${CELL} .ssg-intro { margin: 0 0 .1em 2px; font-size: .85em; font-weight: 700; }
+#${CELL} .ssg-presets { display: flex; flex-wrap: wrap; align-items: center; gap: .3em; margin: .3em 0 .1em 0; }
+#${CELL} .ssg-presets .ssg-name { margin: 0 var(--ss-space-sm) 0 2px; }
+#${CELL} .ssg-presets .ss_button[aria-pressed=true] { filter: brightness(1.35); box-shadow: 0 0 0 2px #fff; }
+#${CELL} .ssg-gun { margin-top: .3em; }
+#${CELL} .ssg-gun .ssg-name { margin: 0 var(--ss-space-sm) 0 2px; }
+#${CELL} .ssg-gun select.ss_select { flex: 0 1 12em; margin: 0; font-size: .9em; }
 #${CELL} .ssg-bottom { margin-top: .35em; }
 #${CELL} .ssg-bottom .ssg-name { margin: 0 var(--ss-space-sm) 0 2px; }
-#${CELL} .ssg-bottom input[type=range] { flex: 0 1 35%; }
-#${CELL} .ssg-bottom .nowrap { margin-left: auto; }
-#${CELL} .ssg-bottom .ss_button { min-width: 0; margin: 0 0 0 .3em; padding-inline: .5em; }
-#${CELL} .ssg-bottom label { white-space: nowrap; }
+#${CELL} .ssg-bottom input[type=range] { flex: 0 1 45%; }
+#${CELL} .ssg-extra { margin-top: .35em; gap: .3em; }
+#${CELL} .ssg-extra label { white-space: nowrap; margin-right: auto; }
 #${CELL} .f_row { align-items: center; }
 #${CELL} select, #${CELL} input[type=range] { min-width: 0; }
 #${CELL} select { flex: 1 1 auto; }
@@ -806,7 +852,7 @@
   #${CELL} hr { inline-size: auto; margin: .3em .5em; border: 0; border-block-start: 1px solid var(--ssg-accent); opacity: .45; }
 }`;
 
-  const GROUP = { secondary: "Secondary Sounds", melee: "Melee Sounds", empty: "No Ammo Sounds" };
+  const GROUP = { secondary: "Pistol Sounds", melee: "Melee Sounds", empty: "Empty Click Sounds" };
   // A built-in clip's length shows beside its name in the open list, and not in the closed box.
   function soundOption(x) {
     const o = new Option(x.name, x.id);
@@ -814,19 +860,19 @@
     return o;
   }
   const TIPS = {
-    primary: "Your primary gun's shots. Pick a gun at the top right to give it a sound of its own.",
-    secondary: "Plays for the pistol.",
-    melee: "Plays for every melee weapon.",
-    reload: "Your primary gun's reload: a kit plays a sound on each of that gun's reload cues. Pick a gun at the top right to give it a kit of its own.",
-    sreload: "The pistol's reload: a kit plays a sound on each of its reload cues.",
-    empty: "The click when you fire with an empty magazine.",
+    primary: "The sound your gun makes when you shoot. Under Advanced you can set one gun on its own.",
+    secondary: "The sound your pistol makes when you shoot.",
+    melee: "The sound of your melee swing.",
+    reload: "The sound of reloading your gun. It plays in time with the game's own reload. Under Advanced you can set one gun on its own.",
+    sreload: "The sound of reloading your pistol.",
+    empty: "The click when you pull the trigger with no ammo left.",
   };
   // A list's choices by its key ("primary", or "primary:eggk47" for one gun), as [group label, options].
   function groups(key) {
     const [slot, gun] = key.split(":"), out = [];
     const first = gun ? [new Option("Same as all guns", SAME)] : [];
     first.push(new Option("Game sound", DEFAULT));
-    if (!gun && (slot === "primary" || isReload(slot))) first.push(new Option("Matched to your gun", PER_GUN));
+    if (!gun && (slot === "primary" || isReload(slot))) first.push(new Option(slot === "sreload" ? "Match my pistol" : "Match each gun", PER_GUN));
     if (!isReload(slot)) first.push(...MEMES.map(soundOption));
     out.push(["Default Sounds", first]);
     const kitOption = id => new Option(kitById(id).name, id);
@@ -834,7 +880,7 @@
     else if (slot === "reload") for (const g of gun ? [GUN[gun]] : GUNS) out.push([g.name + " Reloads", g.kits.map(kitOption)]);
     else if (slot === "sreload") out.push(["Pistol Reloads", PISTOL_KITS.map(kitOption)]);
     else out.push([GROUP[slot], SOUNDS.filter(x => x.kind === slot).map(soundOption)]);
-    out.push(["Custom Sounds", [new Option("My MP3", CUSTOM), new Option("Choose MP3 file…", PICK)]]);
+    out.push(["Your Own Sound", [new Option("Your file", CUSTOM), new Option("Choose a file…", PICK)]]);
     return out;
   }
   // The list shows the gun picked at the top, for Primary and Primary reload.
@@ -870,8 +916,8 @@
       Object.assign(input, { type: "file", accept: "audio/*,.mp3,.ogg,.wav,.m4a,.webm", hidden: true });
       const head = el("div", "ssg-head"), name = el("span", "ssg-name text_blue4", s.name);
       head.append(name, note);
-      slots[s.id] = { select, face, test, note, input, name, key: null };
       const col = el("div");
+      slots[s.id] = { select, face, test, note, input, name, col, more: !!s.more, key: null };
       col.append(head, row(select, test), input);
       rows.push(col);
       select.addEventListener("pointerdown", paint);
@@ -901,8 +947,6 @@
     const everyoneLabel = el("label", "ss_checkbox label", "Everyone's weapons ");
     everyoneLabel.title = "Also replace other players' weapon sounds, not just your own.";
     everyoneLabel.append(everyone, el("span", "checkmark"));
-    const everyoneRow = el("div", "nowrap");
-    everyoneRow.append(everyoneLabel);
     // Your picks as a file, to keep or to move to another browser. Your own MP3s stay in this browser.
     const exportBtn = el("button", "ss_button btn_blue bevel_blue btn_sm", "Export");
     const importBtn = el("button", "ss_button btn_blue bevel_blue btn_sm", "Import");
@@ -929,22 +973,52 @@
       importBtn.textContent = s ? "Imported" : "Not a settings file";
       setTimeout(() => { importBtn.textContent = "Import"; }, 2500);
     });
-    const slotGrid = el("div", "ssg-slots"), bottom = row(el("span", "ssg-name text_blue4", "Volume"), range, value, everyoneRow,
-      exportBtn, importBtn, importInput);
+    const slotGrid = el("div", "ssg-slots"), bottom = row(el("span", "ssg-name text_blue4", "Volume"), range, value);
     bottom.classList.add("ssg-bottom");
     slotGrid.append(...rows);
-    // Which gun Primary and Primary reload show: all guns, or one gun's own picks.
+    // Quick start: one click fills every list, and the one that matches the lists is lit.
+    const presets = el("div", "ssg-presets"), presetBtns = {};
+    presets.append(el("span", "ssg-name text_blue4", "Quick start"));
+    for (const pr of PRESETS) {
+      const b = el("button", "ss_button btn_blue bevel_blue btn_sm", pr.name);
+      b.type = "button";
+      b.title = pr.tip;
+      b.addEventListener("click", () => applyPreset(pr));
+      presetBtns[pr.id] = b;
+      presets.append(b);
+    }
+    // Which gun Gun shots and Gun reload show: all guns, or one gun's own picks.
     const gunSelect = el("select", "ss_select");
     const gunFace = el("button");
     gunFace.type = "button";
     gunFace.append(el("selectedcontent"));
     gunSelect.append(gunFace, new Option("All guns", ""), ...GUNS.map(g => new Option(g.name, g.id)));
-    gunSelect.title = "Give one primary gun its own shot and reload. It starts on \"Same as all guns\".";
+    gunSelect.title = "Give one gun its own shot and reload. It starts on \"Same as all guns\".";
     gunSelect.addEventListener("pointerdown", paint);
     gunSelect.addEventListener("change", () => { me.gun = gunSelect.value; refresh(); });
-    const top = el("div", "ssg-top");
-    top.append(el("h3", "margin-bottom-none h-short", "Gun Sounds"), el("span", "ssg-name text_blue4", "Primary gun"), gunSelect);
-    cell.append(top, slotGrid, bottom);
+    const gunRow = row(el("span", "ssg-name text_blue4", "Set one gun"), gunSelect);
+    gunRow.classList.add("ssg-gun");
+    const extra = row(everyoneLabel, exportBtn, importBtn, importInput);
+    extra.classList.add("ssg-extra");
+    // Advanced, on the heading's line: the plain view, or every list and option.
+    const toggle = el("button", "ss_button btn_blue bevel_blue btn_sm");
+    toggle.type = "button";
+    toggle.addEventListener("click", () => setMore(!me.more));
+    // The heading is a toggle like a Notion one: a triangle that points right when shut and down when open.
+    const head = el("button", "ssg-head-toggle");
+    head.type = "button";
+    head.id = CELL + "-toggle";
+    head.setAttribute("aria-controls", CELL + "-body");
+    head.append(el("span", "ssg-tri"), el("span", null, "Gun Sounds"));
+    head.addEventListener("click", () => setOpen(!me.open));
+    const top = el("div", "ssg-top"), title = el("h3", "margin-bottom-none h-short");
+    title.append(head);
+    top.append(title, toggle);
+    const intro = el("div", "ssg-intro text_blue4", "Pick a sound for each action. It plays when you pick it. Press Confirm to keep it.");
+    const body = el("div", "ssg-body");
+    body.id = CELL + "-body";
+    body.append(intro, presets, gunRow, slotGrid, bottom, extra);
+    cell.append(top, body);
     grid.append(cell);
 
     let style = document.getElementById(CELL + "-style");
@@ -965,7 +1039,7 @@
 
     // The popup opening or closing puts the saved settings back in the controls, so a change only stays if Confirm
     // saved it (Cancel, the X and Esc all leave things as they were).
-    const me = { cell, slots, range, value, everyone, gunSelect, gun: "", io: null, shown: null };
+    const me = { cell, slots, range, value, everyone, gunSelect, gunRow, extra, toggle, head, body, presetBtns, gun: "", open: readOpen(), more: readMore(), io: null, shown: null };
     me.io = new IntersectionObserver(entries => {
       const shown = entries[entries.length - 1].isIntersecting;
       if (ui !== me || shown === me.shown) return;
@@ -975,8 +1049,39 @@
     });
     me.io.observe(cell.closest("#settings") || grid);
     ui = me;
+    setOpen(me.open, false);
+    setMore(me.more, false);
     revert({ ...saved });
     paint();
+  }
+  // The Gun Sounds heading: shows or hides everything under it (and Advanced, which only matters while it's open).
+  function setOpen(open, remember = true) {
+    if (!ui) return;
+    ui.open = open;
+    ui.body.hidden = ui.toggle.hidden = !open;
+    ui.head.setAttribute("aria-expanded", String(open));
+    if (remember) writeUi({ open });
+    if (open) paint();   // lists that were hidden get the theme's colours
+  }
+  // Advanced: the pistol reload and empty click lists, one gun at a time, Everyone's weapons, Export and Import.
+  function setMore(more, remember = true) {
+    if (!ui) return;
+    ui.more = more;
+    if (!more) ui.gun = "";   // back to the plain lists, which are for all guns
+    ui.gunRow.hidden = ui.extra.hidden = !more;
+    for (const u of Object.values(ui.slots)) u.col.hidden = u.more && !more;
+    ui.toggle.textContent = more ? "Simple" : "Advanced";
+    ui.toggle.setAttribute("aria-expanded", String(more));
+    if (remember) writeUi({ more });
+    refresh();
+    if (more) paint();   // lists that were hidden get the theme's colours
+  }
+  // A quick start sets every list at once, then plays the gun shot (if there is one) so it's heard straight away.
+  function applyPreset(pr) {
+    if (!ui || !pending) return;
+    pending = { ...pending, ...presetPicks(pr) };
+    refresh();
+    if (!isOff(pending, ui.slots.primary.key)) preview("primary");
   }
   function removeUI() {
     if (!ui) return;
@@ -1030,6 +1135,8 @@
       u.test.disabled = isOff(p, key);
       setNote(s.id);
     }
+    const lit = presetOf(p);
+    for (const pr of PRESETS) ui.presetBtns[pr.id].setAttribute("aria-pressed", String(lit === pr));
     ui.everyone.checked = p.everyone;
     ui.range.value = String(p.volume);
     ui.value.textContent = String(Math.round(p.volume * 100));

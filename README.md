@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.4.0-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.5.0-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -26,30 +26,30 @@
 
 ## What it does
 
-Pick a sound for each of six lists. Shot choices play for **every weapon in that slot**, whatever the skin, and each primary gun can have **its own shot and reload** too.
+Click a **Quick start** button, or pick a sound for each list. Shot choices play for **every weapon in that slot**, whatever the skin, and each primary gun can have **its own shot and reload** too.
 
 | List | Plays for |
 |---|---|
-| **Primary** | Every primary gun's shots (and any gun added later), or one gun's |
-| **Secondary** | Cluck 9mm shots |
+| **Gun shots** | Every primary gun's shots (and any gun added later), or one gun's |
+| **Pistol shots** | Cluck 9mm shots |
 | **Melee** | Every melee weapon |
-| **Primary reload** | Every primary gun's reload, or one gun's |
-| **Secondary reload** | The Cluck 9mm's reload |
-| **No ammo** | The click when you pull the trigger with no ammo left |
+| **Gun reload** | Every primary gun's reload, or one gun's |
+| **Pistol reload** (Advanced) | The Cluck 9mm's reload |
+| **Empty click** (Advanced) | The click when you pull the trigger with no ammo left |
 
 ### Built-in sounds
 
 | List | Choices |
 |---|---|
-| **Secondary — 10** | Hand Cannon (Desert Eagle), Quickdraw (Glock), USP-S, Five-SeveN, R8 Revolver, P250, Tec-9, CZ75-Auto, Dual Berettas, P2000 |
+| **Pistol shots — 10** | Hand Cannon (Desert Eagle), Quickdraw (Glock), USP-S, Five-SeveN, R8 Revolver, P250, Tec-9, CZ75-Auto, Dual Berettas, P2000 |
 | **Melee — 10** | Swift Slash, Heavy Slash, Blade Flick, Machete Sweep, Saber Arc, Claymore Swing, Pickaxe Swing, Shovel Swing, Wrench Swing, Boxing Glove |
-| **Secondary reload — 8** | Glock, USP-S, Five-SeveN, R8 cylinder, P250, Tec-9, P2000, Dual Berettas, plus **Matched to your gun** |
-| **No ammo — 10** | Pistol Click, Rifle Click, Shotgun Click, Trigger Tap, Low Ammo Tick, Railgun Dry Fire, Marksman Dry Fire, Minigun Whir, Gatling Click, Hammer Click |
+| **Pistol reload — 8** | Glock, USP-S, Five-SeveN, R8 cylinder, P250, Tec-9, P2000, Dual Berettas, plus **Match my pistol** |
+| **Empty click — 10** | Pistol Click, Rifle Click, Shotgun Click, Trigger Tap, Low Ammo Tick, Railgun Dry Fire, Marksman Dry Fire, Minigun Whir, Gatling Click, Hammer Click |
 
-Each built-in clip shows its length in the open list, for example **USP-S (1.53s)**. The original **AWP**, **Punch**, **Reverb Fart**, **Tuturu** and **Vine Boom** are in every shot list. **Game sound** keeps the game's own audio, and **My MP3** plays your own file.
+Each built-in clip shows its length in the open list, for example **USP-S (1.53s)**. The original **AWP**, **Punch**, **Reverb Fart**, **Tuturu** and **Vine Boom** are in every shot list. **Game sound** keeps the game's own audio, and **Your file** plays your own sound.
 
 #### Each primary gun
-**Primary** and **Primary reload** list their sounds by gun, and the **Primary gun** list at the top of Gun Sounds switches both to one gun's own picks. A gun starts on **Same as all guns**. **Matched to your gun** plays the first sound of the gun firing or reloading.
+**Gun shots** and **Gun reload** list their sounds by gun, and under **Advanced** the **Set one gun** list switches both to one gun's own picks. A gun starts on **Same as all guns**. **Match each gun** plays the first sound of the gun firing or reloading.
 
 | Gun | Shots | Reload kits |
 |---|---|---|
@@ -77,11 +77,11 @@ A gun's reload plays a few sounds in the game: the magazine coming out, the seco
 | Tri-Hard | 0 s | 1.50 s | 2.08 s |
 | Cluck 9mm | 0 s | 1.58 s | 2.33 s |
 
-For the pistol, **Matched to your gun** follows your **Secondary** pick, so P250 shots get the P250 reload; otherwise it's the Glock. Your own MP3 starts on the first cue and fades out just after the last one. Firing, a melee swing or dying cuts a reload sound short, as it does the reload.
+For the pistol, **Match my pistol** follows your **Pistol shots** pick, so P250 shots get the P250 reload; otherwise it's the Glock. Your own file starts on the first cue and fades out just after the last one. Firing, a melee swing or dying cuts a reload sound short, as it does the reload.
 
-- **My MP3:** choose **Choose MP3 file…** in a list and pick a file (MP3, OGG or WAV, up to 4 MB). Its name shows next to the list, and it's kept in your browser, one per list (and one per gun).
+- **Your file:** choose **Choose a file…** in a list and pick a file (MP3, OGG or WAV, up to 4 MB). Its name shows next to the list, and it's kept in your browser, one per list (and one per gun).
 - **Your weapons only** by default. Tick **Everyone's weapons** to change other players' too. In a busy fight, other players' sounds give way first, so yours are never cut.
-- Every list starts on **Game sound**. A reload pick that's gone in 1.3 (a one-clip reload, or a rifle kit on the pistol) becomes **Matched to your gun**.
+- Every list starts on **Game sound**. A reload pick that's gone in 1.3 (a one-clip reload, or a rifle kit on the pistol) becomes **Match each gun** (**Match my pistol** for the pistol).
 - **Volume** slider, plus the game's **Sound Effects** volume.
 - Works alongside [Valorant Kill Sounds](https://github.com/Virojet/Shell-Shockers-Valorant-Kill-Sounds) and [Better HUD](https://github.com/Virojet/Shell-Shockers-Better-Hud-Mod).
 - Updates itself through Tampermonkey. Works on shellshock.io and its mirrors.
@@ -90,9 +90,16 @@ Built-in audio isn't embedded in the script. The first time you pick a sound it 
 
 ## Settings
 
-**Settings** ▸ the **speaker tab** ▸ **Gun Sounds**, under Language and Kill Sounds: six lists in two rows of three, and **Primary gun** at the top. **Test** plays a list's sound: one shot, or a reload at a real reload's timing (the gun shown, else your last primary, or the pistol). Changes are kept when you press **Confirm**.
+**Settings** ▸ the **speaker tab** ▸ **Gun Sounds**, under Language and Kill Sounds. It starts as just a **▸ Gun Sounds** heading; click it to open the panel, and it stays open or shut the way you leave it. Inside:
 
-**Export** saves every pick, the volume and Everyone's weapons to `gun-sounds-settings.json`. **Import** loads one of those files into the lists, and **Confirm** keeps it. Your own MP3 files stay in the browser and aren't in the export; on a new browser a list set to **My MP3** shows **No file yet** until you choose the file again.
+- **Quick start:** **Game sounds** (the game's own sounds everywhere), **Real guns** (each gun gets a matching shot and reload, a USP-S pistol, a swing and a click) and **Memes** (Vine Boom, Tuturu, Punch and Reverb Fart). One click sets every list and plays a sample. The button stays lit while the lists still match it, and **Volume** and **Everyone's weapons** are left alone.
+- **Four lists** in two columns: **Gun shots**, **Gun reload**, **Pistol shots** and **Melee**, each with a **Test** button. Picking a sound plays it, and **Test** plays it again: one shot, or a reload at a real reload's timing (the gun shown, else your last primary, or the pistol).
+- **Volume.**
+- **Advanced**, a button on the heading's line, adds **Pistol reload** and **Empty click**, **Set one gun**, **Everyone's weapons**, **Export** and **Import**, and turns into **Simple** to put them away again. It's remembered, and it opens by itself for anyone who already uses one of those.
+
+Changes are kept when you press **Confirm**.
+
+**Export** saves every pick, the volume and Everyone's weapons to `gun-sounds-settings.json`. **Import** loads one of those files into the lists, and **Confirm** keeps it. Your own files stay in the browser and aren't in the export; on a new browser a list set to **Your file** shows **No file yet** until you choose the file again.
 
 If the settings are taller than your screen, scroll them.
 
@@ -103,6 +110,12 @@ Tampermonkey checks this repository's raw userscript on `main`, compares its `@v
 The audio URLs use a fixed Git commit, so an existing script version always gets the same files. GitHub is tried first, with jsDelivr serving the same commit as a backup. New audio becomes available when a newer script points to a commit containing it. Selected clips are cached locally; your settings and custom MP3s stay in the browser through script updates.
 
 ## Changelog
+
+### 1.5.0 — 2026-10-21
+- **Simpler settings.** Gun Sounds is a **▸ Gun Sounds** heading that opens when you click it and stays the way you leave it. Opened, it shows three **Quick start** buttons (**Game sounds**, **Real guns**, **Memes**) that set every list at once, four lists (**Gun shots**, **Gun reload**, **Pistol shots**, **Melee**) and the volume.
+- **Advanced** adds **Pistol reload** and **Empty click**, **Set one gun** (the old Primary gun list), **Everyone's weapons**, **Export** and **Import**. It opens by itself for anyone who already uses one of them.
+- **Plainer names:** Primary is **Gun shots**, Primary reload is **Gun reload**, Secondary is **Pistol shots**, Secondary reload is **Pistol reload**, No ammo is **Empty click**, **Matched to your gun** is **Match each gun** (**Match my pistol** for the pistol reload), and **My MP3** is **Your file**.
+- Your saved picks, **Everyone's weapons**, your own files and the sounds themselves are unchanged.
 
 ### 1.4.0 — 2026-10-18
 - **Export** and **Import** buttons save your Gun Sounds settings to a file and load them back, for another browser or a backup.
