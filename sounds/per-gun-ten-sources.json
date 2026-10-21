@@ -1,0 +1,2795 @@
+{
+  "description": "Shots and reload-kit pieces added in 1.6.0 so every primary gun has ten of each. Valve (CS:GO, CS:Source, TF2, HL2, L4D2, DoD:S) and Zombie Panic! Source audio from pinned sourcesounds mirrors; original ownership retained. Converted to 48 kHz stereo 192 kbps MP3 with a limiter; leading silence cut.",
+  "assets": [
+    {
+      "path": "sounds/primary/eggk47/classic-ak-47.mp3",
+      "kind": "shot",
+      "sha256": "35aade58282d1a6bee146bff3d230642e4b6c170953d6ae2900d6c6cc0cce706",
+      "duration_seconds": 1.497,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/ak47/ak47-1.wav",
+          "blob": "217373ea01d55194ddbdd767a3d455beed157048",
+          "sha256": "d7bf5a825ebb5183e6a7054784673da860384b32379bd91e8c38919cecff9712"
+        }
+      ],
+      "gun": "eggk47"
+    },
+    {
+      "path": "sounds/primary/eggk47/classic-m4a1.mp3",
+      "kind": "shot",
+      "sha256": "51d827dfb3e8b87ef62930fac9461515a3ed00217a4c791c495918c91b2ba72c",
+      "duration_seconds": 1.403,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/m4a1/m4a1_unsil-1.wav",
+          "blob": "b38908c6c63d0cb8c280247d7715fb73d69a46cb",
+          "sha256": "cd9a04d91dec4add31313d266ec33d8625a976f11e8884c3d70597d8b1ddc9cb"
+        }
+      ],
+      "gun": "eggk47"
+    },
+    {
+      "path": "sounds/primary/eggk47/stg-44.mp3",
+      "kind": "shot",
+      "sha256": "646a7d82a7e1c8411bea55280b0353824d7863eb196de32acd1d5f069dd088f7",
+      "duration_seconds": 1.202,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/mp44_shoot.wav",
+          "blob": "802bf1c1f03991dca1e76a51ad6c52520bc57a89",
+          "sha256": "e86faf8c898bdc0cc07057ec74102c775dfc9fe65a722623a08993032221dbec"
+        }
+      ],
+      "gun": "eggk47"
+    },
+    {
+      "path": "sounds/primary/eggk47/bar.mp3",
+      "kind": "shot",
+      "sha256": "72f73c36b9c8cbd8a5f64bc7aa37fb8d8f5cdd679b48156160778bb69fa88833",
+      "duration_seconds": 0.894,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/bar_shoot.wav",
+          "blob": "ebad673a25c9ba32645dd0b58d7f85977d90fdc1",
+          "sha256": "11f97e933d6c846681c494c36d20f9610212e3326dabc2b224fb8c5eb539731f"
+        }
+      ],
+      "gun": "eggk47"
+    },
+    {
+      "path": "sounds/primary/eggk47/pulse-rifle.mp3",
+      "kind": "shot",
+      "sha256": "e97074dc97115e1e357bb716ce2f01cc3ff377a5dbce3fc793ebc1fb15af340f",
+      "duration_seconds": 0.834,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/hl2/84f5de61421d95ce1eb9dcf9625a90782b41b278/sound/weapons/ar2/fire1.wav",
+          "blob": "c26c648db1ff48136a1a4d25f8df348b7eccc602",
+          "sha256": "f7664601059e32de878dea80154a7e99e257595ddd74ff484aa0b11cae5a0948"
+        }
+      ],
+      "gun": "eggk47"
+    },
+    {
+      "path": "sounds/primary/eggk47/survivor-ak.mp3",
+      "kind": "shot",
+      "sha256": "a18e9af09bbee932b8087bf43ff611b0374dbb7338d91246d16b43585f1c473a",
+      "duration_seconds": 1.991,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_ak47/gunfire/rifle_fire_1.wav",
+          "blob": "82ce9ae7e224a5e9ccb68f4ec7eba2efe0c076cb",
+          "sha256": "792ef8d3e5b9c58721a9158106e2a88b173220b3c63a6865d30c120f3ee9aff8"
+        }
+      ],
+      "gun": "eggk47"
+    },
+    {
+      "path": "sounds/primary/scrambler/mag-7.mp3",
+      "kind": "shot",
+      "sha256": "d9ed0d733f7cd8863bb360bbba1a8d1bb1e6553514dac92a9cbba618a3b75893",
+      "duration_seconds": 3.001,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mag7/mag7_01.wav",
+          "blob": "4f627ba254092362102f3ada38ac5a63f1be4281",
+          "sha256": "0862ad4e0c547c78a70ea6230b1316b77c999dd80165af962366cad767434b2a"
+        }
+      ],
+      "gun": "dozenGauge"
+    },
+    {
+      "path": "sounds/primary/scrambler/classic-m3.mp3",
+      "kind": "shot",
+      "sha256": "86f07f8136e576a0795bb057753bbf8ff29d2ba0b7aa848b40e0ad51784228ec",
+      "duration_seconds": 1.602,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/m3/m3-1.wav",
+          "blob": "5bb85a82637f04e601fdc9937e9cd41b1a5aadc1",
+          "sha256": "1ceb3314e7c887e997a97537c7b52f5283744482026b4268bcc939a084564ffe"
+        }
+      ],
+      "gun": "dozenGauge"
+    },
+    {
+      "path": "sounds/primary/scrambler/scattergun.mp3",
+      "kind": "shot",
+      "sha256": "71b1beac288d8bd4089e85859a00e070612e315a7c51b3338ebea373307fe66c",
+      "duration_seconds": 3.2,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/scatter_gun_shoot.wav",
+          "blob": "320831d2fa545dc8d99b0672a98e8cfc186cef04",
+          "sha256": "2154c5277841f55cef517aadc912506c67755553389c3cb5e6f0f0f308dec900"
+        }
+      ],
+      "gun": "dozenGauge"
+    },
+    {
+      "path": "sounds/primary/scrambler/chrome-shotgun.mp3",
+      "kind": "shot",
+      "sha256": "8c09d403f35db17bb0dc48cda2d21012642e56879049cca3e848c815e18fdca4",
+      "duration_seconds": 1.176,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/shotgun_chrome/gunfire/shotgun_fire_1.wav",
+          "blob": "992f676a994a5d2c4dcf106d5c929ff15cac9915",
+          "sha256": "00cca09deb5d429b14e4b1578c8c5f0755e270518b841a0f11464c19c4ca2859"
+        }
+      ],
+      "gun": "dozenGauge"
+    },
+    {
+      "path": "sounds/primary/scrambler/spas-12.mp3",
+      "kind": "shot",
+      "sha256": "0dc5f3ecf7beb1b860eae103412c1fe33a7104a4c37b3af86dd8c22326650911",
+      "duration_seconds": 1.561,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/auto_shotgun_spas/gunfire/shotgun_fire_1.wav",
+          "blob": "322ee1475c4883bbe00e22af30101301b1942b32",
+          "sha256": "de3e3e43e02f93b139d7d9212c52719398f85f483f0d06e98353f501f9ba70d7"
+        }
+      ],
+      "gun": "dozenGauge"
+    },
+    {
+      "path": "sounds/primary/scrambler/double-barrel.mp3",
+      "kind": "shot",
+      "sha256": "d87b5c891d2e40d75c5845cea4e1dce7ac78b9636105808aa7bdaad1966f019a",
+      "duration_seconds": 1.3,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/hl2/84f5de61421d95ce1eb9dcf9625a90782b41b278/sound/weapons/shotgun/shotgun_dbl_fire.wav",
+          "blob": "80d1fe0cc9c00b37dfc1af1c5901f771d010b7af",
+          "sha256": "847180f17d154e7400423a18616f3d33d8a90a6f9e297ec6c2e55284b192d9c4"
+        }
+      ],
+      "gun": "dozenGauge"
+    },
+    {
+      "path": "sounds/primary/free-ranger/sg-550.mp3",
+      "kind": "shot",
+      "sha256": "e3a98503f464738848abaaace01ab9d48d80bb2acb3e19e1f7a0c9a54e3c5a0a",
+      "duration_seconds": 2.639,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg550/sg550-1.wav",
+          "blob": "8574e27447076dd15c0ee8c0fa7b43859fcd28a8",
+          "sha256": "8df7858c131b444cd6deffeebfddec0a5ef368b8f39183d0c6aebf0346c1ed29"
+        }
+      ],
+      "gun": "csg1"
+    },
+    {
+      "path": "sounds/primary/free-ranger/classic-g3sg1.mp3",
+      "kind": "shot",
+      "sha256": "9fcf608acba49f2ea2c4ca3c94e3cbba78cb84e4d558f8331cb28fc597ac5a38",
+      "duration_seconds": 2.302,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/g3sg1/g3sg1-1.wav",
+          "blob": "59d29ddd9575aa1d5bace106f4a0fe810b7fd98e",
+          "sha256": "0d595c2181693900ad758a915c85b1310b4c3d296c704a8318a25f97b8fc8524"
+        }
+      ],
+      "gun": "csg1"
+    },
+    {
+      "path": "sounds/primary/free-ranger/hunting-rifle.mp3",
+      "kind": "shot",
+      "sha256": "48632fa1902f5ed7f0eeff8861e2cde4fb0d1df8c5fcc4a796dcdd7bcf335b79",
+      "duration_seconds": 1.792,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/hunting_rifle/gunfire/hunting_rifle_fire_1.wav",
+          "blob": "b03983e3dbf6381dc0a75729a15691c1fd351b67",
+          "sha256": "8864586ff7f42befdb02657f4e24b09a7cbd6f2962467b5ba328e7f49c85244e"
+        }
+      ],
+      "gun": "csg1"
+    },
+    {
+      "path": "sounds/primary/free-ranger/military-sniper.mp3",
+      "kind": "shot",
+      "sha256": "5d674d27fdd6f39f52652b9f03006325e71bed62557a74baed8fe027aa0df4b2",
+      "duration_seconds": 2.061,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/sniper_military/gunfire/sniper_military_fire_1.wav",
+          "blob": "af991774e65b4afdf27bc5d4735490a3de4d5d63",
+          "sha256": "0eb75147806b6f58200c900972be817c8845d6a3fc9ff71e951381f3be8d3fd7"
+        }
+      ],
+      "gun": "csg1"
+    },
+    {
+      "path": "sounds/primary/free-ranger/m1-garand.mp3",
+      "kind": "shot",
+      "sha256": "408be3175445e376ac2c7a237e7ed7bb1e34972c16a647462358c2b1cbe10613",
+      "duration_seconds": 1.483,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/garand_shoot.wav",
+          "blob": "669245a639622f7096dc3f6b18bc86bad2492997",
+          "sha256": "dbda9a3ac481cca52b67ef058fbb197850462465c84f3464649a4d04755ba257"
+        }
+      ],
+      "gun": "csg1"
+    },
+    {
+      "path": "sounds/primary/free-ranger/m1-carbine.mp3",
+      "kind": "shot",
+      "sha256": "75ee5064c6674250e3422a96d9ceedf1a2215c7b4712a3bc35d382a05dd114a5",
+      "duration_seconds": 1.231,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/m1carbine_shoot.wav",
+          "blob": "b672d4730550044fe3aae9f6b4bfee131b9e5814",
+          "sha256": "4e9e120420070f17e519087bfb156950fd32ed40971e6443c6fc607474ca6365"
+        }
+      ],
+      "gun": "csg1"
+    },
+    {
+      "path": "sounds/primary/free-ranger/bazaar-bargain.mp3",
+      "kind": "shot",
+      "sha256": "45adf9dead266b281e8827359c456c5a830af372b628824b0b6182a407a59495",
+      "duration_seconds": 0.997,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_bazaarbargain_shoot.wav",
+          "blob": "54b99d87703000be8fd8b8e39d2043b58097b0c2",
+          "sha256": "a13a03c67ccae44128c19d66c86ac58b69ddc23554712011c4f4587839db6598"
+        }
+      ],
+      "gun": "csg1"
+    },
+    {
+      "path": "sounds/primary/rpegg/liberty-launcher.mp3",
+      "kind": "shot",
+      "sha256": "239fabee0ea6f793a15d30827673acdb55758918329a757fa17dddac1097ca2b",
+      "duration_seconds": 3.2,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/rocket_ll_shoot.wav",
+          "blob": "73cb1a32605bc8dc244667055073e5ddfabb89b6",
+          "sha256": "9cf910dbfe8d141cd9a08c59c8a0a0f400fff35186b1e96c829551489fc0bcc6"
+        }
+      ],
+      "gun": "rpegg"
+    },
+    {
+      "path": "sounds/primary/rpegg/air-strike.mp3",
+      "kind": "shot",
+      "sha256": "ef7a98ec42f429a52ccf6c8c9a57862d5b9699d07aea56f15af7e91069060c24",
+      "duration_seconds": 1.912,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/airstrike_fire_01.wav",
+          "blob": "855ac490c823eee62e5c76145d955a74233fb9e2",
+          "sha256": "f709eb2a7ffdd5c3819a38e8f017e41ec7bc8d9c152a164fd881400f83ed61a4"
+        }
+      ],
+      "gun": "rpegg"
+    },
+    {
+      "path": "sounds/primary/rpegg/cow-mangler.mp3",
+      "kind": "shot",
+      "sha256": "dc407151cc32812c371d3d871478d588405d5e2c107f64f9a2e7598558664656",
+      "duration_seconds": 1.834,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/cow_mangler_main_shot.wav",
+          "blob": "29ee654b71b27dde547d82d1e11718d060fce243",
+          "sha256": "e3430eb643eefe197f4d6fab7ab9ed4d0b4bf9322b7a813eae84cebea806d45f"
+        }
+      ],
+      "gun": "rpegg"
+    },
+    {
+      "path": "sounds/primary/rpegg/loch-n-load.mp3",
+      "kind": "shot",
+      "sha256": "ad16dfffb7e24249e674c58edf725e36bc51baaff4c99ebedad16a67b4bccaa7",
+      "duration_seconds": 2.004,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/loch_n_load_shoot.wav",
+          "blob": "5de1f705828ccec1011bf5524b127b5ca257a1b2",
+          "sha256": "24cf80c070a7ca263f7567082d6ca8fed6371b310468739da0548a484057ca71"
+        }
+      ],
+      "gun": "rpegg"
+    },
+    {
+      "path": "sounds/primary/rpegg/rpg.mp3",
+      "kind": "shot",
+      "sha256": "6f75e84c58c2fb8cb9aa5f1160a2c6e1ac58a02cf0bd06eaee80111e3d8c4195",
+      "duration_seconds": 1.091,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/hl2/84f5de61421d95ce1eb9dcf9625a90782b41b278/sound/weapons/rpg/rocketfire1.wav",
+          "blob": "51639164f17f077070af06417cd8a78cfdbcb98b",
+          "sha256": "24746d98fa89de4bd8049b7f36bb0bf4f89ed56a3480b047c7ae7a4271f7e16f"
+        }
+      ],
+      "gun": "rpegg"
+    },
+    {
+      "path": "sounds/primary/rpegg/doom-rocket.mp3",
+      "kind": "shot",
+      "sha256": "fe616c1759772ce04763da49878f2f222c57f77e5a382db30b26b3e697593197",
+      "duration_seconds": 2.425,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/doom_rocket_launcher.wav",
+          "blob": "507e350c1ebfe6785bb84881ca99d8ce394177fd",
+          "sha256": "0fb8e0759c9fb6e0c244ca9242fccb30cbf4132098a9914b268366a1e2908f40"
+        }
+      ],
+      "gun": "rpegg"
+    },
+    {
+      "path": "sounds/primary/whipper/mac-10.mp3",
+      "kind": "shot",
+      "sha256": "6a4059c95a3aead1adb758f4d296d04617e8fbbe714ecd5652aa8e4219e882f1",
+      "duration_seconds": 1.99,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mac10/mac10_01.wav",
+          "blob": "1a32ccce4bd9e55e01f8f79465a5abbca63362e2",
+          "sha256": "ec0425e84286518f4b9e711966f4122311d58a1aabf25ab3a7a11537eb1f6c97"
+        }
+      ],
+      "gun": "smg"
+    },
+    {
+      "path": "sounds/primary/whipper/pp-bizon.mp3",
+      "kind": "shot",
+      "sha256": "7d91502ebd80020e68619e480a57cb8aebe889de4213c2c42914e05f00048fac",
+      "duration_seconds": 1.523,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/bizon/bizon_01.wav",
+          "blob": "39a4e5673fbbec05cd34844428367ab6da112995",
+          "sha256": "51af9f5702aba1a14d6347acd93be4113753979df767e01a27c19f20c0ad26ae"
+        }
+      ],
+      "gun": "smg"
+    },
+    {
+      "path": "sounds/primary/whipper/mp5.mp3",
+      "kind": "shot",
+      "sha256": "9ac4b3043abb5619b04890f791c52c4f1a3dc989086827a41f1de2793e591cba",
+      "duration_seconds": 1.415,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp5/mp5_01.wav",
+          "blob": "b6a09fe44108897a16f3239514d41e350df1fd55",
+          "sha256": "0613eb9e5e68c5913c1bc369023c52d1f9e34f2a45eac61e01303f87bc12fa58"
+        }
+      ],
+      "gun": "smg"
+    },
+    {
+      "path": "sounds/primary/whipper/tommy-gun.mp3",
+      "kind": "shot",
+      "sha256": "2a76bf4dda1085679e7b64eb873be529ffbb197c37c521b14acc3965937452f4",
+      "duration_seconds": 0.7,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/thompson_shoot.wav",
+          "blob": "bb8261fbc31e599568876da3e8e6bc9853cc414f",
+          "sha256": "c9403d65c420c2a66bb3d8bd322e61ba857546f13df45d59b46a270d93a89b18"
+        }
+      ],
+      "gun": "smg"
+    },
+    {
+      "path": "sounds/primary/whipper/silenced-smg.mp3",
+      "kind": "shot",
+      "sha256": "5023d87e8ca16297a2cc8308b04401df7b5c336c97a11aa72cbf14a172280177",
+      "duration_seconds": 0.538,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/smg_silenced/gunfire/smg_fire_1.wav",
+          "blob": "950e8f92b194f31cfd6d2ceb825d30cb0e2fc2ed",
+          "sha256": "bc19a6b061384b7af369c0f697be27ba2552bd90c9189d8d7c69888645ea9cc6"
+        }
+      ],
+      "gun": "smg"
+    },
+    {
+      "path": "sounds/primary/crackshot/sniper-rifle.mp3",
+      "kind": "shot",
+      "sha256": "a9e12f0b9e6eb252c9892774535fb33ece60c14a194afac50dac8418ee4af923",
+      "duration_seconds": 3.2,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_shoot.wav",
+          "blob": "2cf6c5e0340eaa03c32c2e1b7272f80f3eff13a9",
+          "sha256": "ac6cf5280b6a5efcba37ce8bd50eb3917d94aad3c0d996e081430b11e23ba897"
+        }
+      ],
+      "gun": "m24"
+    },
+    {
+      "path": "sounds/primary/crackshot/sydney-sleeper.mp3",
+      "kind": "shot",
+      "sha256": "45adf9dead266b281e8827359c456c5a830af372b628824b0b6182a407a59495",
+      "duration_seconds": 0.997,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_sydneysleeper_shoot.wav",
+          "blob": "54b99d87703000be8fd8b8e39d2043b58097b0c2",
+          "sha256": "a13a03c67ccae44128c19d66c86ac58b69ddc23554712011c4f4587839db6598"
+        }
+      ],
+      "gun": "m24"
+    },
+    {
+      "path": "sounds/primary/crackshot/machina.mp3",
+      "kind": "shot",
+      "sha256": "59518f620c3c853cd2be9349a0cccf8ccfc8bb802dd768a19d4defc94ab1ec2e",
+      "duration_seconds": 1.943,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_railgun_single_01.wav",
+          "blob": "103691892dd15f7d47cb58149cd1b8dbf5a64e74",
+          "sha256": "21a633c31dd7739c438dabfcb6650d1376194b2db20505995dde20f8135a55a7"
+        }
+      ],
+      "gun": "m24"
+    },
+    {
+      "path": "sounds/primary/crackshot/kar98k.mp3",
+      "kind": "shot",
+      "sha256": "41bc361f18017407a5bb923b441c017ad0ec4f993863eb9f4f6db7d1feabcfdc",
+      "duration_seconds": 2.485,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/k98_shoot.wav",
+          "blob": "11032a1d4a4abb9c6fc231a5a14d30e5bb325d41",
+          "sha256": "f4a94e00b41e7460dd1606c373e9cc87e2e3043815ab009d54997767f646f1de"
+        }
+      ],
+      "gun": "m24"
+    },
+    {
+      "path": "sounds/primary/crackshot/scoped-kar98k.mp3",
+      "kind": "shot",
+      "sha256": "9e5e8437f7e812994516f109639875e803c753579d6e4521bc3ad05fd02a2abe",
+      "duration_seconds": 3.2,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/k98scoped_shoot.wav",
+          "blob": "5032c365aa32330b331d41e8b9c230e1659f8cc8",
+          "sha256": "c19e9cc0ae1cf860649dd66d20aca025f46d76b6b9d6fb9703cea0a54c70bf51"
+        }
+      ],
+      "gun": "m24"
+    },
+    {
+      "path": "sounds/primary/crackshot/springfield.mp3",
+      "kind": "shot",
+      "sha256": "f86e477d467fd9f212b970bc4229354bca2eb37a5cacaa47f2f6fd3bb9b54350",
+      "duration_seconds": 3.03,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/spring_shoot.wav",
+          "blob": "eb794ba341a32780b61226929d3d4635d1714d1b",
+          "sha256": "00a22a0918ccc2660d4a2db6e6ee43ecddfefeb8ea10d517dd570136b75783e8"
+        }
+      ],
+      "gun": "m24"
+    },
+    {
+      "path": "sounds/primary/tri-hard/classic-aug.mp3",
+      "kind": "shot",
+      "sha256": "973a9d771650711e2500af6bc8d2efa70182d8e5d12a54d7bca2f5722cd12b60",
+      "duration_seconds": 1.684,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/aug/aug-1.wav",
+          "blob": "0445d45e660cfdd502d9ca405272657cb42ec339",
+          "sha256": "6f498c3458b3717d0e5e93fb42fc8605f8bd59186a84ba9124a8f9b560a4dc30"
+        },
+        {
+          "delay_seconds": 0.1,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/aug/aug-1.wav",
+          "blob": "0445d45e660cfdd502d9ca405272657cb42ec339",
+          "sha256": "6f498c3458b3717d0e5e93fb42fc8605f8bd59186a84ba9124a8f9b560a4dc30"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/aug/aug-1.wav",
+          "blob": "0445d45e660cfdd502d9ca405272657cb42ec339",
+          "sha256": "6f498c3458b3717d0e5e93fb42fc8605f8bd59186a84ba9124a8f9b560a4dc30"
+        }
+      ],
+      "gun": "aug"
+    },
+    {
+      "path": "sounds/primary/tri-hard/classic-famas.mp3",
+      "kind": "shot",
+      "sha256": "99af32c4bdd98ea6c4d0c5d328213b793b2a56b305a14c8ad00843aa172040f5",
+      "duration_seconds": 1.659,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/famas/famas-1.wav",
+          "blob": "a007371449d93e909dd9536c7a66c27d9dd38285",
+          "sha256": "ffa3c5b74f703b4508c48c3f67459147ae7bd7876935541b5ab56a23ab091821"
+        },
+        {
+          "delay_seconds": 0.1,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/famas/famas-1.wav",
+          "blob": "a007371449d93e909dd9536c7a66c27d9dd38285",
+          "sha256": "ffa3c5b74f703b4508c48c3f67459147ae7bd7876935541b5ab56a23ab091821"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/famas/famas-1.wav",
+          "blob": "a007371449d93e909dd9536c7a66c27d9dd38285",
+          "sha256": "ffa3c5b74f703b4508c48c3f67459147ae7bd7876935541b5ab56a23ab091821"
+        }
+      ],
+      "gun": "aug"
+    },
+    {
+      "path": "sounds/primary/tri-hard/classic-sg-552.mp3",
+      "kind": "shot",
+      "sha256": "e0865a96e503330bfbc8596209543b5bd07aa4918c738e6f6c12f418d3c1b07d",
+      "duration_seconds": 1.624,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg552/sg552-1.wav",
+          "blob": "01116e95e3a1351fe3101248a30eab791f70a84c",
+          "sha256": "4e8df308ce1c353fbbc294f59a46fe41b0e1a9e65a1ead66ef2ec9bc7dfa40a7"
+        },
+        {
+          "delay_seconds": 0.1,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg552/sg552-1.wav",
+          "blob": "01116e95e3a1351fe3101248a30eab791f70a84c",
+          "sha256": "4e8df308ce1c353fbbc294f59a46fe41b0e1a9e65a1ead66ef2ec9bc7dfa40a7"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg552/sg552-1.wav",
+          "blob": "01116e95e3a1351fe3101248a30eab791f70a84c",
+          "sha256": "4e8df308ce1c353fbbc294f59a46fe41b0e1a9e65a1ead66ef2ec9bc7dfa40a7"
+        }
+      ],
+      "gun": "aug"
+    },
+    {
+      "path": "sounds/primary/tri-hard/classic-galil.mp3",
+      "kind": "shot",
+      "sha256": "926386c709a845b250b14f953b8c9c00f4dc52aaab2066c8393b4b972440bb2f",
+      "duration_seconds": 1.904,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/galil/galil-1.wav",
+          "blob": "1af737311bc8bb78ca2e4e4d9232e2b71fb6ccbd",
+          "sha256": "76ebd69c5124987f36e3441cb40eadb4d22d7272dc45b9df9873a7190b6fae60"
+        },
+        {
+          "delay_seconds": 0.1,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/galil/galil-1.wav",
+          "blob": "1af737311bc8bb78ca2e4e4d9232e2b71fb6ccbd",
+          "sha256": "76ebd69c5124987f36e3441cb40eadb4d22d7272dc45b9df9873a7190b6fae60"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/galil/galil-1.wav",
+          "blob": "1af737311bc8bb78ca2e4e4d9232e2b71fb6ccbd",
+          "sha256": "76ebd69c5124987f36e3441cb40eadb4d22d7272dc45b9df9873a7190b6fae60"
+        }
+      ],
+      "gun": "aug"
+    },
+    {
+      "path": "sounds/primary/tri-hard/survivor-m4.mp3",
+      "kind": "shot",
+      "sha256": "7a6eccf51bcfde0e530a13b00e50725502232992fc79e737103e0d43a6e46aef",
+      "duration_seconds": 1.197,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle/gunfire/rifle_fire_1.wav",
+          "blob": "24434d64ef357526b900e8f16e989f1f6bfb28e4",
+          "sha256": "567523f0affd6d74d3438feb26963ed6825192c732c2573b3324953714ed6e78"
+        },
+        {
+          "delay_seconds": 0.1,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle/gunfire/rifle_fire_1.wav",
+          "blob": "24434d64ef357526b900e8f16e989f1f6bfb28e4",
+          "sha256": "567523f0affd6d74d3438feb26963ed6825192c732c2573b3324953714ed6e78"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle/gunfire/rifle_fire_1.wav",
+          "blob": "24434d64ef357526b900e8f16e989f1f6bfb28e4",
+          "sha256": "567523f0affd6d74d3438feb26963ed6825192c732c2573b3324953714ed6e78"
+        }
+      ],
+      "gun": "aug"
+    },
+    {
+      "path": "sounds/primary/tri-hard/desert-rifle.mp3",
+      "kind": "shot",
+      "sha256": "e00f55536111e2acb9271b307256ea6717b560c8c7dbbf0dc7c2211ca2654416",
+      "duration_seconds": 1.14,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_desert/gunfire/rifle_fire_1.wav",
+          "blob": "d0de2c3173f943e12bfdae78d95fb62418c169e0",
+          "sha256": "f61d5c9206522cb3b7f33b3ab90721a6bb1cae67f16b744eb18395aaaa305b3f"
+        },
+        {
+          "delay_seconds": 0.1,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_desert/gunfire/rifle_fire_1.wav",
+          "blob": "d0de2c3173f943e12bfdae78d95fb62418c169e0",
+          "sha256": "f61d5c9206522cb3b7f33b3ab90721a6bb1cae67f16b744eb18395aaaa305b3f"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_desert/gunfire/rifle_fire_1.wav",
+          "blob": "d0de2c3173f943e12bfdae78d95fb62418c169e0",
+          "sha256": "f61d5c9206522cb3b7f33b3ab90721a6bb1cae67f16b744eb18395aaaa305b3f"
+        }
+      ],
+      "gun": "aug"
+    },
+    {
+      "path": "sounds/primary/tri-hard/outbreak-m4.mp3",
+      "kind": "shot",
+      "sha256": "c36e019f1687b2fc60b35bafef56267bf0788420534b8506098d28b8790e8f9a",
+      "duration_seconds": 1.637,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/m4/fire.wav",
+          "blob": "d8d2822808f22e488022dce54ac976e5f3f6a2e9",
+          "sha256": "9c434081f594b708b678c8b76dd04d430e64f99766211bd489b5d4e54900c18f"
+        },
+        {
+          "delay_seconds": 0.1,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/m4/fire.wav",
+          "blob": "d8d2822808f22e488022dce54ac976e5f3f6a2e9",
+          "sha256": "9c434081f594b708b678c8b76dd04d430e64f99766211bd489b5d4e54900c18f"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/m4/fire.wav",
+          "blob": "d8d2822808f22e488022dce54ac976e5f3f6a2e9",
+          "sha256": "9c434081f594b708b678c8b76dd04d430e64f99766211bd489b5d4e54900c18f"
+        }
+      ],
+      "gun": "aug"
+    },
+    {
+      "path": "sounds/reload/stages/ak47c-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "f50c936cdbfc0dc31ef8b83c67e1933e819f5aa833b9f06908512d20c94864f6",
+      "duration_seconds": 0.145,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/ak47/ak47_clipout.wav",
+          "blob": "cfec5d76a081bd3b0e824a8daa2a0a685a128611",
+          "sha256": "c6eca4302cc07dc6d8b8f715e4fd567f52b596733a32b3606794023e78cc7cb9"
+        }
+      ],
+      "kit": "kit-ak-classic"
+    },
+    {
+      "path": "sounds/reload/stages/ak47c-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "0b9ab6234cda06324d3beef8eb95824c0b06a79662cbdd7d3193ab65700c155d",
+      "duration_seconds": 0.163,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/ak47/ak47_clipin.wav",
+          "blob": "e072c21fe91043ed4a839906c93e94d15a4ff6f2",
+          "sha256": "587f2c41668cd3aa34280cf24468eba6da5551fb467b6163e16015716f687afd"
+        }
+      ],
+      "kit": "kit-ak-classic"
+    },
+    {
+      "path": "sounds/reload/stages/ak47c-boltpull.mp3",
+      "kind": "reload piece",
+      "sha256": "a022797b4877d7019aac5be35331da24f87002998adec2ac9076baf380afa3ba",
+      "duration_seconds": 0.339,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/ak47/ak47_boltpull.wav",
+          "blob": "7481abe6c1dc6d69815355f43d7a744f9b4f53ac",
+          "sha256": "2cb668bd98e6a1f77105eb583e0941aa8af3272619ea5a1ad14836aa08cc819c"
+        }
+      ],
+      "kit": "kit-ak-classic"
+    },
+    {
+      "path": "sounds/reload/stages/m4a1c-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "c323a874a2ac9c41853f89645fedd5893d2cfdaec6523f3acb8cad966e517a7b",
+      "duration_seconds": 0.214,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/m4a1/m4a1_clipout.wav",
+          "blob": "b83ce62438ed7dc8cd63c45bbba8d6c0fdd550e6",
+          "sha256": "c1542bce126b46aefce5000b1a4de3500ef031194a6ca240a2b2ff63da7676bb"
+        }
+      ],
+      "kit": "kit-m4-classic"
+    },
+    {
+      "path": "sounds/reload/stages/m4a1c-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "79fabe91bbaad0184887905ace52e17d63b4fa84747dcb3d938347479df31d29",
+      "duration_seconds": 0.544,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/m4a1/m4a1_clipin.wav",
+          "blob": "375b05afe8958f1a2904a34a1c162af5ed87018f",
+          "sha256": "99c512e5b9ca3a6bd626b6d4249a0e3f73e2e203c0e17ad1a8b53c65e04bfc40"
+        }
+      ],
+      "kit": "kit-m4-classic"
+    },
+    {
+      "path": "sounds/reload/stages/m4a1c-boltpull.mp3",
+      "kind": "reload piece",
+      "sha256": "48e0c79c5fc3cbef412261790b6c42febaacea34e89ff684ca211235dd4a800d",
+      "duration_seconds": 0.287,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/m4a1/m4a1_boltpull.wav",
+          "blob": "7dbbad784bfb3076daad406e5a5f99e09955b5f3",
+          "sha256": "99359178d8dd8d6a1ae6d113ebae126da9b71d64a93d48c80bc6bc4edd3d92c8"
+        }
+      ],
+      "kit": "kit-m4-classic"
+    },
+    {
+      "path": "sounds/reload/stages/mp44-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "210039f6c9267cde922a6384662993e3bd9f2b2dae2dc02b9d99ed9372d2988d",
+      "duration_seconds": 0.182,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/mp44_clipout.wav",
+          "blob": "e27186e9aa2c81058724e65a24694eabe3d0232d",
+          "sha256": "95782cb0ae62b5b42f47fb7649a463bd2e857546b25f4b089b98117a08119ece"
+        }
+      ],
+      "kit": "kit-stg44"
+    },
+    {
+      "path": "sounds/reload/stages/mp44-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "a897483e5a21309c49a24a4620c49a041b4b90d48f55b0c0e5654e48ea67e1bb",
+      "duration_seconds": 0.278,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/mp44_clipin1.wav",
+          "blob": "94a1af18aef470ed4b1ba2ffcdca9c9006a4d58c",
+          "sha256": "a893a741d37f43fa838181329bfd6f85060ea6643f6a71f23df3ba628b8de6b1"
+        }
+      ],
+      "kit": "kit-stg44"
+    },
+    {
+      "path": "sounds/reload/stages/mp44-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "7a9eb547289a282d08859edb35090469003c4b3ad1ccd3b531c38d7cca1cfefa",
+      "duration_seconds": 0.324,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/mp44_boltforward.wav",
+          "blob": "4f39f889e073b8f3c62b9ecca1cc31397f54a9eb",
+          "sha256": "e497c11ba7d4d9b917d23eb7d092a27c95d1af8e09fbf3ac5b954858f13b4b4b"
+        }
+      ],
+      "kit": "kit-stg44"
+    },
+    {
+      "path": "sounds/reload/stages/bar-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "d4ec9c92c96b27ff23cb98b339fd2c31528ca370d3aa686f17325938c64ac192",
+      "duration_seconds": 0.132,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/bar_clipout.wav",
+          "blob": "e64076643e999c6f23222e61dc2f9c97861c082d",
+          "sha256": "e00f3883f5cfd2c9c7cc639447821bc36f23765781e1e923df8074b67975f981"
+        }
+      ],
+      "kit": "kit-bar"
+    },
+    {
+      "path": "sounds/reload/stages/bar-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "598c3bcc56929cffb0856ff4ae541426be60282544a798c91f1b5d4f0f7ab633",
+      "duration_seconds": 0.258,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/bar_clipin1.wav",
+          "blob": "c51974245804d44ec60c3e4195f643f1401a91f8",
+          "sha256": "d7e763c5965718df3dd5ae9aee4054c5ce0cf03118ca94eda8482e0aed4e381f"
+        }
+      ],
+      "kit": "kit-bar"
+    },
+    {
+      "path": "sounds/reload/stages/bar-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "a2bb47433dc1e3271499ecc86f74d314f3165c3b50be1990192ef0d15375189b",
+      "duration_seconds": 0.2,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/bar_boltforward.wav",
+          "blob": "c844c878d38eba7f9ad6eee5ca85dcbd1654482e",
+          "sha256": "d53c2f9abe80ed2ab7e9aee1c63cab92dbe78267ded8d9b1dfc9e814200cb614"
+        }
+      ],
+      "kit": "kit-bar"
+    },
+    {
+      "path": "sounds/reload/stages/l4dak-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "d6820cd9c62a625638acc76998d2fe70b831895e06f588d4cb60692ee8b74a99",
+      "duration_seconds": 0.207,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_ak47/gunother/rifle_clip_out_1.wav",
+          "blob": "2533319563252a0ade062987b68e917e424d8728",
+          "sha256": "166666ef945f74e110f185e7d1f8a3880180ccfd280ee4c14dec9a6e1ffa6c20"
+        }
+      ],
+      "kit": "kit-survivor-ak"
+    },
+    {
+      "path": "sounds/reload/stages/l4dak-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "552e2426e116f3c49afd7f24817c7d3bcbe20c6c1a38231e6d760a9d4791ded9",
+      "duration_seconds": 0.8,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_ak47/gunother/rifle_clip_in_1.wav",
+          "blob": "52860111792b6cf7f66dcfa8885554e5946a04e3",
+          "sha256": "cfbcc796ca8625360e3e977a15ba1091d9a5e8cecff18313870e6afc9d4ade02"
+        }
+      ],
+      "kit": "kit-survivor-ak"
+    },
+    {
+      "path": "sounds/reload/stages/l4dak-slideforward.mp3",
+      "kind": "reload piece",
+      "sha256": "1b4aaff18cc718e2e5be0162875a071962495564555a9234287680bcc4bfcb6b",
+      "duration_seconds": 0.572,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_ak47/gunother/rifle_slideforward.wav",
+          "blob": "79783f5583d3767d8ec2ded52892c45defd746d4",
+          "sha256": "98b100032dab180b32bacbafb05be3aa9e605ba266256b5a21254c1f7a71c8dc"
+        }
+      ],
+      "kit": "kit-survivor-ak"
+    },
+    {
+      "path": "sounds/reload/stages/ar2-rotate.mp3",
+      "kind": "reload piece",
+      "sha256": "6ed3d903f9c1f57f7c779f2c5691537a3ec2ac04ddcd850631724d3740148442",
+      "duration_seconds": 0.441,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/hl2/84f5de61421d95ce1eb9dcf9625a90782b41b278/sound/weapons/ar2/ar2_reload_rotate.wav",
+          "blob": "67d21a6806931c38ec8eef81146b910ca9e27e7d",
+          "sha256": "6ab20a90d2cd43ebab4d9745c6d038be24fd8b9369e2c2893201fe45a700b238"
+        }
+      ],
+      "kit": "kit-ar2"
+    },
+    {
+      "path": "sounds/reload/stages/ar2-push.mp3",
+      "kind": "reload piece",
+      "sha256": "2fbe056ed23add41970d890d4f7d0df856050e004169241536e039c49ae7a596",
+      "duration_seconds": 0.436,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/hl2/84f5de61421d95ce1eb9dcf9625a90782b41b278/sound/weapons/ar2/ar2_reload_push.wav",
+          "blob": "8c0c784ccb708b0fea4a99dce6b64504699202b0",
+          "sha256": "07dba6db2c030f8d2a5395c342e2c756ed02216ac39e7cc31b30b7543a9daa9f"
+        }
+      ],
+      "kit": "kit-ar2"
+    },
+    {
+      "path": "sounds/reload/stages/zpsak-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "0262e7984dfe63f23a2e6330de0a5b997da867df5ab5b65f3ea781b7990e771a",
+      "duration_seconds": 0.259,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/ak-47/clipout.wav",
+          "blob": "fa1890ab308095c9a9c0b71bd6981408dd7f9174",
+          "sha256": "b5ab7c0fe02dbbed733e0814e2033ead3ff30a0957c401e5e4c4ac035d3d6e80"
+        }
+      ],
+      "kit": "kit-outbreak-ak"
+    },
+    {
+      "path": "sounds/reload/stages/zpsak-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "5657b5b909493c6ed3fc28f7ca8e762f9a6e8a494da8e3107fd71414055a20e0",
+      "duration_seconds": 0.499,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/ak-47/clipin.wav",
+          "blob": "8c66dde09199d69c0cba4e2192e2e786f219fff2",
+          "sha256": "d840c329a5059885aab190a3cf25cfaa7c6eda1b4906cdb03e7268d15856f811"
+        }
+      ],
+      "kit": "kit-outbreak-ak"
+    },
+    {
+      "path": "sounds/reload/stages/zpsak-boltback.mp3",
+      "kind": "reload piece",
+      "sha256": "f81c9b900f9009937278d69f4a8dea8869316853d9f97f42d4632fe5c6f12d1a",
+      "duration_seconds": 1.0,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/ak-47/boltback.wav",
+          "blob": "e1efdae05b72bb8bdf3cf269dfb9936a7b272c56",
+          "sha256": "7df9bb31b18b161a366b3b7529e108d4badb2fa88d8db4552b0282e9fa7128a2"
+        }
+      ],
+      "kit": "kit-outbreak-ak"
+    },
+    {
+      "path": "sounds/reload/stages/nova-shell-1.mp3",
+      "kind": "reload piece",
+      "sha256": "6d5f273fa140ac38968716e75a02d2969ef40c20c1115b34b25747fe5aa52f9e",
+      "duration_seconds": 0.568,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/nova/nova_insertshell_01.wav",
+          "blob": "7dff945d73e48eb425bf97f426bd105aaee4a118",
+          "sha256": "ea94ae5a0b3387bd533c5d01ded2dc9eadd7160ec65e5fd704c10d462482ae36"
+        }
+      ],
+      "kit": "kit-nova"
+    },
+    {
+      "path": "sounds/reload/stages/nova-shells-in.mp3",
+      "kind": "reload piece",
+      "sha256": "fd07c0cb80725e15feebe7adae2ff357eee9c6c0f6c45063041c684845b56690",
+      "duration_seconds": 0.572,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/nova/nova_insertshell_03.wav",
+          "blob": "d441d19e5f5fc1d64109cb113cb098d8c0db1d92",
+          "sha256": "30934b7ec4c8c501d6c03cf40b25f3b8abaa8b7d985d354191deb3aa6c6a8011"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/nova/nova_insertshell_04.wav",
+          "blob": "28796d417581f8408fbe52037e5720070fa49fd1",
+          "sha256": "0cc6fae34e46dd1e720a30bf534a2764ecd686cc9f640b3f714219310144a89d"
+        }
+      ],
+      "kit": "kit-nova"
+    },
+    {
+      "path": "sounds/reload/stages/nova-pump.mp3",
+      "kind": "reload piece",
+      "sha256": "4f81b49b0a641fffa0aa5495edc231df119b9a3338e7ef5f564b1dc35437a5a7",
+      "duration_seconds": 0.375,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/nova/nova_pump.wav",
+          "blob": "8de2d788327f880ea126bd58aedaad35a8abf5a2",
+          "sha256": "ae8b0f14117978612839be08ce3bf6c241604b6f04057714a6e527b5c263b9ba"
+        }
+      ],
+      "kit": "kit-nova"
+    },
+    {
+      "path": "sounds/reload/stages/xm1014-shell-1.mp3",
+      "kind": "reload piece",
+      "sha256": "fc38acedc4c6f1a1f04a46a08d871e0d5c2712025eddfa68187108167ebcc01c",
+      "duration_seconds": 0.645,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/xm1014/xm1014_insertshell_01.wav",
+          "blob": "537ab9a07df0c93aed335a1d7cf17ede4437a9c3",
+          "sha256": "c622ff3c4846671a59bdfef7e7ba57c7c89b85ab9edfb41c18f5bf62167755ac"
+        }
+      ],
+      "kit": "kit-xm1014"
+    },
+    {
+      "path": "sounds/reload/stages/xm1014-shells-in.mp3",
+      "kind": "reload piece",
+      "sha256": "93211c8fa860d65bf64d05c66e2b333caccf3712a6a5af459d248ae35cc5d199",
+      "duration_seconds": 0.8,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/xm1014/xm1014_insertshell_03.wav",
+          "blob": "554f7bbe8a37ee300485279169b806b6c945a3cc",
+          "sha256": "97480ffbb09c9ef3c445816a42848e3495afa99158a2a52e797fd85255b52e5e"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/xm1014/xm1014_insertshell_02.wav",
+          "blob": "13937325ed690f7f568004a27d989af39f11dc93",
+          "sha256": "ecda3405eb74960602af5f4dc6dfa1f337e121fbd76939d8baa5b02df24ab145"
+        }
+      ],
+      "kit": "kit-xm1014"
+    },
+    {
+      "path": "sounds/reload/stages/xm1014-pump.mp3",
+      "kind": "reload piece",
+      "sha256": "f31433860839019ebb9020bb97426cb024ff67995e04017b175b872041e74498",
+      "duration_seconds": 0.511,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/xm1014/xm1014_pump.wav",
+          "blob": "88442c78b292669512ef3fb8a14f6d86eeaa4ba8",
+          "sha256": "180e88a0cd1f90f386ad12949e8328c081cf0f1d319df5afe54724f12205109f"
+        }
+      ],
+      "kit": "kit-xm1014"
+    },
+    {
+      "path": "sounds/reload/stages/sawedoff-shell-1.mp3",
+      "kind": "reload piece",
+      "sha256": "ccd956598ddec06d39c66ea97d19fe558f15f4a4a8c9f62ef5cd5d430bd1ee36",
+      "duration_seconds": 0.462,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sawedoff/sawedoff_insertshell_01.wav",
+          "blob": "300689745f515c08a2a500a937ee70af2c602ec1",
+          "sha256": "3c240c3178dee7638cdb246c9dde99dfa91ee47e566b26b4f1ef4d743f083db2"
+        }
+      ],
+      "kit": "kit-sawedoff"
+    },
+    {
+      "path": "sounds/reload/stages/sawedoff-shells-in.mp3",
+      "kind": "reload piece",
+      "sha256": "23686b596c8e3ecb170def015e562984612b6191ff9e35239b7bf8484646e4ae",
+      "duration_seconds": 0.548,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sawedoff/sawedoff_insertshell_02.wav",
+          "blob": "5f01b32e39444cba746bcaf612bd618f2669b77f",
+          "sha256": "3b3fe3550e28ab1ff8f319fd492fe85cbf2ef7b86bdfe7147ffabf6f29fd1b1e"
+        },
+        {
+          "delay_seconds": 0.2,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sawedoff/sawedoff_insertshell_03.wav",
+          "blob": "2b4cce03897c64ffac6cb49ef79f1dd936b9f609",
+          "sha256": "8d1d081ed80faa02cdccd11cf0f13168f4b1d02cdc01309cc667a2c38883a0c8"
+        }
+      ],
+      "kit": "kit-sawedoff"
+    },
+    {
+      "path": "sounds/reload/stages/sawedoff-pump.mp3",
+      "kind": "reload piece",
+      "sha256": "044b9bba8067bdda4add5fbd19c79ef2a1dccc73f20bc845933a57103a26b37b",
+      "duration_seconds": 0.39,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/sawedoff/sawedoff_pump.wav",
+          "blob": "aa9a7d8957b236baf5706193604d02bd7d11bd46",
+          "sha256": "52a19ccab8907393686999b1594f0ace696d3fa4155e7b61f29886f3680ec0fc"
+        }
+      ],
+      "kit": "kit-sawedoff"
+    },
+    {
+      "path": "sounds/reload/stages/hl2sg-reload-1.mp3",
+      "kind": "reload piece",
+      "sha256": "3e1ebd35953f5cf90e5734678c055e63e0105d723cdae2dd4b9af0babe41b4b2",
+      "duration_seconds": 0.484,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/hl2/84f5de61421d95ce1eb9dcf9625a90782b41b278/sound/weapons/shotgun/shotgun_reload1.wav",
+          "blob": "7acd76830363f6264c868399f7fd47e58d76e5b2",
+          "sha256": "0c0f2c728f3cd4b201ee9d45e395179fade28242e93bdecebc1dd8c4e2d2d111"
+        }
+      ],
+      "kit": "kit-hl2-shotgun"
+    },
+    {
+      "path": "sounds/reload/stages/hl2sg-reload-2.mp3",
+      "kind": "reload piece",
+      "sha256": "640955eea0b6f6bb5aabbde0cad2c25b9eec26ca97c556c01403e018429c14eb",
+      "duration_seconds": 0.433,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/hl2/84f5de61421d95ce1eb9dcf9625a90782b41b278/sound/weapons/shotgun/shotgun_reload2.wav",
+          "blob": "52bdb25af3f2282150a1c13e04697bf7a4ac13e8",
+          "sha256": "ac8a195ecce30802751cd35626373b1992f57b6780faf7e4d65a4ec6b4a75aa3"
+        }
+      ],
+      "kit": "kit-hl2-shotgun"
+    },
+    {
+      "path": "sounds/reload/stages/hl2sg-cock.mp3",
+      "kind": "reload piece",
+      "sha256": "9a658c6eb6b91bf72a57ad9635b4182459835c811b25ecd9f4ab406671cad748",
+      "duration_seconds": 0.598,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/hl2/84f5de61421d95ce1eb9dcf9625a90782b41b278/sound/weapons/shotgun/shotgun_cock.wav",
+          "blob": "8aa1baff720e496147742438dae2605fdf29241b",
+          "sha256": "9836ab0084340a691b10cd2c5efa31ea8dd9b7d01610d641d9b3d1763a74bc31"
+        }
+      ],
+      "kit": "kit-hl2-shotgun"
+    },
+    {
+      "path": "sounds/reload/stages/chrome-shell-2.mp3",
+      "kind": "reload piece",
+      "sha256": "274c41640075c7bbe5e80dd1ad797a12714e419db36f85621ce6f9d42c785be6",
+      "duration_seconds": 0.531,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/shotgun/gunother/shotgun_load_shell_2.wav",
+          "blob": "c46ebe5fec2397511298dfa6bb46d5a9a34d57b0",
+          "sha256": "392e670dcbc9146f4a4036c144da98934122f06af331346b23fa04d5ea073728"
+        }
+      ],
+      "kit": "kit-chrome"
+    },
+    {
+      "path": "sounds/reload/stages/chrome-shell-4.mp3",
+      "kind": "reload piece",
+      "sha256": "4ceb1052dfeb133524ed797ff65e0db6d61a2dc890e0a77a0f5a08f37b3f244d",
+      "duration_seconds": 0.563,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/shotgun/gunother/shotgun_load_shell_4.wav",
+          "blob": "6a9b4c9066c044198957169ce97430a4d98668cc",
+          "sha256": "d69f4e473c0f9413a59cd0f58b1b3ed5c5c5f85ca7c92ef83c9d8630e285c224"
+        }
+      ],
+      "kit": "kit-chrome"
+    },
+    {
+      "path": "sounds/reload/stages/chrome-pump.mp3",
+      "kind": "reload piece",
+      "sha256": "d32f3f4677a5103532e3882795bf1deaa4881bee4ee16484d7dc7386984cc4e3",
+      "duration_seconds": 0.73,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/shotgun/gunother/shotgun_pump_1.wav",
+          "blob": "8f6c1790ddcc0d08f1f5355d658b9365b7022f4b",
+          "sha256": "05f976ba6cdc0a6c74f92126c68d353879aeb79117aaa6474af2e535c55d6283"
+        }
+      ],
+      "kit": "kit-chrome"
+    },
+    {
+      "path": "sounds/reload/stages/autosg-boltback.mp3",
+      "kind": "reload piece",
+      "sha256": "a8760e7b53f3f4931aef585c262f379768f3aa92ab1e3dd02cee6fd2c30a3666",
+      "duration_seconds": 0.9,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/auto_shotgun/gunother/autoshotgun_boltback.wav",
+          "blob": "f94b0689427e30db8b406bfe99be0017b6cb297b",
+          "sha256": "84b25e7b1b81bff50b9b46cd75b6364e46cda6d375030c8a8f59c20433544764"
+        }
+      ],
+      "kit": "kit-auto-shotgun"
+    },
+    {
+      "path": "sounds/reload/stages/autosg-shell.mp3",
+      "kind": "reload piece",
+      "sha256": "274c41640075c7bbe5e80dd1ad797a12714e419db36f85621ce6f9d42c785be6",
+      "duration_seconds": 0.531,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/auto_shotgun/gunother/auto_shotgun_load_shell_2.wav",
+          "blob": "c46ebe5fec2397511298dfa6bb46d5a9a34d57b0",
+          "sha256": "392e670dcbc9146f4a4036c144da98934122f06af331346b23fa04d5ea073728"
+        }
+      ],
+      "kit": "kit-auto-shotgun"
+    },
+    {
+      "path": "sounds/reload/stages/autosg-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "c302b11af3aa21580665eb8eafbe4df5c9f76632b47400c4c555739a3b08f413",
+      "duration_seconds": 0.784,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/auto_shotgun/gunother/autoshotgun_boltforward.wav",
+          "blob": "e07dea9217cdb1f3b6cac7a3663c1d80cce580c2",
+          "sha256": "d0bdd6a12466169dd172a7c91c0c676236ebe8bdd8bf4abc60c6c6a850ca5d47"
+        }
+      ],
+      "kit": "kit-auto-shotgun"
+    },
+    {
+      "path": "sounds/reload/stages/shorty-load-1.mp3",
+      "kind": "reload piece",
+      "sha256": "8233f087b61aa3a9c757b6101f5f40b5dd7edf244e22fbbbbfa0de3f71ed31d7",
+      "duration_seconds": 0.668,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/super_shorty/ss_load-01.wav",
+          "blob": "dadef0eda3433c15b5167c69cea7ad401407cb11",
+          "sha256": "6f9d03c459238a368e9b5fa09da2e679d87e374f69ff9330d6260c5c159acd52"
+        }
+      ],
+      "kit": "kit-super-shorty"
+    },
+    {
+      "path": "sounds/reload/stages/shorty-load-3.mp3",
+      "kind": "reload piece",
+      "sha256": "50f88333caf77ec14cc99ac880dffc2aca92c1767254859c83b13eb993a88e77",
+      "duration_seconds": 0.734,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/super_shorty/ss_load-03.wav",
+          "blob": "30854f3a14d688d8ae6d0abd78283654f13318b2",
+          "sha256": "5c15ed6374fa9b672ffe25473a6510b03a0ad3c821ff31272c2a0fb819eccd16"
+        }
+      ],
+      "kit": "kit-super-shorty"
+    },
+    {
+      "path": "sounds/reload/stages/shorty-pump.mp3",
+      "kind": "reload piece",
+      "sha256": "87c3f6ef7fee0b5ab3947a0a152876fe65ad97ef3cefe58e1ce49e258d9fc01b",
+      "duration_seconds": 0.551,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/super_shorty/ss_pump.wav",
+          "blob": "fa4f8b9f0d4054f0d024ac644113eaf44ae0f248",
+          "sha256": "d67de3104f05b392f944f0bbb13d1ad387d5fa3a929456d3035dc927e29c59d8"
+        }
+      ],
+      "kit": "kit-super-shorty"
+    },
+    {
+      "path": "sounds/reload/stages/sg550-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "c323a874a2ac9c41853f89645fedd5893d2cfdaec6523f3acb8cad966e517a7b",
+      "duration_seconds": 0.214,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg550/sg550_clipout.wav",
+          "blob": "b83ce62438ed7dc8cd63c45bbba8d6c0fdd550e6",
+          "sha256": "c1542bce126b46aefce5000b1a4de3500ef031194a6ca240a2b2ff63da7676bb"
+        }
+      ],
+      "kit": "kit-sg550"
+    },
+    {
+      "path": "sounds/reload/stages/sg550-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "4c2b49b9cf7ae760a926a8c81c3d3fc7a0c4167d29b1a528ae5d93558a804d6c",
+      "duration_seconds": 0.771,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg550/sg550_clipin.wav",
+          "blob": "4ff15a2e7c46d747f0f1385528c1d905ac95b533",
+          "sha256": "f2e1c3488989f62c761fc23b9b2f0584af5d793c55fe40d0aa14698e3afeb432"
+        }
+      ],
+      "kit": "kit-sg550"
+    },
+    {
+      "path": "sounds/reload/stages/sg550-boltpull.mp3",
+      "kind": "reload piece",
+      "sha256": "8b93367d421de8435aa30f5bfa1e128b29a9e4defecadea603e4dfcd10153134",
+      "duration_seconds": 0.273,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg550/sg550_boltpull.wav",
+          "blob": "b80eab04765d98ad7958b1ada68b88309b3c1fe8",
+          "sha256": "bdfa15c4bbc24ec951f1d8355e41c05c84ffa4bc630b649aa257dd8afac5a883"
+        }
+      ],
+      "kit": "kit-sg550"
+    },
+    {
+      "path": "sounds/reload/stages/g3c-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "6bbc36c92556bf4a6423a449b7a441d3dc26a87a5cc2a890db9a8654c8ba4194",
+      "duration_seconds": 0.257,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/g3sg1/g3sg1_clipout.wav",
+          "blob": "9a258a844116648e27964667f9ee86aa9899fc53",
+          "sha256": "785a05ca9de059c6638928a8ba1ba374d8ed8b0492f1bf1194d63cf57a50a073"
+        }
+      ],
+      "kit": "kit-g3-classic"
+    },
+    {
+      "path": "sounds/reload/stages/g3c-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "3551af18be261efaa59bdf13357d3c6be60ed6629838f570cdcc4393ca8dfa41",
+      "duration_seconds": 0.242,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/g3sg1/g3sg1_clipin.wav",
+          "blob": "8f0fdf1681b00848914599d98a6693330ed0be30",
+          "sha256": "8e2889175e1bd4bec6bcf393d998e51d30b1f31151c83e38d66907537289c714"
+        }
+      ],
+      "kit": "kit-g3-classic"
+    },
+    {
+      "path": "sounds/reload/stages/g3c-slide.mp3",
+      "kind": "reload piece",
+      "sha256": "287b5ac6aa85ca9622d5f6b19c7d630397b21f773d829e22fc6b470345f7215c",
+      "duration_seconds": 0.501,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/g3sg1/g3sg1_slide.wav",
+          "blob": "6a7f6a710981ac0ef645603ea64663250bd6f565",
+          "sha256": "a164a810e5e1be456f23a2705563299541d4d4264e454c822bc99ea131e4b10b"
+        }
+      ],
+      "kit": "kit-g3-classic"
+    },
+    {
+      "path": "sounds/reload/stages/hunting-boltback.mp3",
+      "kind": "reload piece",
+      "sha256": "82f3ffe05b7f83247f8c3b16541a27378b025e96319acbb6ddf2486c166ee480",
+      "duration_seconds": 0.239,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/hunting_rifle/gunother/hunting_rifle_boltback.wav",
+          "blob": "5829c3706d42b526d0fd2fa2ede14eedcf6f8f51",
+          "sha256": "683c7a0b6d4f6477d81b6aa4ab90af15dcfb311604759f045328c1d0f9c4be8b"
+        }
+      ],
+      "kit": "kit-hunting"
+    },
+    {
+      "path": "sounds/reload/stages/hunting-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "4b24e590e371ffc323517ffb9731d3ea0d7f8967b562fcc956b7b97db6e29796",
+      "duration_seconds": 0.498,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/hunting_rifle/gunother/hunting_rifle_clipout.wav",
+          "blob": "eb3c850743667ec1e1445ed54699dc4f3a574c2e",
+          "sha256": "b3c9ca9ed1b7b0e43b9f02a672e2a6319977716afd9e92592277367d6334958f"
+        }
+      ],
+      "kit": "kit-hunting"
+    },
+    {
+      "path": "sounds/reload/stages/hunting-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "8dbd7c8f93a1828b36571a25a31de2a78f787a2f496468e82d5ff6597824839b",
+      "duration_seconds": 0.211,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/hunting_rifle/gunother/hunting_rifle_clipin.wav",
+          "blob": "b90331d0c1f2b4bc36b4a65571c858a2f6796262",
+          "sha256": "f72eefbb47719d2445aafa2b45826581540b88bcf823272fad86a0734d3759cf"
+        }
+      ],
+      "kit": "kit-hunting"
+    },
+    {
+      "path": "sounds/reload/stages/hunting-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "806cdb2ef3753ad34fe0996ebebf2f7efeb9d68489a52cd724dcc2e0f9edfc19",
+      "duration_seconds": 0.246,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/hunting_rifle/gunother/hunting_rifle_boltforward.wav",
+          "blob": "8ef926cc7cace1bd11ac9dd6708f00814a14d8b4",
+          "sha256": "ebb00b4e4db904ad948efa1cc8764222ff5e8d43b5a5d22fa44ae8cc311fbe08"
+        }
+      ],
+      "kit": "kit-hunting"
+    },
+    {
+      "path": "sounds/reload/stages/military-slideback.mp3",
+      "kind": "reload piece",
+      "sha256": "03f7c3ae3b2f8017bcc1389faafeea8197a658c038307c6ee29dc19e07c6aad5",
+      "duration_seconds": 0.378,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/sniper_military/gunother/sniper_military_slideback_1.wav",
+          "blob": "1bbb359b0ae6af014be48aec4ce36bcd5d2bb34a",
+          "sha256": "b589e805e3d36a5861f7eb9a7ef338a269c3d69c705d5cc16395fa36980fe8f7"
+        }
+      ],
+      "kit": "kit-military"
+    },
+    {
+      "path": "sounds/reload/stages/military-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "f3bb4a349f85e67fabf8171625d145758310406d6c63ebd8056180c4fb1f9508",
+      "duration_seconds": 0.345,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/sniper_military/gunother/sniper_military_clip_out_1.wav",
+          "blob": "f0110bd423a3a1e63c0f088b27c8bdc2c41bf2e9",
+          "sha256": "44f8770421ebc586bf0194187fcac90b5457a58f1e8287115aa79fe109f75924"
+        }
+      ],
+      "kit": "kit-military"
+    },
+    {
+      "path": "sounds/reload/stages/military-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "6d9967e4c34e3101857b4bcc5c6603b76243911cb3cdfaf46ed66eef5eb63391",
+      "duration_seconds": 0.211,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/sniper_military/gunother/sniper_military_clip_in_1.wav",
+          "blob": "627d652d103c31b365cfe000c77acc9b39d1df1c",
+          "sha256": "dd8c112d1903ff48b348d9c0a7a38aa30566b95063360343e5a863ff991798ec"
+        }
+      ],
+      "kit": "kit-military"
+    },
+    {
+      "path": "sounds/reload/stages/military-slideforward.mp3",
+      "kind": "reload piece",
+      "sha256": "e32d25c38804c2a8b5fd0df0e1c75892435527a7243be4e231f22e4f45df20e9",
+      "duration_seconds": 0.336,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/sniper_military/gunother/sniper_military_slideforward_1.wav",
+          "blob": "93c346c3b56a65666823575890a5e1bff054ada3",
+          "sha256": "75f38f0537708a656cee0be43fde270a7186c1b74632659621eb23e1ffaae356"
+        }
+      ],
+      "kit": "kit-military"
+    },
+    {
+      "path": "sounds/reload/stages/garand-ping.mp3",
+      "kind": "reload piece",
+      "sha256": "7cd51368cbaf3d5e12115e7c0915e4e54161f048727c6b34abd3eea9411dd810",
+      "duration_seconds": 0.9,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/garand_clipding.wav",
+          "blob": "2e2f36e30a49ae05f608cd110e5ba024696ea28b",
+          "sha256": "33f4f937d44b05d4637e6628c5c6c874897930e7d27f5006b6e5bfcbe7b71a33"
+        }
+      ],
+      "kit": "kit-garand"
+    },
+    {
+      "path": "sounds/reload/stages/garand-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "1ce2eb6363decaf7a8360191e1b89a8eca013991b108984cd9d270d6e6b10d0d",
+      "duration_seconds": 0.146,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/garand_clipin1.wav",
+          "blob": "8a3196f99f113abd1d02ef5ebbf1e179f2126165",
+          "sha256": "17151113e3dab06f1eac39cffb48a60713070b70850d41a5bdb999aeee37aa1d"
+        }
+      ],
+      "kit": "kit-garand"
+    },
+    {
+      "path": "sounds/reload/stages/garand-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "ad2417c0c1f76bb85120d25dbb53abc196df41d2d6dd5b29dcc43fc27847b9be",
+      "duration_seconds": 0.288,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/garand_boltforward.wav",
+          "blob": "a2ebda2c66b58fb09fcabf6c1a40762e2b423953",
+          "sha256": "2986e63f51ef67f9db93a1e7da15c5effd55bf0c652b2866e5137174a10e6ccc"
+        }
+      ],
+      "kit": "kit-garand"
+    },
+    {
+      "path": "sounds/reload/stages/carbine-boltback.mp3",
+      "kind": "reload piece",
+      "sha256": "1effc96151a4c107a161e8caa8bfa8adcaf9ab5184ae3b1e91f44bed5096f889",
+      "duration_seconds": 0.178,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/m1carbine_boltback.wav",
+          "blob": "45d4306826ecd2e31bfa24cf748c2ff8e8e22a4c",
+          "sha256": "08afa11df4a6f1672b26ee1734517e1d70d0fed4cd8a9e3e547070416aef954f"
+        }
+      ],
+      "kit": "kit-carbine"
+    },
+    {
+      "path": "sounds/reload/stages/carbine-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "f6ac5ccf659b476f317090eb657af85634a3d7e8be1c97cd801468d636558150",
+      "duration_seconds": 0.165,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/m1carbine_clipout.wav",
+          "blob": "8ca657aee052a214663154d5caf5ff01c864a355",
+          "sha256": "b90212c737c47b9c952f8b4faff085c39dd8fb4231330d7aab650616b5dade85"
+        }
+      ],
+      "kit": "kit-carbine"
+    },
+    {
+      "path": "sounds/reload/stages/carbine-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "cb8ec6a61112608e5bbb7eb90d966ec3fa464578cadfc2817736fbdb62125c92",
+      "duration_seconds": 0.322,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/m1carbine_clipin1.wav",
+          "blob": "26e00bb660ed435efdfb0632386e1a605a9239ac",
+          "sha256": "0812e22bc06452f759ee626d72ab2de48c4b07c1f0fac95bf56fe8909bfc4809"
+        }
+      ],
+      "kit": "kit-carbine"
+    },
+    {
+      "path": "sounds/reload/stages/carbine-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "bc681beb1c1b2df667645b1d85a585865fd103c42941b3b4f95cbcb3496de417",
+      "duration_seconds": 0.21,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/m1carbine_boltforward.wav",
+          "blob": "0f89371be305a88d7763b2a5615763d5606ce7e7",
+          "sha256": "a587ec656969a4c5f844e11d35a7042facdcfe98651e44435bf88b16919683c5"
+        }
+      ],
+      "kit": "kit-carbine"
+    },
+    {
+      "path": "sounds/reload/stages/desert-slideback.mp3",
+      "kind": "reload piece",
+      "sha256": "03f7c3ae3b2f8017bcc1389faafeea8197a658c038307c6ee29dc19e07c6aad5",
+      "duration_seconds": 0.378,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_desert/gunother/rifle_slideback_1.wav",
+          "blob": "1bbb359b0ae6af014be48aec4ce36bcd5d2bb34a",
+          "sha256": "b589e805e3d36a5861f7eb9a7ef338a269c3d69c705d5cc16395fa36980fe8f7"
+        }
+      ],
+      "kit": "kit-desert"
+    },
+    {
+      "path": "sounds/reload/stages/desert-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "60bc42f1c6c59c52b5f796e1871b220bba6cee2546393f57a8dde450480c8566",
+      "duration_seconds": 0.583,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_desert/gunother/rifle_clip_out_1.wav",
+          "blob": "494e25c0469144636a90a66137a590f46b7529ce",
+          "sha256": "8081aa37d26cb1082f655becf656758190590918b6d3cb598aa92847605a141a"
+        }
+      ],
+      "kit": "kit-desert"
+    },
+    {
+      "path": "sounds/reload/stages/desert-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "73624356dbca3d31506ed47f07d6544ea947c78e5a07a2dc402b7beea4a638cb",
+      "duration_seconds": 0.668,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_desert/gunother/rifle_clip_in_1.wav",
+          "blob": "6b7650a68c00b389d99edecd88e86a849f3fb341",
+          "sha256": "d9e694cb4eca7c5cafaafd211b84af1973b441f233ed403fe51ebcf1bb6ea897"
+        }
+      ],
+      "kit": "kit-desert"
+    },
+    {
+      "path": "sounds/reload/stages/desert-slideforward.mp3",
+      "kind": "reload piece",
+      "sha256": "9f20ddb34df6c6cef1efa348fb2ff68b40e5fae7f6472d80424cd95948ee3c93",
+      "duration_seconds": 0.336,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle_desert/gunother/rifle_slideforward_1.wav",
+          "blob": "0c2545816757132aab8bdeea667a1475ee7cdd52",
+          "sha256": "480c10c3d4436fa667f6ffabc0cd96072c8ed0c70482ef53f62b1659c179434c"
+        }
+      ],
+      "kit": "kit-desert"
+    },
+    {
+      "path": "sounds/reload/stages/dodrocket-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "5daa90f7ee6a4f0822437cb54462268c9db23d40e531f14d885dc466ba9d5808",
+      "duration_seconds": 0.503,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/rocket_clipin.wav",
+          "blob": "f2a2814aa5c897a5894cf5774240feb929f63592",
+          "sha256": "e17c50bc0349be642e16d0388e0e580f5720979b5d56a3153b4862d0a957d6e7"
+        }
+      ],
+      "kit": "kit-dod-bazooka"
+    },
+    {
+      "path": "sounds/reload/stages/mortar-load.mp3",
+      "kind": "reload piece",
+      "sha256": "a7d356b3ef5da4ba28ca46294d699298f00a6890f79739450089f6b87302517b",
+      "duration_seconds": 0.329,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/mortar_load.wav",
+          "blob": "4d679e7b0c93f2ee4906babc7025c1d37b420b97",
+          "sha256": "b634cef6450384bb90c79d2cd29fdedd3933236543984c37fb4ab1abe6698e38"
+        }
+      ],
+      "kit": "kit-mortar"
+    },
+    {
+      "path": "sounds/reload/stages/tfgl-reload.mp3",
+      "kind": "reload piece",
+      "sha256": "ff2e3eda12ef9b940513df179b43b5b328d19bf0c3b227c2120e016da8d86cda",
+      "duration_seconds": 0.411,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/grenade_launcher_worldreload.wav",
+          "blob": "18d55f9acd5c7e12eccc5a4ff4540fe879d8cb37",
+          "sha256": "124f428465c02b8c78ecb48467c56ea5fb7f678a95290553dd7e4e3c3381fd5d"
+        }
+      ],
+      "kit": "kit-grenade-launcher"
+    },
+    {
+      "path": "sounds/reload/stages/l4dgl-shell.mp3",
+      "kind": "reload piece",
+      "sha256": "4981678afbb18c80c11ab0af14ff8cf68615d6c0c003ae60461fa79ada588641",
+      "duration_seconds": 1.197,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/grenade_launcher/grenadeother/grenade_launcher_latchopen.wav",
+          "blob": "11c63764d8ea14b541b72ca22c7c7947cd16ae55",
+          "sha256": "f12026ea7b149e510228000d7c14ac28ba4d971a804e752c713f4dfe718f9ed5"
+        },
+        {
+          "delay_seconds": 0.35,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/grenade_launcher/grenadeother/grenade_launcher_shellin.wav",
+          "blob": "e0b79c8820ff9fd1339d3543d18de69bda978c61",
+          "sha256": "85cce830f68378120b2798678127d9a2401baa77a9a662de2a861620592fb4be"
+        },
+        {
+          "delay_seconds": 0.8,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/grenade_launcher/grenadeother/grenade_launcher_actionclosed.wav",
+          "blob": "dc255c4875ab0988a6d2d9c4560baa53316ebfb0",
+          "sha256": "83b9daadd47728d36b487496451728c703e5e23f48808d077afb1d7870f09c8e"
+        }
+      ],
+      "kit": "kit-drum-launcher"
+    },
+    {
+      "path": "sounds/reload/stages/sticky-reload.mp3",
+      "kind": "reload piece",
+      "sha256": "056ddbb8acc748c666e5cb7c87fb64d831630c3972e3af2649a91623f73bec53",
+      "duration_seconds": 0.776,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/stickybomblauncher_boltback.wav",
+          "blob": "5b1c0c3c38865e4a0c48484a046ebf4931fbb8cd",
+          "sha256": "faa7415996b17f55fc765cb57e2cc8c8115848f7e0d436815a0168fad94f357d"
+        },
+        {
+          "delay_seconds": 0.55,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/stickybomblauncher_boltforward.wav",
+          "blob": "b709b4e96a5f64b3dd45ebe1048b2dd5bc487918",
+          "sha256": "399e9905289c23883cf8ca051b7eb876352bc08dea9717dba08d8e69390d260c"
+        }
+      ],
+      "kit": "kit-sticky"
+    },
+    {
+      "path": "sounds/reload/stages/bison-reload.mp3",
+      "kind": "reload piece",
+      "sha256": "c619c82373fe05a2c379c651273ed68cabdfc2ff7dfff8160cebb611249d5e1b",
+      "duration_seconds": 0.653,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/bison_reload.wav",
+          "blob": "422819c77359b8d9e0867e2e032889ad169dfe57",
+          "sha256": "c20b933c4e7b49348881dffcb2127fb350e8070b3301170a4d34a48c40b1f9c2"
+        }
+      ],
+      "kit": "kit-bison"
+    },
+    {
+      "path": "sounds/reload/stages/mac10-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "df1f24033a6506aacdf677f06b97d837401d9f812d546b6f9951c8b11c2f7242",
+      "duration_seconds": 0.287,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mac10/mac10_clipout.wav",
+          "blob": "0cf7aa5dc69d1993bd6057aeb50aaac163f510d8",
+          "sha256": "aa9b990d82fa520374d59bc8d8c01e453becfa416af5ed7adbee41d80be297a9"
+        }
+      ],
+      "kit": "kit-mac10"
+    },
+    {
+      "path": "sounds/reload/stages/mac10-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "47d1fa9ec4e41e7f66cad94316a8cdc80168a6aa71ba57fb363e38038e554292",
+      "duration_seconds": 0.224,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mac10/mac10_clipin.wav",
+          "blob": "417ab03860081c6181554adf5e583766fe6dcec9",
+          "sha256": "29bbfc2dbe04e870672e101b73b13d9cf81f3d34cf8c9361b8eacb700ac3c6f8"
+        }
+      ],
+      "kit": "kit-mac10"
+    },
+    {
+      "path": "sounds/reload/stages/mac10-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "e78c323ac07f4b1429a27e01b6f96a37147da3098cb1524dbedf39a2341201ab",
+      "duration_seconds": 0.164,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mac10/mac10_boltforward.wav",
+          "blob": "6130cf4e18b9fc7f761d70c3817df1d76d4e7227",
+          "sha256": "6788cb059cfaec4fd0430967297913d02d4245ef4e080d209f14e367a53f032a"
+        }
+      ],
+      "kit": "kit-mac10"
+    },
+    {
+      "path": "sounds/reload/stages/bizon-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "11713c294641dfd7f2d08cb4e2250772caca752571aeaf2d5ce7cb573ce0fd1e",
+      "duration_seconds": 0.243,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/bizon/bizon_clipout.wav",
+          "blob": "cee0a00fe706169182930a447de8e9c775818985",
+          "sha256": "eb884d04878b3176931b362eb07b2194e19794ec76983701af3c87cef8e3f95b"
+        }
+      ],
+      "kit": "kit-bizon"
+    },
+    {
+      "path": "sounds/reload/stages/bizon-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "cdb456f7f66d2e8d7fe93e266813511aada33ae81ba2d4c481092a23fbddf02a",
+      "duration_seconds": 0.201,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/bizon/bizon_clipin.wav",
+          "blob": "f5519f6062b135a5e04e72b33b88a18cb33337ba",
+          "sha256": "74ab5a4d6ab81b12201dd302f93215fc6253668923a9762af5eb97015e03a80d"
+        }
+      ],
+      "kit": "kit-bizon"
+    },
+    {
+      "path": "sounds/reload/stages/bizon-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "21a539865aeb2757223f007a3d4aef562c34c98b6eae759adb2cef5da3c04955",
+      "duration_seconds": 0.423,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/bizon/bizon_boltforward.wav",
+          "blob": "e2f2db26f4325adfe07145bb908f08276d24ef8d",
+          "sha256": "3d72088e48ce79ffd78da49ac28560c344091731ec475fef9b6977c4718c9efd"
+        }
+      ],
+      "kit": "kit-bizon"
+    },
+    {
+      "path": "sounds/reload/stages/mp5-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "74b5c0eeb22bd5ed1ebc7955ecad532bb49e35d42dbf1a88932da8af1e4fe31f",
+      "duration_seconds": 0.263,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp5/mp5_clipout.wav",
+          "blob": "a978decaef51eff6863a3f381bae68442a880947",
+          "sha256": "dbcbe5a70251f3e1670986ecc74ba9c8d2bbf78ecfbff6a34af189355301a5e7"
+        }
+      ],
+      "kit": "kit-mp5"
+    },
+    {
+      "path": "sounds/reload/stages/mp5-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "730862224fac9b18a107b4102b1fbd39dd55bcd680a107da3fc03413e97ed1d2",
+      "duration_seconds": 0.125,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp5/mp5_clipin.wav",
+          "blob": "d4d5ddb15aa13b4488aa1155cda548dfec548b3b",
+          "sha256": "0d1bb15f153cc036d758bd052a0e6d3c9e4b26a98504b302f61b59c937b65fc6"
+        }
+      ],
+      "kit": "kit-mp5"
+    },
+    {
+      "path": "sounds/reload/stages/mp5-slideforward.mp3",
+      "kind": "reload piece",
+      "sha256": "2db19be0afff8e784f71a59083f0113fc86b82885e065bef334efed821f6057c",
+      "duration_seconds": 0.457,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/mp5/mp5_slideforward.wav",
+          "blob": "bd2a2eb2339d4ae344582aaea6d0cd48b96e5340",
+          "sha256": "ab5c92e37cfedcecc94f17400a10f4738d73836d03cbfc88e167311c70f747a1"
+        }
+      ],
+      "kit": "kit-mp5"
+    },
+    {
+      "path": "sounds/reload/stages/thompson-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "37ceda78f8d1788326e3104658f2c697c394d9683f2708cafbdf8f31d0855029",
+      "duration_seconds": 0.217,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/thompson_clipout.wav",
+          "blob": "7b90afee65a828922bc3970885c6b6f39325ceb2",
+          "sha256": "6627dd745181d9fb67b480975dbaffbce7f2fc8a33d93372b8d6a861c95406c0"
+        }
+      ],
+      "kit": "kit-thompson"
+    },
+    {
+      "path": "sounds/reload/stages/thompson-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "f678d011757b7079546c83eeb872786816ad0ae90d2f4eab2d5571ae0362d3fa",
+      "duration_seconds": 0.695,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/thompson_clipin.wav",
+          "blob": "7b42f6783c6647f0fdcb90dd5b3a9f92c148ad4b",
+          "sha256": "eab758a1eaf8117cf0b12e75003af662531e71f29bb41d77635f628322420363"
+        }
+      ],
+      "kit": "kit-thompson"
+    },
+    {
+      "path": "sounds/reload/stages/thompson-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "b622e2ab43330db1da806efc78bd72f8cf7b1dfaa29efb9062d892f754ac3b8e",
+      "duration_seconds": 0.212,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/thompson_boltforward.wav",
+          "blob": "ef1551330fabeb04f9138e72220d2e4c655ba339",
+          "sha256": "1210f4633a7a186e5eaaeeb014bf73dd7ad72093c24e8be23c3f5a89a225da1a"
+        }
+      ],
+      "kit": "kit-thompson"
+    },
+    {
+      "path": "sounds/reload/stages/mp40-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "6e33846a07f43b5f60f20ea3a9650e14bcdb47d27601fb709a1e903a33ef72d5",
+      "duration_seconds": 0.184,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/mp40_clipout.wav",
+          "blob": "a573c9a9683494563b8b2ac1d494ef84a3ca729e",
+          "sha256": "d40e1079c547865780ce58a503d2545e60246c83d7ac355535bcc9c2a9cd133b"
+        }
+      ],
+      "kit": "kit-mp40"
+    },
+    {
+      "path": "sounds/reload/stages/mp40-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "2a06d7d93295b14093a328e016384046035eec3c412b46bb153f27e476ec1ae0",
+      "duration_seconds": 0.412,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/mp40_clipin.wav",
+          "blob": "92846aa3620619cec64332d1662d238cbefa2922",
+          "sha256": "4f179c25538c7c277a4eedde3caf89c321bd44f1d4a7eb1e6341b14807916bb9"
+        }
+      ],
+      "kit": "kit-mp40"
+    },
+    {
+      "path": "sounds/reload/stages/mp40-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "c71cc1378e3c123194c8709c24f87aa192ecbbb2a1b9478b36187e25493fa18c",
+      "duration_seconds": 0.213,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/mp40_boltforward.wav",
+          "blob": "71187cee54ac3e2965c68538200a5a097bdf69d3",
+          "sha256": "bd0af2f8be94d55b82b9320ccb4253aaf690074ebd7843b85835c65b36d7369b"
+        }
+      ],
+      "kit": "kit-mp40"
+    },
+    {
+      "path": "sounds/reload/stages/l4dsmg-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "72153fcf7974800e04cdac045314a31a2f9a5bb9ce8bd1589c89e0ccf092742c",
+      "duration_seconds": 0.3,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/smg/gunother/smg_clip_out_1.wav",
+          "blob": "99b84116f2b090625c7bc19362ee70a98dadc798",
+          "sha256": "2456c74f5073748e9c79c1daf5a611de151f98a6cbec7b07f105a832896e5415"
+        }
+      ],
+      "kit": "kit-survivor-smg"
+    },
+    {
+      "path": "sounds/reload/stages/l4dsmg-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "a9cdb6eaf727a525554ad1fd5b9e9a4f9f07c4627cbff65a6c44a5aaa28b68e0",
+      "duration_seconds": 0.407,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/smg/gunother/smg_clip_in_1.wav",
+          "blob": "3a01222707109140f790cde23f366fb96752c0cf",
+          "sha256": "9cc14f9a28ad5d1171cdedf67dc91cdcae26619e1400e61ad716c3b131faec4d"
+        }
+      ],
+      "kit": "kit-survivor-smg"
+    },
+    {
+      "path": "sounds/reload/stages/l4dsmg-slideforward.mp3",
+      "kind": "reload piece",
+      "sha256": "6e713a56590e2c3f0340cc23357ecf946d0d7b3c8f2c10545d075d13ecd31239",
+      "duration_seconds": 0.262,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/smg/gunother/smg_slideforward_1.wav",
+          "blob": "add5e3e538b318c7f7ca20edfa3b42d5a2ca557e",
+          "sha256": "19b0a2be245ef401191fc856e4e1ee58ae41fb3692c370f11d91a2db89e9037b"
+        }
+      ],
+      "kit": "kit-survivor-smg"
+    },
+    {
+      "path": "sounds/reload/stages/awpc-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "e4820308251bcc7d8914916fa60915d0e2cf2b0dd135f901e1206d82aa31bdad",
+      "duration_seconds": 0.566,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/awp/awp_clipout.wav",
+          "blob": "7e4a31e322a7c75442113cf1e707b4b6fc94a43e",
+          "sha256": "cb7e27f0bc1e9d1e6163260d51f9370774ed431c0a22d8f2c9309730bfd226e1"
+        }
+      ],
+      "kit": "kit-awp-classic"
+    },
+    {
+      "path": "sounds/reload/stages/awpc-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "c5dd25b88e748eb513cf3095ca77e4bc974d1572bf724808257e77e933879471",
+      "duration_seconds": 0.583,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/awp/awp_clipin.wav",
+          "blob": "ab0418a10a46d1972054eff37b475e5c966b5679",
+          "sha256": "0cafe63e3418f530a551ebaf703fdb712180bd8571776879c6df94de4a9deb06"
+        }
+      ],
+      "kit": "kit-awp-classic"
+    },
+    {
+      "path": "sounds/reload/stages/awpc-bolt.mp3",
+      "kind": "reload piece",
+      "sha256": "8c1249fe606578922cde530266a790fefd8ee54a5bc111f2d44e34af13b96dd9",
+      "duration_seconds": 0.333,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/awp/awp_bolt.wav",
+          "blob": "6a144d2a044f49afe1e964fe3dfce4217d244a23",
+          "sha256": "61ec46526753f4cf4d61107f57040b8e63dc438f006bced554d5d5cb7894e40c"
+        }
+      ],
+      "kit": "kit-awp-classic"
+    },
+    {
+      "path": "sounds/reload/stages/awp-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "5fe6dfab18d3febaa2ec125fb012793843c0491a2900665a62c9c514603bb6cb",
+      "duration_seconds": 0.145,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/awp/awp_clipout.wav",
+          "blob": "42da606e60c58b06223c9d404cc087ce3b40e34f",
+          "sha256": "83673ef2f05053d155664307bd73a372a151460489aa3b88e284b1063e01b123"
+        }
+      ],
+      "kit": "kit-awp-mag"
+    },
+    {
+      "path": "sounds/reload/stages/scoutc-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "c015ed7b004cccee261d17792efe8926220099f0852cbb34cddf1278aa665ec6",
+      "duration_seconds": 0.479,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/scout/scout_clipout.wav",
+          "blob": "890c57d369c3d1d72f6b2f6ac01835d16e3fb23c",
+          "sha256": "2a43f6de7481a6cfefca5984770f8c3dd9c93690e43071b0913c31d93a6d3d20"
+        }
+      ],
+      "kit": "kit-scout-classic"
+    },
+    {
+      "path": "sounds/reload/stages/scoutc-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "d9b59e72cdb43acc5f008f22698fe812da135f3eebb031ac07b74f93d1e38f54",
+      "duration_seconds": 0.289,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/scout/scout_clipin.wav",
+          "blob": "420eab513c75b09a614cd4a44bf233c28b7f2409",
+          "sha256": "dce8396e71af12bab969137eec6945aa6d2bfdfd9e4330e20cc43d0f112366b6"
+        }
+      ],
+      "kit": "kit-scout-classic"
+    },
+    {
+      "path": "sounds/reload/stages/scoutc-bolt.mp3",
+      "kind": "reload piece",
+      "sha256": "09b7ff81cee54e5a0cdbda42fa59c13fdcd2b969056f1ca95262708a2cb3985d",
+      "duration_seconds": 0.583,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/scout/scout_bolt.wav",
+          "blob": "78ea246a88f68cb87a1f6db3a043770c58461ed6",
+          "sha256": "91ece57bf2c02901082a7a2cb21e60deadcd4584124f7a86e9454e05b8a497e5"
+        }
+      ],
+      "kit": "kit-scout-classic"
+    },
+    {
+      "path": "sounds/reload/stages/machina-boltback.mp3",
+      "kind": "reload piece",
+      "sha256": "5019a5c5d380c5070231de33e8f2132d16712071fdeffe6f7dd9940f9f6a85e2",
+      "duration_seconds": 0.354,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_railgun_bolt_back.wav",
+          "blob": "e7fa2dc3a015d338facc754e9685da9dee5eac54",
+          "sha256": "b01092f082fe952c8c9519177aaa4093f367794063cbcb9746d0462cae8e2b8a"
+        }
+      ],
+      "kit": "kit-machina"
+    },
+    {
+      "path": "sounds/reload/stages/machina-reload.mp3",
+      "kind": "reload piece",
+      "sha256": "72e5be6ae1437069006da80e6206cab6091cf7972245f4ac58584134c7968f14",
+      "duration_seconds": 0.791,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_railgun_world_reload.wav",
+          "blob": "d653c22e195a6bbafc9714e235ea6b8993e6c800",
+          "sha256": "61c807940f28e068c10c4bec9a5c3d97874025e1f6bf62957256727d79483a67"
+        }
+      ],
+      "kit": "kit-machina"
+    },
+    {
+      "path": "sounds/reload/stages/machina-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "b5ee79f8dfd9d5e45fcd80de83fd364aaaf40ff40b263635524e8cda2af096b6",
+      "duration_seconds": 0.575,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_railgun_bolt_forward.wav",
+          "blob": "4b9f4da607fa96a78c0fa67bc968488d3ee462a3",
+          "sha256": "019a535dbcac00b0eb8bc4e39e706f50a7f70146d9c75e9f2ace070cf67954c5"
+        }
+      ],
+      "kit": "kit-machina"
+    },
+    {
+      "path": "sounds/reload/stages/sniper-reload.mp3",
+      "kind": "reload piece",
+      "sha256": "2a52307207c2a91f3526df3d2e44187879d7d667aacd7de45a3d2206aac7cd6d",
+      "duration_seconds": 0.708,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/tf/420bf271208d79d952e693974e391892c254ad80/sound/weapons/sniper_worldreload.wav",
+          "blob": "8323157d7b5deb42c0a4872b60e75ac4741e6b5f",
+          "sha256": "20f7f9a2d4a90cf07eef7e1d802042ba2c25ff9338901e3b7233fe7d68ae0d5e"
+        }
+      ],
+      "kit": "kit-sniper-rifle"
+    },
+    {
+      "path": "sounds/reload/stages/k98-boltback.mp3",
+      "kind": "reload piece",
+      "sha256": "dd2e7a8d1fde4bfc4783e923a7ef2f4ac3552a3463dbc7bf9be781a6022b2295",
+      "duration_seconds": 0.187,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/k98_boltback1.wav",
+          "blob": "b331b1c665e9b42a8e4dacce0cf9355f8b2e76d1",
+          "sha256": "993c431fb56e3586317f6b11ac7b2bf01a80225db825e6966372513725ff0189"
+        }
+      ],
+      "kit": "kit-kar98k"
+    },
+    {
+      "path": "sounds/reload/stages/k98-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "5ce0655727d307ff6a7d638ff5551bcd8b35dc9afd8b70e8ecdbbe81c0682064",
+      "duration_seconds": 0.263,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/k98_clipin.wav",
+          "blob": "c769541530cb278e8f9d667ce5e9ebc0501f9186",
+          "sha256": "70877e60754662dcb4a605244cc60c28fa5afa03d355e91f6d39933999b9aedd"
+        }
+      ],
+      "kit": "kit-kar98k"
+    },
+    {
+      "path": "sounds/reload/stages/k98-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "1af5aae4dd28387389b2e88e40506b7c34b171df7000086cda5e569928294601",
+      "duration_seconds": 0.311,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/k98_boltforward1.wav",
+          "blob": "5958431abd0075213432751dbb708974942a958a",
+          "sha256": "8b9788ca04b0e7912e303596bcc3e4cea3c98f14a4541b47650be5d2aab3d4b1"
+        }
+      ],
+      "kit": "kit-kar98k"
+    },
+    {
+      "path": "sounds/reload/stages/l4dscout-bolt.mp3",
+      "kind": "reload piece",
+      "sha256": "cab1d425cfaf7ceb1c2926e6e9e7185849bf5a435fc7b792004830f59128f8ae",
+      "duration_seconds": 0.378,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/scout/gunother/scout_bolt.wav",
+          "blob": "d24543c63d122d241c640e7e365cfac19df1207e",
+          "sha256": "a7b73cf28dee2be353614a404e55fa1e13ee43ecf2f8b7b072fae4ebb8517332"
+        }
+      ],
+      "kit": "kit-survivor-scout"
+    },
+    {
+      "path": "sounds/reload/stages/l4dscout-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "1bb5e643c465e02902a5eac825a3febe57c29c6b07499cceba3a99a444d3c87f",
+      "duration_seconds": 0.668,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/scout/gunother/scout_clipin.wav",
+          "blob": "db05415a931ea9868ffa2c8c99ed71ba9e850dc3",
+          "sha256": "ca56d92308b6ee05ab83763d52637dc6e8b5243ff8f51d21c9140a0b7ec5018b"
+        }
+      ],
+      "kit": "kit-survivor-scout"
+    },
+    {
+      "path": "sounds/reload/stages/l4dscout-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "78dc67b6d4b078bcf80acc84730d10eb4ee1b60df2a0ac4020fc58853038cfd8",
+      "duration_seconds": 0.253,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/scout/gunother/scout_bolt_forward.wav",
+          "blob": "5c89f12ba9243d2fe6a753e26f79b8cb808d3590",
+          "sha256": "f86be973d4f20ee7529098715fd4a185b1520e1b609ceb5111aeac7d73d2ee2a"
+        }
+      ],
+      "kit": "kit-survivor-scout"
+    },
+    {
+      "path": "sounds/reload/stages/augc-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "6865f14b3c67c3f82d67bd2432f351c88748e08c3688320c203c852ef5bd832d",
+      "duration_seconds": 0.146,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/aug/aug_clipout.wav",
+          "blob": "8f7b71db1abdbc2b128fe5b829d885284071fff3",
+          "sha256": "676625ec6e1b323243d0d62988606c7b3b509ffb2e5b6c2cbc9a225ace6f8f79"
+        }
+      ],
+      "kit": "kit-aug-classic"
+    },
+    {
+      "path": "sounds/reload/stages/augc-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "edcaab9b294a5ee017f1c04e7d8bd05ab70aca26965d296ffd65b88f60602553",
+      "duration_seconds": 0.475,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/aug/aug_clipin.wav",
+          "blob": "61bd73571bb399d325b5ba0df38706ffc34b5d39",
+          "sha256": "13a659b748b1ed9f83f8eb30dad04d358df945f5771547e8d52ff35f6cae7fc8"
+        }
+      ],
+      "kit": "kit-aug-classic"
+    },
+    {
+      "path": "sounds/reload/stages/augc-boltslap.mp3",
+      "kind": "reload piece",
+      "sha256": "f6c639a753c12c00bfc8330152edd15c032af1abb6ca1647356d4a52bebc25b6",
+      "duration_seconds": 0.37,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/aug/aug_boltslap.wav",
+          "blob": "1f35f7a5f5a84e864dfc4af55bf131731229171c",
+          "sha256": "9c6e01989d1b4f101a7f911e0f59f17c585906a335fdfa38be6c489a85b9b1a7"
+        }
+      ],
+      "kit": "kit-aug-classic"
+    },
+    {
+      "path": "sounds/reload/stages/famasc-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "6865f14b3c67c3f82d67bd2432f351c88748e08c3688320c203c852ef5bd832d",
+      "duration_seconds": 0.146,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/famas/famas_clipout.wav",
+          "blob": "8f7b71db1abdbc2b128fe5b829d885284071fff3",
+          "sha256": "676625ec6e1b323243d0d62988606c7b3b509ffb2e5b6c2cbc9a225ace6f8f79"
+        }
+      ],
+      "kit": "kit-famas-classic"
+    },
+    {
+      "path": "sounds/reload/stages/famasc-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "edcaab9b294a5ee017f1c04e7d8bd05ab70aca26965d296ffd65b88f60602553",
+      "duration_seconds": 0.475,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/famas/famas_clipin.wav",
+          "blob": "61bd73571bb399d325b5ba0df38706ffc34b5d39",
+          "sha256": "13a659b748b1ed9f83f8eb30dad04d358df945f5771547e8d52ff35f6cae7fc8"
+        }
+      ],
+      "kit": "kit-famas-classic"
+    },
+    {
+      "path": "sounds/reload/stages/famasc-forearm.mp3",
+      "kind": "reload piece",
+      "sha256": "0ca8c41987df1a4b8b555478faabd1da34803bd33df0ad75ecc0ce97541296ea",
+      "duration_seconds": 0.449,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/famas/famas_forearm.wav",
+          "blob": "59bf6625750ed010d3384172221b15f8abc9f0cd",
+          "sha256": "b1f8baada80269d0b96c8b14c92bbc8062e5f576db7760b7c595218b96cb5ee6"
+        }
+      ],
+      "kit": "kit-famas-classic"
+    },
+    {
+      "path": "sounds/reload/stages/sg552c-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "ea85d6b39f963c90002baf70625ca7fe0b3c8e23ff21f8f1e72ac1d03d5fa9d9",
+      "duration_seconds": 0.185,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg552/sg552_clipout.wav",
+          "blob": "53c36d68c2e8e3f7dd46cebcab6a703c9db0cfd5",
+          "sha256": "3e254788ab9349ef9246fab5eeaa9423427837b600c8614775474cff7bcfb967"
+        }
+      ],
+      "kit": "kit-sg552-classic"
+    },
+    {
+      "path": "sounds/reload/stages/sg552c-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "4c73c0d4c42f7c779281834bbd7fb52130a2fbc57356fba0767939fc12a7b016",
+      "duration_seconds": 0.298,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg552/sg552_clipin.wav",
+          "blob": "a3bdfae415370e7a9f5fd5c06ad7bf5e80ba0700",
+          "sha256": "20fe0dcc15f2e4f7d0b3194f35af3de1cc2a9feaa1fbf5a4d10e889928ca1f90"
+        }
+      ],
+      "kit": "kit-sg552-classic"
+    },
+    {
+      "path": "sounds/reload/stages/sg552c-boltpull.mp3",
+      "kind": "reload piece",
+      "sha256": "bf0e8a814446761ecd3cb875f8b64541c481a0208e5feef056c7b74d2711a65e",
+      "duration_seconds": 0.328,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/sg552/sg552_boltpull.wav",
+          "blob": "d7fc2bd90ab7f89c51c323af1c3849af86928ea3",
+          "sha256": "1ac5bf2f8b6d697b00995bddaaaa7aad8bedd254f6ad62aa64ef942e5a8a9326"
+        }
+      ],
+      "kit": "kit-sg552-classic"
+    },
+    {
+      "path": "sounds/reload/stages/galilc-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "e3e38342fb31940461628a055128730a56bfd7298e67d21ce39631b0195f5513",
+      "duration_seconds": 0.153,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/galil/galil_clipout.wav",
+          "blob": "0f47f67ac5c2c0ad0324ee0400e2560a2120f070",
+          "sha256": "5af31e2c754f74fec59991c1140c449aa2de8a5d13e2d5feea9107939ff3ea07"
+        }
+      ],
+      "kit": "kit-galil-classic"
+    },
+    {
+      "path": "sounds/reload/stages/galilc-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "bdee9e8644dbeb69da04bb99c6cc99693462326b42881d5343b27cdd32c88c14",
+      "duration_seconds": 0.178,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/galil/galil_clipin.wav",
+          "blob": "309992afecc0850e3c423ded47b3651ee4243d16",
+          "sha256": "20e4a9e5e8e0795a6f3e0d159eb2485e98a9f54e5ba07ec8708ab142c01dc0fe"
+        }
+      ],
+      "kit": "kit-galil-classic"
+    },
+    {
+      "path": "sounds/reload/stages/galilc-boltpull.mp3",
+      "kind": "reload piece",
+      "sha256": "bc093c9f161686464ef4de9cd2ce55485c67fe8f77bc7d130ac5a0e344e6f7be",
+      "duration_seconds": 0.328,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/galil/galil_boltpull.wav",
+          "blob": "c37c7424986821cd4be25a29d18f0576f55ff085",
+          "sha256": "5b71cc8c0d6a6834a1c4abb165d33832f23852769a0bbf88b0912e35e2dac240"
+        }
+      ],
+      "kit": "kit-galil-classic"
+    },
+    {
+      "path": "sounds/reload/stages/l4dm4-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "2484b69d5886b4b296ac55c5e2caacffdbbf22ba4b460b3bb3383000abc3b752",
+      "duration_seconds": 0.185,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle/gunother/rifle_clip_out_1.wav",
+          "blob": "397e48a3b77af741207670103503f919cbdf5c80",
+          "sha256": "bd4240d313a3c340012b9feb05761ec49e1de6959830f23c8b00796481544a63"
+        }
+      ],
+      "kit": "kit-survivor-m4"
+    },
+    {
+      "path": "sounds/reload/stages/l4dm4-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "1af6a2edc9023131ded9cfb7d26757d994b455e01c9e564fec4f03c6cf4029d3",
+      "duration_seconds": 0.8,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle/gunother/rifle_clip_in_1.wav",
+          "blob": "71d6fd71ba2744c279f735bc932b6ddc73d79f55",
+          "sha256": "8a1af93955ccaa2c1ae21299758cf7b9a00a8dbc6bfe0c3abfdaf54a3deb47ad"
+        }
+      ],
+      "kit": "kit-survivor-m4"
+    },
+    {
+      "path": "sounds/reload/stages/l4dm4-slideforward.mp3",
+      "kind": "reload piece",
+      "sha256": "dea15cf193e124095e0ec81c114a475ce3bf7c0058b1d6ba2a06522731c48584",
+      "duration_seconds": 0.244,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/left4dead2/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons/rifle/gunother/rifle_slideforward_1.wav",
+          "blob": "1799097b974f6fb12155a52b9bac0f86f42f036d",
+          "sha256": "f98ac58baca0019f41ca6530bccc89c2cbfc8695636104b1e48d64110e1efe2b"
+        }
+      ],
+      "kit": "kit-survivor-m4"
+    },
+    {
+      "path": "sounds/reload/stages/zpsm4-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "5f41afe8f580797c8a121b1da777d828869938feb95b4462bd355c8f0108bac8",
+      "duration_seconds": 0.441,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/m4/clipout.wav",
+          "blob": "3b4a2d15ed9611d09649a5ff25eec83b681b34c2",
+          "sha256": "d21a60c232aa2b4ac5b903649cfb643cbfd49d7ffc7a7f1a318388c6d7809087"
+        }
+      ],
+      "kit": "kit-outbreak-m4"
+    },
+    {
+      "path": "sounds/reload/stages/zpsm4-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "6926dedb3d3fc8c22f915b62f63512e0d6f2dcf3760f0dcb4240c39bab30b89c",
+      "duration_seconds": 0.134,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/m4/clipin.wav",
+          "blob": "f279d4090075072191856b5c41c164057fa59a57",
+          "sha256": "4aa93fdcbb316f1fc780cfa732df7feaf875e3220e2d75d3490d444dd9162eeb"
+        }
+      ],
+      "kit": "kit-outbreak-m4"
+    },
+    {
+      "path": "sounds/reload/stages/zpsm4-boltback.mp3",
+      "kind": "reload piece",
+      "sha256": "5ba053520d25e9cf9afb889451f1d358262f4be834d5a650e474cb67e8a2ccb9",
+      "duration_seconds": 1.0,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/zps/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons/firearms/m4/boltback.wav",
+          "blob": "7d436bc813aa6b4f83a9aa547826ae86720b20a4",
+          "sha256": "b4ec8681f9c0423ab62f35d6144216a0d8d5e0d17c6159de9c115f7b5d4a819b"
+        }
+      ],
+      "kit": "kit-outbreak-m4"
+    },
+    {
+      "path": "sounds/reload/stages/m4a1s-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "c1fcb9c6da23a9afd4932612634ff0343c001274fc4af4be50633ac1adf6497b",
+      "duration_seconds": 0.349,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/m4a1/m4a1_silencer_boltforward.wav",
+          "blob": "def1819dbe4b39d159eab5277a21866079f6399b",
+          "sha256": "c30d0e804bdb2f78d226e1b63111157f2305c8e0b584e6e34855259c9aedcea0"
+        }
+      ],
+      "kit": "kit-m4a1s"
+    },
+    {
+      "path": "sounds/reload/stages/deagle-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "90fc828fcaeb92ed6cf960c6bbf9408eeb267ad5125d1c02faf0da3b4bdce9e2",
+      "duration_seconds": 0.27,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/deagle/de_clipout.wav",
+          "blob": "2a2fd14f4042aa2a68c5af278d64170ce743bef7",
+          "sha256": "bbc80360af0d6c37c5751fd7fb98061bf34d6c89610a0a239bb603ee63fc5816"
+        }
+      ],
+      "kit": "kit-deagle"
+    },
+    {
+      "path": "sounds/reload/stages/deagle-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "ffb448afa9bf8a9636ef984e803f7b1e49222beda52cd72902c6e2641c524cfa",
+      "duration_seconds": 0.266,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/deagle/de_clipin.wav",
+          "blob": "6d2063acf01fb1c3c64ecb8c76fdda9eb3993454",
+          "sha256": "08fb1ce7081c662057fc1de00ce6ed90dc9aa4edbef3a0b1570725da6a36ff63"
+        }
+      ],
+      "kit": "kit-deagle"
+    },
+    {
+      "path": "sounds/reload/stages/deagle-slideforward.mp3",
+      "kind": "reload piece",
+      "sha256": "a2eef087c9ef5ffc4c23c10c0a1eee94433b71029b6561bbfe52e8490f544d83",
+      "duration_seconds": 0.086,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/csgo/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons/deagle/de_slideforward.wav",
+          "blob": "59be4c223734f59e14e9c2caf9e7f83e8a4bb430",
+          "sha256": "dcb1b4e483baaf631195a4ce669fd31ca941e40ab452381bd16b298e71e34f1c"
+        }
+      ],
+      "kit": "kit-deagle"
+    },
+    {
+      "path": "sounds/reload/stages/colt-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "0175ae6c94639801dc33e50926905e55b4604ce9a364a6f7a8b902da414718c3",
+      "duration_seconds": 0.313,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/colt_clipout.wav",
+          "blob": "88fdbe7d6a957efe1a293fd3ac63e6911d203b53",
+          "sha256": "b7aa6902cdf895434379ce17a1410693239881ce515a3a1ad050442097970405"
+        }
+      ],
+      "kit": "kit-colt"
+    },
+    {
+      "path": "sounds/reload/stages/colt-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "528c73efcbc67d429a6019b1e3fe7f6c533255ccffc4ad64ab6ab61daf3a6f43",
+      "duration_seconds": 0.367,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/colt_clipin.wav",
+          "blob": "c25a4bc9fd7150346f8944096e9d6051c3fd70d3",
+          "sha256": "dea2301d3492091d6eff4048f49c4088867fa4d3cf3c0871e077a7bf3b6798f9"
+        }
+      ],
+      "kit": "kit-colt"
+    },
+    {
+      "path": "sounds/reload/stages/colt-boltforward.mp3",
+      "kind": "reload piece",
+      "sha256": "b188b5f4de2f1854e49c579c842de46f3ea2a4d7b33d0d587a57986600a473ea",
+      "duration_seconds": 0.111,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/dods/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons/colt_boltforward.wav",
+          "blob": "11d9286c854909154dc9641349f617dd653823b9",
+          "sha256": "17d088289d622f3f6b7987e461622a933142b79a009f916e45a05ba882861a6c"
+        }
+      ],
+      "kit": "kit-colt"
+    },
+    {
+      "path": "sounds/reload/stages/p228-clipout.mp3",
+      "kind": "reload piece",
+      "sha256": "fbeb2731a2211b5601f0083bb88afc41394cb0d6c813f57caa649cf1187b45bd",
+      "duration_seconds": 0.369,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/p228/p228_clipout.wav",
+          "blob": "e039bfcf780306f8805fc26977cd09c5717da306",
+          "sha256": "d8ab02475e947f57bb008ad7e9cab6db43a4359d2f37e0a6dbbb5a580414b19d"
+        }
+      ],
+      "kit": "kit-p228"
+    },
+    {
+      "path": "sounds/reload/stages/p228-clipin.mp3",
+      "kind": "reload piece",
+      "sha256": "5a310bee619776dc2e6a52751261e1a66f84ad76d132ae65d62af5b430731b48",
+      "duration_seconds": 0.636,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/p228/p228_clipin.wav",
+          "blob": "0566cb5276faf50e04fa456b772b06da08aa8504",
+          "sha256": "7a11457a5a7ef2775775e4171453ea6e6e374ba2193a1a7f67d485f4c6a5dd21"
+        }
+      ],
+      "kit": "kit-p228"
+    },
+    {
+      "path": "sounds/reload/stages/p228-sliderelease.mp3",
+      "kind": "reload piece",
+      "sha256": "1ee6ae488e00315d7e6cdbf205dcf0ce0d18ec40b8aecce227e11cd14963f878",
+      "duration_seconds": 0.376,
+      "sources": [
+        {
+          "delay_seconds": 0,
+          "url": "https://raw.githubusercontent.com/sourcesounds/cstrike/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons/p228/p228_sliderelease.wav",
+          "blob": "703b072bc440c83b354d641bdf71d25755e21b88",
+          "sha256": "6092e8a6bc386a28032996ba32ac01222817acd1b0e158fd1d6b23a56f4252a0"
+        }
+      ],
+      "kit": "kit-p228"
+    }
+  ]
+}

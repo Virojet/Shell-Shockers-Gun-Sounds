@@ -83,4 +83,20 @@ The Tri-Hard shots are three copies of one shot at 0, 100 and 200 ms, mixed, sin
 
 Since 1.3.0 the five Operator shots and the one-clip reloads (Steel Reset and four CC0 reloads) are no longer offered, and 1.4.0 removed their files, along with the old whole-gun reloads. Older script versions download audio from the fixed commit they were released with, so they still find them.
 
+## Ten shots and ten kits per gun (1.6.0)
+
+Every primary gun now has ten shots and ten reload kits. The 43 new shots and the pieces for 47 new kits (and three pistol kits) are recordings from older Counter-Strike versions and other Valve games, and from Zombie Panic! Source, taken from pinned sourcesounds mirrors: [CS:GO](https://github.com/sourcesounds/csgo/tree/08f1bd6835d4f510d2ccaedeab6bb9f637b388ab/sound/weapons), [CS:Source](https://github.com/sourcesounds/cstrike/tree/104c8cdfe575cf30ac2c9807c809d9383e7db0bb/sound/weapons), [TF2](https://github.com/sourcesounds/tf/tree/420bf271208d79d952e693974e391892c254ad80/sound/weapons), [Half-Life 2](https://github.com/sourcesounds/hl2/tree/84f5de61421d95ce1eb9dcf9625a90782b41b278/sound/weapons), [Left 4 Dead 2](https://github.com/sourcesounds/left4dead2/tree/2c96024eac88a3ecfe69fea4ad70abf80e030a5c/sound/weapons), [Day of Defeat: Source](https://github.com/sourcesounds/dods/tree/b57142a9825b8aa762b542a5d6c0388e382e7ba9/sound/weapons) and [Zombie Panic! Source](https://github.com/sourcesounds/zps/tree/178b75ad66ab97c4cad5fb03635f893a77236791/sound/weapons).
+
+| Gun | New shots ([primary/](primary)) |
+| --- | --- |
+| EggK-47 | CS:Source `ak47-1`, `m4a1_unsil-1`; DoD:S `mp44_shoot`, `bar_shoot`; HL2 `ar2/fire1`; L4D2 `rifle_ak47` fire |
+| Scrambler | CS:GO `mag7_01`; CS:Source `m3-1`; TF2 `scatter_gun_shoot`; L4D2 `shotgun_chrome` and `auto_shotgun_spas` fire; HL2 `shotgun_dbl_fire` |
+| Free Ranger | CS:Source `sg550-1`, `g3sg1-1`; L4D2 `hunting_rifle` and `sniper_military` fire; DoD:S `garand_shoot`, `m1carbine_shoot`; TF2 `sniper_bazaarbargain_shoot` |
+| RPEGG | TF2 `rocket_ll_shoot`, `airstrike_fire_01`, `cow_mangler_main_shot`, `loch_n_load_shoot`, `doom_rocket_launcher`; HL2 `rpg/rocketfire1` |
+| Whipper | CS:GO `mac10_01`, `bizon_01`, `mp5_01`; DoD:S `thompson_shoot`; L4D2 `smg_silenced` fire |
+| Crackshot | TF2 `sniper_shoot`, `sniper_sydneysleeper_shoot`, `sniper_railgun_single_01`; DoD:S `k98_shoot`, `k98scoped_shoot`, `spring_shoot` |
+| Tri-Hard | CS:Source `aug-1`, `famas-1`, `sg552-1`, `galil-1`; L4D2 `rifle` and `rifle_desert` fire; ZPS `m4/fire` |
+
+The Tri-Hard's shots are again three copies of one shot at 0, 100 and 200 ms. Reload pieces are the matching magazine, bolt, pump or shell sounds from the same games (the pistol kits use CS:GO `de_clipout`, `de_clipin` and `de_slideforward` for the Desert Eagle, DoD:S `colt_clipout`, `colt_clipin` and `colt_boltforward` for the Colt M1911, and CS:Source `p228_clipout`, `p228_clipin` and `p228_sliderelease` for the P228); a few pieces layer two or three recordings to make one sound: the Sticky Launcher (TF2 bolt back and forward) and Drum Launcher (L4D2 latch, shell and action) loads, and the Sawed-Off's two shells. Each file has its leading silence cut, so the sound starts on the cue, and is converted like the others: 48 kHz stereo 192 kbps MP3 with a limiter. The exact download URLs, Git blob hashes and SHA-256 hashes of every source and generated file are in [per-gun-ten-sources.json](per-gun-ten-sources.json).
+
 The MIT license in this repository covers the script code. The Valve/Riot game audio retains its original ownership.
