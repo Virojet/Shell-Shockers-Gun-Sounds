@@ -89,14 +89,16 @@ Every primary gun now has ten shots and ten reload kits. The 43 new shots and th
 
 | Gun | New shots ([primary/](primary)) |
 | --- | --- |
-| EggK-47 | CS:Source `ak47-1`, `m4a1_unsil-1`; DoD:S `mp44_shoot`, `bar_shoot`; HL2 `ar2/fire1`; L4D2 `rifle_ak47` fire |
+| EggK-47 | CS:Source `ak47-1`, `m4a1_unsil-1`, `m249-1`; CS:GO `negev_01`; HL2 `ar2/fire1`; L4D2 `rifle_ak47` fire |
 | Scrambler | CS:GO `mag7_01`; CS:Source `m3-1`; TF2 `scatter_gun_shoot`; L4D2 `shotgun_chrome` and `auto_shotgun_spas` fire; HL2 `shotgun_dbl_fire` |
-| Free Ranger | CS:Source `sg550-1`, `g3sg1-1`; L4D2 `hunting_rifle` and `sniper_military` fire; DoD:S `garand_shoot`, `m1carbine_shoot`; TF2 `sniper_bazaarbargain_shoot` |
+| Free Ranger | CS:Source `sg550-1`, `g3sg1-1`; L4D2 `hunting_rifle` and `sniper_military` fire; HL2 `crossbow/fire1`; L4D2 `sg552` fire; TF2 `sniper_bazaarbargain_shoot` |
 | RPEGG | TF2 `rocket_ll_shoot`, `airstrike_fire_01`, `cow_mangler_main_shot`, `loch_n_load_shoot`, `doom_rocket_launcher`; HL2 `rpg/rocketfire1` |
-| Whipper | CS:GO `mac10_01`, `bizon_01`, `mp5_01`; DoD:S `thompson_shoot`; L4D2 `smg_silenced` fire |
-| Crackshot | TF2 `sniper_shoot`, `sniper_sydneysleeper_shoot`, `sniper_railgun_single_01`; DoD:S `k98_shoot`, `k98scoped_shoot`, `spring_shoot` |
-| Tri-Hard | CS:Source `aug-1`, `famas-1`, `sg552-1`, `galil-1`; L4D2 `rifle` and `rifle_desert` fire; ZPS `m4/fire` |
+| Whipper | CS:GO `mac10_01`, `bizon_01`, `mp5_01`; HL2 `smg1/smg1_fire1`; L4D2 `smg_silenced` fire |
+| Crackshot | TF2 `sniper_shoot`, `sniper_sydneysleeper_shoot`, `sniper_railgun_single_01`, `sniper_railgun_charged_shot_01`; CS:Source `awp1`; L4D2 `scout` fire |
+| Tri-Hard | CS:Source `aug-1`, `famas-1`, `sg552-1`, `galil-1`; L4D2 `rifle` and `rifle_desert` fire; CS:Source `m4a1-1` |
 
 The Tri-Hard's shots are again three copies of one shot at 0, 100 and 200 ms. Reload pieces are the matching magazine, bolt, pump or shell sounds from the same games (the pistol kits use CS:GO `de_clipout`, `de_clipin` and `de_slideforward` for the Desert Eagle, DoD:S `colt_clipout`, `colt_clipin` and `colt_boltforward` for the Colt M1911, and CS:Source `p228_clipout`, `p228_clipin` and `p228_sliderelease` for the P228); a few pieces layer two or three recordings to make one sound: the Sticky Launcher (TF2 bolt back and forward) and Drum Launcher (L4D2 latch, shell and action) loads, and the Sawed-Off's two shells. Each file has its leading silence cut, so the sound starts on the cue, and is converted like the others: 48 kHz stereo 192 kbps MP3 with a limiter. The exact download URLs, Git blob hashes and SHA-256 hashes of every source and generated file are in [per-gun-ten-sources.json](per-gun-ten-sources.json).
+
+**1.6.1:** nine of the shots above were recorded unevenly (Day of Defeat: Source `mp44_shoot`, `bar_shoot`, `garand_shoot`, `m1carbine_shoot`, `thompson_shoot`, `k98_shoot`, `k98scoped_shoot`, `spring_shoot` play mostly from the left channel, and ZPS `m4/fire` somewhat louder from it), so they were replaced by the sources listed in the table, each within 1 dB between the two ears; the matching reload pieces are even and stay. The records in `per-gun-ten-sources.json` follow the same swap.
 
 The MIT license in this repository covers the script code. The Valve/Riot game audio retains its original ownership.
