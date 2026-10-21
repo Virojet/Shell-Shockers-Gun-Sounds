@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.6.0
+// @version      1.6.1
 // @description  Pick weapon, meme or custom sounds for shots, melee swings, reloads and the empty click in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -94,7 +94,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.6.0";
+  const VERSION = "1.6.1";
   const STORE = "ssGunSounds";
   const UI_STORE = STORE + ".ui";   // how the settings look (Advanced open or not), apart from the sounds
   // `kind` limits a sound to one kind of list, and `gun` a primary shot to that gun's category. The meme sounds (no
@@ -111,8 +111,8 @@
     { id: "galil-ar", name: "Galil AR", file: "primary/eggk47/galil-ar.mp3", kind: "primary", duration: 3.16 },
     { id: "classic-ak-47", name: "Classic AK-47", file: "primary/eggk47/classic-ak-47.mp3", kind: "primary", duration: 1.50 },
     { id: "classic-m4a1", name: "Classic M4A1", file: "primary/eggk47/classic-m4a1.mp3", kind: "primary", duration: 1.40 },
-    { id: "stg-44", name: "STG 44", file: "primary/eggk47/stg-44.mp3", kind: "primary", duration: 1.20 },
-    { id: "bar", name: "BAR", file: "primary/eggk47/bar.mp3", kind: "primary", duration: 0.89 },
+    { id: "negev", name: "Negev", file: "primary/eggk47/negev.mp3", kind: "primary", duration: 3.20 },
+    { id: "classic-m249", name: "Classic M249", file: "primary/eggk47/classic-m249.mp3", kind: "primary", duration: 1.60 },
     { id: "pulse-rifle", name: "Pulse Rifle", file: "primary/eggk47/pulse-rifle.mp3", kind: "primary", duration: 0.83 },
     { id: "survivor-ak", name: "Survivor AK", file: "primary/eggk47/survivor-ak.mp3", kind: "primary", duration: 1.99 },
     { id: "nova", name: "Nova", file: "primary/scrambler/nova.mp3", kind: "primary", duration: 2.85 },
@@ -132,8 +132,8 @@
     { id: "classic-g3sg1", name: "Classic G3SG1", file: "primary/free-ranger/classic-g3sg1.mp3", kind: "primary", duration: 2.30 },
     { id: "hunting-rifle", name: "Hunting Rifle", file: "primary/free-ranger/hunting-rifle.mp3", kind: "primary", duration: 1.79 },
     { id: "military-sniper", name: "Military Sniper", file: "primary/free-ranger/military-sniper.mp3", kind: "primary", duration: 2.06 },
-    { id: "m1-garand", name: "M1 Garand", file: "primary/free-ranger/m1-garand.mp3", kind: "primary", duration: 1.48 },
-    { id: "m1-carbine", name: "M1 Carbine", file: "primary/free-ranger/m1-carbine.mp3", kind: "primary", duration: 1.23 },
+    { id: "crossbow", name: "Crossbow", file: "primary/free-ranger/crossbow.mp3", kind: "primary", duration: 0.55 },
+    { id: "survivor-sg-552", name: "Survivor SG 552", file: "primary/free-ranger/survivor-sg-552.mp3", kind: "primary", duration: 1.42 },
     { id: "bazaar-bargain", name: "Bazaar Bargain", file: "primary/free-ranger/bazaar-bargain.mp3", kind: "primary", duration: 1.00 },
     { id: "blast-rocket", name: "Blast Rocket", file: "primary/blast-rocket.mp3", kind: "primary", duration: 1.90 },
     { id: "quake-rocket", name: "Quake Rocket", file: "primary/quake-rocket.mp3", kind: "primary", duration: 1.90 },
@@ -153,7 +153,7 @@
     { id: "mac-10", name: "MAC-10", file: "primary/whipper/mac-10.mp3", kind: "primary", duration: 1.99 },
     { id: "pp-bizon", name: "PP-Bizon", file: "primary/whipper/pp-bizon.mp3", kind: "primary", duration: 1.52 },
     { id: "mp5", name: "MP5", file: "primary/whipper/mp5.mp3", kind: "primary", duration: 1.41 },
-    { id: "tommy-gun", name: "Tommy Gun", file: "primary/whipper/tommy-gun.mp3", kind: "primary", duration: 0.70 },
+    { id: "smg1", name: "SMG1", file: "primary/whipper/smg1.mp3", kind: "primary", duration: 0.52 },
     { id: "silenced-smg", name: "Silenced SMG", file: "primary/whipper/silenced-smg.mp3", kind: "primary", duration: 0.54 },
     { id: "sniper-awp", name: "AWP", file: "primary/crackshot/awp.mp3", kind: "primary", duration: 4.13 },
     { id: "thunder-awp", name: "Thunder AWP", file: "primary/thunder-awp.mp3", kind: "primary", duration: 1.90 },
@@ -162,9 +162,9 @@
     { id: "sniper-rifle", name: "Sniper Rifle", file: "primary/crackshot/sniper-rifle.mp3", kind: "primary", duration: 3.20 },
     { id: "sydney-sleeper", name: "Sydney Sleeper", file: "primary/crackshot/sydney-sleeper.mp3", kind: "primary", duration: 1.00 },
     { id: "machina", name: "Machina", file: "primary/crackshot/machina.mp3", kind: "primary", duration: 1.94 },
-    { id: "kar98k", name: "Kar98k", file: "primary/crackshot/kar98k.mp3", kind: "primary", duration: 2.48 },
-    { id: "scoped-kar98k", name: "Scoped Kar98k", file: "primary/crackshot/scoped-kar98k.mp3", kind: "primary", duration: 3.20 },
-    { id: "springfield", name: "Springfield", file: "primary/crackshot/springfield.mp3", kind: "primary", duration: 3.03 },
+    { id: "classic-awp", name: "Classic AWP", file: "primary/crackshot/classic-awp.mp3", kind: "primary", duration: 3.20 },
+    { id: "survivor-scout", name: "Survivor Scout", file: "primary/crackshot/survivor-scout.mp3", kind: "primary", duration: 3.20 },
+    { id: "machina-charged", name: "Machina charged", file: "primary/crackshot/machina-charged.mp3", kind: "primary", duration: 3.20 },
     { id: "aug-burst", name: "AUG", file: "primary/tri-hard/aug.mp3", kind: "primary", duration: 2.76 },
     { id: "famas-burst", name: "FAMAS", file: "primary/tri-hard/famas.mp3", kind: "primary", duration: 2.75 },
     { id: "sg-553-burst", name: "SG 553", file: "primary/tri-hard/sg-553.mp3", kind: "primary", duration: 2.47 },
@@ -174,7 +174,7 @@
     { id: "classic-galil-burst", name: "Classic Galil", file: "primary/tri-hard/classic-galil.mp3", kind: "primary", duration: 1.90 },
     { id: "survivor-m4-burst", name: "Survivor M4", file: "primary/tri-hard/survivor-m4.mp3", kind: "primary", duration: 1.20 },
     { id: "desert-rifle-burst", name: "Desert Rifle", file: "primary/tri-hard/desert-rifle.mp3", kind: "primary", duration: 1.14 },
-    { id: "outbreak-m4-burst", name: "Outbreak M4", file: "primary/tri-hard/outbreak-m4.mp3", kind: "primary", duration: 1.64 },
+    { id: "classic-m4a1-silenced-burst", name: "Classic M4A1 silenced", file: "primary/tri-hard/classic-m4a1-silenced.mp3", kind: "primary", duration: 0.44 },
     { id: "hand-cannon", name: "Hand Cannon", file: "secondary/hand-cannon.mp3", kind: "secondary", duration: 1.90 },
     { id: "quickdraw", name: "Quickdraw", file: "secondary/quickdraw.mp3", kind: "secondary", duration: 1.35 },
     { id: "usp-s", name: "USP-S", file: "secondary/usp-s.mp3", kind: "secondary", duration: 1.53 },
@@ -310,13 +310,13 @@
      each of its reload cues. `rof` is the time between shots (the game runs on 33 ms ticks), measured in a live match. The first
      shot and kit are what "Matched to your gun" plays. */
   const GUNS = [
-    { id: "eggk47", name: "EggK-47", rof: 100, shots: ["ak-47", "m4a4", "m4a1-s", "galil-ar", "classic-ak-47", "classic-m4a1", "stg-44", "bar", "pulse-rifle", "survivor-ak"], kits: ["kit-ak", "kit-m4a4", "kit-galil", "kit-ak-classic", "kit-m4-classic", "kit-stg44", "kit-bar", "kit-survivor-ak", "kit-ar2", "kit-outbreak-ak"] },
+    { id: "eggk47", name: "EggK-47", rof: 100, shots: ["ak-47", "m4a4", "m4a1-s", "galil-ar", "classic-ak-47", "classic-m4a1", "negev", "classic-m249", "pulse-rifle", "survivor-ak"], kits: ["kit-ak", "kit-m4a4", "kit-galil", "kit-ak-classic", "kit-m4-classic", "kit-stg44", "kit-bar", "kit-survivor-ak", "kit-ar2", "kit-outbreak-ak"] },
     { id: "dozenGauge", name: "Scrambler", rof: 267, shots: ["nova", "xm1014", "sawed-off", "force-a-nature", "mag-7", "classic-m3", "scattergun", "chrome-shotgun", "spas-12", "double-barrel"], kits: ["kit-double", "kit-mag7", "kit-pump", "kit-nova", "kit-xm1014", "kit-sawedoff", "kit-hl2-shotgun", "kit-chrome", "kit-auto-shotgun", "kit-super-shorty"] },
-    { id: "csg1", name: "Free Ranger", rof: 433, shots: ["g3sg1", "scar-20", "classic-rifle", "sg-550", "classic-g3sg1", "hunting-rifle", "military-sniper", "m1-garand", "m1-carbine", "bazaar-bargain"], kits: ["kit-g3", "kit-scar20", "kit-sg553", "kit-sg550", "kit-g3-classic", "kit-hunting", "kit-military", "kit-garand", "kit-carbine", "kit-desert"] },
+    { id: "csg1", name: "Free Ranger", rof: 433, shots: ["g3sg1", "scar-20", "classic-rifle", "sg-550", "classic-g3sg1", "hunting-rifle", "military-sniper", "crossbow", "survivor-sg-552", "bazaar-bargain"], kits: ["kit-g3", "kit-scar20", "kit-sg553", "kit-sg550", "kit-g3-classic", "kit-hunting", "kit-military", "kit-garand", "kit-carbine", "kit-desert"] },
     { id: "rpegg", name: "RPEGG", rof: 1333, shots: ["blast-rocket", "quake-rocket", "direct-hit", "black-box", "liberty-launcher", "air-strike", "cow-mangler", "loch-n-load", "rpg", "doom-rocket"], kits: ["kit-rocket", "kit-quake", "kit-mangler", "kit-bazooka", "kit-dod-bazooka", "kit-mortar", "kit-grenade-launcher", "kit-drum-launcher", "kit-sticky", "kit-bison"] },
-    { id: "smg", name: "Whipper", rof: 67, shots: ["rush-p90", "rapid-p90", "mp7", "mp9", "ump-45", "mac-10", "pp-bizon", "mp5", "tommy-gun", "silenced-smg"], kits: ["kit-p90", "kit-mp7", "kit-mp9", "kit-ump45", "kit-mac10", "kit-bizon", "kit-mp5", "kit-thompson", "kit-mp40", "kit-survivor-smg"] },
-    { id: "m24", name: "Crackshot", rof: 500, shots: ["sniper-awp", "thunder-awp", "ssg-08", "scout", "sniper-rifle", "sydney-sleeper", "machina", "kar98k", "scoped-kar98k", "springfield"], kits: ["kit-awp", "kit-ssg08", "kit-scout", "kit-awp-classic", "kit-awp-mag", "kit-scout-classic", "kit-machina", "kit-sniper-rifle", "kit-kar98k", "kit-survivor-scout"] },
-    { id: "aug", name: "Tri-Hard", rof: 500, shots: ["aug-burst", "famas-burst", "sg-553-burst", "classic-aug-burst", "classic-famas-burst", "classic-sg-552-burst", "classic-galil-burst", "survivor-m4-burst", "desert-rifle-burst", "outbreak-m4-burst"], kits: ["kit-aug", "kit-famas", "kit-sg553-tri", "kit-aug-classic", "kit-famas-classic", "kit-sg552-classic", "kit-galil-classic", "kit-survivor-m4", "kit-outbreak-m4", "kit-m4a1s"] },
+    { id: "smg", name: "Whipper", rof: 67, shots: ["rush-p90", "rapid-p90", "mp7", "mp9", "ump-45", "mac-10", "pp-bizon", "mp5", "smg1", "silenced-smg"], kits: ["kit-p90", "kit-mp7", "kit-mp9", "kit-ump45", "kit-mac10", "kit-bizon", "kit-mp5", "kit-thompson", "kit-mp40", "kit-survivor-smg"] },
+    { id: "m24", name: "Crackshot", rof: 500, shots: ["sniper-awp", "thunder-awp", "ssg-08", "scout", "sniper-rifle", "sydney-sleeper", "machina", "classic-awp", "survivor-scout", "machina-charged"], kits: ["kit-awp", "kit-ssg08", "kit-scout", "kit-awp-classic", "kit-awp-mag", "kit-scout-classic", "kit-machina", "kit-sniper-rifle", "kit-kar98k", "kit-survivor-scout"] },
+    { id: "aug", name: "Tri-Hard", rof: 500, shots: ["aug-burst", "famas-burst", "sg-553-burst", "classic-aug-burst", "classic-famas-burst", "classic-sg-552-burst", "classic-galil-burst", "survivor-m4-burst", "desert-rifle-burst", "classic-m4a1-silenced-burst"], kits: ["kit-aug", "kit-famas", "kit-sg553-tri", "kit-aug-classic", "kit-famas-classic", "kit-sg552-classic", "kit-galil-classic", "kit-survivor-m4", "kit-outbreak-m4", "kit-m4a1s"] },
   ];
   const GUN = Object.fromEntries(GUNS.map(g => [g.id, g]));
   const PISTOL_KITS = ["kit-glock", "kit-usp", "kit-fiveseven", "kit-revolver", "kit-p250", "kit-tec9", "kit-p2000", "kit-elite", "kit-deagle", "kit-colt", "kit-p228"];
@@ -483,7 +483,7 @@
   /* ---- Built-in sounds, from GitHub ----
      They come from the commit that added them, so the files this version uses never change under it. A sound is
      downloaded the first time it's needed, then kept in this site's Cache Storage. */
-  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/9946dd298a1378b2d59f5475d42b4b5ef497c061/sounds";
+  const FILES = "https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/83c04a0083dbbff9c14f813762e75e6504ae9784/sounds";
   // Same immutable files, via a second host if GitHub is temporarily unavailable or blocked.
   const MIRROR = FILES.replace("https://raw.githubusercontent.com/", "https://cdn.jsdelivr.net/gh/")
     .replace(/\/([a-f0-9]{40})\//, "@$1/");

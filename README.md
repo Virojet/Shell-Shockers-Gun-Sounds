@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.6.0-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.6.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -55,13 +55,13 @@ Every gun has **ten shots and ten reload kits** of its own:
 
 | Gun | Shots | Reload kits |
 |---|---|---|
-| EggK-47 | AK-47, M4A4, M4A1-S, Galil AR, Classic AK-47, Classic M4A1, STG 44, BAR, Pulse Rifle, Survivor AK | AK-47, M4A4, Galil AR, Classic AK-47, Classic M4A1, STG 44, BAR, Survivor AK, Pulse Rifle, Outbreak AK |
+| EggK-47 | AK-47, M4A4, M4A1-S, Galil AR, Classic AK-47, Classic M4A1, Negev, Classic M249, Pulse Rifle, Survivor AK | AK-47, M4A4, Galil AR, Classic AK-47, Classic M4A1, STG 44, BAR, Survivor AK, Pulse Rifle, Outbreak AK |
 | Scrambler | Nova, XM1014, Sawed-Off, Force-A-Nature, MAG-7, Classic M3, Scattergun, Chrome Shotgun, SPAS-12, Double Barrel | Double barrel, MAG-7, Pump shotgun, Nova, XM1014, Sawed-Off, Combine Shotgun, Chrome Shotgun, Auto Shotgun, Super Shorty |
-| Free Ranger | G3SG1, SCAR-20, Classic, SG 550, Classic G3SG1, Hunting Rifle, Military Sniper, M1 Garand, M1 Carbine, Bazaar Bargain | G3SG1, SCAR-20, SG 553, SG 550, Classic G3SG1, Hunting Rifle, Military Sniper, M1 Garand, M1 Carbine, Desert Rifle |
+| Free Ranger | G3SG1, SCAR-20, Classic, SG 550, Classic G3SG1, Hunting Rifle, Military Sniper, Crossbow, Survivor SG 552, Bazaar Bargain | G3SG1, SCAR-20, SG 553, SG 550, Classic G3SG1, Hunting Rifle, Military Sniper, M1 Garand, M1 Carbine, Desert Rifle |
 | RPEGG | Blast Rocket, Quake Rocket, Direct Hit, Black Box, Liberty Launcher, Air Strike, Cow Mangler, Loch-n-Load, RPG, Doom Rocket | Rocket, Quake RPG, Cow Mangler, Beggar's Bazooka, Bazooka, Mortar Shell, Grenade Launcher, Drum Launcher, Sticky Launcher, Righteous Bison |
-| Whipper | Rush P90, Rapid P90, MP7, MP9, UMP-45, MAC-10, PP-Bizon, MP5, Tommy Gun, Silenced SMG | P90, MP7, MP9, UMP-45, MAC-10, PP-Bizon, MP5, Tommy Gun, MP40, Survivor SMG |
-| Crackshot | AWP, Thunder AWP, SSG 08, Scout, Sniper Rifle, Sydney Sleeper, Machina, Kar98k, Scoped Kar98k, Springfield | AWP bolt, SSG 08 bolt, Scout bolt, Classic AWP, AWP magazine, Classic Scout, Machina, Sniper Rifle, Kar98k, Survivor Scout |
-| Tri-Hard | AUG, FAMAS, SG 553, Classic AUG, Classic FAMAS, Classic SG 552, Classic Galil, Survivor M4, Desert Rifle, Outbreak M4 | AUG, FAMAS, SG 553, Classic AUG, Classic FAMAS, Classic SG 552, Classic Galil, Survivor M4, Outbreak M4, M4A1-S |
+| Whipper | Rush P90, Rapid P90, MP7, MP9, UMP-45, MAC-10, PP-Bizon, MP5, SMG1, Silenced SMG | P90, MP7, MP9, UMP-45, MAC-10, PP-Bizon, MP5, Tommy Gun, MP40, Survivor SMG |
+| Crackshot | AWP, Thunder AWP, SSG 08, Scout, Sniper Rifle, Sydney Sleeper, Machina, Classic AWP, Survivor Scout, Machina charged | AWP bolt, SSG 08 bolt, Scout bolt, Classic AWP, AWP magazine, Classic Scout, Machina, Sniper Rifle, Kar98k, Survivor Scout |
+| Tri-Hard | AUG, FAMAS, SG 553, Classic AUG, Classic FAMAS, Classic SG 552, Classic Galil, Survivor M4, Desert Rifle, Classic M4A1 silenced | AUG, FAMAS, SG 553, Classic AUG, Classic FAMAS, Classic SG 552, Classic Galil, Survivor M4, Outbreak M4, M4A1-S |
 
 Each shot starts the moment the gun fires. When the same gun fires again, the last shot's tail fades quickly, so fast guns like the EggK-47 and Whipper are heard shot by shot. The Tri-Hard plays one sound per three-round burst, so its shots are bursts, 100 ms apart like the gun's. Each gun's kits have a sound for every one of that gun's reload cues: the Free Ranger's kits pull a bolt before the magazine, the Scrambler's open, load and close, the Crackshot's work a bolt, and the RPEGG's load a rocket.
 
@@ -112,6 +112,10 @@ Tampermonkey checks this repository's raw userscript on `main`, compares its `@v
 The audio URLs use a fixed Git commit, so an existing script version always gets the same files. GitHub is tried first, with jsDelivr serving the same commit as a backup. New audio becomes available when a newer script points to a commit containing it. Selected clips are cached locally; your settings and custom MP3s stay in the browser through script updates.
 
 ## Changelog
+
+### 1.6.1 — 2026-10-21
+- **Shots that played in one ear are gone.** Nine of the 1.6.0 shots (the Day of Defeat: Source STG 44, BAR, M1 Garand, M1 Carbine, Tommy Gun, Kar98k, Scoped Kar98k and Springfield, and the Zombie Panic! Source Outbreak M4) were recorded much louder in the left channel (the Outbreak M4 only a little), so they were loud in the left ear and faint in the right. Each is replaced by a shot that sits evenly in both ears, so every gun still has ten: EggK-47 gets **Negev** and **Classic M249**, Free Ranger **Crossbow** and **Survivor SG 552**, Whipper **SMG1**, Crackshot **Classic AWP**, **Survivor Scout** and **Machina charged**, Tri-Hard **Classic M4A1 silenced**.
+- A pick of one of the removed shots falls back to the gun's default. Every reload kit is even in both ears and is unchanged.
 
 ### 1.6.0 — 2026-10-21
 - **Ten shots and ten reload kits for every primary gun.** Each gun had three to five of each; now every one has ten of its own: 43 new shots and 47 new kits, from older Counter-Strike versions and other Valve games (Team Fortress 2, Half-Life 2, Left 4 Dead 2, Day of Defeat: Source) and Zombie Panic! Source, all in [sounds/SOURCES.md](./sounds/SOURCES.md).
