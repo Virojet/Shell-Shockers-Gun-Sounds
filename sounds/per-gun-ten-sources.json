@@ -1,5 +1,5 @@
 {
-  "description": "Shots and reload-kit pieces added in 1.6.0 so every primary gun has ten of each. Valve (CS:GO, CS:Source, TF2, HL2, L4D2, DoD:S) and Zombie Panic! Source audio from pinned sourcesounds mirrors; original ownership retained. Converted to 48 kHz stereo 192 kbps MP3 with a limiter; leading silence cut.",
+  "description": "Shots and reload-kit pieces added in 1.6.0 so every primary gun has ten of each. Valve (CS:GO, CS:Source, TF2, HL2, L4D2, DoD:S) and Zombie Panic! Source audio from pinned sourcesounds mirrors; original ownership retained. Converted to 48 kHz stereo 192 kbps MP3 with a limiter; leading silence cut; files marked centred were folded to the middle because the recording leaned to one ear.",
   "assets": [
     {
       "path": "sounds/primary/eggk47/classic-ak-47.mp3",
@@ -19,7 +19,7 @@
     {
       "path": "sounds/primary/eggk47/classic-m4a1.mp3",
       "kind": "shot",
-      "sha256": "51d827dfb3e8b87ef62930fac9461515a3ed00217a4c791c495918c91b2ba72c",
+      "sha256": "e83a0b9e7e9a6742f20512018af373656aa0e26a63ef4dca68cffd753906d12f",
       "duration_seconds": 1.403,
       "sources": [
         {
@@ -29,7 +29,8 @@
           "sha256": "cd9a04d91dec4add31313d266ec33d8625a976f11e8884c3d70597d8b1ddc9cb"
         }
       ],
-      "gun": "eggk47"
+      "gun": "eggk47",
+      "centred": true
     },
     {
       "path": "sounds/primary/eggk47/negev.mp3",
@@ -454,7 +455,7 @@
     {
       "path": "sounds/primary/crackshot/sniper-rifle.mp3",
       "kind": "shot",
-      "sha256": "a9e12f0b9e6eb252c9892774535fb33ece60c14a194afac50dac8418ee4af923",
+      "sha256": "bb2723b60c9c599c0ad4e43bcc606d7d9b3c7c0c562ec73dc46434692dd0060c",
       "duration_seconds": 3.2,
       "sources": [
         {
@@ -464,7 +465,8 @@
           "sha256": "ac6cf5280b6a5efcba37ce8bd50eb3917d94aad3c0d996e081430b11e23ba897"
         }
       ],
-      "gun": "m24"
+      "gun": "m24",
+      "centred": true
     },
     {
       "path": "sounds/primary/crackshot/sydney-sleeper.mp3",
@@ -913,7 +915,7 @@
     {
       "path": "sounds/reload/stages/l4dak-clipout.mp3",
       "kind": "reload piece",
-      "sha256": "d6820cd9c62a625638acc76998d2fe70b831895e06f588d4cb60692ee8b74a99",
+      "sha256": "00d941d10a67c3d8fd47c8c1fc66cc791d91f4e86bd146c070c30fc687e9a48f",
       "duration_seconds": 0.207,
       "sources": [
         {
@@ -923,12 +925,13 @@
           "sha256": "166666ef945f74e110f185e7d1f8a3880180ccfd280ee4c14dec9a6e1ffa6c20"
         }
       ],
-      "kit": "kit-survivor-ak"
+      "kit": "kit-survivor-ak",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/l4dak-clipin.mp3",
       "kind": "reload piece",
-      "sha256": "552e2426e116f3c49afd7f24817c7d3bcbe20c6c1a38231e6d760a9d4791ded9",
+      "sha256": "cd1f75c88b08e6d044edd7397705257d35c11a453463c3f237e5f0b344f30ae4",
       "duration_seconds": 0.8,
       "sources": [
         {
@@ -938,7 +941,8 @@
           "sha256": "cfbcc796ca8625360e3e977a15ba1091d9a5e8cecff18313870e6afc9d4ade02"
         }
       ],
-      "kit": "kit-survivor-ak"
+      "kit": "kit-survivor-ak",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/l4dak-slideforward.mp3",
@@ -1186,7 +1190,7 @@
     {
       "path": "sounds/reload/stages/hl2sg-reload-1.mp3",
       "kind": "reload piece",
-      "sha256": "3e1ebd35953f5cf90e5734678c055e63e0105d723cdae2dd4b9af0babe41b4b2",
+      "sha256": "c790e93694ef1854dc1b39e8cca613cc5e6a7217b3c4ae43f3dbb6bc8914baac",
       "duration_seconds": 0.484,
       "sources": [
         {
@@ -1196,7 +1200,8 @@
           "sha256": "0c0f2c728f3cd4b201ee9d45e395179fade28242e93bdecebc1dd8c4e2d2d111"
         }
       ],
-      "kit": "kit-hl2-shotgun"
+      "kit": "kit-hl2-shotgun",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/hl2sg-reload-2.mp3",
@@ -1216,7 +1221,7 @@
     {
       "path": "sounds/reload/stages/hl2sg-cock.mp3",
       "kind": "reload piece",
-      "sha256": "9a658c6eb6b91bf72a57ad9635b4182459835c811b25ecd9f4ab406671cad748",
+      "sha256": "23fa0be96a59b8398b44a51480acb299f8248dff4c9bda62e23cd5a2060587d4",
       "duration_seconds": 0.598,
       "sources": [
         {
@@ -1226,7 +1231,8 @@
           "sha256": "9836ab0084340a691b10cd2c5efa31ea8dd9b7d01610d641d9b3d1763a74bc31"
         }
       ],
-      "kit": "kit-hl2-shotgun"
+      "kit": "kit-hl2-shotgun",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/chrome-shell-2.mp3",
@@ -1321,8 +1327,8 @@
     {
       "path": "sounds/reload/stages/shorty-load-1.mp3",
       "kind": "reload piece",
-      "sha256": "8233f087b61aa3a9c757b6101f5f40b5dd7edf244e22fbbbbfa0de3f71ed31d7",
-      "duration_seconds": 0.668,
+      "sha256": "5a7e6ba6b7f1dc3a1750b89d134c1878ab1601ae07a287e912e945fc3166501c",
+      "duration_seconds": 0.666,
       "sources": [
         {
           "delay_seconds": 0,
@@ -1331,13 +1337,14 @@
           "sha256": "6f9d03c459238a368e9b5fa09da2e679d87e374f69ff9330d6260c5c159acd52"
         }
       ],
-      "kit": "kit-super-shorty"
+      "kit": "kit-super-shorty",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/shorty-load-3.mp3",
       "kind": "reload piece",
-      "sha256": "50f88333caf77ec14cc99ac880dffc2aca92c1767254859c83b13eb993a88e77",
-      "duration_seconds": 0.734,
+      "sha256": "544db2e224ce2b19dff33ff8e516ca0efc61fcf0d1a47ebf1822c0118e59fbf3",
+      "duration_seconds": 0.707,
       "sources": [
         {
           "delay_seconds": 0,
@@ -1346,7 +1353,8 @@
           "sha256": "5c15ed6374fa9b672ffe25473a6510b03a0ad3c821ff31272c2a0fb819eccd16"
         }
       ],
-      "kit": "kit-super-shorty"
+      "kit": "kit-super-shorty",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/shorty-pump.mp3",
@@ -1531,7 +1539,7 @@
     {
       "path": "sounds/reload/stages/military-clipout.mp3",
       "kind": "reload piece",
-      "sha256": "f3bb4a349f85e67fabf8171625d145758310406d6c63ebd8056180c4fb1f9508",
+      "sha256": "f25b6e71fb3369402341a6ab90326c5b7f4f670b05a398035d64df5da420a25a",
       "duration_seconds": 0.345,
       "sources": [
         {
@@ -1541,7 +1549,8 @@
           "sha256": "44f8770421ebc586bf0194187fcac90b5457a58f1e8287115aa79fe109f75924"
         }
       ],
-      "kit": "kit-military"
+      "kit": "kit-military",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/military-clipin.mp3",
@@ -1696,7 +1705,7 @@
     {
       "path": "sounds/reload/stages/desert-clipout.mp3",
       "kind": "reload piece",
-      "sha256": "60bc42f1c6c59c52b5f796e1871b220bba6cee2546393f57a8dde450480c8566",
+      "sha256": "37cf3e9f5ff71030f5d56575a8514bbc4ead95fcc541669e0b80370e4bb67fca",
       "duration_seconds": 0.583,
       "sources": [
         {
@@ -1706,7 +1715,8 @@
           "sha256": "8081aa37d26cb1082f655becf656758190590918b6d3cb598aa92847605a141a"
         }
       ],
-      "kit": "kit-desert"
+      "kit": "kit-desert",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/desert-clipin.mp3",
@@ -1786,7 +1796,7 @@
     {
       "path": "sounds/reload/stages/l4dgl-shell.mp3",
       "kind": "reload piece",
-      "sha256": "4981678afbb18c80c11ab0af14ff8cf68615d6c0c003ae60461fa79ada588641",
+      "sha256": "34a4e19b3f85c79ecfd13cc6c0e6989af92dfcfca4a6f524ac578790d9b6de19",
       "duration_seconds": 1.197,
       "sources": [
         {
@@ -1808,7 +1818,8 @@
           "sha256": "83b9daadd47728d36b487496451728c703e5e23f48808d077afb1d7870f09c8e"
         }
       ],
-      "kit": "kit-drum-launcher"
+      "kit": "kit-drum-launcher",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/sticky-reload.mp3",
@@ -2554,7 +2565,7 @@
     {
       "path": "sounds/reload/stages/l4dm4-clipout.mp3",
       "kind": "reload piece",
-      "sha256": "2484b69d5886b4b296ac55c5e2caacffdbbf22ba4b460b3bb3383000abc3b752",
+      "sha256": "b75a8631f8170b9a08df810cab610e6b7b2266555c63cac37a67394c07336609",
       "duration_seconds": 0.185,
       "sources": [
         {
@@ -2564,7 +2575,8 @@
           "sha256": "bd4240d313a3c340012b9feb05761ec49e1de6959830f23c8b00796481544a63"
         }
       ],
-      "kit": "kit-survivor-m4"
+      "kit": "kit-survivor-m4",
+      "centred": true
     },
     {
       "path": "sounds/reload/stages/l4dm4-clipin.mp3",

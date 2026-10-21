@@ -101,4 +101,6 @@ The Tri-Hard's shots are again three copies of one shot at 0, 100 and 200 ms. Re
 
 **1.6.1:** nine of the shots above were recorded unevenly (Day of Defeat: Source `mp44_shoot`, `bar_shoot`, `garand_shoot`, `m1carbine_shoot`, `thompson_shoot`, `k98_shoot`, `k98scoped_shoot`, `spring_shoot` play mostly from the left channel, and ZPS `m4/fire` somewhat louder from it), so they were replaced by the sources listed in the table, each within 1 dB between the two ears; the matching reload pieces are even and stay. The records in `per-gun-ten-sources.json` follow the same swap.
 
+**1.6.2:** every sound was measured ear by ear (whole-file level, the first 150 ms, and each stretch of the sound that is still audible). Seventeen leaned to one ear by more than 1.5 dB (or 2 dB in part of the sound) and were folded to the middle, so both ears get the same mix: twelve of the files above are rebuilt from the same source recordings and marked `centred` in `per-gun-ten-sources.json`; five older files (`primary/crackshot/ssg-08`, `empty/minigun-spin`, `empty/gatling-click`, `melee/claymore-swing`, `reload/stages/shotgun-shell-in`) were decoded, folded and re-encoded at 192 kbps from the mp3 already in the repository.
+
 The MIT license in this repository covers the script code. The Valve/Riot game audio retains its original ownership.
