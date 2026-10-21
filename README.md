@@ -8,7 +8,7 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.6.1-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.6.2-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
 
 </div>
@@ -112,6 +112,10 @@ Tampermonkey checks this repository's raw userscript on `main`, compares its `@v
 The audio URLs use a fixed Git commit, so an existing script version always gets the same files. GitHub is tried first, with jsDelivr serving the same commit as a backup. New audio becomes available when a newer script points to a commit containing it. Selected clips are cached locally; your settings and custom MP3s stay in the browser through script updates.
 
 ## Changelog
+
+### 1.6.2 — 2026-10-21
+- **Sounds that leaned to one ear now play the same in both.** The Crackshot's **Sniper Rifle** was louder in the left ear (about 2 dB over the whole shot, 4 dB in its tail). I measured the left and right ear of all 324 sounds in the project and folded the 17 that leaned noticeably to the middle: that shot, the Crackshot **SSG 08**, the EggK-47's **Classic M4A1**, the **Claymore swing**, the **Minigun** and **Gatling** empty clicks, and 11 reload pieces. Everything else was already within 1.5 dB.
+- Nothing was added or removed, so your saved picks are unchanged.
 
 ### 1.6.1 — 2026-10-21
 - **Shots that played in one ear are gone.** Nine of the 1.6.0 shots (the Day of Defeat: Source STG 44, BAR, M1 Garand, M1 Carbine, Tommy Gun, Kar98k, Scoped Kar98k and Springfield, and the Zombie Panic! Source Outbreak M4) were recorded much louder in the left channel (the Outbreak M4 only a little), so they were loud in the left ear and faint in the right. Each is replaced by a shot that sits evenly in both ears, so every gun still has ten: EggK-47 gets **Negev** and **Classic M249**, Free Ranger **Crossbow** and **Survivor SG 552**, Whipper **SMG1**, Crackshot **Classic AWP**, **Survivor Scout** and **Machina charged**, Tri-Hard **Classic M4A1 silenced**.
