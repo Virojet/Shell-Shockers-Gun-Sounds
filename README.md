@@ -8,8 +8,9 @@
 
 [![Install Gun Sounds](https://img.shields.io/badge/Install_Gun_Sounds-one_click-2ea44f?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Gun-Sounds/main/Shell-Shockers-Gun-Sounds.user.js)
 
-[![Version](https://img.shields.io/badge/version-1.6.2-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
+[![Version](https://img.shields.io/badge/version-1.6.3-0E7697?style=flat-square)](./Shell-Shockers-Gun-Sounds.user.js)
 [![Code license: MIT](https://img.shields.io/badge/code_license-MIT-lightgrey?style=flat-square)](./LICENSE)
+[![Installs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabacus.jasoncameron.dev%2Fget%2Fvirojet-gun-sounds%2Finstalls&query=%24.value&label=installs&color=2ea44f&style=flat-square)](#privacy)
 
 </div>
 
@@ -111,7 +112,16 @@ Tampermonkey checks this repository's raw userscript on `main`, compares its `@v
 
 The audio URLs use a fixed Git commit, so an existing script version always gets the same files. GitHub is tried first, with jsDelivr serving the same commit as a backup. New audio becomes available when a newer script points to a commit containing it. Selected clips are cached locally; your settings and custom MP3s stay in the browser through script updates.
 
+## Privacy
+
+- **Install count:** the first time it runs, one anonymous hit goes to a public counter ([Abacus](https://abacus.jasoncameron.dev)) so the installs badge above stays current. No settings, sounds, names or IDs. It's sent once per browser; the `ssGunSounds-install-counted` key in site storage remembers it.
+- **Sounds:** built-in sounds download from this project on GitHub (jsDelivr is the backup) the first time one is picked, then stay cached in your browser. Your own MP3s never leave your browser.
+
 ## Changelog
+
+### 1.6.3 — 2026-10-25
+- **Install count:** an anonymous count of how many browsers run Gun Sounds, so the installs badge above can show it. See [Privacy](#privacy).
+- Nothing else changed, so your saved picks and every sound stay as they were.
 
 ### 1.6.2 — 2026-10-21
 - **Sounds that leaned to one ear now play the same in both.** The Crackshot's **Sniper Rifle** was louder in the left ear (about 2 dB over the whole shot, 4 dB in its tail). I measured the left and right ear of all 324 sounds in the project and folded the 17 that leaned noticeably to the middle: that shot, the Crackshot **SSG 08**, the EggK-47's **Classic M4A1**, the **Claymore swing**, the **Minigun** and **Gatling** empty clicks, and 11 reload pieces. Everything else was already within 1.5 dB.

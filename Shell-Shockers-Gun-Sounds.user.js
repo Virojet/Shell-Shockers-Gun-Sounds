@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shell Shockers Gun Sounds
-// @version      1.6.2
+// @version      1.6.3
 // @description  Pick weapon, meme or custom sounds for shots, melee swings, reloads and the empty click in Shell Shockers.
 // @namespace    https://github.com/Virojet
 // @author       Virojet
@@ -94,7 +94,7 @@
   "use strict";
   if (window.ssGunSounds) return;   // already running: Tampermonkey and the Mod Menu both started it
 
-  const VERSION = "1.6.2";
+  const VERSION = "1.6.3";
   const STORE = "ssGunSounds";
   const UI_STORE = STORE + ".ui";   // how the settings look (Advanced open or not), apart from the sounds
   // `kind` limits a sound to one kind of list, and `gun` a primary shot to that gun's category. The meme sounds (no
@@ -1387,4 +1387,18 @@
     description: "Pick sounds for primary and secondary shots, melee swings, reloads and the empty click.",
     enable: start, disable: stop, openSettings,
   });
+
+  // install-counter:begin
+  // Install counter: one anonymous hit per browser, sent once and never again (key "ssGunSounds-install-counted").
+  // Nothing is sent but the hit itself: no settings, names or IDs. Total: abacus.jasoncameron.dev/get/virojet-gun-sounds/installs
+  (() => {
+    const KEY = "ssGunSounds-install-counted";
+    try { if (localStorage.getItem(KEY)) return; } catch (e) { return; }
+    setTimeout(() => {
+      fetch("https://abacus.jasoncameron.dev/hit/virojet-gun-sounds/installs", { credentials: "omit", referrerPolicy: "no-referrer" })
+        .then(r => { if (r.ok) localStorage.setItem(KEY, "1"); })
+        .catch(() => { });
+    }, 8000);
+  })();
+  // install-counter:end
 })();
